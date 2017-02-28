@@ -40,6 +40,7 @@ angular.module('websiteLeftModule', [])
                 $scope.status.sites = data.DATA;
                 // 被选中的网站
                 var filteredSite = $filter('filterBy')($scope.status.sites, ['SITEID'], $location.search().siteid);
+                // 将一级导航第一栏赋值给$scope.status.selectedSite
                 $scope.status.selectedSite = filteredSite.length > 0 ? filteredSite[0] : data.DATA[0];
                 deferred.resolve();
             });
