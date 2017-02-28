@@ -11,12 +11,12 @@
             <img class="edit_mark" src="./editingCenter/app/images/l5-2.png" ng-show="status.isDropdown">
         </div>
         <!-- 站点一级标题列表 -->
-        <!--<div class="editing-Sites_fa" ng-show="">
-            <div class="editing-Sites" ng-repeat="" ng-click="">
-                <span ng-bind="" title=""></span>
-                <img src="./editingCenter/app/images/l8.png" ng-show="">
+        <div class="editing-Sites_fa" ng-show="status.isDropdown">
+            <div class="editing-Sites" ng-repeat="site in status.sites" ng-click="selectSites(site)">
+                <span ng-bind="site.SITENAME" title="{{site.SITENAME}}"></span>
+                <img src="./editingCenter/app/images/l8.png" ng-show="status.selectedSite==site">
             </div>
-        </div> -->
+        </div> 
     </div>
     <tabset class="editing-downlist">
         <!-- 待编 -->

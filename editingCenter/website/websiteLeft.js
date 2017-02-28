@@ -46,4 +46,15 @@ angular.module('websiteLeftModule', [])
             });
             return deferred.promise;
         }
+
+        /**
+         * [selectSites description] 一级导航菜单切换
+         * @param  {[type]} site [description] 被选中的一级导航站点
+         * @return {[type]}      [description]
+         */
+        $scope.selectSites = function(site) {
+            if($scope.status.selectedSite === site) return;
+            // 将点中的站点赋给$scope.status.selectedSite展示出来
+            $scope.status.selectedSite = site;
+        };
     }]);
