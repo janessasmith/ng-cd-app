@@ -1,0 +1,121 @@
+<div class="createHotEvent">
+    <div class="row edit_right_head" ng-bind="status.formTitle"></div>
+    <div class="row margin0">
+        <form class="createHotEventSubmit-form" name="createHotEventSubmitForm" novalidate autocomplete="off">
+            <div class="col-md-12 mt20">
+                <div class="form-group clearfix">
+                    <div class="text_title col-md-1"><em class="font_red">*</em>事件标题：</div>
+                    <div class="dashed_line col-md-11">
+                        <div class="invalidate-input-box">
+                            <input class="form-control" type="text" name="title" ng-model="data.currEvent.TITLE" validator="required,spechar" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group clearfix border_b">
+                    <div class="text_title col-md-1">自定义标签：</div>
+                    <div class="col-md-11">
+                        <div class="invalidate-input-box">
+                            <input class="form-control" type="text" name="customlabel" ng-model="data.currEvent.CUSTOMLABEL" validator="spechar" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt20">
+                <div class="form-group clearfix border_b">
+                    <div class="text_title col-md-1 mr">热门标签选择：</div>
+                    <div class="col-md-10 pb50">
+                        <ul class="hot_labels">
+                            <li ng-click="selectMClass(label)" ng-repeat="label in data.labels" ng-bind="label.LABLE" class="{{data.selectedLabels.indexOf(label.LABLE)>-1?'on':''}}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt20">
+                <div class="form-group clearfix">
+                    <div class="text_title col-md-1">开始时间：</div>
+                    <div class="dashed_line col-md-11">
+                        <div class="invalidate-input-box">
+                            <span ng-show="isShowTips" class="ng-scope ng-hide"></span>
+                            <input class="form-control fl w250 bg" type="text" value="{{status.curDate | date:'yyyy-MM-dd'}}" readonly="readonly">
+                            <div class="btn-group dropdown">
+                                <button type="button" class="btn btn-default bth-fix" ng-model="genParams.StartDocPubTime" placeholder="选择日期" bs-datepicker max-date="today" readonly="readonly" data-autoclose="1" data-date-format="yyyy-MM-dd">
+                                    <span class="btn-fix-title ng-binding" value="">选择日期</span><span class="caret"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt20">
+                <div class="form-group clearfix">
+                    <div class="text_title col-md-1">结束时间：</div>
+                    <div class="dashed_line col-md-11">
+                        <div class="invalidate-input-box">
+                            <span ng-show="isShowTips" class="ng-scope ng-hide"></span>
+                            <input id="hotEvent_input_endDate" class="form-control fl w250 bg" type="text" value="{{genParams.EndDocPubTime | date:'yyyy-MM-dd'}}" ng-blur="checkDate()">
+                            <div class="btn-group dropdown">
+                                <button type="button" class="btn btn-default bth-fix" ng-model="genParams.EndDocPubTime" placeholder="选择日期" bs-datepicker max-date="today" data-autoclose="1" data-date-format="yyyy-MM-dd">
+                                    <span class="btn-fix-title ng-binding" value="">选择日期</span><span class="caret"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group clearfix">
+                    <div class="text_title col-md-1"><em class="font_red">*</em>事件关键词：</div>
+                    <div class="dashed_line col-md-11 b0">
+                        <span class="keyWords_type">包含以下全部的关键词，多个关键词请用空格隔开</span>
+                        <div class="invalidate-input-box">
+                            <input class="form-control" type="text" id="createHotEvent_keywordsinclude" name="keywordsinclude" ng-model="data.currEvent.KEYWORDSINCLUDE" validator="spechar" ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC">
+                        </div>
+                    </div>
+                    <div class="text_title col-md-1 b0"></div>
+                    <div class="dashed_line col-md-11">
+                        <span class="keyWords_type">包含以下任意一个关键词，多个关键词请用空格隔开</span>
+                        <div class="invalidate-input-box">
+                            <input class="form-control" type="text" name="keywordseitheror" ng-model="data.currEvent.KEYWORDSEITHEROR" validator="spechar" ng-mouseenter="isShowTipsE=true" ng-mouseleave="isShowTipsE=false" is-show-tips="isShowTipsE">
+                        </div>
+                    </div>
+                    <div class="text_title col-md-1"></div>
+                    <div class="dashed_line col-md-11">
+                        <span class="keyWords_type">不包含以下关键词，多个关键词请用空格隔开</span>
+                        <div class="invalidate-input-box">
+                            <input class="form-control" type="text" name="keywordsexclusive" ng-model="data.currEvent.KEYWORDSEXCLUSIVE" validator="spechar" ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-md-12">
+                <div class="form-group clearfix">
+                    <div class="text_title col-md-1"><em class="font_red">*</em>事件关键词：</div>
+                    <div class="dashed_line col-md-11">
+                        <div class="invalidate-input-box">
+                            <textarea class="form-control edit-news-textarea" name="keywordsinclude" ng-model="data.currEvent.KEYWORDSINCLUDE" validator="required,spechar" ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group clearfix">
+                    <div class="text_title col-md-1">排除关键词：</div>
+                    <div class="col-md-11">
+                        <div class="invalidate-input-box">
+                            <textarea class="form-control edit-news-textarea" name="keywordsexclusive" ng-model="data.currEvent.KEYWORDSEXCLUSIVE" validator="spechar" ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </form>
+        <div class="col-md-12 mt20 createHotEvent_btn">
+            <div class="text_title col-md-1"></div>
+            <div class="col-md-11 pb50">
+                <button class="" ng-disabled="status.okToCreate" ng-click="cancel()">取消</button>
+                <button class="" ng-click="confirm()" ng-bind="status.eventId!=0&& status.sourcetype != 1?'保存':'创建'"></button>
+            </div>
+        </div>
+    </div>
+</div>

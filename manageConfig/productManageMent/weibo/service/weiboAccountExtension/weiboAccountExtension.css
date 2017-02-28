@@ -1,0 +1,78 @@
+.weibo-account-extension .modal-dialog {
+    width: 550px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+}
+.weibo-account-extension .modal-content{
+	background-color: #F0F2F5;
+}
+.weibo-account-extension .account-title {
+    background-color: #fff;
+}
+
+.weibo-account-extension .account-title span {
+    height: 41px;
+    line-height: 41px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.weibo-account-extension .account-content-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.weibo-account-extension .account-title img {
+    float: right;
+    padding-right: 15px;
+    padding-top: 13px;
+}
+
+.weibo-account-extension .account-content {
+    background: #fff;
+    margin: 10px;
+    padding: 30px 20px;
+    border: 1px solid #ccc;
+}
+
+.weibo-account-extension .account-content>div {
+    margin-bottom: 10px;
+}
+
+.weibo-account-extension .account-content .weibo-account-extension-color-1 {
+    color: #fe0000;
+}
+
+.weibo-account-extension .account-content .weibo-account-extension-color-2 {
+    color: #e03e3c;
+}
+
+.weibo-account-extension .account-content .weibo-account-extension-bg-1 {
+    background-color: #e03e3c;
+}
+
+.weibo-account-extension .account-content .weibo-account-extension-bg-2 {
+    background-color: #4496d2;
+}
+
+.weibo-account-extension .weibo-account-extension-width175 {
+    width: 175px;
+    line-height: 30px;
+    padding: 3px 5px;
+}
+
+.weibo-account-extension .weibo-account-extension-width175 img {
+    float: left;
+    border-right: 1px solid #ccc;
+    padding-right: 10px;
+    margin: 0 5px;
+}
+
+.weibo-account-extension .weibo-account-extension-width175 span {
+    margin-left: 10px;
+}
+
+.weibo-account-extension .mg-left-40 {
+    margin-left: 40px;
+}

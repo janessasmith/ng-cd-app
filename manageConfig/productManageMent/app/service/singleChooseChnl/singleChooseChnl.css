@@ -1,0 +1,42 @@
+
+.app-move-window .appSingleChooseChnl .body .foot {
+    height: 88px;
+    position: static;
+}
+
+.app-move-window .appSingleChooseChnl .body .foot div {
+    overflow: hidden;
+    position: static;
+}
+
+.app-move-window .appSingleChooseChnl .body .foot .selected {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.app-move-window .appSingleChooseChnl .selectedChannels span {
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.app-move-window .appSingleChooseChnl .body .foot .button {
+    margin-top: 0px;
+}
+
+.app-move-window .appSingleChooseChnl .body .right {
+    height: 312px;
+}
+
+.app-move-window .appSingleChooseChnl .body {
+    height: 410px;
+}
+
+.app-move-window .button .cancel {
+    float: right;
+    margin-right: 20px;
+}
+
+.app-move-window .button .confirm {
+    float: right;
+}

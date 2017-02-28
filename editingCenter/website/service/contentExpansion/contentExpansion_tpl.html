@@ -1,0 +1,35 @@
+<form name="form" novalidate>
+    <div class="contentExpansion">
+        <!-- <div class="head">
+        <img ng-click="cancel()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+    </div>-->
+        <div class="main">
+            <tabset class="contentExpansion-downlist">
+                <tab heading="扩展1" class="invalidate-input-box">
+                    <accordion close-others="true">
+                        <textarea ng-model="status.AdditionalTextTop" class="form-control edit-news-textarea" maxlength-error-message="长度不能超过3000个字符" validator="spechar,maxlength=3000" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA"></textarea>
+                    </accordion>
+                </tab>
+                <tab heading="扩展2" class="invalidate-input-box">
+                    <accordion close-others="true">
+                        <textarea ng-model="status.AdditionalTextBottom" class="form-control edit-news-textarea" maxlength-error-message="长度不能超过3000个字符" validator="spechar,maxlength=3000" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB"></textarea>
+                    </accordion>
+                </tab>
+                <tab heading="扩展3" class="invalidate-input-box">
+                    <accordion close-others="true">
+                        <textarea ng-model="status.AdditionalTextLeft" class="form-control edit-news-textarea" maxlength-error-message="长度不能超过3000个字符" validator="spechar,maxlength=3000" ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC"></textarea>
+                    </accordion>
+                </tab>
+                <tab heading="扩展4" class="invalidate-input-box">
+                    <accordion close-others="true">
+                        <textarea ng-model="status.AdditionalTextRight" class="form-control edit-news-textarea" maxlength-error-message="长度不能超过3000个字符" validator="spechar,maxlength=3000" ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD"></textarea>
+                    </accordion>
+                </tab>
+            </tabset>
+        </div>
+        <div class="bottom">
+            <button class="confirm btn_confirm" validation-submit="form" ng-click="confirm()">确定</button>
+            <button class="cancel btn_cancel" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,52 @@
+<div id="pageTop" class="planEventPageTopIcon"></div>
+<div class="fix_height450 hotEvents">
+    <div class="clue_calendar_button">
+        <div class="input-group monitor_input_group">
+            <input type="text" placeholder="请输入关键字搜索" class="form-control monitor_form_control" ng-model="data.keywords" ng-keypress="queryListBySearchWord($event)">
+            <span class="input_group_btn">
+                <button class="btn btn-default btn_monitor_search" type="button" ng-click="queryListBySearchWord()">检索</button>
+            </span>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="edit_table hotEvents_table">
+        <div class="apply_item row" ng-repeat="item in data.items">
+            <!-- <h4><a ng-bind="item.TITLE" ui-sref="eventdetail.eventanalyisbasicinfo({eventtype:1,eventid:item.ID})" target="_blank"></a></h4>
+            <div class="item_img col-md-4"><a ui-sref="eventdetail.eventanalyisbasicinfo({eventtype:1,eventid:item.ID})" target="_blank"><img ng-init="dealImg(item)" ng-src="{{item.IMAGEURL}}" width="100%" /></a></div> -->
+            <h4><a ng-bind="item.TITLE | trsLimitTo:25" title="{{item.TITLE}}" ng-click="gotoEventDetail(1,item)"></a></h4>
+            <div class="item_img col-md-4">
+                <a ng-click="gotoEventDetail(1,item)"><img ng-init="dealImg(item)" ng-src="{{item.IMAGEURL}}" width="100%" /></a>
+            </div>
+            <div class="item_info col-md-8">
+                <div class="item_info_h">
+                    <span>开始时间：</span>
+                    <span ng-bind="timeStamp(item)"></span>
+                </div>
+                <div class="item_info_h">
+                    <span class="fl">事件声量：</span>
+                    <span class="fl">
+                        <div class="voice_light">
+                            <div ng-style="voiceLight(item)" class="voice_light_1"></div>
+                        </div>
+                    </span>
+                    <span class="fl voice_num" ng-bind="item.EVENTTENDENCY"></span>
+                    <div class="clear"></div>
+                </div>
+                <div class="item_info_h min_h">
+                    <span class="fl line_h26">事件标签：</span>
+                    <span><div class="line_h26" ng-bind="item.LABEL"></div></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="page timeCue_page">
+        <trs-pagenation-left page-count="page" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+        <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="false" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+        <!-- <trs-pagenation-right callback="jumpToPage()" page="page" currpage="status.jumpToPageNum"></trs-pagenation-right> -->
+    </div>
+</div>
+<div cg-busy="loadingPromise"></div>
+<div class="planEventToTopIcon" du-smooth-scroll du-scrollspy offset="20" duration="500" href="#pageTop" ng-mouseenter="status.showBackTopTip=true" ng-mouseleave="status.showBackTopTip=false">
+    <p ng-show="status.showBackTopTip">返回顶部</p>
+</div>

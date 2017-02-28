@@ -1,0 +1,56 @@
+<div class="editEventSubmit">
+    <div class="submit">
+        <div class="head">
+            <span ng-bind="data.modalTitle"></span>
+            <img ng-click="cancel()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+        </div>
+        <div class="headTip">
+           此部分内容人工编辑过后，将始终显示编辑后的内容，如需重新显示系统计算结果，请清空相应字段并保存 
+        </div>
+        <div class="body">
+            <form class="editEventSubmit-form" name="editEventSubmitForm" novalidate autocomplete="off">
+                <div class="main">
+                    <div class="item">
+                        <div class="invalidate-input-box">
+                            <span class="tit">时间：</span>
+                            <!-- <input type="text" ng-model="data.MAXRATETIME" name="time" class="form-control" /> -->
+                            <input type="text" class="form-control" ng-model="data.MAXRATETIME" name="time" placeholder="时间" data-autoclose="1" bs-datepicker="" data-date-format="MM月dd日" data-max-date="today" validator="required,spechar" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+                        </div>
+                    </div>
+                    <map>
+                    </map>
+                    <div class="item">
+                        <div class="map">
+                            <!-- <img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/map.jpg" width="100%"> -->
+                            <div id="allMap"></div>
+                        </div>
+                        <button class="detailbtn" ng-click="addPlace()">
+                            <span>
+                                <img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp7.png" alt="">
+                            </span> 添加地点
+                        </button>
+                    </div>
+                    <div class="item">
+                        <div class="invalidate-input-box">
+                            <span class="tit">机构：</span>
+                            <input type="text" ng-model="data.ORG" name="time" class="form-control" validator="spechar" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips"/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="invalidate-input-box">
+                            <span class="tit">人物：</span>
+                            <input type="text" ng-model="data.PEOPLE" name="time" class="form-control" validator="spechar" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB"/>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </form>
+            <div class="foot">
+                <div>
+                    <button class="cancel" ng-click="cancel()">撤销</button>
+                    <button class="cancel" ng-click="confirm()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,143 @@
+.new-cate-gory-mgr .modal-dialog {
+    width: 700px;
+    top: 60px;
+    position: relative;
+}
+
+.new-cate-gory-mgr .modal-content {
+    background-color: #F0F2F5;
+    padding: 4px;
+}
+
+.new-cate-gory-mgr .list-bg {
+    background-color: #F0F2F5;
+}
+
+.new-cate-gory-mgr .mt10 {
+    margin-top: 10px;
+}
+
+.new-cate-gory-mgr .mr5 {
+    margin-right: 5px;
+}
+
+.new-cate-gory-mgr .mt5 {
+    margin-top: 5px;
+}
+
+.new-cate-gory-mgr .mt20 {
+    margin-top: 20px;
+}
+
+.new-cate-gory-mgr .fwb {
+    font-weight: bold;
+}
+
+.new-cate-gory-mgr .mb5 {
+    margin-bottom: 5px;
+}
+
+.new-cate-gory-mgr .pl5 {
+    padding-left: 5px;
+}
+
+.new-cate-gory-mgr .ml5 {
+    margin-left: 5px;
+}
+
+.new-cate-gory-mgr .mb10 {
+    margin-top: 10px;
+}
+
+.new-cate-gory-mgr .mt100 {
+    margin-top: 100px;
+}
+
+.new-cate-gory-mgr .mr20 {
+    margin-right: 20px;
+}
+
+.new-cate-gory-mgr .w360 {
+    width: 360px;
+}
+
+.new-cate-gory-mgr .dropdown .dropdown-menu {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-concat .h44 {
+    height: 44px;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-concat label {
+    font-weight: 100;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-concat-white {
+    height: 150px;
+    padding: 10px 0;
+    background-color: white;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-concat .list-concat {
+    width: 343px;
+    display: inline-block;
+    padding: 10px;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-concat .list-concat .selected-item {
+    background-color: #0097D0;
+    color: white;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-concat .list-concat .list-concat-1 {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid #ddd;
+    overflow-y: scroll;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-concat .list-concat .trs-btn {
+    width: 80px;
+    height: 30px;
+    padding: 0;
+    font-size: 12px;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-concat .list-concat .trs-btn:hover {
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    border: 1px solid #4696D3;
+    background-color: #4696D3;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-concat .list-concat .trs-btn[disabled]:hover {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-title {
+    height: 40px;
+    padding: 10px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-footer {
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.new-cate-gory-mgr .new-cate-gory-mgr-footer button {
+    width: 80px;
+    height: 30px;
+    line-height: 10px;
+    color: white;
+}

@@ -1,0 +1,20 @@
+<form name="modifyFileForm" novalidate>
+    <div class="man_produ_modify_head">
+        <p ng-bind="data.name"></p>
+        <img src="./editingCenter/app/toBeCompiled/images/cls.jpg" class="edit_revoke_thead_images1" ng-click="cancel()" />
+    </div>
+    <!-- <div class="website_fra_new_content_newTemplate_button edit-cloud-modifyOperate" ng-if="status.canInsertFragment.indexOf(data.type)>-1">
+        <button class="btn btn-default btn-commen edit_right_head_btn_commen" ng-click="insertFragment()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='InsertFragment'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+            <span class="s_icon"><img ng-src="./manageConfig/productManageMent/images/{{status.batchOperateBtn['hoverStatus']=='InsertFragment'?'t1-1.png':'t1.png'}}" /></span> 插入碎片
+        </button>
+    </div> -->
+    <div class="man_produ_column_delete">
+        <div class="invalidate-input-box">
+            <textarea id="text" ng-mouseup="startInner()" ng-keyup="startInner()" type="text" class="form-control" ng-model="status.content" maxlength-error-message="" validator="required" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" name="typingMain" is-show-tips="isShowTipsA"></textarea>
+        </div>
+    </div>
+    <div class="man_produ_delete_footer">
+        <button class="news-role-btn confirm-btn btn_confirm" ng-click="confirm()">确定</button>
+        <button class="news-role-btn btn_cancel" ng-click="cancel()">取消</button>
+    </div>
+</form>

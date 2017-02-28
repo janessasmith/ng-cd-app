@@ -1,0 +1,114 @@
+<form name="videoForm" novalidate>
+    <div class="row_news websiteOrIwo_timeLine_head_row_news plr20 pb46">
+        <ul class="subject-tab">
+            <li>
+                <a du-smooth-scroll du-scrollspy offset="40" duration="2000" href="#section-1">稿件信息</a>
+            </li>
+            <li>
+                <a du-smooth-scroll du-scrollspy offset="60" duration="2000" href="#section-2">发稿单</a>
+            </li>
+        </ul>
+        <div class="mt15" id="section-1">
+            <div class="ht43"></div>
+            <div class="edit-news-title">
+                稿件信息
+            </div>
+            <div class="m_box bg-gray">
+                <div class="m_box_item">
+                    <div class="col-sm-1 txt_r"><em class="font_red">*</em>标题：</div>
+                    <div class="col-sm-9 mc-padding-horizontal-0">
+                        <div class="invalidate-input-box z1000">
+                            <input class="form-control" type="text" name="title" ng-model="video.DOCTITLE" placeholder="请输入视频标题" maxlength-error-message="长度不能超过50个字符！" validator="spechar,maxlength=50,required" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB">
+                        </div>
+                    </div>
+                    <span class="col-sm-1 tip">已输入<trs-word-num num-obj="{{video.DOCTITLE}}" class="font_red auto_wt"></trs-word-num>字</span>
+                </div>
+                <div class="m_box_item">
+                    <div class="col-sm-1 txt_r">备注：</div>
+                    <div class="col-sm-9 invalidate-input-box p0">
+                        <textarea name="remark" ng-model="video.COMMENTS" class="form-control area-hei160" maxlength-error-message="长度不能超过500个字符！" validator="spechar,maxlength=500" ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD"></textarea>
+                    </div>
+                    <span class="col-sm-1 tip">已输入<trs-word-num num-obj="{{video.COMMENTS}}" class="font_red auto_wt"></trs-word-num>字</span>
+                </div>
+                <div class="m_box_item websiteaudiovideo">
+                    <div class="col-sm-1 txt_r"><em class="font_red">*</em>视频：</div>
+                    <div class="col-sm-11 invalidate-input-box" style="padding: 0px;">
+                        <ul class="audiovideo">
+                            <li ng-init="getAudioVideoPlayer(item)" ng-repeat="item in status.audioVideoidsArray">
+                                <video ng-if="item.value.streamsMap.l" controls="controls" ng-src="{{item.value.streamsMap.l.httpURL}}"></video>
+                                <div ng-if="item.value.err" class="default">
+                                    <span><img src="./editingCenter/website/images/video.gif" alt="请稍等，正在转码..."></span>
+                                </div>
+                                <div class="toolbar">
+                                    <label ng-click="deleteAudioVideo(item)">删除</label>
+                                    <label ng-click="downloadAudioVideo(item.id)" ng-if="item.value.streamsMap.l.httpURL">下载</label>
+                                </div>
+                            </li>
+                            <li class="edit-UploadMasProgress" ng-if="status.uploadMasNow">
+                                <div>
+                                    <p ng-style="{'width':status.uploadMasProgress}"></p>
+                                </div>
+                                <span ng-bind="status.uploadMasProgress"></span>
+                            </li>
+                        </ul>
+                        <div>
+                            <div class="edit-UploadMasBtn" trs-Mas-upload call-back="uploadMasCallBack" extensions="status.masUploadExtensions" mime-types="status.masUploadMimeTypes" multiple="false" max-size="data.maxSize">
+                            </div>
+                            <p class="cue"><span>支持格式：</span>
+                                <span>.mp4,.flv,.rmvb,.avi</span>&nbsp<span>请上传10M以下的视频</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mtb20" id="section-2">
+            <div class="mtb20">
+                <div class="edit-news-title blueborder">
+                    <p class="pull-left">发稿单</p>
+                    <label class="edit-news-checkbox">
+                        <trs-checkbox ischecked="video.ISNOPAYMENT==data.noPayment" callback="updateCKSelection('ISNOPAYMENT')"></trs-checkbox>不发稿费
+                    </label>
+                </div>
+                <div class="m_box_item mt20 ml15">
+                    稿件体裁：
+                    <trs-single-select selected-option="video.DOCGENRE" options="data.docGenres"></trs-single-select>
+                </div>
+            </div>
+            <editor></editor>
+        </div>
+    </div>
+    <div class="Iw-box-fix box-fix-bt">
+        <div class="txt_r">
+            <button class="btn btn-primary btn-app" ng-click="save()">
+                <span class="s_icon s_icon_app">
+                    <img ng-src="./editingCenter/website/images/bsave.png" />
+                </span>保存
+            </button>
+            <!-- <button class="btn btn-primary btn-app" ng-click="trial()" ng-show="status.wxStatus=='tobecompiled'">
+                <span class="s_icon s_icon_app">
+                    <img ng-src="./editingCenter/website/images/b52.png" />
+                </span>送审
+            </button> -->
+            <button class="btn btn-primary btn-app" ng-click="revoke()" ng-show="status.wxStatus=='pending'">
+                <span class="s_icon s_icon_app">
+                    <img ng-src="./editingCenter/website/images/b83.png" />
+                </span>撤稿
+            </button>
+            <button class="btn btn-primary btn-app" ng-show="status.wxStatus=='singed'">
+                <span class="s_icon s_icon_app">
+                    <img ng-src="./editingCenter/website/images/b53.2.png" />
+                </span>保存并发布
+            </button>
+            <button class="btn btn-primary btn-app" ng-click="signDirect()" ng-show="status.wxStatus=='pending'">
+                <span class="s_icon s_icon_app">
+                    <img ng-src="./editingCenter/website/images/b53.1.png" />
+                </span>签发
+            </button>
+            <button class="btn btn-primary btn-app" ng-click="close()">
+                <span class="s_icon s_icon_app">
+                    <img ng-src="./editingCenter/website/images/bclose.png" />
+                </span>关闭
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,74 @@
+<div class="websiteCabletPreview_nav">
+    <div class="box-fix-bt box-fix-top">
+        <div class="txt_r">
+            <button class="btn btn-primary" ng-click="edit()">
+                <span class="s_icon">
+                <img src="./editingCenter/newspaper/images/bj46-1.png" />
+            </span> 编辑
+            </button>
+            <button class="btn btn-primary" ng-click="addToCreation()">
+                <span class="s_icon">
+                    <img ng-src="./resourceCenter/images/z14-1.png" />
+                </span>创作轴
+            </button>
+            <button class="btn btn-primary" ng-click="close()">
+                <span class="s_icon">
+                <img ng-src="./editingCenter/iWo/images/cclose.png" />
+            </span>关闭
+            </button>
+        </div>
+    </div>
+</div>
+<div class="websiteCabletPreview">
+    <div class="websiteCabletPreview_context">
+        <div class="websiteCabletPreview_head">
+            <div class="websiteCabletPreview_head_rank">
+                <p class="col-md-4">
+                    <b>作者：</b>
+                    <span>{{data.picInfo.AUTHORS}}</span>
+                </p>
+                <p class="col-md-4">
+                    <b>关键字：</b>
+                    <span title="{{data.picInfo.KEYWORD}}">{{data.picInfo.KEYWORD}}</span>
+                </p>
+                <p class="col-md-4">
+                    <b>创建时间：</b>
+                    <span>{{data.picInfo.CRTIME}}</span>
+                </p>
+            </div>
+            <div class="websiteCabletPreview_head_rank">
+                <p class="col-md-4">
+                    <b>相关人物：</b>
+                    <span title="{{data.picInfo.RELATEPERSON}}">{{data.picInfo.RELATEPERSON}}</span>
+                </p>
+                <p class="col-md-4">
+                    <b>相关地点：</b>
+                    <span title="{{data.picInfo.RELATEPLACE}}">{{data.picInfo.RELATEPLACE}}</span>
+                </p>
+                <p class="col-md-4">
+                    <b>所属分类：</b>
+                    <span title="{{data.typeString}}">{{data.typeString}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="websiteCabletPreview_content">
+        <h1>{{data.picInfo.TITLE}}</h1>
+        <h4></h4>
+        <div class="wt960 edit">
+            <div class="carousel-row">
+                <div class="carousel-img">
+                    <img ng-src="{{data.picInfo.FILEPATH}}" alt="" style="max-width:100%;max-height:100%;">
+                </div>
+                <div class="carousel-list-row">
+                    <div class="carousel-num" style="text-align:center;">
+                        <span class="ft-red">1</span>/<span class="mgl3">1</span>
+                    </div>
+                    <div class="carousel-list-detail">{{data.picInfo.CONTENT}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <trs-go-top></trs-go-top>
+    <div cg-busy="loadingPromise"></div>
+</div>

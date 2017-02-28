@@ -1,0 +1,20 @@
+{
+  "name": "imagesloaded",
+  "version": "3.1.7",
+  "description": "JavaScript is all like _You images done yet or what?_",
+  "main": "imagesloaded.js",
+  "dependencies": {
+  
+  },
+  "devDependencies": {
+    "jquery": ">=1.9 <2.0",
+    "qunit": ">=1.10"
+  },
+  "ignore": [
+    "**/.*",
+    "test",
+    "component.json",
+    "imagesloaded.jquery.json",
+    "package.json"
+  ]
+}

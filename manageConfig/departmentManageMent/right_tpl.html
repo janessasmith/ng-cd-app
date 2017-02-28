@@ -1,0 +1,78 @@
+<div>
+    <div trs-scroll-fix class="row edit_right_head">
+        <div class="col-md-8">
+            <button class="btn btn-default btn-commen" ng-click="newDepartment()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='new'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-if="status.btnRights['department.config.opreation.xinjian']">
+                <span class="s_icon1"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='new'?'b1-1.png':'b1.png'}}" /></span> 新建{{data.unitorDep}}
+            </button>
+            <button class="btn btn-default btn-commen opacity100" ng-click="deleteDepartments(data.selectedArray)" ng-mouseenter="status.batchOperateBtn['hoverStatus']='delete'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-disabled="data.selectedArray.length<1" ng-if="status.btnRights['department.config.shanchu']">
+                <span class="s_icon1"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='delete'&&data.selectedArray.length>0?'fg2-1.png':'fg2.png'}}" /></span> 删除{{data.unitorDep}}
+            </button>
+            <button class="btn btn-default btn-commen opacity100" ng-click="hideDepartments()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='stop'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-disabled="data.selectedArray.length<1" ng-if="status.btnRights['department.config.display']">
+                <span class="s_icon1"><img ng-src="./manageConfig/images/{{status.batchOperateBtn['hoverStatus']=='stop'?'gb1-1.png':'gb1.png'}}"/></span> 隐藏{{data.unitorDep}}
+            </button>
+            <button class="btn btn-default btn-commen opacity100" ng-click="showDepartments()" ng-disabled="data.selectedArray.length<1" ng-mouseenter="status.batchOperateBtn['hoverStatus']='reStart'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-if="status.btnRights['department.config.display']">
+                <span class="s_icon1"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='reStart'?'fg1-1.png':'fg1.png'}}"/></span> 显示{{data.unitorDep}}
+            </button>
+            <button class="btn btn-default btn-commen edit_right_head_btn_commen" ng-click="rankDepartment()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='pressRank'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-if="status.btnRights['department.config.paixu']">
+                <span class="s_icon"><img ng-src="./manageConfig/productManageMent/images/{{status.batchOperateBtn['hoverStatus']=='pressRank'?'new1-1.png':'new1.png'}}" /></span> {{data.unitorDep}}排序
+            </button>
+        </div>
+        <div class="col-md-4">
+            <ol class="breadcrumb pull-right edit_breadcrumb">
+                <li><a>{{data.unitorDep}}管理</a></li>
+            </ol>
+        </div>
+    </div>
+    <div class="row edit_right_mid">
+        <div class="col-md-8 s_onlyme_div">
+        </div>
+        <div class="col-md-4">
+            <div class="input-group edit_input_group">
+                <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="data.keywords" ng-keypress="departmentSearch($event)">
+                <span class="input-group-btn">
+                        <button class="btn btn-default btn_edit_search" type="button" ng-click="departmentSearch()">搜索</button>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="edit_table mlr-15">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="td-check col-cbx">
+                        <trs-checkbox ischecked="data.items.length>0&&data.items.length==data.selectedArray.length" callback="selectAll()"></trs-checkbox>
+                    </th>
+                    <th class="td-number col-index">序号</th>
+                    <th>{{data.unitorDep}}名称</th>
+                    <th width="407">{{data.unitorDep}}描述</th>
+                    <th>{{data.unitorDep}}状态</th>
+                    <th class="xcol-usergroup-cruser">创建人</th>
+                    <th class="">创建时间</th>
+                    <th class="xcol-usergroup-group-operation">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.items" class="vertical-align-middle">
+                    <td>
+                        <trs-checkbox ischecked="data.selectedArray.indexOf(item)<0?false:true" callback="selectDoc(item)"></trs-checkbox>
+                    </td>
+                    <td ng-bind="$index+1"></td>
+                    <td ng-bind="item.DEPARTMENTNAME" ng-click="editDepartment(item)" class="clickable" ng-if="status.btnRights['department.config.opreation.xinjian']"></td>
+                    <td ng-bind="item.DEPDESC | truncate:50:'...'"></td>
+                    <td ng-bind="status.deprtmentsStatus[item.STATUS]"></td>
+                    <td ng-bind="item.CRUSER" title="item.CRUSER" class="xcol-usergroup-roles"></td>
+                    <td ng-bind="item.CRTIME"></td>
+                    <td class="user-td-img">
+                        <button type="button" class="editing-bth" data-placement="bottom" data-auto-close="1" data-template-url="./components/service/sweetalert/view/department_tpl.html" data-animation="am-flip-x" bs-popover title="其他操作"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--  <div class="page">
+            <trs-pagenation-left page-count="page" callback="selectPageNum()" is-select-pagecount="true"></trs-pagenation-left>
+            <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+            <trs-pagenation-right callback="jumpToPage()" currpage="status.copyCurrPage" page="page"></trs-pagenation-right>
+        </div> -->
+    </div>
+    <div cg-busy="loadingPromise"></div>
+</div>

@@ -1,0 +1,16 @@
+<div class="container-fluid resource_list">
+    <accordion close-others="false" class="resource_nav">
+        <div class="editing_center_channel" ng-if="status.isdataLoaded">
+            <accordion-group>
+                <accordion-heading><i class="fa fa-spinner fa-spin"></i> 载入中</accordion-heading>
+            </accordion-group>
+        </div>
+        <div class="editing_center_channel" ng-if="!status.isdataLoaded">
+            <accordion-group heading="{{item.TITLE}}" ng-repeat="item in data.items" ng-click="loadSubItem(item,$event)" is-open="item.isOpen" ng-class="{'left-li-active':item == data.selectedItem}" class="{{item.all_font_color}}">
+                <div ng-click="getDraft(subitem,$event)" class="panel-body-editcenter editCenter_left_panel_body" ng-class="{'checked':subitem == data.selectedItem}" ng-repeat="subitem in item.CHILDREN | orderBy:orderNum">
+                    <a ng-click="getDraft(subitem,$event)" ng-bind="subitem.TITLE" ng-class="{'selectedchnlHasnoChl':item==data.selectedItem}" href="javascript:void(0)"></a>
+                </div>
+            </accordion-group>
+        </div>
+    </accordion>
+</div>

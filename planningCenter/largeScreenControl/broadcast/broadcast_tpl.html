@@ -1,0 +1,71 @@
+<div class="big-control-broadcast">
+    <div trs-scroll-fix class="row edit_right_head">
+        <div class="col-md-8 col-lg-9">
+            <button class="btn btn-default btn-commen" ng-click="createNewinfo()">
+                <span class="s_icon"><i class="fa fa-plus"></i></span> 新建
+            </button>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <ol class="breadcrumb pull-right edit_breadcrumb">
+                <li>
+                    <span>策划中心</span>
+                    <span>大屏控制</span>
+                    <span>广播</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="row mc-padding-vertical-sm" ng-class="{'numberNewDocspt13':vm.numberOfNewDocs > 0}">
+        <div class="col-md-6">
+            <trs-single-select label="时间范围" options="vm.time.values" callback="searchInfos()" selected-option="vm.time.curValue"></trs-single-select>
+            <trs-single-select label="接收人" options="vm.towho.values" callback="searchInfos()" selected-option="vm.towho.curValue"></trs-single-select>
+            <trs-single-select label="信息类型" options="vm.type.values" callback="searchInfos()" selected-option="vm.type.curValue" valuekey="INFORTYPEID" namekey="VALUE"></trs-single-select>
+        </div>
+        <div class="col-md-6 text-right">
+            <div class="p_search">
+                <trs-single-select label="搜索标题" options="vm.searchObj.values" selected-option="vm.searchObj.curValue"></trs-single-select>
+                <input type="text" class="form-control searchInput" placeholder="请输入关键字搜索" ng-model="vm.keyword">
+                <button class="btn btn-default btn-commen" type="button" ng-click="searchInfos()">检索</button>
+            </div>
+        </div>
+    </div>
+    <div class="edit_table infoAssignment">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="td_infoAssignment td_infoAssignment_width">
+                        序号
+                    </th>
+                    <th class=" ">标题</th>
+                    <th class=" ">接收人</th>
+                    <th>类型</th>
+                    <th class=" ">发布时间</th>
+                    <th class=" ">创建人</th>
+                    <th class=" ">创建时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="info in vm.infos">
+                    <td class="td_infoAssignment td_infoAssignment_width">
+                        {{(vm.pager.CURRPAGE-1)*vm.pager.PAGESIZE+$index+1}}
+                    </td>
+                    <td class="clickable txt_l">
+                        <preview-title class="infotitle pull-left" summary-text="info.CONTENT" title-text="info.TITLE" target-url="#/messagedetails?msgId={{info.INFORMATIONID}}" no-summary-text="摘要内容未获取"></preview-title>
+                    </td>
+                    <td>
+                        {{info.FLAG}}
+                    </td>
+                    <td>{{info.INFOTYPE}}</td>
+                    <td>{{info.PUBDATE }}</td>
+                    <td>{{info.CRUSERNAME }}</td>
+                    <td>{{info.CRTIME }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="page" ng-if="vm.pager">
+            <trs-pagenationwith-pagecount page-count="vm.pager.PAGECOUNT" total-num="vm.pager.ITEMCOUNT" page-size="vm.pager.PAGESIZE"></trs-pagenationwith-pagecount>
+            <pagination total-items="vm.pager.ITEMCOUNT" ng-change="pageChanged()" ng-model="vm.pager.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="vm.pager.PAGESIZE" rotate="false" num-pages="vm.pager.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+            <trs-pagenation-right callback="jumptoPage()" currpage="vm.pager.CURRPAGE" page="vm.pager"></trs-pagenation-right>
+        </div>
+    </div>
+</div>

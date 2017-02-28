@@ -1,0 +1,98 @@
+<!-- <div class="infodetail">
+    <p class="txt_c well">信息查看页</p>
+    <div class="">
+        <div class="row">
+            <div class="col-sm-6  ">
+                <label>类型:</label> {{info.INFOTYPE}}
+            </div>
+            <div class="col-sm-6  ">
+                <label>发布时间:</label> {{info.PUBDATE}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6  ">
+                <label>创建人:</label> {{info.CRUSERNAME}}
+            </div>
+            <div class="col-sm-6  ">
+                <label>创建时间:</label> {{info.CRTIME}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <label>接受人:</label> <span class="mc-padding-horizontal-xs" ng-repeat="user in info.USERNAME">{{user.NAME}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="reportcontent  well mc-padding">
+        <h4 class="txt_c"> {{info.TITLE}}</h4>{{info.CONTENT}}
+    </div>
+</div>  -->
+<div class="planCenCommandAppointTaskDetail">
+    <div class="taskDetail-header">
+        信息查看页
+    </div>
+    <div class="websiteCabletPreview_context">
+        <div class="websiteCabletPreview_head">
+            <div class="websiteCabletPreview_head_rank">
+                <p class="col-md-4">
+                    <b>创建时间：</b>
+                    <span class="ml27" ng-bind="info.CRTIME">
+                    </span>
+                </p>
+                <p class="col-md-4">
+                    <b>发布时间：</b>
+                    <span>{{info.PUBDATE}}</span>
+                </p>
+                <p class="col-md-4">
+                    <b>类型：</b>
+                    <span ng-bind="info.INFOTYPE"></span>
+                </p>
+            </div>
+            <div class="websiteCabletPreview_head_rank">
+                <p class="col-md-4">
+                    <b>创建人：</b>
+                    <span ng-bind="info.CRUSERNAME"></span>
+                </p> 
+                <p class="col-md-8" >
+                    <b>接收人：</b>
+                    <span title="{{info.allname}}" >{{info.allname}}</span>
+                </p>
+            </div>
+        </div>
+        <!--   
+        <div class="websiteCabletPreview_head">  
+          <div class="websiteCabletPreview_head_rank">
+                <p class="col-md-6">
+                    <b>创建时间：</b>
+                    <span class="ml27" ng-bind="info.CRTIME">
+                    </span>
+                </p>
+                <p class="col-md-6">
+                    <b>发布时间：</b>
+                    <span>{{info.PUBDATE}}</span>
+                </p>
+            </div>
+            <div class="websiteCabletPreview_head_rank">
+                <p class="col-md-6">
+                    <b>类型：</b>
+                    <span ng-bind="info.INFOTYPE"></span>
+                </p>
+                <p class="col-md-6">
+                    <b>创建人：</b>
+                    <span ng-bind="info.CRUSERNAME"></span>
+                </p>
+            </div>
+            <div class="websiteCabletPreview_head_rank">
+                <p class="col-md-12">
+                    <b>接收人：</b>
+                    <span class="mc-padding-horizontal-xs" ng-repeat="user in info.USERNAME">{{user.NAME}}</span>
+                </p>
+            </div>
+        </div> -->
+    </div>
+    <div class="taskDetail-content">
+        <p class="taskDetail-title" ng-bind="info.TITLE">
+        </p>
+        <p class="taskDetail-text" ng-bind-html="info.CONTENT">
+        </p>
+    </div>

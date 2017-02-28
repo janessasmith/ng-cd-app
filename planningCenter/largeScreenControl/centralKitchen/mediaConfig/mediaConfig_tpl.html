@@ -1,0 +1,95 @@
+<form class="planLSCentralKitchenMedia" name="mediaConfigForm">
+    <div cg-busy="loadingPromise"></div>
+    <div class="edit_table border_radius_5">
+        <table class="table table-striped data-table black-box">
+            <thead>
+                <tr>
+                    <th class="xcol-md-name">媒体名称</th>
+                    <th class="xcol-md-type">媒体类型</th>
+                    <th class="xcol-md-status">滚动状态</th>
+                    <th class="xcol-md-seat">位置</th>
+                    <th class="xcol-md-modify">编辑</th>
+                    <th class="xcol-md-delete">删除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.items">
+                    <!-- <td class="editContainer-td" ng-bind="item.CODE"></td>
+                    <td class="editContainer-td">
+                        <span ng-bind="item.STATEMENT" ng-if="status.currEdit!=item"></span>
+                        <input ng-model="status.currEditCopy.STATEMENT" class="form-control" ng-if="status.currEdit==item" />
+                    </td>
+                    <td>
+                        <span class="cursorPointer" ng-show="status.currEdit==item" ng-click="cancelEdit()">取消编辑</span>
+                        <img src="./planningCenter/largeScreenControl/images/bj-1.png" ng-hide="status.currEdit==item" ng-click="startEdit(item)">
+                    </td>
+                    <td>
+                        <img src="./planningCenter/largeScreenControl/images/del-1.png" ng-click="deleteItem(item)">
+                    </td> -->
+                    <td class="editContainer-td">
+                        <span ng-bind="item.PRODUCT_NAME"></span>
+                        <div class="invalidate-input-box" ng-if="status.currEdit==item.PRODUCT_ID">
+                            <input class="form-control" ng-model="status.editName" name="editName" validator="required" ng-mouseenter="item.showNameTip=true" ng-mouseleave="item.showNameTip=false" is-show-tips="item.showNameTip" />
+                        </div>
+                    </td>
+                    <td class="editContainer-td">
+                        <span ng-bind="item.PRODUCT_TYPE"></span>
+                        <div class="invalidate-input-box" ng-if="status.currEdit==item.PRODUCT_ID">
+                            <input class="form-control" ng-model="status.editType" name="editType" validator="required" ng-mouseenter="item.showTypeTip=true" ng-mouseleave="item.showTypeTip=false" is-show-tips="item.showTypeTip" />
+                        </div>
+                    </td>
+                    <td class="editContainer-scroll">
+                        <span ng-bind="status.scrollList[item.FLAG]"></span>
+                        <div ng-if="status.currEdit==item.PRODUCT_ID">
+                            <trs-single-select selected-option="status.editScroll" options="status.scrollOption"></trs-single-select>
+                        </div>
+                    </td>
+                    <td class="editContainer-scroll">
+                        <span ng-bind="status.seatList[item.QUAN_TYPE]">核心圈</span>
+                        <div ng-if="status.currEdit==item.PRODUCT_ID">
+                            <trs-single-select selected-option="status.editSeat" options="status.seatOption"></trs-single-select>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="cursorPointer" ng-show="status.currEdit==item.PRODUCT_ID" ng-click="status.currEdit=''">取消编辑</span>
+                        <img ng-src="./planningCenter/largeScreenControl/images/{{status.startNew?'bj.png':'bj-1.png'}}" ng-click="startEdit(item)" ng-hide="status.currEdit==item.PRODUCT_ID">
+                    </td>
+                    <td>
+                        <img src="./planningCenter/largeScreenControl/images/del-1.png" ng-click="deleteItem(item)">
+                    </td>
+                </tr>
+                <tr ng-if="status.startNew">
+                    <td class="editContainer-td">
+                        <div class="invalidate-input-box">
+                            <input class="form-control" ng-model="status.newName" name="newName" validator="required" ng-mouseenter="newName=true" ng-mouseleave="newName=false" is-show-tips="newName" />
+                        </div class="invalidate-input-box">
+                    </td>
+                    <td class="editContainer-td">
+                        <div class="invalidate-input-box">
+                            <input class="form-control" ng-model="status.newType" name="newType" validator="required" ng-mouseenter="newType=true" ng-mouseleave="newType=false" is-show-tips="newType" />
+                        </div>
+                    </td>
+                    <td class="editContainer-scroll">
+                        <div>
+                            <trs-single-select selected-option="status.newScroll" options="status.scrollOption"></trs-single-select>
+                        </div>
+                    </td>
+                    <td class="editContainer-scroll">
+                        <div>
+                            <trs-single-select selected-option="status.newSeat" options="status.seatOption"></trs-single-select>
+                        </div>
+                    </td>
+                    <td>
+                        <span style="visibility: hidden;">place</span>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='btnGroup'>
+        <button class="new-btn" ng-show="!status.currEdit&&!status.startNew" ng-click="startNew()">新增</button>
+        <button class="cancelNew-btn" ng-show="!status.currEdit&&status.startNew" ng-click="status.startNew=false">取消新增</button>
+        <button class="save-btn" ng-click="save()" ng-show="status.startNew||!!status.currEdit" validation-submit="mediaConfigForm">保存</button>
+    </div>
+</form>

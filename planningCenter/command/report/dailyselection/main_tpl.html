@@ -1,0 +1,108 @@
+<div class="row edit_right_mid">
+    <div class="col-md-6">
+        <button class="btn btn-default btn-commen" ng-click="deleteSelectedTopic()">
+            <span class="s_icon"><i class="fa fa-trash"></i></span> 撤回帖子
+        </button>
+        <button class="btn btn-default btn-commen" ng-click="deleteSelectedReports()">
+            <span class="s_icon"><i class="fa fa-trash"></i></span> 撤回报题
+        </button>
+    </div>
+    <div class="col-md-6 txt_r summary summary_top">
+        <trs-single-select label="选择部门" options="vm.depts" callback="searchWithDept()" selected-option="vm.dept" ng-if="vm.dept.length>0"></trs-single-select>
+        <!-- <input type="text" size="12" class="form-control searchInput" ng-model="vm.search.date" data-autoclose="1" placeholder="日期" date-format="yyyy-MM-dd" bs-datepicker> --><!-- 
+        <button class="btn btn-default btn_edit_search mc-margin-left-xs" type="button" ng-click="fullTextSearch()">搜索</button> -->
+    </div>
+</div>
+<div class="row mc-margin-bottom-xs plansummary">
+    <div class="col-md-2 rep_search_t">
+        <input type="text" size="12" class="form-control searchInput" ng-model="vm.search.date" data-autoclose="1" placeholder="日期" date-format="yyyy-MM-dd" bs-datepicker>
+    </div>
+    <div class="col-md-10">
+        <div class="hot_search_time ">
+            <div class="hot_sarch_list" ng-repeat="time in vm.time track by $index">
+                <a href="" ng-click="listSearchTime(time)">
+                    <span ng-class="{'active':time.dftStr==vm.search.datestr}">{{time.text}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mc-margin-0">
+    <div class="reportsummary col-sm-9 ">
+        <div class="topic-reports" ng-repeat="topic in vm.topics" ng-hide="topic.hidden">
+            <div class="topictitle clickable" ng-click="getReportList(topic)">
+                <span><i class="fa fa-lg" ng-class="{true:'fa-angle-down',false:'fa-angle-right'}[topic.isexpanded]"></i>({{topic.DEPARTNAME}}){{topic.CONTENT}}</span>
+            </div>
+            <div class="panel-collapse am-collapse" ng-show="topic.isexpanded">
+                <div class="topic">
+                    <div class="topicbar">
+                        <span>{{topic.CRTIME}} </span> <span class="pull-right"><i class="icon glyphicon glyphicon-comment"></i>精选数: 
+                    {{topic.reports.length}}</span>
+                    </div>
+                    <div class="topicdetail">
+                        <div class="topicremark" ng-bind-html="topic.REMARK"></div>
+                    </div>
+                </div>
+                <div class="reportlist" dnd-list="topic.reports" dnd-allowed-types="['report']" dnd-disable-if="topic.reports.length <= 1">
+                    <div class="report " ng-repeat="report in topic.reports" dnd-draggable="report" dnd-type="'report'" dnd-moved="topic.reports.splice($index, 1)" dnd-effect-allowed="move" dnd-dragstart="beginToMove($index, report)" dnd-dragend="saveNewQueue(topic)">
+                        <div class="reportbar">
+                            <span class="floor" ng-class="{'active':report.ischecked}" ng-click="toggleReport(report,topic)"><i class="fa fa-star starmark" ng-if="report.REPORTTYPE==1"></i> {{$index+1}}#</span>
+                            <span class="username">{{report.CRUSER}}</span>
+                            <span>发表于:{{report.CRTIME}}</span>
+                            <a class="barbtn" ng-click="createHotevent(report)"><i class="fa fa-newspaper-o fa-primary"></i>{{report.HAVEEVENT &&report.HAVEEVENT!=0?'查看':''}}事件</a>
+                            <a class="barbtn" ng-show="report.HAVEARTICLE && report.HAVEARTICLE!=0" ui-sref="iwopreview({metadataid:report.HAVEARTICLE,modalname:'iwo.personal',type:1})"  target="_blank"><i class="fa fa-file-text fa-primary"></i>查看稿件</a>
+                            <a class="barbtn" ng-hide="report.HAVEARTICLE && report.HAVEARTICLE!=0"  ui-sref="dailyselectionnews({reportId:report.REPORTID,status:0})" target="_blank"><i class="fa fa-file-text fa-primary"></i>稿件</a>
+                            <a class="barbtn" ng-click="viewtask(report)" ><i class="fa fa-send fa-primary"></i>{{report.HAVETASK && report.HAVETASK!=0?'查看':''}}任务</a>
+                            <a class="barbtn" ng-click="toRemarkReport(report)"><i class="fa fa-pencil fa-primary"></i> 补充</a>
+                        </div>
+                        <div class="reportdetail">
+                            <div class="reportcontent">
+                                <div class="row">
+                                    <div class="shortlabel">标识:</div>
+                                    <div class="longtext">
+                                        {{tags[report.FLAG]}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="shortlabel">标题:</div>
+                                    <div class="longtext" ng-bind="report.STATEMENT"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="shortlabel">关键字:</div>
+                                    <div class="longtext clickable" ng-click="selectKeywords(report)">
+                                        <span class="kwtag" ng-repeat="keyword in report.KEYWORDS" ng-bind="keyword.name"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="shortlabel">报题:</div>
+                                    <div class="longtext" ng-bind-html="preFix(report.SELECTEDCONTENT)|| report.CONTENT"></div>
+                                </div>
+                            </div>
+                            <div class="replys">
+                                <div class="row mc-margin-0">
+                                    <div class="replybtn pull-left clickable fa-primary" ng-click="toggleReplyList(report)"><i class="fa" ng-class="{true:'fa-arrow-circle-o-up',false:'fa-arrow-circle-o-down'}[report.isexpanded]"></i><span> {{report.isexpanded?'收起补充':'展开补充'}} </span></div>
+                                </div>
+                                <div class="reply" ng-show="report.replies.length==0 && report.isexpanded">
+                                    <div class="replycontent"><span class="clickable" ng-click="getReplyList(report)"><i class="fa fa-refresh fa-primary"></i>暂无记录,刷新试试？</span></div>
+                                </div>
+                                <div class="reply" ng-repeat="reply in report.replies" ng-show="report.isexpanded">
+                                    <div class="replyinfo">{{reply.USERNAME}}:</div>
+                                    <div class="replycontent" ng-bind-html="reply.VALUE  | trsTrustHtml"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dndPlaceholder">
+                        <div class="reportbar">
+                            <span>移到这里</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 dailyselection bigFaceDetailRigth">
+        <plancenter-moreinfos content="vm.keywords"></plancenter-moreinfos>
+    </div>
+</div>
+</script>

@@ -1,0 +1,40 @@
+/*css*/
+
+.trsScrollPicture .smallPics_div {
+    width: 300px;
+}
+
+.trsScrollPicture .smallPics_div img {
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+}
+
+.trsScrollPicture .smallPics_div div.list_divs {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+
+.trsScrollPicture .smallPics_div ul {
+    display: table;
+}
+
+.trsScrollPicture .smallPics_div li {
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+
+/*放大镜：放大效果*/
+
+.trsScrollPicture .smallPics_div img.list_imgs:hover {
+    cursor: url(./components/util/trsScrollPictures/images/big.cur), auto;
+}
+
+
+/*放大镜：缩小效果*/
+
+.scrollPicture_lists .carousel-img img.pointer:hover {
+    cursor: url(./components/util/trsScrollPictures/images/small.cur), auto;
+}

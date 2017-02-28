@@ -1,0 +1,266 @@
+.planCenCommandAppointTaskDetail {
+  font-family: 'Microsoft YaHei';
+  background: #f5f5f5;
+}
+.planCenCommandAppointTaskDetail .taskDetail-header {
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+.planCenCommandAppointTaskDetail .websiteCabletPreview_head {
+  width: 100%;
+  background: #fff;
+  padding: 35px 0 20px 0;
+}
+.planCenCommandAppointTaskDetail .websiteCabletPreview_head .websiteCabletPreview_head_rank p {
+  margin-bottom: 20px;
+}
+.planCenCommandAppointTaskDetail .websiteCabletPreview_head .boldWord {
+  font-weight: bold;
+  font-style: normal;
+  color: #000;
+}
+.planCenCommandAppointTaskDetail .taskDetail-content {
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.planCenCommandAppointTaskDetail .taskDetail-title {
+  font-size: 33px;
+  text-align: center;
+  font-weight: normal;
+  line-height: 40px;
+  margin: 10px 0px 13px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-text {
+  font-size: 18px;
+  color: #444;
+  line-height: 36px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-tab {
+  background: #fff;
+  padding-top: 30px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-tab > div {
+  width: 80%;
+  margin: 0 auto;
+}
+.planCenCommandAppointTaskDetail .taskDetail-tab .nav-tabs > li.active > a,
+.planCenCommandAppointTaskDetail .taskDetail-tab .nav-tabs > li.active > a:hover,
+.planCenCommandAppointTaskDetail .taskDetail-tab .nav-tabs > li.active > a:focus {
+  background: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  border-radius: 0;
+  line-height: 22px;
+  margin: 0;
+  position: relative;
+  top: 1px;
+  font-weight: bold;
+  color: #333;
+  padding: 9px 25px 12px 25px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-tab .nav-tabs > li {
+  float: left;
+  border: 1px solid #ddd;
+  margin-bottom: -1px;
+  margin-right: 0;
+  font-size: 14px;
+  border-bottom: 1px solid transparent;
+}
+.planCenCommandAppointTaskDetail .taskDetail-tab .nav-tabs {
+  background: #F1F2F6;
+  border-bottom: 1px solid #ccc;
+}
+.planCenCommandAppointTaskDetail .taskDetail-tab .nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  color: #333;
+  font-family: '宋体';
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.planCenCommandAppointTaskDetail .tab-content {
+  border: 1px solid #ddd;
+  border-top: 0;
+  background: #fff;
+}
+.planCenCommandAppointTaskDetail .taskDetail-operateLog .m_timeline .time_tick h5.clock {
+  color: #fff;
+  margin-top: 0;
+}
+.planCenCommandAppointTaskDetail .taskDetail-operateLog {
+  font-size: 16px;
+  padding-top: 25px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-operateLog a.minw45,
+.planCenCommandAppointTaskDetail .taskDetail-operateLog a.minw45:hover,
+.planCenCommandAppointTaskDetail .taskDetail-operateLog a.minw80,
+.planCenCommandAppointTaskDetail .taskDetail-operateLog a.minw80:hover {
+  text-decoration: none;
+}
+.planCenCommandAppointTaskDetail .taskDetail-operateLog-title {
+  position: absolute;
+  top: 4px;
+  left: 12%;
+}
+.planCenCommandAppointTaskDetail .fakeAudio {
+  background: url('planningCenter/command/task/appointTask/images/zp5.png') 0 0 no-repeat;
+  height: 60px;
+  width: 440px;
+  margin: 0 auto;
+  color: #fff;
+  line-height: 52px;
+  cursor: pointer;
+}
+.planCenCommandAppointTaskDetail .fakeAudio > span {
+  min-width: 70px;
+  text-align: right;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 5px;
+}
+.planCenCommandAppointTaskDetail .fakeAudio > img {
+  vertical-align: -9px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-audio {
+  margin-top: 20px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-title {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  overflow: hidden;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-title li {
+  float: left;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-title li span {
+  cursor: pointer;
+  padding: 2px 5px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-title li i {
+  font-style: normal;
+  display: inline-block;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-title li span.acitve,
+.planCenCommandAppointTaskDetail .taskDetail-material-title li span.hover {
+  background: #4496D2;
+  color: #fff;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-left,
+.planCenCommandAppointTaskDetail .taskDetail-material-right {
+  /*display: inline-block;*/
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-left {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-left: 1px solid #ddd;
+  width: 70%;
+  padding-left: 35px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-right video {
+  width: 580px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-right audio {
+  width: 580px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-right img.showimg {
+  width: 580px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-right > div {
+  width: 400px;
+  position: absolute;
+  margin: auto;
+  top: 30px;
+  bottom: 0;
+  left: 35px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-right > div > img {
+  width: 100%;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-content {
+  position: relative;
+}
+.planCenCommandAppointTaskDetail .m_timeline .time_tick h5.clock {
+  margin-top: 0;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material .m_timeline {
+  margin-bottom: 0;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-right .leftArrow {
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  height: 14px;
+  margin: auto;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-left .maxw200 {
+  max-width: 200px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-left div.txtMaterial {
+  background-color: #4496D2;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 200px;
+  cursor: pointer;
+  word-break: break-word;
+  padding: 10px;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-left .maxw200 video {
+  width: 150px;
+  cursor: pointer;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-left .maxw200 audio {
+  width: 150px;
+  cursor: pointer;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-left .maxw200 img {
+  width: 150px;
+  cursor: pointer;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-left a.maxw200 {
+  color: #0095CE;
+}
+@media (max-width: 1300px) {
+  .planCenCommandAppointTaskDetail .taskDetail-material-right {
+    max-width: 500px;
+  }
+}
+.planCenCommandAppointTaskDetail .s_icon {
+  margin: 0 6px 0 -10px;
+  padding-right: 6px;
+  border-right: 1px solid #e9e9e9;
+}
+.planCenCommandAppointTaskDetail .taskDetail-material-right div.text {
+  padding: 10px;
+  background-color: #4496D2;
+  color: white;
+  font-size: 16px;
+  width: 550px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.planCenCommandAppointTaskDetail_nav .box-fix-bt {
+  position: fixed;
+  right: 180px;
+  bottom: 0px;
+  margin-top: 60px;
+  z-index: 999;
+  height: 36px;
+}
+.taskDetail-material .min_height580 {
+  min-height: 580px;
+}

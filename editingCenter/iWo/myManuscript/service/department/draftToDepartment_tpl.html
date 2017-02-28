@@ -1,0 +1,58 @@
+<form name="shangbanForm" novalidate>
+    <div class="shangban-container" ng-class="{'active':isManusCorrShow}">
+        <div class="shangban-head">
+            <p ng-bind="data.title"></p>
+            <img src="./editingCenter/app/toBeCompiled/images/cls.jpg" ng-click="cancel()">
+        </div>
+        <div class="shangban-body" ng-class="{'active':isManusCorrShow}">
+            <div class="shangban-body-left">
+                <p class="choosed-manu">已选稿件(<span ng-bind="data.items.length"></span>)</p>
+                <div class="list-wrap">
+                    <div class="list-header">
+                        <span>序号</span>
+                        <span>稿件标题</span>
+                        <span>稿件类型</span>
+                        <span>操作</span>
+                    </div>
+                    <div class="list-body">
+                        <p ng-repeat="item in data.items" ng-class="{'cur':selectedItem==item}">
+                            <span ng-bind="$index+1"></span>
+                            <span>
+                                <a ng-bind="item.TITLE |trsLimitTo:18" title="{{item.TITLE}}"></a>
+                            </span>
+                            <span ng-bind="item.DOCTYPE"></span>
+                            <span ng-click="deleteDraft(item)">
+                                <img src="./editingCenter/newspaper/images/i1.png">
+                                删除
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="lists">
+                    <div ng-show="data.units.length>1">
+                        <p>单位名称</p>
+                        <ul>
+                            <li ng-repeat="unit in data.units">
+                                <span ng-bind="unit.DEPARTMENTNAME" ng-click="selectUnit(unit)" ng-class="{'cur':unit==data.selectedUnit}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div ng-class="{'wper98':data.units.length<2}">
+                        <p>稿库列表</p>
+                        <ul>
+                            <li ng-repeat="department in data.departments">
+                                <span ng-bind="department.DEPARTMENTNAME" ng-click="selectDepartment(department)" ng-class="{'cur selectedItem':department==data.selectDepartment,'notcur':department.DEPARTMENTID==data.departmentid}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shangban-foot">
+            <div class="btns-wrap">
+                <button ng-click="cancel()" class="btn_cancel">取消</button>
+                <button ng-click="confirm()" ng-disabled="!data.selectDepartment" class="btn btn-primary btn_confirm">确定</button>
+            </div>
+        </div>
+    </div>
+</form>

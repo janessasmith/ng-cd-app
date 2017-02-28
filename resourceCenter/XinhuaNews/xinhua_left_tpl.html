@@ -1,0 +1,27 @@
+<div class="container-fluid resource_list">
+    <div class="resource_list_tpl2" ng-class="{'resource-nav-panel':isdigitaltpl}">
+        <accordion close-others="true" class="resource_nav">
+            <div class="editing_center_channel" ng-if="status.isdataLoaded">
+                <accordion-group>
+                    <accordion-heading><i class="fa fa-spinner fa-spin"></i> 载入中</accordion-heading>
+                </accordion-group>
+            </div>
+            <div class="editing_center_channel" ng-if="!status.isdataLoaded">
+                <accordion-group heading="{{item.dictName}}" ng-repeat="item in data.items| orderBy:orderNum" ng-click="loadSubItem(item)" is-open="item.isOpen"><!--一级-->
+                    <div ng-click="routerToList(subitem,$event)" class="panel-body-editcenter editCenter_left_panel_body" ng-class="{'checked':subitem==data.selectedItem}" ng-repeat="subitem in item.CHILDREN | orderBy:orderNum"><!--二级-->
+                        <a>{{subitem.dictName}}
+                            <span class="arrowBtn {{subitem.arrowBtn}}" ng-if="status.isArea" ng-click="loadLeafArea(subitem,$event,'first')"></span>
+                        </a>
+                        <div class="subLevelMenu" ng-show="subitem==data.areaItem"><!--三级地域-->
+                            <div class="menuContent">
+                                <div class="children" ng-repeat="item in area.first | orderBy:orderNum">
+                                    <a ng-click="routerToAreaList(item,$event,subitem)" ng-bind="item.dictName" ng-class="{'selectedchnlHasnoChl':item.id==data.areaSubItem.id}" href="javascript:void(0)"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </accordion-group>
+            </div>
+        </accordion>
+    </div>
+</div>

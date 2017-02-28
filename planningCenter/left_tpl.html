@@ -1,0 +1,121 @@
+<div class="container-fluid editing-list plan_head">
+    <tabset justified="true" class="editing-nav editing-height-fixed">
+        <tab>
+            <accordion class="plan_accordion iwo_accordion" close-others="true">
+                <accordion-group is-open="true">
+                    <accordion-heading>
+                        <i><img ng-src="./planningCenter/images/{{status.selectedItem=='timecue'||status.selectedItem=='custommonitor'||status.selectedItem=='hotheadline'||status.selectedItem=='rankinglist'?'ch1.png':'ch1-1.png'}}" style="vertical-align:-6px;" /></i>
+                        <a class="ml0" ng-class="{'font_color':status.selectedItem=='timecue'||status.selectedItem=='custommonitor'||status.selectedItem=='hotheadline'||status.selectedItem=='rankinglist'}">信息监测</a>
+                    </accordion-heading>
+                    <ul>
+                        <li ng-class="{'plan-active':'timecue'==status.selectedItem}" ng-click="setPlanSelect('timecue')">
+                            <i><img ng-src="./planningCenter/images/{{'timecue'==status.selectedItem?'ch2.png':'ch2-1.png'}}" /></i>
+                            <!-- <a ui-sref="plan.cuemonitor">实时线索</a> -->
+                            <a ui-sref="plan.timecue.monitor">实时线索</a>
+                        </li>
+                        <li ng-class="{'plan-active':'custommonitor'==status.selectedItem}" ng-click="setPlanSelect('custommonitor')">
+                            <i><img ng-src="./planningCenter/images/{{'custommonitor'==status.selectedItem?'cm7.png':'cm7-1.png'}}" /></i>
+                            <a ui-sref="plan.custommonitor">自定义监控</a>
+                        </li>
+                        <li ng-class="{'plan-active':'hotheadline'==status.selectedItem}" ng-click="setPlanSelect('hotheadline')">
+                            <i><img ng-src="./planningCenter/images/{{'hotheadline'==status.selectedItem?'ch3.png':'ch3-1.png'}}" /></i>
+                            <a ui-sref="plan.hotheadline">热点头条</a>
+                        </li>
+                        <li ng-class="{'plan-active':'rankinglist'==status.selectedItem}" ng-click="setPlanSelect('rankinglist')">
+                            <i><img ng-src="./planningCenter/images/{{'rankinglist'==status.selectedItem?'ch4.png':'ch4-1.png'}}" /></i>
+                            <a ui-sref="plan.rankinglist">排行榜单</a>
+                        </li>
+                    </ul>
+                </accordion-group>
+                <accordion-group ng-if="status.eventRights['sjfx.sjfx.chakan']">
+                    <accordion-heading>
+                        <i><img ng-src="./planningCenter/images/{{status.selectedItem=='eventanalysis'?'ch1.png':'ch1-1.png'}}" style="vertical-align:-6px;" /></i>
+                        <a class="ml0" ng-class="{'font_color':status.selectedItem=='eventanalysis'}">选题事件</a>
+                    </accordion-heading>
+                    <ul>
+                        <li ng-class="{'plan-active':'eventanalysis'==status.selectedItem}" ng-click="setPlanSelect('eventanalysis')">
+                            <i><img ng-src="./planningCenter/images/{{'eventanalysis'==status.selectedItem?'ch4.png':'ch4-1.png'}}" /></i>
+                            <a ui-sref="plan.eventanalysis.hotevents">事件分析</a>
+                        </li>
+                    </ul>
+                </accordion-group>
+                <!-- <accordion-group is-open="false">
+                    <accordion-heading>
+                        <i><img ng-src="./planningCenter/images/{{'eventtrack'==status.selectedItem?'ch5.png':'ch5-1.png'}}" /></i>
+                        <a class="ml0" ng-class="{'font_color':status.selectedItem=='eventtrack'}">事件分析</a>
+                    </accordion-heading>
+                    <ul>
+                        <li ng-class="{'plan-active':'eventtrack'==status.selectedItem}" ng-click="setPlanSelect('eventtrack')">
+                            <i><img ng-src="./planningCenter/images/{{'eventtrack'==status.selectedItem?'ch6.png':'ch6-1.png'}}" /></i>
+                            <a ui-sref="plan.eventtrack">事件跟踪</a>
+                        </li>
+                    </ul>
+                </accordion-group> -->
+                <accordion-group ng-if="!!status.commandAccess.btxt||!!status.commandAccess.rwzl">
+                    <accordion-heading>
+                        <i><img ng-src="./planningCenter/images/{{status.selectedItem=='topiccollect'||status.selectedItem=='dailyselection'||status.selectedItem=='topicsettng'||status.selectedItem=='taskview'||status.selectedItem=='appointtask'||status.selectedItem=='messageassign'||status.selectedItem=='messageview'?'ch5.png':'ch5-1.png'}}" /></i>
+                        <a class="ml0" ng-class="{'font_color':status.selectedItem=='topiccollect'||status.selectedItem=='dailyselection'||status.selectedItem=='topicsettng' ||status.selectedItem=='taskview'||status.selectedItem=='appointtask'||status.selectedItem=='messageassign'||status.selectedItem=='messageview'}">协同指挥</a>
+                    </accordion-heading>
+                    <ul ng-if="!!status.commandAccess.btxt">
+                        <li class="background_style">
+                            <div ng-click="isCollapsed = !isCollapsed" ng-class="{'font_color':status.selectedItem=='topiccollect'||status.selectedItem=='dailyselection'||status.selectedItem=='topicsettng'}">
+                                <i class="fa fa-newspaper-o secondmenu"> </i> 报题选题
+                            </div>
+                        </li>
+                    </ul>
+                    <ul ng-if="!!status.commandAccess.btxt" collapse="isCollapsed">
+                        <li ng-if="!!status.commandAccess.btxt.bthz" ng-class="{'plan-active':'topiccollect'==status.selectedItem}" ng-click="setPlanSelect('topiccollect')" class="thirdmenu"><i><img ng-src="./planningCenter/images/{{'topiccollect'==status.selectedItem?'ch6.png':'ch6-1.png'}}" /></i> <a ui-sref="plan.reportsummary">报题汇总</a>
+                        </li>
+                        <li ng-if="!!status.commandAccess.btxt.mrjx" ng-class="{'plan-active':'dailyselection'==status.selectedItem}" ng-click="setPlanSelect('dailyselection')" class="thirdmenu"><i><img ng-src="./planningCenter/images/{{'dailyselection'==status.selectedItem?'ch6.png':'ch6-1.png'}}" /></i><a ui-sref="plan.dailyselection"> 选题汇总</a>
+                        </li>
+                    </ul>
+                    <ul ng-if="!!status.commandAccess.rwzl">
+                        <li class="background_style">
+                            <div ng-click="istaskCollapsed = !istaskCollapsed" ng-class="{'font_color':status.selectedItem=='taskassign'||status.selectedItem=='taskview'||status.selectedItem=='messageassign'||status.selectedItem=='messageview'||status.selectedItem=='appointtask'}"><i class="fa fa-tasks secondmenu"></i>任务指令</div>
+                        </li>
+                    </ul>
+                    <ul ng-if="!!status.commandAccess.rwzl" collapse="istaskCollapsed">
+                        <!-- 老版任务指派 -->
+                        <!-- <li ng-if="!!status.commandAccess.rwzl.rwzp" ng-class="{'plan-active':'taskassign'==status.selectedItem}" ng-click="setPlanSelect('taskassign')" class="thirdmenu"><i><img ng-src="./planningCenter/images/{{'taskassign'==status.selectedItem?'ch6.png':'ch6-1.png'}}" /></i> <a ui-sref="plan.taskassign">任务指派</a> -->
+                        <li ng-if="!!status.commandAccess.rwzl.rwzp" ng-class="{'plan-active':'appointtask'==status.selectedItem}" ng-click="setPlanSelect('appointtask')" class="thirdmenu"><i><img ng-src="./planningCenter/images/{{'appointtask'==status.selectedItem?'ch6.png':'ch6-1.png'}}" /></i> <a ui-sref="plan.appointtask" ui-sref-opts="{reload :'plan.appointtask'}">任务指派</a>
+                        </li>
+                        <li ng-if="!!status.commandAccess.rwzl.rwck" ng-class="{'plan-active':'taskview'==status.selectedItem}" ng-click="setPlanSelect('taskview')" class="thirdmenu"><i> <img ng-src="./planningCenter/images/{{'taskview'==status.selectedItem?'ch6.png':'ch6-1.png'}}" /></i><a ui-sref-opts="{reload :'plan.taskview'}" ui-sref="plan.taskview"> 任务查看</a>
+                        </li>
+                        <li ng-if="!!status.commandAccess.rwzl.ggxx" ng-class="{'plan-active':'messageassign'==status.selectedItem}" ng-click="setPlanSelect('messageassign')" class="thirdmenu"><i><img ng-src="./planningCenter/images/{{'messageassign'==status.selectedItem?'ch6.png':'ch6-1.png'}}" /></i> <a ui-sref-opts="{reload :'plan.messageassign'}" ui-sref="plan.messageassign">公告信息</a>
+                        </li>
+                        <li ng-if="!!status.commandAccess.rwzl.xxck" ng-class="{'plan-active':'messageview'==status.selectedItem}" ng-click="setPlanSelect('messageview')" class="thirdmenu"><i><img ng-src="./planningCenter/images/{{'messageview'==status.selectedItem?'ch6.png':'ch6-1.png'}}" /></i> <a ui-sref-opts="{reload :'plan.messageview'}" ui-sref="plan.messageview">信息查看</a>
+                        </li>
+                    </ul>
+                </accordion-group>
+                <accordion-group ng-if="status.largeScreenAccessShow">
+                    <accordion-heading>
+                        <i><img ng-src="./planningCenter/largeScreenControl/images/{{status.selectedItem=='eventcontrol'||status.selectedItem=='broadcast'||status.selectedItem=='newsfocus'||status.selectedItem=='topManagement'||status.selectedItem=='centralkitchen'?'dp1-1.png':'dp1.png'}}" /></i>
+                        <a class="ml0" ng-class="{'font_color':status.selectedItem=='eventcontrol'||status.selectedItem=='broadcast'||status.selectedItem=='newsfocus'||status.selectedItem=='topManagement'||status.selectedItem=='centralkitchen'}">大屏控制</a>
+                    </accordion-heading>
+                    <ul>
+                        <li ng-class="{'plan-active':'broadcast'==status.selectedItem}" ng-click="setPlanSelect('broadcast')">
+                            <i><img ng-src="./planningCenter/largeScreenControl/images/{{'broadcast'==status.selectedItem?'dp2-1.png':'dp2.png'}}" /></i>
+                            <a ui-sref="plan.broadcast">广播</a>
+                        </li>
+                        <!-- <li ng-class="{'plan-active':'topManagement'==status.selectedItem}" ng-click="setPlanSelect('topManagement')">
+                            <i><img ng-src="./planningCenter/largeScreenControl/images/{{'topManagement'==status.selectedItem?'dp3-1.png':'dp3.png'}}" /></i>
+                            <a ui-sref="plan.topManagement">集团舆情置顶管理</a>
+                        </li> -->
+                        <li ng-class="{'plan-active':'newsfocus'==status.selectedItem}" ng-click="setPlanSelect('newsfocus')">
+                            <i><img ng-src="./planningCenter/largeScreenControl/images/{{'newsfocus'==status.selectedItem?'dp4-1.png':'dp4.png'}}" /></i>
+                            <a ui-sref="plan.newsfocus">新闻热点聚焦</a>
+                        </li>
+                        <li ng-class="{'plan-active':'eventcontrol'==status.selectedItem}" ng-click="setPlanSelect('eventcontrol')">
+                            <i><img ng-src="./planningCenter/largeScreenControl/images/{{'eventcontrol'==status.selectedItem?'dp5-1.png':'dp5.png'}}" /></i>
+                            <a ui-sref="plan.eventcontrol">事件控制</a>
+                        </li>
+                        <li ng-class="{'plan-active':'centralkitchen'==status.selectedItem}" ng-click="setPlanSelect('centralkitchen')">
+                            <i><img ng-src="./planningCenter/largeScreenControl/images/{{'centralkitchen'==status.selectedItem?'cf-1.png':'cf.png'}}" /></i>
+                            <a ui-sref="plan.centralkitchen.ipconfig">中央厨房</a>
+                        </li>
+                    </ul>
+                </accordion-group>
+            </accordion>
+        </tab>
+    </tabset>
+</div>

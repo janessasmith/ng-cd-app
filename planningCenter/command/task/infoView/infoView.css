@@ -1,0 +1,15 @@
+.infotitle .limita {
+  white-space: nowrap;
+  max-width: 320px;
+}
+.infotitle.preview-title .arrow {
+  left: -7px;
+  top: -7px;
+  transform: rotate(43deg);
+}
+.info_unread {
+  color: red;
+  padding-right: 5px;
+  float: left;
+  line-height: 21px;
+}

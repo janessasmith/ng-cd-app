@@ -1,0 +1,21 @@
+<tabset class="m_nav">
+    <tab heading="流程记录">
+        <img class="closeModal" src="./editingCenter/app/toBeCompiled/images/cls.jpg" ng-click="cancel()">
+        <div class="m_box_2">
+            <trs-timeline title="'流程记录'">
+                <div>
+                    <h3 class="operateLog">微博</h3>
+                    <timegroup tick="date.day" ng-repeat="date in data.date">
+                        <timeitem tick="item.value.CRTIME" ng-repeat="item in date.times">
+                            <a class="minw45" ng-bind="item.value.OPERATION"></a>
+                            <a class="minw80" ng-bind="item.value.TRUENAME"></a>
+                            <a class="minw88 pointer" title="{{item.value.CONTENT}}">
+                                <span ng-if="item.value.CONTENT">查看意见</span>
+                            </a>
+                        </timeitem>
+                    </timegroup>
+                </div>
+            </trs-timeline>
+        </div>
+    </tab>
+</tabset>

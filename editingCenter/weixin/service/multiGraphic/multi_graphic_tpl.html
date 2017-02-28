@@ -1,0 +1,36 @@
+<div class="wechat_multi_graphic">
+	<div class="modal-header">
+	    <span class="modal-title">微信送审稿件排序</span>
+	</div>
+	<div class="modal-body">
+		<div class="wx-pending-ls">
+            <a ng-repeat="item in data.items" class="pending-bk" ng-class="{'pending-ls-tp':$index==0,'mt8':$index==1}">
+                <!-- 封面 -->
+                <img ng-src="{{item.DOC_PICTURELIST[0].PERPICURL}}">
+                <!-- 描述 -->
+                <span ng-bind="item.DOCTITLE | trsLimitTo:15" ng-class="{'pending-ls-des':$index==0}"></span>
+                <div class="pending-bk-sort">
+                	<i class="fa fa-arrow-up fa-2x" ng-class="{'hide': $index==0}" ng-click="moveUp($index)"></i>
+                	<br />
+                	<i class="fa fa-arrow-down fa-2x" ng-class="{'hide': $index==data.items.length-1}" ng-click="moveDown($index)"></i>
+                </div>
+            </a>
+        </div>
+	</div>
+	<div class="modal-footer">
+	    <button class="btn btn-primary btn-sm btn_confirm" type="button" ng-click="confirm()">确定</button>
+	    <button class="btn btn-primary btn-sm btn_cancel" type="button" ng-click="cancel()">取消</button>
+	</div>
+</div>
+
+<!-- <div id="preview_phone">
+    <div class="preview_back"></div>
+    <div class="preview_box">
+        <div class="preview_lis"></div>
+        <div class="preview-look">
+            <div class="content-box">
+            </div>
+        </div>
+        <div class="preview_btn"></div>
+    </div>
+</div> -->

@@ -1,0 +1,182 @@
+<div class="planCenCommandAppointTaskDetail_nav" ng-if="status.reportid">
+    <div class="box-fix-bt box-fix-top">
+        <div class="txt_r">
+            <button class="btn btn-primary" ng-click="gototask()">
+                <span class="s_icon">
+                <img src="./planningCenter/command/images/zrw.png" />
+            </span>
+                <font ng-bind="data.item.ISCLUE&&data.item.ISCLUE!=0?'查看任务':'转任务'"></font>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="planCenCommandAppointTaskDetail">
+    <div class="taskDetail-header" ng-bind="data.item.TASKTYPE==2?'任务查看页':'线索查看页'">
+    </div>
+    <div class="websiteCabletPreview_context">
+        <div class="websiteCabletPreview_head">
+            <div class="websiteCabletPreview_head_rank">
+                <p class="col-md-4">
+                    <b>创建时间：</b>
+                    <span class="ml27" ng-bind="data.item.CRTIME">
+                    </span>
+                </p>
+                <p class="col-md-4">
+                    <b>任务时间：</b>
+                    <span>{{handleDate(data.item.TASKSTARTTIME)}} <i class="boldWord">至</i> {{handleDate(data.item.TASKENDTIME)}}</span>
+                </p>
+                <p class="col-md-4">
+                    <b ng-bind="data.item.TASKTYPE==2?'任务地点：':'线索地点：'">任务地点：</b>
+                    <span ng-bind="data.item.TASKADDRESS.name=='undefined'?'':data.item.TASKADDRESS.name"></span>
+                </p>
+            </div>
+            <div class="websiteCabletPreview_head_rank">
+                <!-- <p class="col-md-4">
+                    <b>是否紧急：</b>
+                    <span ng-bind="data.item.ISURGENT=='0'?'否':'是'"></span>
+                </p> -->
+                <p class="col-md-4">
+                    <b>标识：</b>
+                    <span ng-bind="status.isUrgent[data.item.ISURGENT]"></span>
+                </p>
+                <p class="col-md-4">
+                    <b>创建人：</b>
+                    <span ng-bind="data.item.TASKCRUSERNAME"></span>
+                </p>
+                <p class="col-md-4" ng-if="data.item.TASKTYPE=='2'">
+                    <b>接收人：</b>
+                    <span ng-bind="data.item.TASKUSERNAME"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="taskDetail-content">
+        <p class="taskDetail-title" ng-bind="data.item.TITLE">
+        </p>
+        <p class="taskDetail-text" ng-bind-html="data.item.CONTENT|trsSce">
+        </p>
+        <!-- <div class="taskDetail-audio">
+            <div class="fakeAudio">
+                <span>20"</span>
+                <img ng-src="./planningCenter/command/task/appointTask/images/zp6.png">
+            </div>
+            <audio autobuffer loop controls ng-show="false">
+                <source src="/media/audio.oga">
+                <source src="/media/audio.wav">
+                <object type="audio/x-wav" data="/media/audio.wav" width="290" height="45">
+                    <param name="src" value="/media/audio.wav">
+                    <param name="autoplay" value="false">
+                    <param name="autoStart" value="0">
+                    <p><a href="/media/audio.wav">Download this audio file.</a></p>
+                </object>
+            </audio>
+        </div>
+        <div class="taskDetail-audio">
+            <div class="fakeAudio">
+                <span>30"</span>
+                <img ng-src="./planningCenter/command/task/appointTask/images/zp6.png">
+            </div>
+            <audio autobuffer loop controls ng-show="false">
+                <source src="/media/audio.oga">
+                <source src="/media/audio.wav">
+                <object type="audio/x-wav" data="/media/audio.wav" width="290" height="45">
+                    <param name="src" value="/media/audio.wav">
+                    <param name="autoplay" value="false">
+                    <param name="autoStart" value="0">
+                    <p><a href="/media/audio.wav">Download this audio file.</a></p>
+                </object>
+            </audio>
+        </div> -->
+    </div>
+    <div class="taskDetail-tab">
+        <tabset>
+            <img src="./planningCenter/images/upload.png" alt="" class="pull-right mt5 mr10 cursorPointer" ng-click="openUploadModal()" ng-hide="status.isHideUploadBtn">
+            <tab heading="操作日志">
+                <div class="taskDetail-operateLog">
+                    <trs-timeline title="'操作日志'">
+                        <!-- <timegroup tick="item.day" ng-repeat="item in data.version.versionTime">
+                            <timeitem tick="n.value.CRTIME" ng-repeat="n in item.times">
+                                <a class="minw45"></a>
+                                <a class="minw80"></a>
+                            </timeitem>
+                        </timegroup> -->
+                        <!-- 示例 -->
+                        <p class="taskDetail-operateLog-title" ng-bind="data.item.TITLE"></p>
+                        <timegroup tick="item.day" ng-repeat="item in data.item.PLANTASKLOGS">
+                            <timeitem tick="n.value.CRTIME" ng-repeat="n in item.times">
+                                <a class="minw45" ng-bind="status.taskOperMap[n.value.OPERSTATUS]"></a>
+                                <a class="minw80" ng-bind="n.value.OPERUSER"></a>
+                            </timeitem>
+                        </timegroup>
+                    </trs-timeline>
+                </div>
+            </tab>
+            <tab ng-click="getUsersAndMaterials()" ng-show="data.item.TASKTYPE==2" active="status.showmaterials" heading="素材">
+                <div class="taskDetail-material">
+                    <ul class="taskDetail-material-title">
+                        <li ng-repeat="item in data.userList">
+                            <span class="{{item == status.selectedUser?'acitve':''}}" ng-click="getMaterials(item)" ng-bind="item.USERTRUENAME"></span>
+                            <i ng-if="$index!=(data.userList.length-1)">&gt;</i>
+                        </li>
+                    </ul>
+                    <div class="taskDetail-material-content" style="height:{{status.showHeight}}px">
+                        <div class="taskDetail-material-left" id="m_timeline_task_js">
+                            <trs-timeline title="'素材'">
+                                <!-- 示例 -->
+                                <p class="taskDetail-operateLog-title" ng-bind="data.item.TITLE"></p>
+                                <timegroup tick="item.day" ng-repeat="item in data.materialsLine">
+                                    <timeitem tick="n.value.CRTIME" ng-repeat="n in item.times">
+                                        <!-- <a class="maxw200" ng-bind="n.value.CRUSER"></a> -->
+                                        <!-- <br/> -->
+                                        <div ng-click="getTextMaterial(n.value.textMaterial,$event)" class="txtMaterial" ng-if="n.value.textMaterial"><span ng-bind="n.value.textMaterial"></span></div>
+                                        <p class="maxw200" ng-init="showMaterials(n.value)">
+                                            <!-- <audio controls="controls" class="musiclogo" ng-click="getMusicPlay(n.value.musicPlayer)" ng-if="n.value.musicPlayer" preload="preload" ng-src="{{trustUrl(n.value.musicPlayer.streamsMap.l.httpURL)}}"></audio> -->
+                                            <span class="musiclogo" ng-click="getMusicPlay(n.value,$event)" ng-if="n.value.musicPlayer&&n.value.musicPlayer.err==undefined"><img src="./planningCenter/command/task/appointTask/images/musicplayer.png"></span>
+                                            <!-- <span class="videologo" ng-click="getVideoPlay(n.value.videoPlayer)" ng-if="n.value.videoPlayer"><img src="./planningCenter/command/task/appointTask/images/videologo.jpg"></span> -->
+                                            <video class="videologo" ng-if="n.value.videoPlayer&&n.value.videoPlayer.err==undefined" ng-click="getVideoPlay(n.value,$event)" preload="preload" ng-src="{{n.value.videoPlayer.streamsMap.l.httpURL}}" controls="controls"></video>
+                                            <img class="imgMaterial" ng-if="n.value.videoPlayer.err!=undefined||n.value.musicPlayer.err!=undefined" src="./planningCenter/command/task/appointTask/images/wait.gif">
+                                            <img class="imgMaterial" ng-click="getImgMaterial(n.value.imgMaterial,$event)" ng-src="{{trustUrl(n.value.imgMaterial)}}" ng-if="n.value.imgMaterial" />
+                                        </p>
+                                    </timeitem>
+                                    <!-- <timeitem tick="'11:27:16'">
+                                        <a class="minw200">李四</a>
+                                        <p>
+                                            <img src="./planningCenter/command/task/appointTask/images/zp5.png" class="maxw200">
+                                        </p>
+                                    </timeitem> -->
+                                </timegroup>
+                            </trs-timeline>
+                        </div>
+                        <div class="taskDetail-material-right" style="height:{{status.showHeight}}px">
+                            <img src="./planningCenter/command/task/appointTask/images/zp14.png" class="leftArrow">
+                            <div ng-if="status.showType!=undefined" style="top:{{status.showTop}}">
+                                <p>
+                                    <button ng-if="status.showType=='text'||status.showType=='img'" ng-click="addToCreateLine(data)" class="btn btn-default btn-commen opacity100" ng-mouseenter="status.batchOperateBtn['hoverStatus']='CreationAxis'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+                                        <span class="s_icon">
+                <img ng-src="./resourceCenter/images/{{status.batchOperateBtn['hoverStatus']=='CreationAxis'?'z14-1.png':'z14.png'}}"/>
+            </span> 创作轴
+                                    </button>
+                                    <button ng-if="status.showType!='text'&&status.showType!='img'" ng-click="download(data)" class="btn btn-default btn-commen opacity100" ng-mouseenter="status.batchOperateBtn['hoverStatus']='CreationAxis'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+                                        <span class="s_icon">
+                <img ng-src="./resourceCenter/images/{{status.batchOperateBtn['hoverStatus']=='CreationAxis'?'z14-1.png':'z14.png'}}"/>
+            </span> 导出
+                                    </button>
+                                </p>
+                                <div id="toCreateLine" class="toCreateLine_js">
+                                    <video controls="controls" ng-if="status.showType=='video'" class="videoPlayer" loop="loop" autoplay="autoplay" ng-src="{{data.videoSrc}}"></video>
+                                    <audio controls="controls" ng-if="status.showType=='music'" class="videoPlayer" loop="loop" autoplay="autoplay" ng-src="{{data.musicSrc}}"></audio>
+                                    <img class="showimg" ng-if="status.showType=='img'" ng-src="{{data.imgSrc}}">
+                                    <div ng-if="status.showType=='text'" class="text">
+                                        <p ng-bind-html="data.textMaterial|trsSce"></p>
+                                    </div>
+                                </div>
+                                <!-- <img src="./planningCenter/command/task/appointTask/images/zp5.png" alt=""> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+    <div cg-busy="loadingPromise"></div>
+</div>

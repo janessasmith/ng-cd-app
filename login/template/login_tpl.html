@@ -1,0 +1,50 @@
+<div class="login page-container" ng-form name="loginForm">
+    <!-- login top -->
+    <div class="yc-login-top">
+        <img src="./login/img/yc-logo.png"> 
+    </div>
+    <!-- end login top -->
+    <div class="page-form" ng-if="status.isDevelopModal">
+        <div class="yc-page-form"> 
+            <h2>用户登录</h2>          
+            <form class="loadingPageFrom" autocomplete="off">
+                <div class="form-group invalidate-input-box">
+                    <input type="text" class="form-control bg-white" placeholder="用户名" name="UserName" ng-model="data.user.UserName" validator="maxlength=16,spechar" ng-mouseenter="isShowUNameTips=true" ng-mouseleave="isShowUNameTips=false" is-show-tips="isShowUNameTips">
+                    <!-- name="UserName" -->
+                </div>
+                <div class="form-group loadingpage-form-Password">
+                    <input type="password" class="form-control" placeholder="密码" ng-model="data.user.Password" name="Password" ng-keyup="login($event)">
+                    <!--<span class="loadingpage-form-Password-tip">显示</span>-->
+                </div>
+                <!-- required -->
+                <div class="login_codes" ng-if="status.isShowCode=='true'">
+                    <input type="text" class="form-control login_codes_input" ng-model="data.user.Code" name="Code" validator="spechar" ng-mouseenter="isShowCodeTips=false" ng-mouseleave="isShowCodeTips=false" is-show-tips="isShowCodeTips" placeholder="验证码" ng-keyup="login($event)">
+                    <div class="login_codes_pic">
+                        <img ng-src="{{status.codeImg}}">
+                        <span><a ng-click="clickRandomCode()">看不清,换一张</a></span>
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label ng-init="remberPwd=true" class="loadingPage-font">
+                        <trs-checkbox ischecked="data.user.isRememberUser" callback="rememberUser()"></trs-checkbox>记住密码
+                        <!--  <trs-checkbox ischecked="status.isRememberUser" callback="rememberUser()"></trs-checkbox>记住密码 -->
+                    </label>
+                    <!--     <label class="pull-right loadingPage-font font-color-blue" ng-click="forgetUser()">
+                    忘记密码
+                </label> -->
+                    <!-- 临时占位-->
+                    <div class="h10"></div>
+                </div>
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="login()"></button>
+            </form>
+        </div>
+    </div>
+    <div ng-if="!status.isDevelopModal" class="login_develop">
+        <img src="./login/img/develop.gif" alt="正在跳转...">
+    </div>
+    <!-- login footer -->
+    <div class="yc-login-footer"> 
+        <p>Copyright © 2016-2017 <span>NXNEWS</span> All Rights Reserved.</p>
+    </div>
+    <!-- end login footer -->
+</div>

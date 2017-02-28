@@ -1,0 +1,42 @@
+<div class="fix_height450 eventManagement">
+    <div class="clue_calendar_button">
+        <button ng-click="getEventManageList('manual')" class="{{data.curEventManage=='manual'?'clue_calendar_btn_success':'clue_calendar_btn'}}">热门事件列表</button>
+        <button ng-click="getEventManageList('recommendation')" class="{{data.curEventManage=='recommendation'?'clue_calendar_btn_success':'clue_calendar_btn'}}">部门推荐</button>
+        <div class="input-group monitor_input_group">
+        <div class="createHotEvent_div"><button ng-if="data.curEventManage=='manual'" ui-sref="plan.eventanalysis.createHotEvent({eventtype:status.eventType,createtype:data.curEventManage,eventid:0})" class="createHotEvent_btn">创建热门事件</button></div>
+            <input type="text" placeholder="请输入关键字搜索" class="form-control monitor_form_control" ng-model="data.keywords" ng-keypress="queryListBySearchWord($event)">
+            <span class="input_group_btn">
+                <button class="btn btn-default btn_monitor_search" type="button" ng-click="queryListBySearchWord()">检索</button>
+            </span>
+        </div>
+    </div>
+    <div class="edit_table eventManagement_table">
+        <table class="table table-striped recent-policy data-table">
+            <thead>
+                <tr>
+                    <th class="th_check">序号</th>
+                    <th>标题</th>
+                    <th class="th_time">事件开始时间</th>
+                    <th class="th_time">时间创建时间</th>
+                    <th class="th_coperation">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.items">
+                    <td ng-bind="(page.CURRPAGE-1)*page.PAGESIZE+$index+1"></td>
+                    <td class="td_left" ng-bind="item.TITLE"></td>
+                    <td ng-bind="timeStamp(item.STARTTIME)"></td>
+                    <td ng-bind="timeStamp(item.CREATETIME)"></td>
+                    <td ng-if="data.curEventManage=='manual'"><a ui-sref="eventdetail.eventanalyisbasicinfo({eventtype:1,eventid:item.ID})" target="_blank"><span>查看</span></a><span class="split_line">|</span><span ui-sref="plan.eventanalysis.createHotEvent({eventtype:status.eventType,createtype:data.curEventManage,eventid:item.ID})">编辑</span><span class="split_line">|</span><span ng-click="deleteEvent(item)">删除</span><span class="split_line">|</span><span ng-click="sethidden(item)" ng-bind="item.HIDDEN==false?'设为隐藏':'设为可见'"></span></td>
+                    <td ng-if="data.curEventManage=='recommendation'"><a ui-sref="eventdetail.eventanalyisbasicinfo({eventtype:0,eventid:item.ID})" target="_blank"><span>查看</span></a><span class="split_line">|</span><span ui-sref="plan.eventanalysis.createHotEvent({eventtype:status.eventType,createtype:data.curEventManage,eventid:item.ID})">添加到热门</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="page timeCue_page">
+        <trs-pagenation-left page-count="page" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+        <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="false" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+        <!-- <trs-pagenation-right callback="jumpToPage()" page="page" currpage="status.copyCurrPage"></trs-pagenation-right> -->
+    </div>
+</div>
+<div cg-busy="loadingPromise"></div>

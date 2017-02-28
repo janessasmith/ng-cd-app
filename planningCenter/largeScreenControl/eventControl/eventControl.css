@@ -1,0 +1,38 @@
+.event_control .hd {
+  height: 45px;
+}
+.event_control .border_radius_5 .list_operating .span {
+  border-right: 1px solid black;
+  padding-right: 10px;
+}
+.event_control .border_radius_5 .list_operating span {
+  margin-left: 10px;
+}
+.event_control .edit_table .xcol-startTime {
+  width: 200px;
+}
+.event_control .edit_table .xcol-number {
+  width: 100px;
+  text-align: center;
+}
+.event_control .edit_table .tx-l {
+  text-align: left;
+}
+.event_control .edit_table .xcol-operate {
+  width: 400px;
+}
+.event_control .list_operating .showType:hover {
+  color: #3098D5;
+  cursor: pointer;
+}
+.event_control .list_operating .showType_success {
+  color: #3098D5;
+  cursor: pointer;
+}
+.event_control .list_operating .showType {
+  color: #000000;
+}
+.event_control .list_operating .showType_disabled {
+  color: #A4A4A4;
+  cursor: not-allowed;
+}

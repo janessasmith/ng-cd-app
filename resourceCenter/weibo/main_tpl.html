@@ -1,0 +1,97 @@
+<div trs-scroll-fix class="row edit_right_head">
+    <div class="col-md-12 col-lg-12">
+<!--         <button class="btn btn-default btn-commen" ng-click="openReserveDraftModal()" >
+            <span class="s_icon"><img src="./resourceCenter/images/z15.png" /></span> 预留
+        </button>
+        <button class="btn btn-default btn-commen" ng-click="collect()" >
+            <span class="s_icon"><img src="./resourceCenter/images/z16.png" /></span> 收藏
+        </button> -->
+         <button class="btn btn-default btn-commen">
+            <span class="s_icon"><img src="./resourceCenter/images/z17.png" /></span> 打印
+        </button>
+        <button class="btn btn-default btn-commen"  ng-click="export()">
+            <span class="s_icon"><img src="./resourceCenter/images/z55.png" /></span> 导出
+        </button>
+<!--         <button class="btn btn-default btn-commen" >
+            <span class="s_icon"><img src="./resourceCenter/images/z18.png" /></span> 删除
+        </button> -->
+    </div>
+</div>
+<div class="row mb10" ng-show="vm.numberOfNewDocs > 0">
+    <div class="col-md-12 text-center bm_dot_line mc-padding-xs manuscript-copycreate">
+        <span class="font_red font_color666" ng-click="refreshList()">
+            有<span class="more-data">{{vm.numberOfNewDocs}}</span>条新稿件更新
+            <i class="fa-cursor fa-lg fa-refresh text-primary" ></i>
+        </span>
+    </div>
+</div>
+<div class="row mc-padding-vertical-sm">
+    <div class="col-md-7">
+        <custom-select label="时间范围" options="vm.time.data" callback="searchWithKeyword()" selected-option="vm.time.curValue"></custom-select>
+        <trs-single-select label="稿件类型" options="docTypes" callback="searchWithKeyword()" selected-option="vm.docType"></trs-single-select>
+<!--         <trs-single-select label="信源等级" options="vm.sourcelevel.data" callback="searchWithKeyword()" selected-option="vm.sourcelevel.curValue"></trs-single-select> -->
+    </div>
+    <div class="col-md-5 text-right">
+        <div class="m_search">
+           <!--  <trs-input-suggest keyword="vm.filterKeyWord" channelname="{{vm.channelName}}" typename="{{vm.typeName}}"></trs-input-suggest> -->
+           <input type="text" class="form-control" placeholder="请输入关键字搜索" ng-model="vm.filterKeyWord">
+            <button class="btn btn-default btn-commen" type="button" ng-click="searchWithKeyword()">检索</button>
+            <button class="btn btn-default btn-commen" type="button" ui-sref="retrieval">高级检索</button>
+        </div>
+    </div>
+</div>
+
+<div class="mc-padding-top-xs">
+
+<!--     <ul class="waterfall-list" ng-waterfall cols="5">
+        <li ng-repeat="content in vm.contents" repeat-finished="{{content.IR_THUMBNAIL_PIC}}">
+            <div class="data-block">
+                <div style="padding:5px;" ng-if="content.IR_THUMBNAIL_PIC!='null'">
+                    <img ng-src="{{content.IR_THUMBNAIL_PIC}}"/>      
+                </div>
+                <p style="padding:5px;">{{content.CONTENT}}</p>
+                <div class="details">
+                    <div class="profilephoto"><img src="./editingCenter/app/images/user_icon.jpg"></div>
+                    <div class="icons">
+                          {{content.IR_SCREEN_NAME}}
+                    </div>
+                    <div class="info"><span></span><span>{{content.DOCPUBTIME | limitTo : 10 }}</span></div>
+                </div>
+            </div>
+        </li>
+        <div class="loadMore" ng-if="loadMore" ng-infinite-scroll ng-click="loadMore()">加载更多..</div>
+    </ul> -->
+    <div deckgrid class="deckgrid" source="vm.contents">
+        <div class="a-card">
+            <div ng-show="card.IR_THUMBNAIL_PIC" style="text-align: center;">
+                 <img style="max-width: 100%;max-height: 100%;"  ng-src="{{card.IR_THUMBNAIL_PIC}}">
+            </div>
+            <p style="padding:5px;" ng-bind-html="card.CONTENT"></p>
+            <div class="details">
+                <div class="profilephoto">
+                    <img src="./editingCenter/app/images/user_icon.jpg"></div>
+                <div class="icons">{{card.IR_SCREEN_NAME}}</div>
+                <div class="info">
+                    <span></span>
+                    <span>{{card.DOCPUBTIME | limitTo : 10 }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <!-- <div cg-busy="loadingPromise"></div> -->
+    <div class="row txt_c cursorPointer" ng-click="loadMore()" ng-hide="vm.loadingBusy||vm.page.PAGECOUNT<=vm.page.CURRPAGE">
+        <div style="position: absolute;left: 50%;bottom: 34px;">
+            <span>
+            <i class="fa fa-lg fa-spinner text-primary" ></i>
+            加载更多
+            </span>
+        </div>
+    </div>
+    <div class="row txt_c" ng-show="vm.loadingBusy">
+        <span>
+            <i class="fa fa-lg fa-spinner fa-spin text-primary" ></i>
+            加载中
+            </span>
+    </div>

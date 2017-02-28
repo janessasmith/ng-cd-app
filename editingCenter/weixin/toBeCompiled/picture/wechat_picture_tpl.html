@@ -1,0 +1,134 @@
+<form name="picForm" novalidate>
+    <div class="row_news websiteOrIwo_timeLine_head_row_news weixin_news plr20">
+        <ul class="subject-tab">
+            <li>
+                <a du-smooth-scroll du-scrollspy offset="20" duration="2000" href="#section-1">稿件信息</a>
+            </li>
+            <li>
+                <a du-smooth-scroll du-scrollspy offset="60" duration="2000" href="#section-3">发稿单</a>
+            </li>
+            <li ng-if="status.hasVersionTime">
+                <a du-smooth-scroll du-scrollspy duration="2000" offset="60" href="#section-4">流程版本</a>
+            </li>
+        </ul>
+        <div id="section-1">
+            <div class="ht43"></div>
+            <div class="edit-news-title">
+                稿件信息
+            </div>
+            <div class="clearfix">
+                <div class="row subject-list-style">
+                    <div class="col-sm-1 mc-padding-horizontal-0 text-right">标题：</div>
+                    <div class="col-sm-10 mc-padding-horizontal-0">
+                        <div class="invalidate-input-box {{picForm.TITLE.$invalid?'has-error':''}}">
+                            <input class="form-control" type="text" name="TITLE" ng-model="list.DOCTITLE" placeholder="请输入标题" maxlength-error-message="长度不能超过200个字数！" validator="spechar,maxlength=200,required" ng-blur="showError(true)" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+                        </div>
+                    </div>
+                    <span class="col-sm-1 tip">已输入<trs-word-num num-obj="{{list.DOCTITLE}}" class="font_red auto_wt"></trs-word-num>字</span>
+                </div>
+                <div class="row subject-list-style">
+                    <div class="list-style-img h120 col-sm-offset-1">
+                        <div class="fa_upload invalidate-input-box {{picForm.listStyleOne.$invalid?'has-error':''}}">
+                            <trs-upload-full file-name="list.DOC_PICTURELIST[0].APPFILE" file-desc="list.DOC_PICTURELIST[0].APPDESC " return-file="list.DOC_PICTURELIST[0].PERPICURL " callback="deleteUploaderImg('DOC_PICTURELIST',0)" max-size="{{data.imageMaxSize}}" style="float:left"></trs-upload-full>
+                            <input type="text" class="ueditorReplace" validator="spechar,required" name="listStyleOne" ng-model="list.DOC_PICTURELIST[0].APPFILE" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB" />
+                        </div>
+                        <p style="width: 50%;line-height: 110px;">请上传小于2M的图片，支持格式：gif,jpg,jpeg,bmp,png</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="section-3">
+            <div class="mtb20">
+                <div class="edit-news-title blueborder">
+                    <p class="pull-left">发稿单</p>
+                    <label class="edit-news-checkbox">
+                        <trs-checkbox ng-model="list.ISNOPAYMENT" ischecked="list.ISNOPAYMENT==1" callback="updateCKSelection('ISNOPAYMENT')"></trs-checkbox>不发稿费
+                    </label>
+                </div>
+                <div class="m_box_item mt20 ml15">
+                    稿件体裁：
+                    <trs-single-select selected-option="list.DOCGENRE" options="data.DocGenre"></trs-single-select>
+                </div>
+            </div>
+            <editor>
+            </editor>
+        </div>
+        <div class='timeline' ng-if="status.hasVersionTime" id="section-4">
+            <div class="subject-title mt20">流程版本</div>
+            <tabset class="m_nav_3 mt20">
+                <tab heading="操作日志">
+                    <div class="m_box_2">
+                        <trs-timeline title="'操作日志'">
+                            <p ng-bind="data.version.operationLogTitle" class="logTitle"></p>
+                            <div ng-repeat="(key, value) in data.version.group">
+                                <h3 ng-class="{'operateLog':$index%2==0}">{{key}}</h3>
+                                <timegroup tick="item.day" ng-repeat="item in data.version.operationLog[key]">
+                                    <timeitem tick="n.value.CRTIME" ng-repeat="n in item.times">
+                                        <a class="minw45">{{n.value.OPERATION}}</a>
+                                        <a class="minw80 pointer" ng-bind="n.value.USERNAME" title="{{n.value.OPERUSERNAME}}"></a>
+                                        <a class="minw88" title="{{n.value.ATTRIBUTE}}" ng-bind="n.value.DESUSERNAME||n.value.ATTRIBUTE"></a>
+                                        <a title="{{n.value.OPINION}}" class="exttype" ng-if="n.value.OPINION!==''">{{n.value.OPERATION}}意见</a>
+                                    </timeitem>
+                                </timegroup>
+                            </div>
+                        </trs-timeline>
+                    </div>
+                    <div class="websist_normal" ng-if="page.CURRPAGE>=page.PAGECOUNT">没有更多了...</div>
+                    <div data-ng-if="page.CURRPAGE<page.PAGECOUNT" cg-busy="loadingPromise" class="website_timeline_load_more_2 text-center" ng-click="getLoadMore()">
+                        <img src="./editingCenter/website/images/images/newTab_2.png" /> 点击展开更多
+                    </div>
+                </tab>
+                <tab heading="流程版本">
+                    <div class="m_box_2">
+                        <trs-timeline title="'流程版本'">
+                            <div ng-repeat="(key, value) in data.version.copyVersionTime">
+                                <h3 ng-class="{'operateLog':$index%2==0}">{{key}}</h3>
+                                <timegroup tick="item.day" ng-repeat="item in data.version.versionTime[key]">
+                                    <timeitem tick="n.value.CRTIME" ng-repeat="n in item.times">
+                                        <a class="minw45">{{n.value.OPERATION}}</a>
+                                        <a class="minw80" title="{{n.value.OPERSTATEDESC|trsLimitTo:12}}">{{n.value.OPERSTATEDESC}}</a>
+                                        <a class="minw88">{{n.value.CRUSER}}</a>
+                                        <a class="exttype" target="_blank" ui-sref="editingCenterPersonalVersionTime({objectversionid:n.value.OBJECTVERSIONID})">{{n.value.EXTTYPE}}</a>
+                                    </timeitem>
+                                </timegroup>
+                            </div>
+                        </trs-timeline>
+                    </div>
+                </tab>
+                <!-- <tab heading="评审意见">
+                    <div class="m_box_2 edit_versionTime_comment">
+                        <trs-timeline title="'评审意见'">
+                            <timegroup tick="item.day" ng-repeat="item in data.comment.comment">
+                                <timeitem tick="n.value.CRTIME" ng-repeat="n in item.times">
+                                    <a class="minw80 comment_name" ng-bind="n.value.TRUENAME"></a>
+                                    <a ng-bind="n.value.COMMENT" ng-if="n.value.COMMTYPE==1" class="comment_content"></a>
+                                    <audio preload controls ng-src="{{trustUrl(data.comment.voiceObj[n.value.COMMENT])}}" ng-if="n.value.COMMTYPE==2"></audio>
+                                    <span ng-bind="n.value.DURATION+' 秒'" class="comment_duration" ng-if="n.value.COMMTYPE==2"></span>
+                                </timeitem>
+                            </timegroup>
+                        </trs-timeline>
+                    </div>
+                    <div class="websist_normal" ng-if="!data.comment.hasMore">没有更多了...</div>
+                    <div data-ng-if="data.comment.hasMore" cg-busy="loadingPromise" class="website_timeline_load_more_2 text-center" ng-click="getLoadMoreComment()">
+                        <img src="./editingCenter/website/images/images/newTab_2.png" /> 点击展开更多
+                    </div>
+                </tab> -->
+            </tabset>
+        </div>
+    </div>
+    <div class="Iw-box-fix box-fix-bt">
+        <div class="txt_r">
+            <button class="btn btn-primary btn-app" ng-click="save()" ng-disabled="!status.openBtn" ng-hide="status.platformType=='wechat.yiqianfa'">
+                <span class="s_icon s_icon_app">
+                    <img ng-src="./editingCenter/website/images/bsave.png" />
+                </span>保存
+            </button>
+            <button class="btn btn-primary btn-app" ng-click="close()" ng-disabled="!status.openBtn">
+                <span class="s_icon s_icon_app">
+                    <img ng-src="./editingCenter/website/images/bclose.png" />
+                </span>关闭
+            </button>
+        </div>
+    </div>
+</form>
+<div cg-busy="loadingPromise"></div>

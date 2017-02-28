@@ -1,0 +1,79 @@
+<div class="planCenCommandAppointTask">
+    <div trs-scroll-fix class="row edit_right_head">
+        <div class="col-md-8 col-lg-9">
+            <button class="btn btn-default btn-commen opacity100 four-word-btn" ui-sref="plan.taskview">
+                <span class="s_icon"><i class="fa fa-chevron-left"></i></span>
+                返回
+            </button>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <ol class="breadcrumb pull-right edit_breadcrumb">
+                <li>
+                    <span>策划中心</span>
+                    <span>协同指挥</span>
+                    <span>任务指令</span>
+                    <span>任务查看</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="row edit_right_mid">
+        <div class="col-md-6 toolbar">
+            <!-- <trs-single-select label="类型" selected-option="status.TaskType" callback="chooseDropList('TaskType')" options="status.appointTypes"></trs-single-select> -->
+            <trs-single-select label="紧急" selected-option="status.IsUrgent" callback="chooseDropList('IsUrgent')" options="status.appointStatuses"></trs-single-select>
+            <input type="text" placeholder="输入截止日期" class="form-control" ng-model="params.TaskEndTime" data-date-format="yyyy-MM-dd" data-date-type="number" data-min-date="" data-max-date="" data-autoclose="1" name="date2" ng-change="chooseDate(params.TaskEndTime)" bs-datepicker>
+        </div>
+        <div class="col-md-6 text-right">
+            <trs-single-select label="标题" selected-option="status.SearchType" callback="chooseDropList('SearchType')" options="status.searchTypes"></trs-single-select>
+            <div class="input-group edit_input_group">
+                <input type="text" class="form-control edit_form_control" placeholder="请输入标题搜索" ng-model="keyword" ng-keypress="searchWitdhKeyword($event)">
+                <span class="input-group-btn">
+            <button class="btn btn-default btn_edit_search" type="button" ng-click="searchWitdhKeyword()">搜索</button>
+          </span>
+            </div>
+        </div>
+    </div>
+    <div class="edit_table taskView">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                   <!--  <trs-checkbox callback="selectAll()" ischecked="data.items.length>0&&data.selectedArray.length==data.items.length"></trs-checkbox> -->
+                    序号</th>
+                    <th class="xcol-icon"></th>
+                    <th class="summary_width40">标题</th>
+                    <th>任务时间</th>
+                    <th>创建人</th>
+                    <th>状态</th>
+                    <th>紧急</th>
+                    <!-- <th>操作</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="task in data.items">
+                    <td>
+                        <!-- <trs-checkbox ischecked="isChecked(task)" callback="selectDoc(task)"></trs-checkbox> -->
+                        <span ng-bind="{{(page.CURRPAGE-1)*page.PAGESIZE+$index+1}}"></span>
+                     </td>
+                    <td><img ng-if="task.ISURGENT!='0'" src="./planningCenter/command/task/appointTask/images/zp18.png"></td>
+                    <td class="txt_l clickable">
+                        <!-- <a target="_blank" ng-bind="task.TITLE" ui-sref="plantaskdetail({taskid:task.TASKID,detailType:'taskView',taskuserid:task.TASKUSERID})"></a> -->
+                        <a target="_blank" ng-bind="task.TITLE" ui-sref="plantaskdetail({taskid:task.TASKID})"></a> <!-- 线索查看不应该出现上传素材按钮 -->
+                    </td>
+                    <td>{{task.TASKSTARTTIME|limitTo:10}}至{{task.TASKENDTIME|limitTo:10}}</td>
+                    <td>{{task.TASKCRUSERNAME}}</td>
+                    <td>{{status.taskType[task.ISREAD]}}</td>
+                    <td>{{status.isUrgent[task.ISURGENT]}}</td>
+                    <!-- <td>
+                        <i class="glyphicon glyphicon-ok-circle" ng-click="viewTask(task)" title="查看" ng-class="{'text-success':task.TASKSTATUS ==3}"></i>
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+        <div class="page" ng-if="page">
+            <trs-pagenation-left page-count="page" is-select-pagecount="false"></trs-pagenation-left>
+            <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+            <trs-pagenation-right callback="jumpToPage()" currpage="jumptoPage" page="page"></trs-pagenation-right>
+        </div>
+    </div>
+</div>

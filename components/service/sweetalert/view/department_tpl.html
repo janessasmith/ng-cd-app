@@ -1,0 +1,7 @@
+<div class="editing-operate-lst">
+    <ul>
+        <a href="javascript:void(0)" ng-click="deleteDepartment(item)" ng-if="status.btnRights['department.config.shanchu']">删除{{data.unitorDep}}</a>
+        <a href="javascript:void(0)" ng-click="hiddenDepartment(item)" ng-if="status.btnRights['department.config.display']">隐藏{{data.unitorDep}}</a>
+        <a href="javascript:void(0)" ng-click="showDepartment(item)" ng-if="status.btnRights['department.config.display']">显示{{data.unitorDep}}</a>
+    </ul>
+</div>

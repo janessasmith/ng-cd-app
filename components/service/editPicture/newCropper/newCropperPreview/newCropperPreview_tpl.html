@@ -1,0 +1,31 @@
+<div class="newCropperPreview_window">
+    <div class="newCropperPreview_window_header">
+        <span>预览图片</span>
+        <img ng-click="cancel()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+    </div>
+    <div class="newCropperPreview_window_container">
+        <div class="prev_con" style="{{status.prev_conStyle}}">
+            <span class="prev_tit">预览裁剪后的真实图片：</span>
+            <div class="prew_img" style="{{status.prew_imgStyle}}">
+                <img ng-src="{{status.imgSrc}}" style="{{status.imgStyle}}">
+            </div>
+            <fieldset class="prew_info">
+                <legend>图片信息</legend>
+                <div>
+                    <div class="pic_info">
+                        <span>宽度：</span>
+                        <span ng-bind="status.imgW"></span><span>px</span>
+                    </div>
+                    <div class="pic_info">
+                        <span>高度：</span>
+                        <span ng-bind="status.imgH"></span><span>px</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="newCropperPreview_window_footer">
+        <button class="btn btn-primary btn_confirm" ng-click="cancel()">关闭</button>
+    </div>
+    <div cg-busy="loadingPromise"></div>
+</div>

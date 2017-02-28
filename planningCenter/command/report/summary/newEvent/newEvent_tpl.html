@@ -1,0 +1,88 @@
+<form class="planCenCommandAppointNewEvent" name="newTaskForm" novalidate>
+    <div trs-scroll-fix class="row edit_right_head">
+        <div class="col-md-8 col-lg-9">
+            <button class="btn btn-default btn-commen" ui-sref="plan.reportsummary">
+                <span class="s_icon"><i class="fa fa-chevron-left"></i></span> 返回
+            </button>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <ol class="breadcrumb pull-right edit_breadcrumb">
+                <li>
+                    <span>策划中心</span>
+                    <span>协同指挥</span>
+                    <span>报题汇总</span> 
+                    <span>新建线索</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title">
+            <span class="text-red">*</span>
+            <span class="newTask-title-word">标题：</span>
+        </div>
+        <div class="newTask-content invalidate-input-box">
+            <input type="text" ng-model="params.Title" name="title" class="form-control" maxlength-error-message="长度不能超过500个字符！" validator="spechar,maxlength=500,required" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+        </div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title">
+            <span class="text-red">*</span>
+            <span class="newTask-title-word">时间：</span>
+        </div>
+        <div class="newTask-content">
+            <div class="timeGroup">
+                <input type="text" size="10" class="form-control" ng-model="params.TaskStartTime" name="TaskStartTime" placeholder="开始时间" data-autoclose="1" bs-datepicker="" readonly="readonly" data-date-format="yyyy-MM-dd" data-max-date="{{params.TaskEndTime}}" validator="required">
+                <img src="./editingCenter/app/toBeCompiled/images/t3.png" class="imgOne">
+            </div>
+            <span class="timeGroup-connect">至</span>
+            <div class="timeGroup">
+                <input type="text" size="10" class="form-control" ng-model="params.TaskEndTime" name="TaskEndTime" placeholder="结束时间" data-autoclose="1" bs-datepicker="" readonly="readonly" data-date-format="yyyy-MM-dd" data-min-date="{{params.TaskStartTime}}" validator="required">
+                <img src="./editingCenter/app/toBeCompiled/images/t3.png" class="imgOne">
+            </div>
+            <div class="newTask-chooseAddress">
+                <search>
+                </search>
+            </div>
+        </div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title">
+            <span class="newTask-title-word">
+                <trs-checkbox ischecked="params.IsUrgent=='1'" callback="IsUrgent()"></trs-checkbox>
+            </span>
+        </div>
+        <div class="newTask-content" style="padding-top: 5px;width:100px">
+            是否紧急事件
+        </div>
+        <div class="newTask-title">
+            <span class="newTask-title-word">
+                <trs-checkbox ischecked="params.Flag=='1'" callback="IsSendToEveryone()"></trs-checkbox>
+            </span>
+        </div>
+        <div class="newTask-content" style="padding-top: 5px;width:100px">
+            发送给全员
+        </div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title">
+            <span class="text-red">*</span>
+            <span class="newTask-title-word">线索内容：</span>
+        </div>
+        <div class="newTask-content">
+            <div class="invalidate-input-box">
+                <textarea ng-model="params.Content" name="Content" validator="required" class="form-control" validator="spechar" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-map" id="map">地图</div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title"></div>
+        <div class="newTask-content">
+            <button ng-click="confirm()" class="taskComplete-btn">确定</button>
+            <button ui-sref="plan.reportsummary" class="taskCancel-btn">取消</button>
+        </div>
+    </div>
+</form>

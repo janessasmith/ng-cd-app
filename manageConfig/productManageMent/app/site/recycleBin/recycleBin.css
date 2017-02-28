@@ -1,0 +1,14 @@
+.manage-pmm-app-container .app-site-container{
+    border-top: 1px solid #ddd;
+}
+
+.manage-pmm-app-container .app-site-container .recycle_site {
+    border-top: none;
+}
+
+.app_recycle_site .pmm-app-item-default {
+	cursor: pointer !important;
+}
+.app_recycle_site .pmm-app-item-active{
+	cursor: auto !important;
+}

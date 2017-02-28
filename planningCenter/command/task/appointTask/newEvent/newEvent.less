@@ -1,0 +1,287 @@
+@import '../../../../../colorPathConfig.less';
+@import '../../../../../@{colorPath}';
+
+.planCenCommandAppointNewEvent .newTask-row {
+    margin-bottom: 10px;
+}
+
+.planCenCommandAppointNewEvent .btn-commen.four-word-btn {
+    width: 100px;
+}
+
+.planCenCommandAppointNewEvent .btn-commen.hasSelected {
+    border: 1px solid #4696D3;
+    color: white!important;
+    background: #4696d3;
+}
+
+.planCenCommandAppointNewEvent .s_icon {
+    margin: 0 6px 0 -10px;
+    padding-right: 6px;
+    border-right: 1px solid #e9e9e9;
+}
+
+.planCenCommandAppointNewEvent .newTask-title,
+.planCenCommandAppointNewEvent .newTask-content {
+    display: inline-block;
+}
+
+.planCenCommandAppointNewEvent .newTask-content {
+    width: 770px;
+}
+
+.planCenCommandAppointNewEvent .newTask-title {
+    width: 90px;
+    margin-right: 5px;
+    text-align: right;
+    vertical-align: top;
+    padding-top: 5px;
+}
+
+.planCenCommandAppointNewEvent .text-red {
+    color: #dd0000;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.planCenCommandAppointNewEvent .newTask-title-word {
+    font-weight: bold;
+}
+
+.planCenCommandAppointNewEvent .timeGroup {
+    display: inline-block;
+    position: relative;
+    width: 170px;
+}
+
+.planCenCommandAppointNewEvent .timeGroup >input.form-control {
+    background: #fff;
+}
+
+.planCenCommandAppointNewEvent .timeGroup >img {
+    position: absolute;
+    right: 5px;
+    top: 9px;
+}
+
+.planCenCommandAppointNewEvent .newTask-chooseAddress {
+    position: relative;
+    display: inline-block;
+    width: 384px;
+}
+
+.planCenCommandAppointNewEvent .newTask-chooseAddress>span {
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.planCenCommandAppointNewEvent .newTask-chooseAddress>input.form-control {
+    display: inline-block;
+    width: 331px;
+    padding-right: 30px;
+}
+
+.planCenCommandAppointNewEvent .newTask-chooseAddress>img {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+
+.planCenCommandAppointNewEvent .timeGroup-connect {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion {
+    width: 331px;
+    max-height: 281px;
+    position: absolute;
+    top: 33px;
+    left: 53px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    overflow-y: auto;
+    background: #fff;
+    z-index: 10;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion li {
+    border-bottom: 1px solid #ccc;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>i,
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>b {
+    display: inline-block;
+    width: 40px;
+    vertical-align: top;
+    padding-top: 16px;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>i>img,
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>b>img {
+    cursor: pointer;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>i {
+    padding-left: 10px;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>b {
+    padding-left: 20px;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>div {
+    display: inline-block;
+    width: 200px;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>div>p,
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>div>span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>div>p {
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion li>div>span {
+    color: #aaa;
+}
+
+@keyframes newTaskSuggestionFadeIn {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes newTaskSuggestionFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion.ng-hide-remove {
+    animation: newTaskSuggestionFadeIn 0.3s both ease-in;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-suggestion.ng-hide-add {
+    animation: newTaskSuggestionFadeOut 0.2s both ease-in;
+}
+
+.planCenCommandAppointNewEvent .newTask-toggleTask>img {
+    cursor: pointer;
+}
+
+.planCenCommandAppointNewEvent textarea {
+    resize: none;
+    height: 300px;
+    margin-top: 10px;
+}
+
+.planCenCommandAppointNewEvent .newTask-voice {
+    border: 1px solid #ccc;
+    height: 300px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.planCenCommandAppointNewEvent .newTask-voice-title {
+    height: 37px;
+    background: #f1f2f6;
+    width: 100%;
+    position: absolute;
+}
+
+.planCenCommandAppointNewEvent .newTask-voice-title>div {
+    cursor: pointer;
+    width: 200px;
+    height: 37px;
+    line-height: 37px;
+    background: #C6E5FA;
+    float: left;
+    padding-left: 10px;
+}
+
+.planCenCommandAppointNewEvent .newTask-voice-title>button {
+    float: right;
+    margin-right: 10px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 10px;
+    margin-top: 8px;
+    width: 45px;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-voice-content {
+    height: 263px;
+    overflow-y: auto;
+    padding-top: 37px;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-voice-content li {
+    background: url('./planningCenter/command/task/appointTask/images/zp25.png') 20px 20px no-repeat;
+    height: 70px;
+    padding-left: 40px;
+    padding-top: 28px;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-voice-content li>span,
+.planCenCommandAppointNewEvent ul.newTask-voice-content li>img {
+    cursor: pointer;
+}
+
+.planCenCommandAppointNewEvent ul.newTask-voice-content li>span {
+    display: inline-block;
+    min-width: 30px;
+    height: 30px;
+    font-size: 16px;
+    text-align: right;
+    font-weight: bold;
+    position: relative;
+    top: 3px;
+    color: #666;
+}
+
+.planCenCommandAppointNewEvent .newTask-map {
+    height: 355px;
+    width: 100%;
+    border: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.planCenCommandAppointNewEvent .taskComplete-btn,
+.planCenCommandAppointNewEvent .taskCancel-btn {
+    color: #fff;
+    width: 110px;
+    height: 40px;
+    line-height: 20px;
+    border: none;
+    outline: none;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.planCenCommandAppointNewEvent .taskComplete-btn {
+    background: #4496D2;
+}
+
+.planCenCommandAppointNewEvent .taskCancel-btn {
+    background: #999;
+}
+
+.planCenCommandAppointNewEvent .anchorBL{
+    display: none;
+}

@@ -1,0 +1,63 @@
+ <div class="manage_app_pmm_bottom_list">
+     <ul>
+        <li ng-repeat="item in data.items">
+             <a ui-sref="manageconfig.productmanage.app.{{item.flag}}({selectTab:selectThisNav,channel:status.isColumn,parentchnl:status.parentchnl})"
+                ng-click="selectThisNav = item.flag"
+                ng-class="{'applist-active':selectThisNav == item.flag}">
+                 {{item.desc}}
+             </a>
+         </li>
+         <!-- <li ng-if="">
+             <a ui-sref="manageconfig.productmanage.website.channel({selectTab:selectThisNav})"
+                ng-click="selectThisNav = 'channel'"
+                ng-class="{'websitelist-active':selectThisNav == 'channel'}">
+                 频道管理
+             </a>
+         </li>
+         <li ng-if="isColumn">
+             <a ui-sref="manageconfig.productmanage.website.column({selectTab:selectThisNav})"
+                ng-click="selectThisNav = 'column'"
+                ng-class="{'websitelist-active':selectThisNav == 'column'}">
+                 栏目管理
+             </a>
+         </li>
+         <li>
+             <a ui-sref="manageconfig.productmanage.website.template({selectTab:selectThisNav})"
+                ng-click="selectThisNav = 'template'"
+                ng-class="{'websitelist-active':selectThisNav == 'template'}">
+                 模板管理
+             </a>
+         </li>
+         <li>
+             <a ui-sref="manageconfig.productmanage.website.fragment({selectTab:selectThisNav})"
+                ng-click="selectThisNav = 'fragmentation'"
+                ng-class="{'websitelist-active':selectThisNav == 'fragmentation'}">
+                 碎片化管理
+             </a>
+         </li>
+         <li>
+             <a ui-sref="manageconfig.productmanage.website.manuscriptsource({selectTab:selectThisNav})"
+                ng-click="selectThisNav = 'manuscriptsource'"
+                ng-class="{'websitelist-active':selectThisNav == 'manuscriptsource'}">
+                 稿源管理
+             </a>
+         </li>
+         <li>
+             <a ui-sref="manageconfig.productmanage.website.distributeconfig({selectTab:selectThisNav})"
+                ng-click="selectThisNav = 'distributeconfig'"
+                ng-class="{'websitelist-active':selectThisNav == 'distributeconfig'}">
+                 分发配置管理
+             </a>
+         </li>
+         <li>
+             <a ui-sref="manageconfig.productmanage.website.parameterconfig({selectTab:selectThisNav})"
+                ng-click="selectThisNav = 'parameter'"
+                ng-class="{'websitelist-active':selectThisNav == 'parameter'}">
+                 参数配置
+             </a>
+         </li> -->
+     </ul>
+     <div class="manage_pmm_bottom_list_arrow">
+         <img src="./manageConfig/productManageMent/images/gl26.png"/>
+     </div>
+</div>

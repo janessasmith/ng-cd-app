@@ -1,0 +1,83 @@
+<div ng-click="status.app.isdownPicShow=!status.app.isdownPicShow" class="editing-pos">
+    <div class="editing-list-zjxw site_btn">
+        <img src="./editingCenter/app/images/w33.png" class="editing_list_zjxw_img" />
+        <span href="" title="{{status.app.selectedSite.SITENAME}}" ng-bind="siteCut(status.app.selectedSite.SITENAME)"></span>
+    </div>
+    <div ng-if="status.app.sites.length>1"><img src="./editingCenter/app/images/l5-1.png" class='edit_mark' ng-show="!status.app.isdownPicShow">
+        <img src="./editingCenter/app/images/l5-2.png" class='edit_mark' ng-show="status.app.isdownPicShow"></div>
+    <div ng-show="status.app.isdownPicShow" class="editing-Sites_fa">
+        <div class="editing-Sites" ng-repeat="site in status.app.sites" ng-click="setAppSiteSelected(site)">
+            <span title="{{site.SITENAME}}" ng-bind="siteCut(site.SITENAME)"></span>
+            <img src="./editingCenter/app/images/l8.png" ng-show="site == status.app.selectedSite">
+        </div>
+    </div>
+</div>
+<tabset class="editing-downlist">
+    <tab heading="待编" class="icon-compiled" active="status.app.waitcompiled.isSelected" ng-click="changeAppPlatform('waitcompiled')">
+        <treecontrol selected-node="getSelectedNode()" class="tree-classic" on-node-toggle="queryNodeChildren(node,4)" tree-model="status.app.waitcompiled.channels" options="treeOpts" expanded-nodes="">
+            <span class="mySelect" ng-click="setAppSelectedChnl(node,'waitcompiled')" title="{{node.flag?node.CHANNELID:''}}">{{node.CHNLDESC | trsLimitTo:14}}</span>
+        </treecontrol>
+        <div class="editing-list-nav">
+            <div class="editing-list-icon site_btn" ng-click="setAppSelectedChnl('recycle','waitcompiled')" ng-class="{'active':'recycle'==status.app.waitcompiled.selectedChnl}" ng-if="status.appAccessAuthority.recyle!=undefined">
+                <p class="manage">
+                    <i><img ng-src="./editingCenter/app/images/{{'recycle'==status.app.waitcompiled.selectedChnl?'lm-fg-1.png':'lm-fg.png'}}"></i>
+                    <a>管理废稿</a>
+                </p>
+            </div>
+        </div>
+        <div class="editing-list-nav">
+            <div class="editing-list-icon site_btn" ng-click="setAppSelectedChnl('timingsign','waitcompiled')" ng-class="{'active':'timingsign'==status.app.waitcompiled.selectedChnl}" ng-if="status.appAccessAuthority.signtime!=undefined">
+                <p class="signed">
+                    <i><img ng-src="./editingCenter/website/images/left_images/{{'timingsign'==status.app.waitcompiled.selectedChnl?'wl06-1.png':'wl06.png'}}">
+            </i>
+                    <a>管理定时签发</a>
+                </p>
+            </div>
+        </div>
+        <!--  <div class="editing-list-icon site_btn" ng-click="setAppSelectedChnl('officials','waitcompiled')" ng-class="{'active':'officials'==status.app.waitcompiled.selectedChnl}">
+            <p class="officer">
+            <i><img ng-src="./editingCenter/app/images/{{'officials'==status.app.waitcompiled.selectedChnl?'lm-gy-1.png':'lm-gy.png'}}"></i>
+            <a >官员管理</a>
+            </p>
+        </div> -->
+    </tab>
+    <tab heading="待审" class="icon-pending" active="status.app.pending.isSelected" ng-click="changeAppPlatform('pending')">
+        <accordion close-others="true">
+            <treecontrol selected-node="getSelectedNode()" class="tree-classic" on-node-toggle="queryNodeChildren(node,5)" tree-model="status.app.pending.channels" options="treeOpts">
+                <span class="mySelect" ng-click="setAppSelectedChnl(node,'pending')" title="{{node.flag?node.CHANNELID:''}}">
+                            {{node.CHNLDESC | trsLimitTo:14}}</span>
+            </treecontrol>
+            <div class="editing-list-nav">
+                <div class="editing-list-icon site_btn" ng-click="setAppSelectedChnl('pendingtimingSign','pending')" ng-class="{'active':'pendingtimingSign'==status.app.pending.selectedChnl}" ng-if="status.appAccessAuthority.signtime!=undefined">
+                    <p class="signed">
+                        <i><img ng-src="./editingCenter/website/images/left_images/{{'pendingtimingSign'==status.app.pending.selectedChnl?'wl06-1.png':'wl06.png'}}"></i>
+                        <a>管理定时签发</a></p>
+                </div>
+            </div>
+            <!--  <div class="editing-list-icon site_btn" ng-click="setAppSelectedChnl('officials','pending')" ng-class="{'active':'officials'==status.app.pending.selectedChnl}">
+                <p class="officer">
+                <i><img ng-src="./editingCenter/app/images/{{'officials'==status.app.pending.selectedChnl?'lm-gy-1.png':'lm-gy.png'}}"></i>
+                <a >官员管理</a>
+                </p>
+            </div> -->
+        </accordion>
+    </tab>
+    <tab heading="已签发" class="icon-signed pointer" active="status.app.signed.isSelected" ng-click="changeAppPlatform('signed')">
+        <accordion close-others="true">
+            <treecontrol selected-node="getSelectedNode()" class="tree-classic" on-node-toggle="queryNodeChildren(node,6)" tree-model="status.app.signed.channels" options="treeOpts">
+                <span class="mySelect" ng-click="setAppSelectedChnl(node,'signed')" title="{{node.flag?node.CHANNELID:''}}">{{node.CHNLDESC | trsLimitTo:14}}</span>
+            </treecontrol>
+            <!-- <div class="editing-list-icon site_btn" ng-click="setAppSelectedChnl('retraction','signed')" ng-class="{'active':'retraction'==status.app.signed.selectedChnl}" >
+                <p class="manage">
+                <i><img ng-src="./editingCenter/app/images/{{'retraction'==status.app.signed.selectedChnl?'lm-gl-1.png':'lm-gl.png'}}"></i>
+                <a ui-sref="editctr.app.signed.retraction">管理撤稿</a></p>
+            </div>
+            <div class="editing-list-icon site_btn" ng-click="setAppSelectedChnl('officials','signed')" ng-class="{'active':'officials'==status.app.signed.selectedChnl}">
+                <p class="officer">
+                <i><img ng-src="./editingCenter/app/images/{{'officials'==status.app.signed.selectedChnl?'lm-gy-1.png':'lm-gy.png'}}"></i>
+                <a>官员管理</a>
+                </p>
+            </div> -->
+        </accordion>
+    </tab>
+</tabset>

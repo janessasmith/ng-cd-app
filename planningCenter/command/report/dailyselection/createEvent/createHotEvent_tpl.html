@@ -1,0 +1,87 @@
+<div class="createHotEvent">
+    <div class="row edit_right_head">
+        <div class="col-md-8 col-lg-9">
+            <button class="btn btn-default btn-commen" ng-click="connetEvent()">
+                <span class="s_icon"><i class="fa fa-link"></i></span> 关联事件
+            </button> 
+        </div>
+    </div>
+    <div class="row margin0">
+    <form class="createHotEventSubmit-form" name="createHotEventSubmitForm" novalidate autocomplete
+="off">
+        <div class="col-md-12 mt20">
+            <div class="form-group clearfix">
+                <div class="text_title col-md-1">事件标题：</div>
+                <div class="dashed_line col-md-11">
+                    <div class="invalidate-input-box">
+                        <input class="form-control" type="text" name="title" ng-model="data.currEvent.TITLE" validator="required" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group clearfix border_b">
+                <div class="text_title col-md-1">自定义标签：</div>
+                <div class="col-md-11">
+                    <div class="invalidate-input-box">
+                        <input class="form-control" type="text" name="customlabel" ng-model="data.currEvent.CUSTOMLABEL">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt20">
+            <div class="form-group clearfix border_b">
+                <div class="text_title col-md-1">热门标签：</div>
+                <div class="col-md-11 pb50">
+                    <ul class="hot_labels">
+                        <li ng-click="selectMClass(label)" ng-repeat="label in data.labels" ng-bind="label.LABLE" class="{{data.selectedLabels.indexOf(label.LABLE)>-1?'on':''}}"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt20">
+            <div class="form-group clearfix">
+                <div class="text_title col-md-1">开始时间：</div>
+                <div class="dashed_line col-md-11">
+                    <div class="invalidate-input-box">
+                        <span ng-show="isShowTips" class="ng-scope ng-hide"></span>
+                        <input class="form-control fl w250" type="text" value="{{status.curDate | date:'yyyy-MM-dd'}}" readonly="readonly">
+                        <div class="btn-group dropdown">
+                            <button type="button" class="btn btn-default bth-fix" ng-model="genParams.StartDocPubTime" placeholder="选择日期" bs-datepicker readonly="readonly" data-autoclose="1" data-date-format="yyyy-MM-dd">
+                                <span class="btn-fix-title ng-binding" value="">选择日期</span><span class="caret"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group clearfix">
+                <div class="text_title col-md-1">事件关键词：</div>
+                <div class="dashed_line col-md-11">
+                    <div class="invalidate-input-box">
+                        <textarea class="form-control edit-news-textarea" name="keywordsinclude" ng-model="data.currEvent.KEYWORDSINCLUDE" validator="required" ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group clearfix">
+                <div class="text_title col-md-1">排除关键词：</div>
+                <div class="col-md-11">
+                    <div class="invalidate-input-box">
+                        <textarea class="form-control edit-news-textarea" name="keywordsexclusive" ng-model="data.currEvent.KEYWORDSEXCLUSIVE"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+        <div class="col-md-12 mt20 createHotEvent_btn">
+            <div class="text_title col-md-1"></div>
+            <div class="col-md-11 pb50">
+                <button class="" ng-click="confirm()">创建并关联</button>
+                <button class="" ng-click="cancel()">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

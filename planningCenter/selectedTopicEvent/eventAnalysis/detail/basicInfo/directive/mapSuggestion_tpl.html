@@ -1,0 +1,9 @@
+<div>
+    <input type="text" ng-blur="hiddenSuggestion(index)" ng-focus="theFocus()" ng-style="setZindex(index*2-1)" ng-keydown="relocation(index)" placeholder="请输入..." id="suggestId_{{index}}" name="addressName" ng-model="addressName" class="form-control monitor_form_control" validator="spechar" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips">
+    <span class="input_group_btn seachBtn">
+        <button class="btn btn-default btn_monitor_search" type="button"></button>
+    </span>
+    <input style="display:none" name="addressValue" ng-model="addressValue">
+    <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto;display:none"></div>
+    <div ng-style="setZindex(index*2)" class="mySuggestion mySuggestion_{{index}}"></div>
+</div>

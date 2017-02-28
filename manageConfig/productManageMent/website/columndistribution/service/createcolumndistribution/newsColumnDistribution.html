@@ -1,0 +1,97 @@
+<form name="columndistrForm" novalidate>
+    <div class="newColumnDistribution">
+        <div class="new-hd">
+            <span>栏目分发</span>
+            <img class="img" src="./editingCenter/app/toBeCompiled/images/cls.jpg" ng-click="cancel()">
+        </div>
+        <div class="new-by">
+            <div class="new-by-left">
+                <div>同步从</div>
+                <div>同步</div>
+                <div>同步时机</div>
+                <div>被同步文档的状态:</div>
+                <div>同步模式</div>
+                <div>目标栏目</div>
+            </div>
+            <div class="new-by-right">
+                <div>
+                    <div class="form-group col-md-3 invalidate-input-box {{columndistrForm.fromDate.$invalid?'has-error':''}}">
+                        <input type="text" name="fromDate" class="form-control" ng-model="item.fromDate" data-max-date="{{item.untilDate}}" placeholder="选择开始日期" bs-datepicker validator="required">
+                    </div>
+                    <span class="float-left">到</span>
+                    <div class="form-group col-md-3 invalidate-input-box {{columndistrForm.untilDate.$invalid?'has-error':''}}">
+                        <input type="text" name="untilDate" class="form-control" ng-model="item.untilDate" data-min-date="{{item.fromDate}}" placeholder="选择结束日期" data-max-date="today" bs-datepicker validator="required">
+                    </div>
+                    <span>结束</span>
+                </div>
+                <div>
+                    <div class="form-group col-md-3 invalidate-input-box {{columndistrForm.selectedDate.$invalid?'has-error':''}}">
+                        <input type="text" placeholder="请选择日期" class="form-control" ng-model="item.selectedDate" name="selectedDate" data-max-date="today" bs-datepicker validator="required">
+                    </div>
+                    <span class="float-left">之后创建的文档</span>
+                </div>
+                <div class="display-inline">
+                    <div>
+                        <trs-checkbox ischecked="item.selectedType.indexOf('NEW')<0?false:true" callback="selectType('NEW')"></trs-checkbox>
+                        <span>新建时</span>
+                    </div>
+                    <div>
+                        <trs-checkbox ischecked="item.selectedType.indexOf('MODIFY')<0?false:true" callback="selectType('MODIFY')"></trs-checkbox>
+                        <span>修改时</span>
+                    </div>
+                    <div>
+                        <trs-checkbox ischecked="item.selectedType.indexOf('PUBLISH')<0?false:true" callback="selectType('PUBLISH')"></trs-checkbox>
+                        <span>发布后</span>
+                    </div>
+                    <div>
+                        <span>同步并且</span>
+                        <trs-single-select class="pull_right" selected-option="publishType" callback="item.operAfter=publishType.value" options="publish"></trs-single-select>
+                    </div>
+                </div>
+                <div class="display-inline">
+                    <div>
+                        <trs-checkbox ischecked="item.selectedStatus.indexOf('2')<0?false:true" callback="selectStatus('2')"></trs-checkbox>
+                        <span>待审</span>
+                    </div>
+                    <div>
+                        <trs-checkbox ischecked="item.selectedStatus.indexOf('3')<0?false:true" callback="selectStatus('3')"></trs-checkbox>
+                        <span>撤稿</span>
+                    </div>
+                    <div>
+                        <trs-checkbox ischecked="item.selectedStatus.indexOf('10')<0?false:true" callback="selectStatus('10')"></trs-checkbox>
+                        <span>已签发</span>
+                    </div>
+                    <div>
+                        <trs-checkbox ischecked="item.selectedStatus.indexOf('15')<0?false:true" callback="selectStatus('15')"></trs-checkbox>
+                        <span>取消签发</span>
+                    </div>
+                </div>
+                <div class="display-inline">
+                    <div>
+                        <trs-single-radio ischecked="item.selectedMode=='TransmitType=1'" callback="selectMode('TransmitType=1')"></trs-single-radio>
+                        <span>复制</span>
+                    </div>
+                    <div>
+                        <trs-single-radio ischecked="item.selectedMode=='TransmitType=2'" callback="selectMode('TransmitType=2')"></trs-single-radio>
+                        <span>引用</span>
+                    </div>
+                    <div>
+                        <trs-single-radio ischecked="item.selectedMode=='TransmitType=3'" callback="selectMode('TransmitType=3')"></trs-single-radio>
+                        <span>镜像</span>
+                    </div>
+                </div>
+                <div class="target">
+                    <button class="btn btn-default btn-commen" ng-click="chooseChnl()">选择</button>
+                </div>
+                <div class="chnl_name">
+                    <span ng-bind="item.selectedChnlName||''">{{item.selectedChnlName}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="new-ed">
+            <button class="btn" ng-click="confirm()">保存</button>
+            <button class="btn" ng-click="cancel()">取消</button>
+        </div>
+        <div cg-busy="loadingPromise"></div>
+    </div>
+</form>

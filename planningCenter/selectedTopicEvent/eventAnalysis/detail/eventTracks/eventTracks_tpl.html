@@ -1,0 +1,346 @@
+<div id="pageTop" class="planEventPageTopIcon"></div>
+<div class="row planEventAnalyisEventTrackDetail">
+    <div cg-busy="loadingPromise"></div>
+    <div class="col-md-2 eventDetailLeft">
+        <div class="leftScrollspy">
+            <ul>
+                <li class="scrollTitleImg"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp1.png"></li>
+                <li class="scrollTitle" ng-click="goOtherDetail('eventanalyisbasicinfo')">基本信息</li>
+            </ul>
+            <ul class="spreadScrollspy">
+                <li class="scrollTitleImg"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp4.png"></li>
+                <li class="scrollTitle">事件跟踪</li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#eventFocus">事件焦点脉络</a></li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#comment">事件观点评述</a></li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#volume">事件声量趋势</a></li>
+                <!-- <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#mediaNetizen">媒体网民关注对比</a></li> -->
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#opinion">事件观点对比</a></li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#hotWord">事件热词对比</a></li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#emotionFalls">情感瀑布图</a></li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#emotionColumnar">情感柱状图</a></li>
+            </ul>
+            <ul ng-show="false">
+                <li class="scrollTitleImg"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp1.png"></li>
+                <li class="scrollTitle">事件挖掘</li>
+                <!-- goOtherDetail('eventanalyiseventtap') -->
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-10 eventDetailRight">
+        <div class="moduleContainer">
+            <p class="moduleContainer-title" id="eventFocus">事件焦点脉络</p>
+            <div class="moduleContainer-content eventFocus row">
+                <div class="eventFocusDate">
+                    <button class="lastWeek" ng-click="eventFocusAnotherWeek(false)">
+                        <img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp9.png"> 上一周
+                    </button>
+                    <button class="nextWeek" ng-click="eventFocusAnotherWeek(true)">
+                        下一周
+                        <img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp10.png">
+                    </button>
+                    <ul>
+                        <li ng-repeat="date in status.eventFocus.week" ng-class="{'active':date == status.eventFocus.currDate}">{{filterEventFocusDate(date)}}<i ng-click="eventFocusChooseDate(date)" ng-class="{'disable':date>data.serviceTime}"></i></li>
+                    </ul>
+                </div>
+                <div class="hasNoData" ng-show="status.eventFocus.isEmpty">
+                    暂无数据
+                </div>
+                <div class="row eventFocusNav" ng-hide="status.eventFocus.isEmpty">
+                    <div class="col-md-2" ng-class="{'col-md-offset-1':$index==0}" ng-repeat="item in status.eventFocus.opinion">
+                        <div ng-class="{'active':status.eventFocus.currOpinion.viewPointId==item.viewPointId}" ng-click="statusActive('eventFocus','currOpinion',item,'getEventFocusList_transfer')">
+                            <div>
+                                <img class="mainImg" ng-src="{{item.imageUrl}}" />
+                                <p ng-bind="item.SHORTTITLE"></p>
+                            </div>
+                            <img class="tableArrow" ng-if="status.eventFocus.currOpinion.viewPointId==item.viewPointId" src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp8.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row eventFocusContent" ng-hide="status.eventFocus.isEmpty">
+                    <div class="col-md-12 eventFocusTitle">
+                        <b>{{status.eventFocus.currOpinion.SHORTTITLE}} ”相关报道</b>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img ng-src="{{status.eventFocus.currOpinion.imageUrl}}" />
+                        </div>
+                        <div class="col-md-6 edit_table">
+                            <table class="table table-striped data-table black-box">
+                                <!-- <thead>
+                                    <tr>
+                                        <th>标题</th>
+                                        <th class="xcol-draft">来源</th>
+                                        <th class="xcol-lastDate">时间</th>
+                                    </tr>
+                                </thead> -->
+                                <tbody>
+                                    <tr ng-repeat="item in status.eventFocus.list">
+                                        <td class="text-left cursorPointer" ng-bind="item.DOCTITLE" ng-click="openUrl(item)"></td>
+                                        <td class="xcol-source" ng-bind="item.ZB_SOURCE_SITE"></td>
+                                        <td class="xcol-lastDate" ng-bind="item.PUBTIME"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="page cls-paging">
+                                <trs-pagenation-left page-count="status.eventFocus" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+                                <pagination total-items="status.eventFocus.ITEMCOUNT" ng-change="pageChanged('getEventFocusList')" ng-model="status.eventFocus.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="false" items-per-page="10" rotate="false" num-pages="status.eventFocus.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="moduleContainer">
+            <p class="moduleContainer-title" id="comment">事件观点评述</p>
+            <div class="moduleContainer-content comment
+ row">
+                <div class="hasNoData" ng-show="status.comment.isEmpty">
+                    暂无数据
+                </div>
+                <tabset ng-show="false" ng-hide="status.comment.isEmpty">
+                    <tab heading="{{category}}" ng-repeat="(category,value) in status.comment.category" ng-click="statusActive('comment','currCategory',category,'getCommentEntity')">
+                        <ul class="commentLeft ">
+                            <li ng-class="{ 'active':status.comment.currEntity=='all' } " ng-click="statusActive( 'comment', 'currEntity', 'all', 'getCommentStractsLeft') ">全部</li>
+                            <li ng-repeat="(entityKey,entityValue) in status.comment.category[category].entity " ng-bind="entityKey " ng-class="{ 'active':status.comment.currEntity==entityKey} " ng-click="statusActive( 'comment', 'currEntity',entityKey, 'getCommentStractsLeft') " ng-hide="entityKey=='all' "></li>
+                        </ul>
+                        <ul class="commentRight ">
+                            <li ng-repeat="stracts in status.comment.category[status.comment.currCategory].entity[status.comment.currEntity].stracts ">
+                                <p>
+                                    <b ng-bind="stracts.TITLE "></b>
+                                    <i ng-bind="stracts.PUBTIME "></i>
+                                </p>
+                                <div ng-bind="commentDelBlank(stracts.DOCABSTRACT)"></div>
+                            </li>
+                            <li class="addMore " ng-click="commentAddMore() " ng-class="{ 'cursorDefault':!status.comment.canMore} ">
+                                <img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp13.png ">
+                                <span ng-bind="status.comment.canMore? '点击加载更多': '没有更多了...' "></span>
+                            </li>
+                        </ul>
+                        <div class="clear "></div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+        <div class="moduleContainer ">
+            <p class="moduleContainer-title " id="volume">事件声量趋势</p>
+            <div class="moduleContainer-content volume row ">
+                <tabset>
+                    <tab heading="渠道声量 ">
+                        <div class="row ">
+                            <div class="col-md-4 channelVolumePie ">
+                            </div>
+                            <div class="col-md-8 channelVolumeLine ">
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="媒体声量 " ng-click="showVolumeMediaEcharts() ">
+                        <div class="row ">
+                            <div class="col-md-4 mediaVolumeBar ">
+                            </div>
+                            <div class="col-md-8 mediaVolumeLine ">
+                            </div>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+        <!-- <div class="moduleContainer ">
+            <p class="moduleContainer-title " id="mediaNetizen ">媒体网民关注对比</p>
+            <div class="moduleContainer-content opinion row ">
+            </div>
+        </div> -->
+        <div class="moduleContainer ">
+            <p class="moduleContainer-title " id="opinion">
+                事件观点对比
+                <img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp14.png " class="refreshIcon " ng-click="refreshFn(status.opinion.currOpinion)" ng-if="status.btnRights['sjfx.rmsj.sjgd']">
+            </p>
+            <div class="moduleContainer-content opinion row ">
+                <tabset>
+                    <!-- <tab heading="网民VS媒体 " ng-click="statusActive('opinion','currOpinion','netizenMedia')">
+                        <div class="moduleContainer-content mediaNetizen row ">
+                            <div class="col-md-8 col-md-offset-2 ">
+                                <div class="leftNetizen ">
+                                    <div class="mediaNetizenHead ">
+                                        <i></i>
+                                        <span>网民观点</span>
+                                    </div>
+                                    <div class="mediaNetizenMain ">
+                                        <p>群众向遇难消防员致敬</p>
+                                        <div style="width: 100%; ">
+                                            <span>80</span>
+                                        </div>
+                                    </div>
+                                    <div class="mediaNetizenMain ">
+                                        <p>群众向遇难消防员致敬</p>
+                                        <div style="width: 80%; ">
+                                            <span>80</span>
+                                        </div>
+                                    </div>
+                                    <div class="mediaNetizenMain ">
+                                        <p>群众向遇难消防员致敬</p>
+                                        <div style="width: 60%; ">
+                                            <span>80</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rightMedia ">
+                                    <div class="mediaNetizenHead ">
+                                        <span>媒体观点</span>
+                                        <i></i> 
+                                    </div>
+                                    <div class="mediaNetizenMain ">
+                                        <p>群众向遇难消防员致敬</p>
+                                        <div style="width: 100%; ">
+                                            <span>80</span>
+                                        </div>
+                                    </div>
+                                    <div class="mediaNetizenMain ">
+                                        <p>群众向遇难消防员致敬</p>
+                                        <div style="width: 80%; ">
+                                            <span>80</span>
+                                        </div>
+                                    </div>
+                                    <div class="mediaNetizenMain ">
+                                        <p>群众向遇难消防员致敬</p>
+                                        <div style="width: 60%; ">
+                                            <span>80</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear "></div>
+                            </div>
+                        </div>
+                    </tab> -->
+                    <tab heading="官方媒体VS民间媒体 " ng-click="statusActive('opinion','currOpinion','officialFolk')">
+                        <div class="moduleContainer-content mediaNetizen row ">
+                            <div class="col-md-8 col-md-offset-2 ">
+                                <div class="leftNetizen ">
+                                    <div class="mediaNetizenHead ">
+                                        <i></i>
+                                        <span>官方媒体</span>
+                                    </div>
+                                    <div class="mediaNetizenMain " ng-repeat="item in status.opinion.officialList">
+                                        <p ng-bind="item.shorttitle" title="{{item.shorttitle}}"></p>
+                                        <div style="width: {{item.width}}; ">
+                                            <span ng-bind="item.cluster_nums"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rightMedia ">
+                                    <div class="mediaNetizenHead ">
+                                        <span>民间媒体</span>
+                                        <i></i>
+                                    </div>
+                                    <div class="mediaNetizenMain " ng-repeat="item in status.opinion.folkList">
+                                        <p ng-bind="item.shorttitle" title="{{item.shorttitle}}"></p>
+                                        <div style="width: {{item.width}}; ">
+                                            <span ng-bind="item.cluster_nums"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear "></div>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="集团媒体VS外部媒体 " ng-click="statusActive('opinion','currOpinion','internalOutside')">
+                        <div class="moduleContainer-content mediaNetizen row ">
+                            <div class="col-md-8 col-md-offset-2 ">
+                                <div class="leftNetizen ">
+                                    <div class="mediaNetizenHead ">
+                                        <i></i>
+                                        <span>集团媒体</span>
+                                    </div>
+                                    <div class="mediaNetizenMain " ng-repeat="item in status.opinion.internalList">
+                                        <p ng-bind="item.shorttitle" title="{{item.shorttitle}}"></p>
+                                        <div style="width: {{item.width}}; ">
+                                            <span ng-bind="item.cluster_nums"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rightMedia ">
+                                    <div class="mediaNetizenHead ">
+                                        <span>外部媒体</span>
+                                        <i></i>
+                                    </div>
+                                    <div class="mediaNetizenMain " ng-repeat="item in status.opinion.outsideList">
+                                        <p ng-bind="item.shorttitle" title="{{item.shorttitle}}"></p>
+                                        <div style="width: {{item.width}}; ">
+                                            <span ng-bind="item.cluster_nums"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear "></div>
+                            </div>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+        <div class="moduleContainer ">
+            <p class="moduleContainer-title " id="hotWord">事件热词对比
+                <button ng-click="distinct()">热词排重</button>
+                <img ng-click="wordCloudFresh()" src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp14.png " class="refreshIcon " ng-if="status.btnRights['sjfx.rmsj.sjrc']">
+            </p>
+            <div class="moduleContainer-content hotWord row ">
+                <tabset>
+                    <tab heading="官方媒体VS民间媒体 " ng-click="hotWordsCompareSwitch('folkAndOfficialHotwords','official','folk')">
+                        <div class="row hotWordMain" ng-if="status.wordCloudTab == 'folkAndOfficialHotwords'">
+                            <div class="col-md-6 officialCloud">
+                                <iframe width="100%" height="400px" frameborder="0" scrolling="no" ng-src="{{status.wordCloudUrlWithParams.left}}"></iframe>
+                            </div>
+                            <div class="col-md-6 folkCloud">
+                                <iframe width="100%" height="400px" frameborder="0" scrolling="no" ng-src="{{status.wordCloudUrlWithParams.right}}"></iframe>
+                            </div>
+                        </div>
+                        <div class="row hotWordExplain">
+                            <div class="col-md-6">
+                                官方媒体
+                            </div>
+                            <div class="col-md-6">
+                                民间媒体
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="集团媒体VS外部媒体 " ng-click="hotWordsCompareSwitch('relatedhotwords','集团媒体','外部媒体')">
+                        <div class="row hotWordMain" ng-if="status.wordCloudTab=='relatedhotwords'">
+                            <div class="col-md-6 internalCloud">
+                                <iframe width="100%" height="400px" frameborder="0" scrolling="no" ng-src="{{status.wordCloudUrlWithParams.left}}"></iframe>
+                            </div>
+                            <div class="col-md-6 outsideCloud">
+                                <iframe width="100%" height="400px" frameborder="0" scrolling="no" ng-src="{{status.wordCloudUrlWithParams.right}}"></iframe>
+                            </div>
+                        </div>
+                        <div class="row hotWordExplain">
+                            <div class="col-md-6">
+                                集团媒体
+                            </div>
+                            <div class="col-md-6">
+                                外部媒体
+                            </div>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+        <div class="moduleContainer ">
+            <p class="moduleContainer-title " id="emotionFalls">情感瀑布图</p>
+            <div class="moduleContainer-content emotionFalls row ">
+                <div class="col-md-12 emotionFallsBar ">
+                </div>
+            </div>
+        </div>
+        <div class="moduleContainer ">
+            <p class="moduleContainer-title " id="emotionColumnar">情感柱状图</p>
+            <div class="moduleContainer-content emotionColumnar row ">
+                <div class="col-md-12 emotionColumnarBar ">
+                </div>
+            </div>
+        </div>
+        <p class="footerInfo">
+            2016 宁夏日报报业集团 北京拓尔思信息技术股份有限公司 版权所有 保留所有权 本系统支持1366*768及以上分辨率
+        </p>
+    </div>
+</div>
+<div class="planEventToTopIcon" du-smooth-scroll du-scrollspy offset="20" duration="500" href="#pageTop">
+    <span>返回顶部</span>
+</div>

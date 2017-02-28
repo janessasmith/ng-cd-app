@@ -1,0 +1,78 @@
+<form name="newCateGoryMgrForm" class="form-horizontal" novalidate>
+    <div class="new-bg">
+        <div class="new-cate-gory-mgr-title">
+            <span ng-bind="title"></span>
+            <img src="./editingCenter/app/toBeCompiled/images/cls.jpg" class="pull-right pointer" ng-click="cancel()" />
+        </div>
+        <div class="new-cate-gory-mgr-concat">
+            <div class="form-group mt10 h44">
+                <label for="mingcheng" class="col-sm-2 control-label"><span class="red mr5">*</span>名称：</label>
+                <div class="w360 pull-left invalidate-input-box">
+                    <input type="text" class="form-control" ng-model="Params.CATEGORYNAME" maxlength-error-message="长度不能超过50个字符！" validator="maxlength=50,required,spechar" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" name="mingcheng" is-show-tips="isShowTipsA" placeholder="请输入稿件库类别" />
+                </div>
+            </div>
+            <div class="new-cate-gory-mgr-concat-white">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">状态：</label>
+                    <div class="mt5">
+                        <trs-single-radio ng-repeat="item in data.queryStatus" label="{{item.name}}" group="'data.queryStatus'" ischecked="item.value==Params.STATUS" callback="selectQueryStatus(item)"></trs-single-radio>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">稿库类型：</label>
+                    <div class="mt5">
+                        <span ng-bind="Params.GAOKUCATEGORYNAME"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">前一类别：</label>
+                    <div class="mt5">
+                        <trs-single-select selected-option="data.sortWeiZhi" options="data.sortWeiZhiJson"></trs-single-select>
+                    </div>
+                </div>
+            </div>
+            <div class="list-bg">
+                <div class="list-concat">
+                    <p class="ml5 fwb">稿件可投稿人员范围:</p>
+                    <div class="ml5 mb5">
+                        <trs-checkbox ischecked="data.Leftitems.length == 1 && data.Leftitems[0].OBJID == '0'" callback="selectLeftAll()"></trs-checkbox>宁夏日报报业集团
+                    </div>
+                    <div class="ml5">
+                        <div class="list-concat-1 pull-left">
+                            <ul ng-repeat="item in data.Leftitems">
+                                <li class="pointer pl5" ng-class="{'selected-item':data.selectedLeftArray.indexOf(item)>-1}" ng-bind="item.DESC||item.OBJNAME" ng-click="selectLeft(item)" ng-hide="item.OBJID == '0'"></li>
+                            </ul>
+                        </div>
+                        <div class="w90 pull-right">
+                            <button class="btn btn-default trs-btn mb10" ng-click='addLeft()' ng-disabled="data.Leftitems.length == 1 && data.Leftitems[0].OBJID == '0'">添加</button>
+                            <button class="btn btn-default trs-btn" ng-click="delLeft()" ng-disabled="data.Leftitems.length == 1 && data.Leftitems[0].OBJID == '0'">删除所选</button>
+                            <button class="btn btn-default trs-btn mt100" ng-click="delAllLeft()" ng-disabled="data.Leftitems.length == 1 && data.Leftitems[0].OBJID == '0'">清空全部</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-concat">
+                    <p class="ml5 fwb">稿库可见范围:</p>
+                    <div class="ml5 mb5">
+                        <trs-checkbox ischecked="data.Rightitems.length == 1 && data.Rightitems[0].OBJID == '0'" callback="selectRightAll()"></trs-checkbox>宁夏日报报业集团
+                    </div>
+                    <div class="ml5">
+                        <div class="list-concat-1 pull-left">
+                            <ul ng-repeat="item in data.Rightitems">
+                                <li class="pointer pl5" ng-class="{'selected-item':data.selectedRightArray.indexOf(item)>-1}" ng-bind="item.DESC||item.OBJNAME" ng-click="selectRight(item)" ng-hide="item.OBJID == '0'"></li>
+                            </ul>
+                        </div>
+                        <div class="w90 pull-right">
+                            <button class="btn btn-default trs-btn mb10" ng-click="addRight()" ng-disabled="data.Rightitems.length == 1 && data.Rightitems[0].OBJID == '0'">添加</button>
+                            <button class="btn btn-default trs-btn" ng-click="delRight()" ng-disabled="data.Rightitems.length == 1 && data.Rightitems[0].OBJID == '0'">删除所选</button>
+                            <button class="btn btn-default trs-btn mt100" ng-click="delAllRight()" ng-disabled="data.Rightitems.length == 1 && data.Rightitems[0].OBJID == '0'">清空全部</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new-cate-gory-mgr-footer">
+            <button class="btn btn_confirm mr20" validation-submit="newCateGoryMgrForm" ng-click="confirm()">确定</button>
+            <button class="btn btn_cancel mr20" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,143 @@
+.new-managesys-manage-type-mgr .modal-dialog {
+    width: 700px;
+    top: 60px;
+    position: relative;
+}
+
+.new-managesys-manage-type-mgr .modal-content {
+    background-color: #F0F2F5;
+    padding: 4px;
+}
+
+.new-managesys-manage-type-mgr .list-bg {
+    background-color: #F0F2F5;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-concat-white {
+    height: 95px;
+    padding: 10px 0;
+    background-color: white;
+}
+
+.new-managesys-manage-type-mgr .w360 {
+    width: 360px;
+}
+
+.new-managesys-manage-type-mgr .h44 {
+    height: 44px;
+}
+
+.new-managesys-manage-type-mgr .mr5 {
+    margin-right: 5px;
+}
+
+.new-managesys-manage-type-mgr .ml5 {
+    margin-left: 5px;
+}
+
+.new-managesys-manage-type-mgr .mt5 {
+    margin-top: 5px;
+}
+
+.new-managesys-manage-type-mgr .ml58 {
+    margin-left: 58px;
+}
+
+.new-managesys-manage-type-mgr .pl5 {
+    padding-left: 5px;
+}
+
+.new-managesys-manage-type-mgr .mb5 {
+    margin-bottom: 5px;
+}
+
+.new-managesys-manage-type-mgr .mr20 {
+    margin-right: 20px;
+}
+
+.new-managesys-manage-type-mgr .mb10 {
+    margin-bottom: 10px;
+}
+
+.new-managesys-manage-type-mgr .fwb {
+    font-weight: bold;
+}
+
+.new-managesys-manage-type-mgr .mt10 {
+    margin-top: 10px;
+}
+
+.new-managesys-manage-type-mgr .w90 {
+    width: 90px;
+}
+
+.new-managesys-manage-type-mgr .mt100 {
+    margin-top: 100px;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-concat label {
+    font-weight: 100;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-concat .list-concat {
+    width: 343px;
+    display: inline-block;
+    background-color: #F0F2F5;
+    padding: 10px;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-concat .list-concat .list-concat-1 {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid #ddd;
+    overflow-y: scroll;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-concat .list-concat .selected-item {
+    background-color: #0097D0;
+    color: white;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-concat .list-concat .trs-btn {
+    width: 80px;
+    height: 30px;
+    padding: 0;
+    font-size: 12px;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-concat .list-concat .trs-btn:hover {
+    width: 80px;
+    height: 30px;
+    color: #fff;
+    border: 1px solid #4696D3;
+    background-color: #4696D3;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-concat .list-concat .trs-btn[disabled]:hover {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-title {
+    height: 40px;
+    padding: 10px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-footer {
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.new-managesys-manage-type-mgr .new-managesys-manage-type-mgr-footer button {
+    width: 80px;
+    height: 30px;
+    line-height: 10px;
+    color: white;
+}

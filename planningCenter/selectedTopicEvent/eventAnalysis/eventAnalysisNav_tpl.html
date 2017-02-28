@@ -1,0 +1,16 @@
+<div class="eventAnalysis_nav">
+    <ul class="">
+        <a ui-sref="plan.eventanalysis.hotevents" ui-sref-opts="{reload: 'plan.eventanalysis.hotevents'}">
+            <li class="eventAnalysis_nav_state" ng-class="{'eventAnalysis_nav_state_active':eventAnalysisNavTab['hotevents']}">热门事件</li>
+        </a>
+        <a ui-sref="plan.eventanalysis.personalevents" ui-sref-opts="{reload: 'plan.eventanalysis.personalevents'}">
+            <li class="eventAnalysis_nav_state" ng-class="{'eventAnalysis_nav_state_active':eventAnalysisNavTab['personalevents']}">个人事件库</li>
+        </a>
+        <a ui-sref="plan.eventanalysis.applymanagement" ui-sref-opts="{reload: 'plan.eventanalysis.applymanagement'}" ng-if="tagRights['sjfx.sqgl.chakan']">
+            <li class="eventAnalysis_nav_state" ng-class="{'eventAnalysis_nav_state_active':eventAnalysisNavTab['applymanagement']}">申请管理</li>
+        </a>
+        <a ui-sref="plan.eventanalysis.eventmanagement" ui-sref-opts="{reload: 'plan.eventanalysis.eventmanagement'}" ng-if="tagRights['sjfx.sjgl.chakan']">
+            <li class="eventAnalysis_nav_state" ng-class="{'eventAnalysis_nav_state_active':eventAnalysisNavTab['eventmanagement']}">事件管理</li>
+        </a>
+    </ul>
+</div>

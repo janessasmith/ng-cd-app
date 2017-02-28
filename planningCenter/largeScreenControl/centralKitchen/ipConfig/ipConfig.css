@@ -1,0 +1,48 @@
+.contralkitchen-codeconfig {
+  margin-bottom: 65px;
+}
+.contralkitchen-codeconfig .invalidate-input-box span.ng-scope {
+  background: #e74955;
+  color: #FFF;
+  position: absolute;
+  top: -33px;
+  text-align: center;
+  min-width: 140px;
+  border-radius: 16px;
+  line-height: 28px;
+  left: 35%;
+}
+.contralkitchen-codeconfig .codeconfig-list-title-ip {
+  width: 40%;
+}
+.contralkitchen-codeconfig .codeconfig-list-title-del {
+  width: 20%;
+}
+.contralkitchen-codeconfig-btn {
+  position: absolute;
+  left: 40%;
+  bottom: 70px;
+}
+.contralkitchen-codeconfig-btn > button {
+  width: 120px;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  font-size: 18px;
+  color: #fff;
+  margin-right: 20px;
+}
+.contralkitchen-codeconfig .codeconfig-ip > input {
+  width: 180px;
+  margin: 0px auto;
+}
+.contralkitchen-codeconfig-btn .codeconfig-btn-add {
+  background: #2F98D2;
+}
+.contralkitchen-codeconfig-btn .codeconfig-btn-cancel {
+  background: #ccc;
+}
+.contralkitchen-codeconfig-btn .codeconfig-btn-save {
+  background: #5CBFDE;
+}

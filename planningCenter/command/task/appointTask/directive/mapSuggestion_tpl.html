@@ -1,0 +1,16 @@
+<div class="mapSuggestion invalidate-input-box" ng-if="!required">
+    <!-- <span class="text-red">*</span> -->
+    <span>地点</span>
+    <input maxlength-error-message="长度不能超过500个字符！" id="suggestId" type="text" name="addressName" ng-model="addressName" validator="maxlength=500,spechar" class="form-control" ng-focus="status.suggestionShow=true" ng-blur="status.suggestionShow=false" ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD">
+    <input style="display:none" name="addressValue" ng-model="addressValue">
+    <img src="./planningCenter/command/task/appointTask/images/zp21.png" alt="">
+    <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+</div>
+<div class="mapSuggestion invalidate-input-box" ng-if="required">
+    <span class="text-red">*</span>
+    <span>地点</span>
+    <input maxlength-error-message="长度不能超过500个字符！" id="suggestId" type="text" name="addressName" ng-model="addressName" validator="maxlength=500,spechar,required" class="form-control" ng-focus="status.suggestionShow=true" ng-blur="status.suggestionShow=false" ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD">
+    <input style="display:none" validator="required" name="addressValue" ng-model="addressValue">
+    <img src="./planningCenter/command/task/appointTask/images/zp21.png" alt="">
+    <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+</div>

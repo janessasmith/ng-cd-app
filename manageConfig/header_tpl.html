@@ -1,0 +1,26 @@
+<div class="col-sm-4 pl35">
+<img src="./login/img/yc-logo.png" class="img-responsive"></div> 
+<div class="col-sm-8 manage-head-tab">
+    <div class="manage-head-tabdiv">
+        <ul class="manage-head-tabUl">
+            <li ng-if="configureAccess.auth!=undefined&&configureAccess.auth.user!=undefined" ng-class="{'manage-head-tabSelected':status.headTab['groupmanage']}" ui-sref-opts="{reload :true}" data-ng-class="'manage-head-tabSelected':status.headTab['groupmanage']" class="w130" ui-sref="manageconfig.groupmanage.user({status:1})">
+                <img ng-src="./manageConfig/images/{{status.headTab['groupmanage']?'gt1-1.png':'gt1.png'}}" class="ml0" /> 组织用户管理
+            </li>
+            <li ui-sref="manageconfig.department.list({departmentid:null})" ui-sref-opts="{reload :true}" data-ng-class="{'manage-head-tabSelected':status.headTab['department']}" class="w130" ng-if="configureAccess.type.department">
+                <img ng-src="./manageConfig/images/{{status.headTab['department']?'gt7-1.png':'gt7.png'}}" /> 部门稿库管理
+            </li>
+            <li ng-if="configureAccess.auth!=undefined&&configureAccess.auth.role!=undefined" ui-sref="manageconfig.rolemanage" ui-sref-active="manage-head-tabSelected" ui-sref-opts="{reload :true}" data-ng-class="{'manage-head-tabSelected':status.headTab['rolemanage']}">
+                <img ng-src="./manageConfig/images/{{status.headTab['rolemanage']?'gt2-1.png':'gt2.png'}}" />角色管理
+            </li>
+            <li ng-if="configureAccess.product!=undefined" ui-sref="manageconfig.productmanage.newspaper({site:0})" data-ng-class="{'manage-head-tabSelected':status.headTab['productmanage']}" ui-sref-opts="{reload :true}">
+                <img ng-src="./manageConfig/images/{{status.headTab['productmanage']?'gt3-1.png':'gt3.png'}}" /> 产品管理
+            </li>
+            <li ng-if="configureAccess.system!=undefined" ui-sref="manageconfig.sysmanage" ui-sref-active="manage-head-tabSelected" data-ng-class="{'manage-head-tabSelected':status.headTab['sysmanage']}">
+                <img ng-src="./manageConfig/images/{{status.headTab['sysmanage']?'gt4-1.png':'gt4.png'}}" /> 系统管理
+            </li>
+            <li ng-if="configureAccess.log!=undefined" ui-sref="manageconfig.logmanage" ui-sref-active="manage-head-tabSelected" data-ng-class="{'manage-head-tabSelected':status.headTab['logmanage']}">
+                <img ng-src="./manageConfig/images/{{status.headTab['logmanage']?'gt6-1.png':'gt6.png'}}" /> 日志管理
+            </li>
+        </ul>
+    </div>
+</div>

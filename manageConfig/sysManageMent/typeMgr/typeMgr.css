@@ -1,0 +1,24 @@
+/*页面头部*/
+
+.managesys-manage-type-mgr {
+    background-color: white;
+}
+.managesys-manage-type-mgr-list .w60{
+	width: 60px;
+}
+.managesys-manage-type-mgr-list .w18pen{
+	width: 18%;
+}
+.managesys-manage-type-mgr-list .w160{
+	width: 160px;
+}
+.managesys-manage-type-mgr-list .w100{
+	width: 100px;
+}
+.managesys-manage-type-mgr-list .ml10{
+	margin-left: 10px;
+}
+.managesys-manage-type-mgr-list .mr10{
+	margin-right: 10px;
+}
+.managesys-manage-type-mgr-list .w60

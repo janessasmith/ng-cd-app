@@ -1,0 +1,61 @@
+<div class="newCropper_window">
+    <div class="newCropper_window_header">
+        <span>图片裁剪</span>
+        <img ng-click="cancel()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+    </div>
+    <div class="newCropper_window_container">
+        <div class="show_left_pic">
+            <img id="img" src="" class="mainImg">
+        </div>
+        <div class="photo_properties">
+            <fieldset class="property_photo">
+                <legend>实时预览窗口</legend>
+                <div class="margin5">
+                    <div ng-if="status.imgStyle" style="{{status.imgOuterDiv}}">
+                        <img ng-src="{{status.imgSrc}}" style="{{status.imgStyle}}">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="compress_photo">
+                <legend>图片信息</legend>
+                <div>
+                    <div class="pic_info">
+                        <span>原始宽度：</span>
+                        <span ng-bind='status.orgWidth'></span><span>px</span>
+                    </div>
+                    <div class="pic_info">
+                        <span>原始高度：</span>
+                        <span ng-bind="status.orgHeight"></span><span>px</span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="compress_photo">
+                <legend>裁剪参数（单位：像素）</legend>
+                <div>
+                    <div class="pic_info">
+                        <span>水平位置：</span>
+                        <input id="horizontal" type="number">
+                    </div>
+                    <div class="pic_info">
+                        <span>垂直位置：</span>
+                        <input id="vertical" type="number">
+                    </div>
+                    <div class="pic_info">
+                        <span>实际宽度：</span>
+                        <input id="realWidth" type="number">
+                    </div>
+                    <div class="pic_info">
+                        <span>实际高度：</span>
+                        <input id="realHeight" type="number">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="newCropper_window_footer">
+        <button class="btn btn-primary btn_confirm" ng-click="preview()">预览</button>
+        <button class="btn btn-primary btn_confirm" ng-click="cropper()">裁剪</button>
+        <button class="btn btn-primary btn_cancel" ng-click="cancel()">取消</button>
+    </div>
+    <div cg-busy="loadingPromise"></div>
+</div>

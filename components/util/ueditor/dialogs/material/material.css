@@ -1,0 +1,173 @@
+.row {
+    margin: 10px auto;
+    min-height: 210px;
+    overflow: hidden;
+}
+
+.list-page-pk .img-box {
+    display: block;
+    margin-left: 5px;
+    margin-right: 5px!important;
+    margin-top: 10px;
+    margin-bottom: 0;
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+.list-page-pk .img-box .img-bk {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f2f5;
+    overflow: hidden;
+}
+
+.list-page-pk .img-box .img-bk img {
+    width: 100%;
+    min-height: 100%;
+}
+
+.pagination {
+    padding-left: 150px;
+}
+
+.list-page-pk .checked-pic {
+    box-shadow: 0 0 15px #000;
+}
+
+
+/**
+     * 下拉框样式
+     */
+
+trs-single-select {
+    margin-left: 5px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.btn-group,
+.btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dropdown .bth-fix {
+    text-align: left;
+    width: 138px;
+    height: 30px;
+    padding-left: 13px !important;
+    color: #666;
+    font-size: 14px;
+    padding: 0px;
+    border-radius: 4px;
+    box-shadow: none!important;
+    margin-right: 0!important;
+    line-height: 28px;
+}
+
+.dropdown .bth-fix span {
+    display: block;
+    overflow: hidden;
+    width: 90%;
+    text-overflow: ellipsis;
+}
+
+.dropdown .dropdown-menu {
+    font-size: 12px;
+    color: #666;
+    padding: 0px 0px 4px 0px;
+    min-width: 138px;
+    margin: 0px;
+    border: 1px solid #ccc;
+}
+
+.dropdown .dropdown-menu li a:hover,
+.dropdown .dropdown-menu li:hover {
+    background: #FF4E40;
+    color: white;
+}
+
+.dropdown .dropdown-menu li a {
+    padding: 4px 0px 4px 14px;
+    color: #666;
+    cursor: pointer;
+}
+
+.dropdown .btn .caret {
+    right: 2px;
+    top: 42%;
+    position: absolute;
+    background: url("../../../../../editingCenter/app/images/xl.png") no-repeat;
+    border: none;
+    width: 14px;
+    height: 9px;
+}
+
+.dropdown-menu .dropdown-menu-item {
+    width: 90%;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.imglist {
+    position: relative;
+    float: left;
+    margin-left: 10px;
+    max-width: 550px;
+    overflow: hidden;
+}
+
+.materialInfo {
+    width: 120px;
+    float: left;
+    margin-left: 10px;
+}
+
+.materialInfo fieldset {
+    border: 1px solid #ddd;
+    padding-left: 5px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    width: 115px;
+}
+
+.materialInfo fieldset legend {
+    border: none;
+    width: 45%;
+}
+
+.materialInfo fieldset input.txt {
+    width: 65px;
+    height: 21px;
+    line-height: 21px;
+    margin: 8px 5px;
+    background: #FFF;
+    border: 1px solid #d7d7d7;
+}

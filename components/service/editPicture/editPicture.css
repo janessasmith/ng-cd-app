@@ -1,0 +1,213 @@
+.editPictures .modal-dialog {
+    width: 1210px;
+}
+
+.editPicture {
+    width: 1210px;
+    height: 610px;
+    border-radius: 4px;
+    padding: 10px 20px 20px 20px;
+    background: #fff;
+    border: 4px solid #dddddd;
+}
+
+.editPicture .editPicture_header {
+    height: 28px;
+    font-weight: bold;
+    border-bottom: 2px solid #EEEEEE;
+}
+
+.editPicture .editPicture_header img {
+    float: right;
+    border: 0;
+    cursor: pointer;
+}
+
+.editPicture .editPicture_container {
+    overflow: hidden;
+    width: 100%;
+    height: 92%;
+}
+
+.editPicture .editPicture_container .show_photo_outter {
+    width: 77%;
+    height: 95%;
+    border: 1px solid gray;
+    margin-top: 10px;
+    float: left;
+    overflow: auto;
+    border-radius: 5px;
+    background: url('./components/service/editPicture/images/edbg.png');
+}
+
+.editPicture .editPicture_container .show_photo_outter div {
+    position: relative;
+    margin: 0 auto;
+}
+
+.editPicture .editPicture_container .show_photo_outter img.mainImg {
+    width: 100%;
+    height: 100%;
+}
+
+.editPicture .editPicture_container .show_photo_outter .show_photo {
+    width: 98%;
+    height: 98%;
+    overflow: auto;
+    text-align: center;
+}
+
+.editPicture .editPicture_container .show_photo_outter .show_photo .show_photo_vertical {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.editPicture .editPicture_container .show_photo_outter .show_photo img {
+    vertical-align: middle;
+}
+
+.editPicture .editPicture_container .photo_properties {
+    float: left;
+    margin: 10px 0px 0px 10px;
+    padding: 10px;
+    border: 1px solid gray;
+    height: 95%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 22%;
+    border-radius: 4px;
+}
+
+.editPicture .editPicture_container .photo_properties .property_photo {
+    border: 1px solid #d0d0bf
+}
+
+.editPicture .editPicture_container .photo_properties .compress_photo {
+    margin-top: 10px;
+    border: 1px solid #d0d0bf
+}
+
+.editPicture .editPicture_container .photo_properties .compress_photo .messageClassKey {
+    position: static;
+    display: none;
+    opacity: 0.85;
+}
+
+.editPicture .editPicture_container .photo_properties .watermark_photo {
+    padding: 0px 10px;
+    border: 1px solid #d0d0bf
+}
+
+.editPicture .editPicture_container .photo_properties .watermark_photo .opacity input {
+    height: 17px;
+}
+
+.editPicture .editPicture_container .photo_properties,
+.editPicture .editPicture_container .photo_properties .property_photo,
+.editPicture .editPicture_container .photo_properties .compress_photo,
+.editPicture .editPicture_container .photo_properties .watermark_photo,
+.editPicture .editPicture_container .photo_properties .crop_photo {
+    font-size: 12px;
+}
+
+.editPicture .editPicture_container .photo_properties .property_photo legend,
+.editPicture .editPicture_container .photo_properties .compress_photo legend,
+.editPicture .editPicture_container .photo_properties .watermark_photo legend,
+.editPicture .editPicture_container .photo_properties .crop_photo legend {
+    display: block;
+    padding: 4px;
+    width: inherit;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #333;
+    border: 0;
+}
+
+.editPicture .editPicture_container .photo_properties .property_photo div,
+.editPicture .editPicture_container .photo_properties .compress_photo div,
+.editPicture .editPicture_container .photo_properties .watermark_photo div,
+.editPicture .editPicture_container .photo_properties .crop_photo div {
+    margin: 8px 10px;
+}
+
+.editPicture .editPicture_container .photo_properties .compress_photo .compress_photo_inputHeight input {
+    width: 100px!important;
+    height: 17px!important;
+}
+
+.editPicture .editPicture_container .photo_properties .compress_photo .requiredClass {
+    color: red!important;
+    font-size: 12px;
+}
+
+.editPicture .editPicture_container .photo_properties .compress_photo .compress_photo_button {
+    float: right;
+}
+
+.editPicture .editPicture_container .photo_properties .compress_photo .compress_photo_button button {
+    width: 50px;
+    height: 19px;
+    color: #fff;
+    text-align: center;
+    line-height: 19px;
+    padding: 0px;
+    font-size: 12px;
+}
+
+.editPicture .editPicture_container .photo_properties .compress_photo .compress_photo_button .btn_green {
+    background-color: #1ABAA0;
+    border: none;
+}
+
+.editPicture .editPicture_container .photo_properties .watermark_photo label {
+    font-weight: normal;
+}
+
+.editPicture .editPicture_container .photo_properties .compress_photo .compress_photo_inputHeight input,
+.editPicture .editPicture_container .photo_properties .watermark_photo .watermark_photo_watermarkType,
+.editPicture .editPicture_container .photo_properties .watermark_photo .opacity input {
+    border-radius: 4px;
+    border: 1px solid #A9A9A9;
+}
+
+.editPicture .editPicture_footer {
+    text-align: center;
+}
+
+.editPicture .editPicture_footer button {
+    width: 80px;
+    height: 28px;
+    background: #4496d2;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    padding: 0px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.editPicture .editPicture_container .photo_properties .watermark_photo .watermark_photo_bg {
+    margin: 10px;
+    overflow: hidden;
+    padding: 0;
+    background: url('./components/service/editPicture/images/edbg.png');
+}
+
+.editPicture trs-single-radio span {
+    cursor: pointer;
+    padding-top: initial!important;
+}
+
+.editPicture .regular-radio + label {
+    cursor: pointer;
+}
+
+.editPicture .regular-checkbox + label {
+    padding: 6px!important;
+}
+
+.editPicture .regular-checkbox:checked + label:after {
+    top: -1px!important;
+    left: 0px!important;
+}

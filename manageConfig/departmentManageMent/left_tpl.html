@@ -1,0 +1,22 @@
+<div class="departmentManageLeft iwo_accordion iwo_accordion_new">
+    <!--  <accordion class="iwo_accordion iwo_accordion_new" close-others="true"> -->
+    <userManage class="panel-body">
+        <!--   <accordion-group class="iwo_accordion iwo_accordion_new" is-open="status.isOpen">
+                <accordion-heading>
+                    <i class="manageConfig_list_headImg"><img ng-src="./manageConfig/groupUserManageMent/images/yhgl.png" /></i>
+                    <a>部门管理</a>
+                </accordion-heading> -->
+        <ul>
+            <li ng-click="unitList()" ng-class="{'active':status.selectedDep==''}">
+                <i class="manageConfig_list_headImg"><img ng-src="./manageConfig/images/{{status.selectedDep==''?'unit-blue.png':'unit-white.png'}}" /></i>
+                <a>单位列表</a>
+            </li>
+            <li ng-repeat="department in data.departmentLists" ng-class="{'active':status.selectedDep==department.DEPARTMENTID}" ng-click="departmentList(department)">
+                <i class="manageConfig_list_headImg"><img ng-src="./manageConfig/images/{{status.selectedDep==department.DEPARTMENTID?'dep-blue.png':'dep-white.png'}}" /></i>
+                <a>{{department.DEPARTMENTNAME}}</a>
+            </li>
+        </ul>
+        <!-- </accordion-group> -->
+        <userManage>
+            <!--  </accordion> -->
+</div>

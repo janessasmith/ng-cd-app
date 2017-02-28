@@ -1,0 +1,36 @@
+.bangding-weiboAccount .modal-dialog {
+    width: 450px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+}
+
+.bangding-weiboAccount .weibo-logo {
+    height: 60px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    background: url(./manageConfig/productManageMent/images/sina-logo.png) no-repeat 0px center;
+}
+
+.bangding-weiboAccount .weibo-logo span {
+    margin-left: 105px;
+    line-height: 75px;
+}
+
+.bangding-weiboAccount .sina-icon-zh {
+    text-indent: 15px;
+    background: url(./manageConfig/productManageMent/images/sina-zh.png) no-repeat 5px center;
+}
+
+.bangding-weiboAccount .sina-icon-mm {
+    text-indent: 15px;
+    background: url(./manageConfig/productManageMent/images/sina-mm.png) no-repeat 5px center;
+}
+
+.bangding-weiboAccount .weibo-wd90 {
+    width: 90px;
+}
+.bangding-weiboAccount .weibo-account-ml30{
+    margin-left: 30px;
+}

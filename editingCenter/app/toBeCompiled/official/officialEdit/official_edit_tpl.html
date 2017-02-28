@@ -1,0 +1,194 @@
+<form name="officialEditform" novalidate>
+    <div class="picture-edit-head">
+        <img src="./resourceCenter/images/mtrh-official.gif">
+        <p class="pc-local">采编中心 > app > 官员库 > 信息{{data.officer.METADATAID?'编辑':'新建'}}</p>
+        <div class="Iw-box-fix box-fix-bt">
+            <div class="txt_r">
+                <button class="btn btn-primary" ng-click="confirm()" style="padding-right: 14px;">
+                    <span class="s_icon"><img ng-src="./editingCenter/iWo/images/csave.png"></span> 保存
+                </button>
+                <button class="btn btn-primary" ng-click="trial()" ng-show="status.officerstatus=='tobecompiled'" style="padding-right: 14px;" ng-if="status.btnRights['app.daibian.songshen']">
+                    <span class="s_icon"><img ng-src="./editingCenter/website/images/b52.png"></span> 送审
+                </button>
+                <button class="btn btn-primary" ng-click="revoke()" ng-show="status.officerstatus=='pending'" style="padding-right: 14px;" ng-if="status.btnRights['app.daishen.tuigao']">
+                    <span class="s_icon"><img ng-src="./editingCenter/website/images/b83.png"></span> 撤稿
+                </button>
+                <button class="btn btn-primary" ng-click="directSigned()" ng-show="status.officerstatus!='signed'" style="padding-right: 14px;" ng-if="status.btnRights['app.daibian.qianfa']||status.btnRights['app.daishen.qianfa']">
+                    <span class="s_icon"><img ng-src="./editingCenter/website/images/b53.1.png"></span> 签发
+                </button>
+                <button class="btn btn-primary" ng-click="close()" style="padding-right: 14px;">
+                    <span class="s_icon"><img ng-src="./editingCenter/iWo/images/cclose.png"></span> 关闭
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="picture-edit-con official-edit-con">
+        <div class="atals row_news  mc-padding-bottom">
+            <div id="section-1">
+                <div class="row mc-padding-top-xs mr0">
+                    <div class="edit-news-title">基本信息</div>
+                    <div class="col-md-8 mt20">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="form-group clearfix">
+                                    <div class="col-sm-1 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>姓名：</div>
+                                    <div class="col-sm-10 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000">
+                                            <input class="form-control" type="text" name="name" ng-model="data.officer.NAME" placeholder="请输入官员姓名" validator="spechar,required" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-sm-2 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>学历：</div>
+                                    <div class="col-sm-4 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000">
+                                            <input class="form-control" type="text" name="education" ng-model="data.officer.EDUCATIONALHISTORY" placeholder="请输入官员学历" validator="spechar,required" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB">
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group clearfix">
+                                    <div class="col-sm-1 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>职位：</div>
+                                    <div class="col-sm-10 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000">
+                                            <input class="form-control" type="text" name="position" ng-model="data.officer.POST" placeholder="请输入官员目前所在职位" validator="spechar,required" ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-sm-2 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>性别：</div>
+                                    <div class="col-sm-4 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000" style="margin-top:5px;">
+                                            <trs-single-radio ng-repeat="gender in radio.genderJson" label="{{gender.name}}" group="'radio.genderJson'" ischecked="data.officer.GENDER==gender.name" callback="data.officer.GENDER=gender.name"></trs-single-radio>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-12">
+                                <div class="form-group clearfix">
+                                    <div class="col-sm-1 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>籍贯：</div>
+                                    <div class="col-sm-4 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000">
+                                            <input class="form-control" type="text" name="nativePlace" ng-model="data.officer.NATIVEPLACE" placeholder="请输入官员籍贯" validator="spechar,required" ng-mouseenter="isShowTipsE=true" ng-mouseleave="isShowTipsE=false" is-show-tips="isShowTipsE">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>出生日期：</div>
+                                    <div class="col-sm-4 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000">
+                                            <input type="text" class="form-control" name="birthday" ng-model="data.officer.BIRTHDAY" data-date-format="yyyy-MM" data-autoclose="1" validator="spechar,required" ng-mouseenter="isShowTipsF=true" ng-mouseleave="isShowTipsF=false" is-show-tips="isShowTipsF" bs-datepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group clearfix">
+                                    <div class="col-sm-1 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>民族：</div>
+                                    <div class="col-sm-4 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000">
+                                            <input class="form-control" type="text" name="nation" ng-model="data.officer.NATION" placeholder="请输入官员所属民族" validator="spechar,required" ng-mouseenter="isShowTipsG=true" ng-mouseleave="isShowTipsG=false" is-show-tips="isShowTipsG">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>入党时间：</div>
+                                    <div class="col-sm-4 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000">
+                                            <input type="text" class="form-control" name="partyDate" ng-model="data.officer.PARTYDATE" data-date-format="yyyy-MM" data-autoclose="1" validator="spechar,required" ng-mouseenter="isShowTipsH=true" ng-mouseleave="isShowTipsH=false" is-show-tips="isShowTipsH" bs-datepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group clearfix">
+                                    <div class="col-sm-1 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>毕业院校：</div>
+                                    <div class="col-sm-4 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000">
+                                            <input class="form-control" type="text" name="school" ng-model="data.officer.SCHOOL" placeholder="请输入官员毕业院校" validator="spechar,required" ng-mouseenter="isShowTipsI=true" ng-mouseleave="isShowTipsI=false" is-show-tips="isShowTipsI">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>参加工作时间：</div>
+                                    <div class="col-sm-4 mc-padding-horizontal-0">
+                                        <div class="invalidate-input-box z1000">
+                                            <input type="text" class="form-control" name="workTime" ng-model="data.officer.WORKTIME" data-date-format="yyyy-MM" data-autoclose="1" validator="spechar,required" ng-mouseenter="isShowTipsJ=true" ng-mouseleave="isShowTipsJ=false" is-show-tips="isShowTipsJ" bs-datepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-md-offset-1">
+                        <div class="upload-pic-bk">
+                            <div class="uploadBtn">
+                                <img ng-src="{{data.officer.FILEPATH?data.officer.FILEPATH:'./resourceCenter/images/official.png'}}" ng-class="{'unLoadImage':!data.officer.FILEPATH}">
+                                <a href ng-click="data.progress=0" trs-upload auto="true" filetype="images" add-btn="true" call-back="callBack" src="/wcm/openapi/uploadImage" class="upload-edit"></a>
+                            </div>
+                            <!-- 进度条 -->
+                            <!-- <div class="percentage">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':data.progress}">{{data.progress}}
+                                        </div>
+                                    </div>
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="section-2">
+                <div class="row mc-padding-top-xs mr0">
+                    <div class="edit-news-title">个人简介</div>
+                    <div class="m_box_item mt20">
+                        <div class="col-sm-9 invalidate-input-box ">
+                            <div ng-mouseenter="isShowTips_CONTENT=true" ng-mouseleave="isShowTips_CONTENT=false" class="mc-padding-horizontal-0 {{officialEditform.content.$invalid?'content-error':''}}">
+                                <ueditorLocation>
+                                </ueditorLocation>
+                            </div>
+                        </div>
+                        <input type="text" class="ueditorReplace" is-show-tips="isShowTips_CONTENT" validator="required" name="content" ng-model="data.officer.HTMLCONTENT" />
+                    </div>
+                </div>
+            </div>
+            <!-- <div id="section-3">
+                <div class="row mc-padding-top-xs mr0">
+                    <div class="edit-news-title">个人履历
+                        <a du-smooth-scroll href="#bottom"><img src="./editingCenter/app/images/b14.png" class="gl-add-btn" ng-click="addRecord()"></a>
+                    </div>
+                    <div class="m_box_item mt20">
+                        <div ng-repeat="record in data.officer.RECORDS track by $index" class="form-group official-resume-list clearfix" ng-class="{'del-resume-bk':deleteIndex==$index}">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="col-sm-12 resume-date">
+                                        <div class="col-sm-3 mc-padding-horizontal-0 sc-tit">开始时间：</div>
+                                        <div class="col-sm-7 mc-padding-horizontal-0">
+                                            <div class="invalidate-input-box z1000">
+                                                <input type="text" class="form-control" name="recordFromDate" ng-model="record.FROMDATE" data-date-format="yyyy-MM" data-autoclose="1" data-max-date="today" validator="spechar,required" ng-mouseenter="isShowTipsL=true" ng-mouseleave="isShowTipsL=false" is-show-tips="isShowTipsL" bs-datepicker>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 resume-date">
+                                        <div class="col-sm-3 mc-padding-horizontal-0 sc-tit">结束时间：</div>
+                                        <div class="col-sm-7 mc-padding-horizontal-0" ng-if="record.SOFAR==='false'||!record.SOFAR">
+                                            <div class="invalidate-input-box z1000">
+                                                <input type="text" class="form-control" name="recordUntilDate" ng-model="record.UNTILDATE" data-date-format="yyyy-MM" data-autoclose="1" data-min-date="{{record.FROMDATE}}" data-max-date="today" validator="spechar,required" ng-mouseenter="isShowTipsN=true" ng-mouseleave="isShowTipsN=false" is-show-tips="isShowTipsN" bs-datepicker>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1 resume-so-far">
+                                            <span ng-show="record.SOFAR==='true'||record.SOFAR==true">至今</span>
+                                            <i ng-click="setSoFar($index)" ng-show="record.SOFAR==='false'&&!data.hasSoFar||!record.SOFAR==true&&!data.hasSoFar">至今？</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="form-group mt10">
+                                    <div class="col-sm-1 mc-padding-horizontal-0 sc-tit lhei150">内容：</div>
+                                    <div class="col-sm-11 invalidate-input-box">
+                                        <textarea name="recordCon{{$index}}" ng-model="record.CONTENT" placeholder="请输入履历内容（必填）" class="form-control" maxlength-error-message="长度不能超过500个字符！" validator="spechar,maxlength=500,required" ng-mouseenter="isShowTipsM=true" ng-mouseleave="isShowTipsM=false" is-show-tips="isShowTipsM" style="height: 90px!important;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 gl-del-btn">
+                                <img src="./manageConfig/productManageMent/images/i3.png" ng-click="deleteRecord($index)">
+                            </div>
+                        </div>
+                    </div>
+                    <p id="bottom"></p>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</form>

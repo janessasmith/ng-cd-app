@@ -1,0 +1,30 @@
+{
+  "name": "watermarkjs",
+  "main": "dist/watermark.js",
+  "version": "2.0.0",
+  "homepage": "http://brianium.github.io/watermarkjs/",
+  "authors": [
+    "Brian Scaturro <scaturrob@gmail.com>"
+  ],
+  "description": "Watermarked images in the browser",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "file",
+    "watermark",
+    "image",
+    "canvas"
+  ],
+  "license": "MIT",
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.0",
+    "commit": "91a77a8d52200131b9871aeb24279bba7b486c1a"
+  },
+  "_source": "https://github.com/brianium/watermarkjs.git",
+  "_target": "^2.0.0",
+  "_originalSource": "watermarkjs",
+  "_direct": true
+}

@@ -1,0 +1,65 @@
+<div style="min-height:930px;">
+    <div trs-scroll-fix class="row edit_right_head picture_library_head">
+        <div class="col-md-12 col-lg-12">
+            <button class="btn btn-default btn-commen" ng-mouseenter="status.batchOperateBtn['hoverStatus']='new'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-if="status.btnRights['material.manager.shangchuan']">
+                <a ui-sref="resourcevideoedit({materialtypeid:data.materialTypeId,topclassifyid:data.topclassifyid})" target="_blank"><span class="s_icon"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='new'?'b1-1.png':'b1.png'}}"/></span> 上传</a>
+            </button>
+            <button class="btn btn-default btn-commen" ng-disabled="data.selectedArray.length<1" ng-mouseenter="status.batchOperateBtn['hoverStatus']='batchDelete'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="batchDelete(data.selectedArray)" ng-if="status.btnRights['material.manager.shanchu']">
+                <span class="s_icon"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='batchDelete'?'fg3-1.png':'fg3.png'}}" /></span> 批量删除
+            </button>
+            <button class="btn btn-default btn-commen" ng-disabled="data.selectedArray.length<1" ng-mouseenter="status.batchOperateBtn['hoverStatus']='takeDraft'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="takeDraft()" ng-if="status.btnRights['material.manager.qugao']">
+                <span class="s_icon"><img ng-src="./resourceCenter/images/{{status.batchOperateBtn['hoverStatus']=='takeDraft'?'z56-1.png':'z56.png'}}" /></span> 取稿
+            </button>
+            <button class="btn btn-default btn-commen" ng-disabled="data.selectedArray.length<1" ng-mouseenter="status.batchOperateBtn['hoverStatus']='consolidatedDraft'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="consolidatedDraft()" ng-if="status.btnRights['material.manager.hebingqugao']">
+                <span class="s_icon"><img ng-src="./editingCenter/iWo/images/{{status.batchOperateBtn['hoverStatus']=='consolidatedDraft'?'i59-1.png':'i59.png'}}" /></span> 合并取稿
+            </button>
+            <button class="btn btn-default btn-commen" ng-disabled="data.selectedArray.length<1" ng-mouseenter="status.batchOperateBtn['hoverStatus']='download'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="download()" ng-if="status.btnRights['material.manager.export']">
+                <span class="s_icon"><img ng-src="./resourceCenter/images/{{status.batchOperateBtn['hoverStatus']=='download'?'z55-1.png':'z55.png'}}" /></span> 下载
+            </button>
+        </div>
+    </div>
+    <div class="row edit_right_mid">
+        <div class="col-md-6">
+            <trs-time-select selected-option="timeType" options="timeTypeJsons" callback="queryByDropdown('OperTime',timeType.value)" fromdate="data.fromdate" untildate="data.untildate"></trs-time-select>
+            <!-- 排序方式 -->
+            <trs-single-select ng-show="status.isESSearch" selected-option="sortType" callback="queryByDropdown('', sortType.value)" options="sortTypeJsons"></trs-single-select>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group edit_input_group">
+                <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="keywords" ng-keypress="fullTextSearch($event)">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn_edit_search" type="button" ng-click="fullTextSearch()">搜索</button>
+                </span>
+            </div>
+            <trs-single-select selected-option="meterailAllSelected" callback="queryBymeterailAll()" options="meterailAll" class="pull-right"></trs-single-select>
+        </div>
+    </div>
+    <div class="row plr10">
+        <div class="img-flow list-page-pk clearfix">
+            <div cg-busy="loadingPromise"></div>
+            <div class="img-box" ng-repeat="video in data.videos" ng-class="{'checked-pic':data.selectedArray.indexOf(video)>=0}">
+                <trs-checkbox ischecked="data.selectedArray.indexOf(video)<0?false:true" callback="clickedVideo(video)"></trs-checkbox>
+                <a ui-sref="resourcevideodetail({videoid:video.MATERIALID,materialtypeid:data.materialTypeId,topclassifyid:data.topclassifyid})" class="img-bk" target="_blank">
+                    <img ng-src="{{video.MAS[0].pic||video.MAS[0].PIC}}" alt="">
+                    <span ng-bind="video.TITLE"></span>
+                </a>
+                <ul class="mark-ls">
+                    <li ng-if="video.isTakeDraft" ng-click="viewInfo(video.MATERIALID)">取</li>
+                </ul>
+                <div class="set-pk">
+                    <i></i>
+                    <div class="set-pk-pop am-flip-x" ng-if="status.btnRights['material.manager.bianji']||status.btnRights['material.manager.shangchuan']">
+                        <a target="_blank" ui-sref="resourcevideoedit({videoid:video.MATERIALID,materialtypeid:data.materialTypeId,topclassifyid:data.topclassifyid})" class="edit-pic-btn" ng-if="status.btnRights['material.manager.bianji']">编辑音视频</a>
+                        <a href="" ng-if="status.btnRights['material.manager.shanchu']" class="del-pic-btn" ng-click="separateDelete(video)">删除音视频</a>
+                        <a href="" class="down-pic-btn" ng-click="download(video)" ng-if="status.btnRights['material.manager.export']">音视频下载</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page cls-paging">
+    <trs-pagenation-left page-count="data.page" callback="selectPageNum()" is-select-pagecount="true"></trs-pagenation-left>
+    <pagination total-items="data.page.ITEMCOUNT" ng-change="pageChanged()" ng-model="data.page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="data.page.PAGESIZE" rotate="false" num-pages="data.page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+    <trs-pagenation-right callback="jumpToPage()" currpage="status.copyCurrPage" page="data.page"></trs-pagenation-right>
+</div>

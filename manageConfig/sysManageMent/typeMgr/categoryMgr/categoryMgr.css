@@ -1,0 +1,36 @@
+/*页面头部*/
+
+.managesys-manage-category-mgr {
+    background-color: white;
+}
+
+
+/*页面列表*/
+
+.managesys-manage-category-mgr-list .w270 {
+    width: 270px;
+}
+
+.managesys-manage-category-mgr-list .w18pen {
+    width: 18%;
+}
+
+.managesys-manage-category-mgr-list .w60 {
+    width: 60px;
+}
+
+.managesys-manage-category-mgr-list .w160 {
+    width: 160px;
+}
+
+.managesys-manage-category-mgr-list .w100 {
+    width: 100px;
+}
+
+.managesys-manage-category-mgr-list .ml10 {
+    margin-left: 10px;
+}
+
+.managesys-manage-category-mgr-list .mr10 {
+    margin-right: 10px;
+}

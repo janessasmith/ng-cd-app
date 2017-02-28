@@ -1,0 +1,47 @@
+.planCenCommandAppointTask .btn-commen.four-word-btn {
+  width: 100px;
+}
+.planCenCommandAppointTask .task-mapContainer {
+  height: 500px;
+  border: 1px solid #aaa;
+  margin-bottom: 10px;
+}
+.planCenCommandAppointTask .toolbar .form-control {
+  width: 130px;
+  height: 30px;
+  display: initial;
+}
+.planCenCommandAppointTask .xcol-user {
+  width: 90px;
+}
+.planCenCommandAppointTask .xcol-status {
+  width: 90px;
+}
+.planCenCommandAppointTask .xcol-type {
+  width: 80px;
+}
+.planCenCommandAppointTask .xcol-taskTime {
+  width: 205px;
+}
+.planCenCommandAppointTask .xcol-createTime {
+  width: 155px;
+}
+.planCenCommandAppointTask .xcol-material {
+  width: 60px;
+}
+.planCenCommandAppointTask .custom-wrap {
+  width: 300px!important;
+  z-index: 3;
+}
+.planCenCommandAppointTask .taskuser {
+  cursor: pointer;
+  position: relative;
+}
+.planCenCommandAppointTask .BMapLabel {
+  max-width: inherit;
+  border: 1px solid #0797DB!important;
+  border-radius: 4px;
+}
+.planCenCommandAppointTask .anchorBL {
+  display: none;
+}

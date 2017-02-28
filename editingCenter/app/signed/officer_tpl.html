@@ -1,0 +1,52 @@
+<div trs-scroll-fix class="row edit_right_head picture_library_head">
+    <div class="col-md-8 col-lg-9">
+        <button class="btn btn-default btn-commen" ng-disabled="data.selectedArray.length<1" ng-mouseenter="status.batchOperateBtn['hoverStatus']='retraction'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="retraction()" ng-if="status.btnRights['app.yiqianfa.quxiaoqianfa']">
+            <span class="s_icon"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='retraction'?'zm38-1.png':'zm38.png'}}"/></span> 取消签发
+        </button>
+        <button class="btn btn-default btn-commen" ng-disabled="data.selectedArray.length<1" ng-mouseenter="status.batchOperateBtn['hoverStatus']='batchDelete'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="batchDelete(data.selectedArray)">
+            <span class="s_icon"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='batchDelete'?'fg3-1.png':'fg3.png'}}" /></span> 批量删除
+        </button>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <ol class="breadcrumb pull-right edit_breadcrumb">
+            <trs-nav-location is-all-route="isAllRoute"></trs-nav-location>
+        </ol>
+    </div>
+</div>
+<div class="row edit_right_mid app-selectedTimeType">
+    <div class="col-md-12">
+        <div class="input-group edit_input_group">
+            <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="keywords" ng-keypress="officerSearch($event)">
+            <span class="input-group-btn">
+                <button class="btn btn-default btn_edit_search" type="button" ng-click="officerSearch()">搜索</button>
+            </span>
+        </div>
+        <trs-single-select selected-option="officerSearchSelected" callback="queryByOfficerAll()" options="officerSearchJsons" class="pull-right"></trs-single-select>
+    </div>
+</div>
+<!-- 官员列表 -->
+<div class="edit_table" style="min-height:843px;">
+    <div cg-busy="loadingPromise"></div>
+    <div class="app-official-tb list-page-pk clearfix">
+        <!-- ng-repeat -->
+        <div class="img-box" ng-repeat="officer in data.officers" ng-class="{'checked-pic':data.selectedArray.indexOf(officer)>=0}">
+            <trs-checkbox ischecked="data.selectedArray.indexOf(officer)<0?false:true" callback="clickedOfficer(officer)"></trs-checkbox>
+            <a href class="img-bk" target="_blank" ui-sref="appofficialdetail({channelid:status.params.ChannelId,officerid:officer.CHNLDOCID,officerstatus:status.officerstatus})">
+                <img ng-src="{{officer.FILEPATH?officer.FILEPATH:'./resourceCenter/images/official.png'}}">
+                <span ng-bind="officer.NAME"></span>
+            </a>
+            <div class="set-pk">
+                <i></i>
+                <div class="set-pk-pop am-flip-x">
+                    <a target="_blank" ui-sref="appofficial({channelid:status.params.ChannelId,officerid:officer.CHNLDOCID,officerstatus:status.officerstatus})" class="edit-pic-btn" ng-if="status.btnRights['app.yiqianfa.bianji']">编辑信息</a>
+                    <a href ng-click="separateDelete(officer)" class="del-pic-btn">删除信息</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page cls-paging">
+    <trs-pagenation-left page-count="data.page" callback="selectPageNum()" is-select-pagecount="true"></trs-pagenation-left>
+    <pagination total-items="data.page.ITEMCOUNT" ng-change="pageChanged()" ng-model="data.page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="data.page.PAGESIZE" rotate="false" num-pages="data.page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+    <trs-pagenation-right callback="jumpToPage()" currpage="data.copyCurrPage" page="data.page"></trs-pagenation-right>
+</div>

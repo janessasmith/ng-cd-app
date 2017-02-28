@@ -1,0 +1,96 @@
+<div trs-scroll-fix class="row edit_right_head">
+    <div class="col-md-8 col-lg-9">
+        <button class="btn btn-default btn-commen opacity100" ng-disabled="data.selectedArray.length==0" ng-mouseenter="status.batchOperateBtn['hoverStatus']='sign'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="sign()" ng-if="status.btnRights['wechat.daishen.qianfa']">
+            <span class="s_icon">
+                <img ng-src="./editingCenter/weixin/images/{{status.batchOperateBtn['hoverStatus']=='sign'&&data.selectedArray.length>0?'b5-1.png':'b5.png'}}">
+            </span>签发
+        </button>
+        <button class="btn btn-default btn-commen opacity100" ng-disabled="data.selectedArray.length==0" ng-click="rejectionDraft()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='rejection'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-if="status.btnRights['wechat.daishen.tuigao']">
+            <span class="s_icon">
+                <img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='rejection'&&data.selectedArray.length>0?'zm38-1.png':'zm38.png'}}"/>
+            </span> 撤稿
+        </button>
+        <button class="btn btn-default btn-commen opacity100" ng-disabled="data.selectedArray.length==0" ng-mouseenter="status.batchOperateBtn['hoverStatus']='draftlist'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="draftlist()" ng-if="status.btnRights['wechat.daishen.fagaodan']">
+            <span class="s_icon"><img ng-src="./editingCenter/weixin/images/{{status.batchOperateBtn['hoverStatus']=='draftlist'&&data.selectedArray.length>0?'b7-1.png':'b7.png'}}"></span>发稿单
+        </button>
+        <button class="btn btn-default btn-commen opacity100 web_signed_btn_pixel100" ng-disabled="data.selectedArray.length==0" ng-mouseenter="status.batchOperateBtn['hoverStatus']='outSending'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="outSending()" ng-if="status.btnRights['wechat.daishen.waifa']&&status.btnLength<4">
+            <span class="s_icon"><img ng-src="./editingCenter/iWo/images/{{status.batchOperateBtn['hoverStatus']=='outSending'&&data.selectedArray.length>0?'i20-1.png':'i20.png'}}">
+                </span>邮件外发
+        </button>
+        <button class="btn btn-default btn-commen opacity100" ng-disabled="data.selectedArray.length==0" ng-mouseenter="status.batchOperateBtn['hoverStatus']='collectDraft'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="collectDraft()" ng-if="status.btnRights['wechat.daishen.shoucang']&&status.btnLength<4">
+            <span class="s_icon"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='collectDraft'&&data.selectedArray.length>0?'zm12-1.png':'zm12.png'}}">
+                </span>收藏
+        </button>
+        <button class="btn btn-default btn-commen opacity100" ng-disabled="data.selectedArray.length==0" ng-mouseenter="status.batchOperateBtn['hoverStatus']='exportDraft'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="exportDraft()" ng-if="status.btnLength<4">
+            <span class="s_icon"><img ng-src="./editingCenter/iWo/images/{{status.batchOperateBtn['hoverStatus']=='exportDraft'&&data.selectedArray.length>0?'i17-1.png':'i17.png'}}">
+                </span>导出
+        </button>
+        <button class="btn btn-default btn-commen opacity100" ng-disabled="data.selectedArray.length==0" ng-mouseenter="status.batchOperateBtn['hoverStatus']='printBtn'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''" ng-click="printBtn()" ng-if="status.btnLength<4">
+            <span class="s_icon"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='printBtn'&&data.selectedArray.length>0?'zm15-1.png':'zm15.png'}}">
+                </span>打印
+        </button>
+        <div class="btn-group" role="group" ng-if="status.btnLength>=4">
+            <button type="button" class="btn btn-default dropdown-toggle btn-commen opacity100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-disabled="data.selectedArray.length==0" ng-mouseenter="batchOperateBtn['hoverStatus']='more'" ng-mouseleave="batchOperateBtn['hoverStatus']=''">
+                <span class="s_icon"><img ng-src="./editingCenter/app/images/{{batchOperateBtn['hoverStatus']=='more'&&data.selectedArray.length>0?'b8-1.png':'b8.png'}}" /></span> 更多
+                <span class="pulldown_icon"></span>
+            </button>
+            <ul class="dropdown-menu edit_dropdown_menu" ng-show="data.selectedArray.length>0">
+                <li><a ng-click="outSending()" ng-if="status.btnRights['wechat.daishen.waifa']">邮件外发</a></li>
+                <li><a ng-click="collectDraft()" ng-if="status.btnRights['wechat.daishen.shoucang']">收藏</a></li>
+                <li><a ng-click="exportDraft()">导出</a></li>
+                <li><a ng-click="printBtn()">打印</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <ol class="breadcrumb pull-right edit_breadcrumb">
+            <li>
+                <span ng-bind="status.currChannel|trsLimitTo:10" title="{{status.currChannel}}"></span>
+                <span>待审平台</span>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row edit_right_mid">
+    <span class="s_onlyme">只看我的</span>
+    <trs-radio ckstatus="status.onlyMine" ckcallback="isOnlyMine()"></trs-radio>
+    <trs-time-select selected-option="data.selectedTimeType" callback="queryByDropdown('timeType',data.selectedTimeType.value)" options="data.timeTypeArray" fromdate="data.fromdate" untildate="data.untildate"></trs-time-select>
+    <div class="input-group edit_input_group mr15">
+        <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="keywords" ng-keypress="fullTextSearch($event)">
+        <span class="input-group-btn">
+            <button class="btn btn-default btn_edit_search" type="button" ng-click="fullTextSearch()">搜索</button>
+        </span>
+    </div>
+    <trs-single-select selected-option="data.iWoAllSelected" class="pull-right" options="data.iWoAll"></trs-single-select>
+    <trs-single-select class="pull-right" ng-show="status.isESSearch" selected-option="data.sortType" callback="queryByDropdown('', data.sortType.value)" options="data.sortTypeJsons"></trs-single-select>
+</div>
+<div class="edit_table border_radius_5 weixin_border_radius_5" style="border:none;">
+    <div class="mb90 clearfix">
+        <!-- ng-repeat -->
+        <div ng-repeat="item in data.items" class="wx-pending-ls">
+            <img class="type-icon" ng-src="./editingCenter/weixin/images/icon-{{item.MessageType}}.png">
+            <!-- 图文 -->
+            <a href ng-show="item.MessageType == 'mpnews'" ng-repeat="article in item.articles" class="pending-bk" ng-class="{'pending-ls-tp':$index==0,'mt14':$index==1}">
+                <!-- 封面 -->
+                <img ng-src="{{article.picurl}}">
+                <!-- 描述 -->
+                <span ng-bind="article.description | trsLimitTo:15" ng-class="{'pending-ls-des':$index==0}"></span>
+            </a>
+            <!-- 非图文 -->
+            <a href ng-show="item.MessageType != 'mpnews'" class="pending-bk pending-ls-tp">
+                <!-- 封面 -->
+                <img ng-show="item.MessageType != 'text'" ng-src="{{item.MSA[0].pic || item.MultimediaPath}}">
+                <!-- 文字 -->
+                <span ng-show="item.MessageType=='text'" class="pending-ls-text" ng-bind="item.Content | trsLimitTo:70"></span>
+                <i ng-show="item.MessageType=='voice'" class="voice-icon"></i>
+                <i ng-show="item.MessageType=='mpvideo'" class="video-icon"></i>
+            </a>
+        </div>
+    </div>
+    <div class="page">
+        <trs-pagenation-left page-count="page" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+        <pagination total-items="page.totalNum" ng-change="pageChanged()" ng-model="page.pageIndex" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="page.pagesize" rotate="false" num-pages="page.pageCount" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+        <trs-pagenation-right callback="jumpToPage()" currpage="status.copyCurrPage" page="page"></trs-pagenation-right>
+    </div>
+    <div cg-busy="loadingPromise"></div>
+</div>

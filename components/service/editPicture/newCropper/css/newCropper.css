@@ -1,0 +1,137 @@
+.newCropper .modal-dialog {
+    width: 1210px;
+}
+
+.newCropper_window {
+    width: 1210px;
+    height: 610px;
+    border-radius: 4px;
+    padding: 10px 20px 20px 20px;
+    background: #fff;
+    border: 4px solid #dddddd;
+}
+
+.newCropper_window .newCropper_window_header {
+    height: 28px;
+    font-weight: bold;
+    border-bottom: 2px solid #EEEEEE;
+}
+
+.newCropper_window .newCropper_window_header img {
+    float: right;
+    border: 0;
+    cursor: pointer;
+}
+
+.newCropper_window .newCropper_window_container {
+    overflow: hidden;
+    width: 100%;
+    height: 92%;
+}
+
+.newCropper_window .newCropper_window_container .show_left_pic {
+    width: 894px;
+    height: 95%;
+    border: 1px solid gray;
+    margin-top: 10px;
+    float: left;
+    overflow: hidden;
+    border-radius: 5px;
+    /*
+    background: url('./components/service/newCropper_window/images/edbg.png');*/
+}
+
+.newCropper_window .newCropper_window_container .show_left_pic div {
+    /*position: relative;
+    margin: 0 auto;*/
+}
+
+.newCropper_window .newCropper_window_container .photo_properties {
+    float: left;
+    margin: 10px 0px 0px 10px;
+    padding: 10px;
+    border: 1px solid gray;
+    height: 95%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 255px;
+    border-radius: 4px;
+}
+
+.newCropper_window .newCropper_window_container .photo_properties .property_photo {
+    border: 1px solid #d0d0bf
+}
+
+.newCropper_window .newCropper_window_container .photo_properties .property_photo .margin5 {
+    margin: 0 5px 5px;
+    width: 204px;
+    height: 204px;
+}
+
+.newCropper_window .newCropper_window_container .photo_properties .property_photo .margin5 div {
+    overflow: hidden;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newCropper_window .newCropper_window_container .photo_properties .property_photo .margin5 div img {
+    position: relative;
+}
+
+.newCropper_window .newCropper_window_container .photo_properties .compress_photo {
+    margin-top: 10px;
+    border: 1px solid #d0d0bf;
+    padding-bottom: 10px;
+}
+
+.newCropper_window .newCropper_window_container .photo_properties,
+.newCropper_window .newCropper_window_container .photo_properties .property_photo,
+.newCropper_window .newCropper_window_container .photo_properties .compress_photo,
+.newCropper_window .newCropper_window_container .photo_properties .crop_photo {
+    font-size: 12px;
+}
+
+.newCropper_window .newCropper_window_container .photo_properties .property_photo legend,
+.newCropper_window .newCropper_window_container .photo_properties .compress_photo legend,
+.newCropper_window .newCropper_window_container .photo_properties .crop_photo legend {
+    display: block;
+    padding: 4px;
+    width: inherit;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #333;
+    border: 0;
+}
+
+.newCropper_window .newCropper_window_container .photo_properties .property_photo div,
+.newCropper_window .newCropper_window_container .photo_properties .compress_photo div,
+.newCropper_window .newCropper_window_container .photo_properties .crop_photo div {
+    margin: 0px 10px;
+}
+
+.newCropper_window .newCropper_window_container .photo_properties .compress_photo .pic_info input {
+    /*border-radius: 4px;*/
+    border: 1px solid #A9A9A9;
+    display: block;
+    text-align: center;
+    margin: 0px 0 0px 0;
+    width: 100px;
+    height: 17px;
+}
+
+.newCropper_window .newCropper_window_footer {
+    text-align: center;
+}
+
+.newCropper_window .newCropper_window_footer button {
+    width: 80px;
+    height: 28px;
+    background: #4496d2;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    padding: 0px;
+    margin-right: 10px;
+    font-size: 12px;
+}

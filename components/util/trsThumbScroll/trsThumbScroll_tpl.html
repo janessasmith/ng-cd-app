@@ -1,0 +1,13 @@
+<div class="thumb-scroll">
+    <img src="./editingCenter/newspaper/images/11_03.gif" alt="" ng-click="prev()" class="prev" ng-if="sources.length>visibleSize">
+    <div class="thumb-container">
+        <div class="thumb-wrap">
+            <div class="img-bk" ng-repeat="source in sources" ng-class="{'active':selectedItem == source}">
+                <div class="rw-img"><img ng-src="{{source.PERPICURL}}" ng-click="selectSource(source,$index)"></div>
+                <i class="delete-btn" ng-click="deleteImage($index)"></i>
+                <!-- <span>{{$index}}</span> -->
+            </div>
+        </div>
+    </div>
+    <img src="./editingCenter/newspaper/images/11_05.png" alt="" ng-click="next()" class="next" ng-if="sources.length>visibleSize">
+</div>

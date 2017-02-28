@@ -1,0 +1,80 @@
+/**
+ * by zhou 2016-7-21
+ */
+
+.edit_right_mid .edit_right_search {
+    margin-left: 60px;
+}
+
+.advanced-search .modal-dialog {
+    width: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.advanced-search .advanced-search-window {
+    background: #f0f2f5;
+    border: 1px solid #f0f2f5;
+}
+
+.advanced-search .advanced-search-window .hd {
+    height: 40px;
+    background: #fff;
+    line-height: 40px;
+    padding: 0px 10px;
+    font-size: 16px;
+}
+
+.advanced-search .advanced-search-window .hd img {
+    float: right;
+    margin-top: 11px;
+}
+
+.advanced-search .advanced-search-window .by {
+    height: 350px;
+    padding: 15px;
+    margin: 15px 15px -5px;
+    background: #fff;
+}
+
+.advanced-search .advanced-search-window .by .by-left {
+    width: 150px;
+    float: left;
+}
+
+.advanced-search .advanced-search-window .by .by-left div {
+    margin-bottom: 15px;
+    line-height: 34px;
+}
+
+.advanced-search .advanced-search-window .by .by-right>div{
+    margin-left: 15px;
+    margin-bottom: 15px;
+    float: left;
+}
+.advanced-search .advanced-search-window .by .by-right div:nth-child(4)>div{
+	width: 124px;
+	display: inline-block;
+}
+
+.advanced-search .advanced-search-window .ed {
+    height: 50px;
+    line-height: 45px;
+    text-align: end;
+    margin: 10px 15px 0 0;
+}
+
+.advanced-search .advanced-search-window .ed button:nth-child(1) {
+    background: #4496d2;
+    color: #fff;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.advanced-search .advanced-search-window .ed button:nth-child(2) {
+    border-radius: 4px;
+    margin-left: 10px;
+}

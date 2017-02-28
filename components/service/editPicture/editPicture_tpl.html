@@ -1,0 +1,110 @@
+<div class="editPicture">
+    <div class="editPicture_header">
+        <span>图片编辑</span>
+        <img ng-click="cancel()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+    </div>
+    <div class="editPicture_container">
+        <div class="show_photo_outter">
+            <div id="toCanvas" style="{{status.previewStyle}}">
+                <img ng-src="{{data.image.PERPICURL}}" class="mainImg">
+            </div>
+        </div>
+        <div class="photo_properties">
+            <fieldset class="property_photo">
+                <legend>图片属性</legend>
+                <div style="margin:10px">
+                    <trs-single-radio group="photo_show_size" ischecked="status.sizeType=='1'" label="适合大小" callback="setSizeType('1')" disabled=""></trs-single-radio>
+                    <trs-single-radio group="photo_show_size" ischecked="status.sizeType=='0'" label="原始大小" callback="setSizeType('0')" disabled=""></trs-single-radio>
+                    <div><span>原始宽度：</span><span>{{status.orgImg.preWidth}}px</span></div>
+                    <div><span>原始高度：</span><span>{{status.orgImg.preHeight}}px</span></div>
+            </fieldset>
+            <fieldset class="compress_photo">
+                <legend>缩放图片</legend>
+                <div>
+                    <trs-single-radio group="compress_type" ischecked="status.zoomType=='1'" label="按像素进行缩放" callback="setZoomType('1')" disabled=""></trs-single-radio>
+                    <!-- <input type="radio" ng-model="status.zoomType" value="1" ng-checked="status.zoomType=='1'" name="compress_type"><span>按像素进行缩放</span></div> -->
+                    <div class="compress_photo_inputHeight">
+                        <span>宽度：</span>
+                        <input ng-model="status.numWidth" type="number" ng-focus="status.inputType='1'" ng-click="status.inputType='1'" min="0" ng-disabled="status.zoomType!='1'">
+                        <span class="requiredClass">*</span>
+                    </div>
+                    <div class="compress_photo_inputHeight">
+                        <span>高度：</span>
+                        <input ng-model="status.numHeight" type="number" ng-focus="status.inputType='2'" ng-click="status.inputType='2'" min="0" ng-disabled="status.zoomType!='1'">
+                        <span class="requiredClass">*</span>
+                    </div>
+                    <trs-single-radio group="compress_type" ischecked="status.zoomType=='0'" label="按百分比进行缩放" callback="setZoomType('0')" disabled=""></trs-single-radio>
+                    <!-- <input type="radio" ng-model="status.zoomType" value="0" ng-checked="status.zoomType=='0'" name="compress_type"><span>按百分比进行缩放</span> -->
+                    <div class="compress_photo_inputHeight">
+                        <span>宽度：</span>
+                        <input type="number" ng-model="status.widthPercent" ng-focus="status.inputType='3'" ng-click="status.inputType='3'" min="0" ng-disabled="status.zoomType!='0'">
+                    </div>
+                    <div class="compress_photo_inputHeight">
+                        <span>高度：</span>
+                        <input type="number" ng-model="status.heightPercent" ng-focus="status.inputType='4'" ng-click="status.inputType='4'" min="0" ng-disabled="status.zoomType!='0'">
+                    </div>
+                    <trs-checkbox ischecked="status.keeyAspectRatio==='1'" callback="status.keeyAspectRatio = status.keeyAspectRatio === '1' ? '0' : '1'" label='保持宽高比'></trs-checkbox>
+                    <div class="compress_photo_button">
+                        <button ng-click="reset()" class="btn btn-primary btn_green">重置</button>
+                        <button ng-click="apply()" class="btn btn-primary btn_green">应用</button>
+                    </div>
+                    <div>
+                        <span class="messageClassKey">
+                <span>高度最小值为 1.</span></span>
+                    </div>
+            </fieldset>
+            <fieldset class="watermark_photo">
+                <legend><span>水印设置:</span></legend>
+                <br>
+                <span>选择水印:</span>
+                <select ng-model="status.watermarkType" ng-change="setWatermark(status.watermarkType)" class="watermark_photo_watermarkType" style="width:130px;">
+                    <option ng-selected="status.watermarkType==='-1'" value="-1">--请选择一个水印--</option>
+                    <!-- <option ng-selected="status.watermarkType==='test'" value="test">测试</option> -->
+                    <option ng-selected="status.watermarkType===item.V" ng-repeat="item in status.watermarkList" value="{{item.V}}" ng-bind="item.N"></option>
+                </select>
+                <!--<div class="watermark_photo_bg" ng-show="status.watermarkType!=='-1'">
+                    <p style="text-align: center;"><img ng-src="{{status.watermarkType==='-1'?'':status.watermarkType}}"></p>
+                </div> -->
+                <br>
+                <div class="opacity">
+                    <span>透明度:</span>
+                    <input type="number" ng-model="status.waterMarkOpc" min="0" max="1" step="0.1">
+                </div>
+                <span title="点击全选" style="cursor:pointer">水印位置:</span>
+                <label for="LT">
+                    <span>左上</span>
+                    <trs-single-radio group="wmposrdo" ischecked="status.locationType=='1'" callback="setLocation('1')" disabled=""></trs-single-radio>
+                    <!-- <input ng-model="status.locationType" ng-checked="status.locationType==='1'" ng-change="setLocation(status.locationType)" name="wmposrdo" type="radio" value="1"> -->
+                </label>
+                <label for="CM">
+                    <span>居中</span>
+                    <trs-single-radio group="wmposrdo" ischecked="status.locationType=='2'" callback="setLocation('2')" disabled=""></trs-single-radio>
+                    <!-- <input ng-model="status.locationType" ng-checked="status.locationType==='2'" ng-change="setLocation(status.locationType)" name="wmposrdo" type="radio" value="2"> -->
+                </label>
+                <label for="CB" style="margin-left:54px;float:left">
+                    <span>中下</span>
+                    <trs-single-radio group="wmposrdo" ischecked="status.locationType=='3'" callback="setLocation('3')" disabled=""></trs-single-radio>
+                    <!-- <input ng-model="status.locationType" ng-checked="status.locationType==='3'" ng-change="setLocation(status.locationType)" name="wmposrdo" type="radio" value="3"> -->
+                </label>
+                <br>
+                <label for="RB">
+                    <span>右下</span>
+                    <trs-single-radio group="wmposrdo" ischecked="status.locationType=='4'" callback="setLocation('4')" disabled=""></trs-single-radio>
+                    <!-- <input ng-model="status.locationType" ng-checked="status.locationType==='4'" ng-change="setLocation(status.locationType)" name="wmposrdo" type="radio" value="4"> -->
+                </label>
+                <br>
+            </fieldset>
+            <fieldset class="crop_photo" style="margin-top:10px;border:1px solid #d0d0bf">
+                <legend>裁剪图片</legend>
+                <div><a ng-click="cropper()" href="javascript:void(0)">裁剪图片</a></div>
+            </fieldset>
+            </div>
+            </div>
+            <div class="editPicture_footer">
+                <button class="btn btn-primary btn_confirm" ng-click="confirm()">确定</button>
+                <button class="btn btn-primary btn_cancel" ng-click="cancel()">取消</button>
+            </div>
+            <div cg-busy="loadingPromise"></div>
+        </div>
+    </div>
+</div>

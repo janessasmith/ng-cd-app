@@ -1,0 +1,35 @@
+<div class="createGroupSubmit" style="margin: 200px auto;">
+    <div class="submit">
+        <div class="head">
+            <span ng-bind="status.modalTitle"></span>
+            <img ng-click="cancel()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+        </div>
+        <div class="body" style="min-height: 220px;">
+            <form class="createGroupSubmit-form" name="createGroupSubmitForm" novalidate>
+                <div class="main">
+                    <div>
+                        <div class="item">
+                            <span class="tit">{{status.unitorDep}}名称：</span>
+                            <div class="invalidate-input-box {{createGroupSubmitForm.DEPARTMENTNAME.$invalid?'has-error':''}} left">
+                                <input type="text" maxlength-error-message="长度不能超过15个字数！" name="DEPARTMENTNAME" class="form-control" ng-model="data.department.DEPARTMENTNAME" validator="spechar,required,maxlength=15" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips"/>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <span class="tit">{{status.unitorDep}}描述：</span>
+                            <div class="invalidate-input-box  {{createGroupSubmitForm.DEPDESC.$invalid?'has-error':''}}">
+                                <textarea class="form-control" placeholder="请输入描述" maxlength-error-message="长度不能超过200个字数！" validator="spechar,maxlength=200,required" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips" name="DEPDESC" ng-model="data.department.DEPDESC"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </form>
+            <div class="foot">
+                <div>
+                    <button class="confirm" ng-click="confirm()">确定</button>
+                    <button class="cancel" ng-click="cancel()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,406 @@
+<div id="pageTop" class="planEventPageTopIcon"></div>
+<div cg-busy="loadingPromise"></div>
+<div class="row planEventAnalyisBasicInfoDetail">
+    <div class="col-md-2 eventDetailLeft">
+        <div class="leftScrollspy">
+            <ul class="spreadScrollspy">
+                <li class="scrollTitleImg"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp4.png"></li>
+                <li class="scrollTitle">基本信息</li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#introduction">事件简介</a></li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#restore">事件还原</a></li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#content">事件相关主体</a></li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#report">集团相关报道</a></li>
+                <li><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#material">事件相关素材</a></li>
+                <li ng-hide="status.eventType==1"><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#volume">事件声量趋势</a></li>
+                <li ng-hide="status.eventType==1"><a du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#emotionColumnar">情感柱状图</a></li>
+            </ul>
+            <ul ng-hide="status.eventType==0">
+                <li class="scrollTitleImg"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp1.png"></li>
+                <li class="scrollTitle" ng-click="goOtherDetail('eventanalyiseventtracks')">事件跟踪</li>
+            </ul>
+            <ul ng-show="false">
+                <li class="scrollTitleImg"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp1.png"></li>
+                <li class="scrollTitle">事件挖掘</li>
+                <!-- goOtherDetail('eventanalyiseventtap') -->
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-10 eventDetailRight">
+        <!-- <div style="width:400px;height: 400px;overflow: hidden;">
+            <trs-bubble></trs-bubble>
+        </div> -->
+        <div class="moduleContainer">
+            <p class="moduleContainer-title" id="introduction">事件简介</p>
+            <div class="moduleContainer-content introduction row">
+                <div class="col-md-7">
+                    <p ng-bind="status.introduction.content.TITLE"></p>
+                    <div class="introduction-text" ng-show="!status.introduction.isEdit">
+                        <ul>
+                            <li ng-bind="'时间：'+status.introduction.content.MAXRATETIME"></li>
+                            <li class="introductionplcae">地点：<span ng-repeat="item in status.introduction.content.PLACE">{{$index+1}}.<span ng-click="location(item.value.lat,item.value.lng)" ng-bind="item.name"></span><span ng-if="$index!=(status.introduction.content.PLACE.length-1)">；</span></span>
+                            </li>
+                            <li ng-bind="'机构：'+status.introduction.content.ORG"></li>
+                            <li ng-bind="'人物：'+status.introduction.content.PEOPLE"></li>
+                        </ul>
+                        <!-- <span>以上信息仅供参考，如有问题请<a ng-click="statusActive('introduction','isEdit',true,'enterEditIntroduction')">点此编辑</a></span> -->
+                        <span>以上信息仅供参考，如有问题请<a ng-click="editEvent()">点此编辑</a></span>
+                    </div>
+                    <!-- <div class="introduction-edit" ng-show="status.introduction.isEdit">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 text-right">
+                                时间：
+                            </div>
+                            <div class="col-md-8  col-sm-8">
+                                <div class="timeGroup">
+                                    <input type="text" size="10" class="form-control" ng-model="status.introduction.editContent.STARTTIME" data-autoclose="1" bs-datepicker readonly="readonly" data-date-format="yyyy年M月d日" data-max-date="today">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 text-right">
+                                地点：
+                            </div>
+                            <div class="col-md-4  col-sm-4">
+                                <input class="form-control">
+                            </div>
+                            <div class="col-md-4  col-sm-4">
+                                <input class="form-control">
+                            </div>
+                            <div class="col-md-2  col-sm-1">
+                                <a class="deleteData">删除</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4  col-sm-4 col-md-offset-2 col-sm-offset-2">
+                                <input class="form-control" placeholder="请在此填写地点位置">
+                            </div>
+                            <div class="col-md-4  col-sm-4">
+                                <input class="form-control" placeholder="请在此填写地点位置">
+                            </div>
+                            <div class="col-md-2  col-sm-2">
+                                <a class="deleteData">删除</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8  col-sm-8 col-md-offset-2 col-sm-offset-2">
+                                <button class="detailbtn">
+                                    <span>
+                                        <img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp7.png" alt="">
+                                    </span> 添加地点
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 text-right">
+                                机构：
+                            </div>
+                            <div class="col-md-8  col-sm-8">
+                                <input class="form-control" ng-model="status.introduction.editContent.ORG">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 text-right">
+                                人物：
+                            </div>
+                            <div class="col-md-8  col-sm-8">
+                                <input class="form-control" ng-model="status.introduction.editContent.PEOPLE">
+                            </div>
+                        </div>
+                        <div class="row footer">
+                            <div class="col-md-8  col-sm-8 col-md-offset-2 col-sm-offset-2">
+                                <button ng-click="statusActive('introduction','isEdit',false)">撤销</button>
+                                <button ng-click="statusActive('introduction','isEdit',false,'saveEditIntroduction')">保存</button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-md-5">
+                    <div id="allMapMain"></div>
+                    <!-- <img src="./planningCenter/images/ch42.png" width="100%" /> -->
+                </div>
+            </div>
+        </div>
+        <div class="moduleContainer">
+            <p class="moduleContainer-title" id="restore">事件还原</p>
+            <div class="moduleContainer-content restore row">
+                <div class="col-md-7" ng-bind="status.restore.content"></div>
+                <div class="col-md-5">
+                    <carousel interval="myInterval" no-wrap="noWrapSlides" template-url="./editingCenter/directive/app/Carousel/carousel_tpl.html" pics="status.restore.picUrl">
+                        <slide class="carousel-list" ng-repeat="slide in status.restore.picUrl track by $index" active="slide.active">
+                            <div class="carousel-img">
+                                <img ng-src="{{slide.url}}">
+                            </div>
+                        </slide>
+                    </carousel>
+                </div>
+            </div>
+        </div>
+        <div class="moduleContainer eventContentContainer">
+            <p class="moduleContainer-title" id="content">事件相关主体</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="moduleContainer-content eventContent">
+                        <p>事件相关机构</p>
+                        <div class="related_information">
+                            <div title="{{item.STRVALUE}}" ng-repeat="item in status.content.org" class="slide-right eventContentBallOrg" style="background:{{item.backColor}};" ng-click="ballJumpToSearch(item)">
+                                <p>
+                                    <a ng-bind="item.STRVALUE"></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="moduleContainer-content eventContent">
+                        <p>事件相关人物</p>
+                        <div class="related_information">
+                            <div title="{{item.STRVALUE}}" ng-repeat="item in status.content.name" class="slide-right eventContentBallName" style="background:{{item.backColor}};" ng-click="ballJumpToSearch(item)">
+                                <p>
+                                    <a ng-bind="item.STRVALUE"></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" ng-mouseleave="status.content.currPlace=''">
+                    <div class="moduleContainer-content eventContent">
+                        <p>事件相关地点</p>
+                        <div class="related_information">
+                            <div ng-mouseenter="status.content.currPlace=item.STRVALUE" title="{{item.STRVALUE}}" ng-mouseleave="status.content.currPlace=''" ng-repeat="item in status.content.place" class="slide-right eventContentBallPlace" style="background:{{item.backColor}};" ng-click="ballJumpToSearch(item)">
+                                <p>
+                                    <a ng-bind="item.STRVALUE"></a>
+                                    <!-- <span du-smooth-scroll du-scrollspy offset="20" duration="1000" href="#introduction" class="addToMap" ng-show="status.content.currPlace==item.STRVALUE" ng-click="addToMap(item.STRVALUE)">
+                                    <s>添加到地图</s>
+                                    <i></i> -->
+                                </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="moduleContainer">
+            <p class="moduleContainer-title" id="report">集团相关报道</p>
+            <div class="moduleContainer-content report row">
+                <div class="col-md-12">
+                    <trs-time-select selected-option="status.report.selectTime" options="status.report.timeOption" callback="searchReportTime('report','mediaParams','timeparams',status.report.selectTime.value)" fromdate="status.report.startTime" untildate="status.report.endTime" label="时间范围"></trs-time-select>
+                    <div class="input-group edit_input_group">
+                        <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="status.report.keywords" ng-keypress="fullTextSearch('report','setMediaAndList',$event)">
+                        <span class="input-group-btn">
+            <button class="btn btn-default btn_edit_search" type="button" ng-click="fullTextSearch('report','setMediaAndList')">搜索</button>
+          </span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="edit_table">
+                        <table class="table table-striped data-table black-box">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th class="xcol-draft">来源</th>
+                                    <th class="xcol-lastDate">时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in status.report.list">
+                                    <td class="text-left cursorPointer" ng-bind="item.DOCTITLE" ng-click="openReportUrl(item)"></td>
+                                    <td ng-bind="item.ZB_SOURCE_SITE"></td>
+                                    <td ng-bind="item.PUBTIME"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="page cls-paging">
+                            <trs-pagenation-left page-count="status.report" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+                            <pagination total-items="status.report.ITEMCOUNT" ng-change="pageChanged('getReportList')" ng-model="status.report.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="false" items-per-page="status.report.PAGESIZE" rotate="false" num-pages="status.report.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 contentRight">
+                    <div class="row" ng-repeat="(key,value) in status.report.mediaGroup">
+                        <div class="col-md-2" ng-bind="key"></div>
+                        <div class="col-md-10">
+                            <span ng-repeat="item in value" ng-bind="item.STRVALUE+' '+item.IRECORDNUM" ng-class="{'active':status.report.activeSite==key+item.STRVALUE}" ng-click="chooseReportMedia(key,item.STRVALUE,key)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="moduleContainer">
+            <p class="moduleContainer-title" id="material">事件相关素材</p>
+            <div class="moduleContainer-content material">
+                <tabset>
+                    <tab heading="相关文章">
+                        <div class="row">
+                            <div class="col-md-12 header">
+                                <trs-time-select selected-option="status.draftMaterial.selectTime" options="status.draftMaterial.timeOption" callback="searchMaterialTime('draftMaterial')" fromdate="status.draftMaterial.startTime" untildate="status.draftMaterial.endTime" label="时间范围"></trs-time-select>
+                                <div class="input-group edit_input_group">
+                                    <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="status.draftMaterial.keywords" ng-keypress="fullMaterialSearch('draftMaterial',$event)">
+                                    <span class="input-group-btn">
+            <button class="btn btn-default btn_edit_search" type="button" ng-click="fullMaterialSearch('draftMaterial')">搜索</button>
+          </span>
+                                </div>
+                            </div>
+                            <div class="edit_table border_radius_5">
+                                <table class="table table-striped data-table black-box">
+                                    <thead>
+                                        <tr>
+                                            <th>标题</th>
+                                            <th class="xcol-draft">来源</th>
+                                            <th class="xcol-lastDate">时间</th>
+                                            <th class="xcol-picture"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody trs-thumb-container>
+                                        <tr ng-repeat="item in status.draftMaterial.list">
+                                            <td class="text-left cursorPointer mc-padding-left-xs" ng-bind="item.DOCTITLE" ng-click="openUrl(item)"></td>
+                                            <td ng-bind="item.ZB_SOURCE_SITE"></td>
+                                            <td ng-bind="item.PUBTIME"></td>
+                                            <td class="edit-icon-td">
+                                                <trs-thumb item="item" transform="planningCenterDetailThumb"></trs-thumb>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="page cls-paging">
+                                <trs-pagenation-left page-count="status.draftMaterial" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+                                <pagination total-items="status.draftMaterial.ITEMCOUNT" ng-change="materialDraftPageChanged('draftMaterial')" ng-model="status.draftMaterial.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="false" items-per-page="status.draftMaterial.PAGESIZE" rotate="false" num-pages="status.draftMaterial.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="相关微博" ng-show="false">
+                        <div class="row">
+                            <div class="col-md-12 header">
+                                <trs-time-select selected-option="" options="" callback="" fromdate="" untildate="" label="时间范围"></trs-time-select>
+                                <div class="input-group edit_input_group">
+                                    <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="keywords" ng-keypress="fullTextSearch($event)">
+                                    <span class="input-group-btn">
+            <button class="btn btn-default btn_edit_search" type="button" ng-click="fullTextSearch()">搜索</button>
+          </span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="weiboContainer">
+                            <li ng-repeat="item in [1,1,1,1,1,1,1,1,1,1] track by $index">
+                                <div class="weiboContainerHead">
+                                    <img src="./components/util/IM/images/2016.jpg">
+                                </div>
+                                <div class="weiboContainerContent">
+                                    <button class="originalWeibo">查看原微博</button>
+                                    <p class="weiboInfo">
+                                        <b>华西都市报</b>
+                                        <img src="./planningCenter/selectedTopicEvent/eventAnalysis/detail/images/sp6.png" alt="">
+                                        <span>2016-09-09 13:24:25</span>
+                                    </p>
+                                    <div>
+                                        吕丽说，袁亮老家在石柱县的一个镇上，父母都是农民，思想非常保守，因此，袁亮隐瞒了自己和吕丽同居一事，“在我妈眼中，才恋爱就跟人同居的女孩，是特别不检点的那种。” 7月1日，袁亮的妈妈孙阿姨悄悄来到袁亮出租屋中。袁亮晚上与吕丽一起推开家门就呆了，吕丽立刻解释，只是过来帮袁亮做饭。孙阿姨也不疑有它，热情招呼吕丽，但当袁亮冲完澡换上背心出来， 孙阿姨突然尖叫起来：“哪个抓的你
+                                    </div>
+                                    <div class="weiboAttachment" ng-repeat="item in [1,1,1] track by $index"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </ul>
+                        <div class="page cls-paging mediaContainerPage">
+                            <trs-pagenation-left page-count="page" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+                            <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="false" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+                        </div>
+                    </tab>
+                    <tab heading="相关图片">
+                        <div class="row">
+                            <div class="col-md-12 header">
+                                <trs-time-select selected-option="status.picMaterial.selectTime" options="status.picMaterial.timeOption" callback="searchMaterialTime('picMaterial')" fromdate="status.picMaterial.startTime" untildate="status.picMaterial.endTime" label="时间范围"></trs-time-select>
+                                <div class="input-group edit_input_group">
+                                    <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="status.picMaterial.keywords" ng-keypress="fullMaterialSearch('picMaterial',$event)">
+                                    <span class="input-group-btn">
+            <button class="btn btn-default btn_edit_search" type="button" ng-click="fullMaterialSearch('picMaterial')">搜索</button>
+          </span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="mediaContainer">
+                            <li ng-repeat="item in status.picMaterial.list">
+                                <div ng-click="openUrl(item)" class="imgContar">
+                                    <img ng-src="{{item.IMAGE_URL[0].urlM}}" title="{{item.DOCTITLE}}">
+                                </div>
+                                <p ng-bind="item.DOCTITLE" title="{{item.DOCTITLE}}"></p>
+                            </li>
+                        </ul>
+                        <div class="page cls-paging mediaContainerPage">
+                            <trs-pagenation-left page-count="status.picMaterial" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+                            <pagination total-items="status.picMaterial.ITEMCOUNT" ng-change="materialPageChanged('picMaterial')" ng-model="status.picMaterial.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="false" items-per-page="status.picMaterial.PAGESIZE" rotate="false" num-pages="status.picMaterial.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+                        </div>
+                    </tab>
+                    <tab heading="相关视频" ng-show="false">
+                        <div class="row">
+                            <div class="col-md-12 header">
+                                <trs-time-select selected-option="" options="" callback="" fromdate="" untildate="" label="时间范围"></trs-time-select>
+                                <div class="input-group edit_input_group">
+                                    <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="keywords" ng-keypress="fullTextSearch($event)">
+                                    <span class="input-group-btn">
+            <button class="btn btn-default btn_edit_search" type="button" ng-click="fullTextSearch()">搜索</button>
+          </span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="mediaContainer">
+                            <li ng-repeat="item in [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] track by $index">
+                                <div>
+                                    {{$index+1}}
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div>
+                                <p>这里放标题</p>
+                            </li>
+                        </ul>
+                        <div class="page cls-paging mediaContainerPage">
+                            <trs-pagenation-left page-count="page" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+                            <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="false" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+        <div class="moduleContainer" id="volume" ng-hide="status.eventType==1">
+            <p class="moduleContainer-title">事件声量趋势</p>
+            <div class="moduleContainer-content volume">
+                <tabset>
+                    <tab heading="渠道声量">
+                        <div class="row ">
+                            <div class="col-md-4 channelVolumePie ">
+                            </div>
+                            <div class="col-md-8 channelVolumeLine ">
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="媒体声量" ng-click="showVolumeMediaEcharts() ">
+                        <div class="row ">
+                            <div class="col-md-4 mediaVolumeBar ">
+                            </div>
+                            <div class="col-md-8 mediaVolumeLine ">
+                            </div>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+        <div class="moduleContainer" ng-hide="status.eventType==1">
+            <p class="moduleContainer-title" id="emotionColumnar">情感柱状图</p>
+            <div class="moduleContainer-content emotionColumnar row">
+                <div class="col-md-12 emotionColumnarBar ">
+                </div>
+            </div>
+        </div>
+        <p class="footerInfo">
+            2016 宁夏日报报业集团 北京拓尔思信息技术股份有限公司 版权所有 保留所有权 本系统支持1366*768及以上分辨率
+        </p>
+    </div>
+</div>
+<div class="planEventToTopIcon" du-smooth-scroll du-scrollspy offset="20" duration="500" href="#pageTop">
+    <span>返回顶部</span>
+</div>

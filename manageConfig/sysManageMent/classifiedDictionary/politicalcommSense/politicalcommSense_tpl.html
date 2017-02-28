@@ -1,0 +1,91 @@
+<div>
+    <div class="system-manage-main-left politicalcommSense_left">
+        <div class="system-manage-main-left-bar">
+            <form class="navbar-form navbar-right" role="search" style="margin:0px;line-height:25px;padding:0px;">
+                <div class="form-group">
+                    <input type="text" ng-model="searchWord" class="form-control system-manage-main-left-input" placeholder="请输入检索词">
+                </div>
+                <button ng-click="search()" type="submit" class="btn btn-default line-height  system-manage-main-left-btn-3">
+                    <i class="system-manage-search-icon"></i>查找</button>
+            </form>
+        </div>
+        <div class="system-manage-main-left-content">
+            <div class="system-manage-main-left-content-title">
+                <i ng-show="tree.display" ng-click="tree.display=false" class="system-manage-main-left-content-title-icon1"></i>
+                <i ng-show="!tree.display" ng-click="tree.display=true" class="system-manage-main-left-content-title-icon3"></i>
+                <i class="system-manage-main-left-content-title-icon2"></i>
+                <span ng-click="selectRoot()" class="system-manage-main-left-content-title-p" ng-bind="module"></span>
+            </div>
+            <div class="sys_manage_main_left_content_con">
+                <!-- <div ng-show="tree.display" class="system-manage-main-left-content-treecontrol">
+                    <ul class="politicalcommSense_lists">
+                        <li ng-repeat="item in dataForTheTree"><i></i><a ng-click="getDetailInfo(item)"><span ng-bind="item.peoplename"></span></a></li>
+                    </ul>
+                </div> -->
+                <div ng-show="tree.display" class="system-manage-main-left-content-treecontrol">
+                    <treecontrol selected-node="selectedNode" expanded-nodes="expanded" class="tree-light " on-node-toggle="showToggle(node)" tree-model="dataForTheTree" options="treeOptions" on-selection="showSelected(node)">
+                        <a ng-class="{'no_sort':node.orderNum==9999}" href="javascript:void(0)" title="{{node.peoplename}}"><span>{{node.peoplename}}</span></a>
+                    </treecontrol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form name="folderForm" novalidate>
+        <div class="system-manage-main-right" ng-show="switch.folder">
+            <div class="system-manage-main-right-bar">
+                <button ng-click="createFile('file')" class="btn btn-default system-manage-main-left-btn-4"><i class="system_manage_newfolder"></i>新建文件</button>
+            </div>
+            <div class="system-manage-main-right-input" style="font-size:14px;">
+                <div class="input-group invalidate-input-box">
+                    <input type="text" ng-readonly="isRoot==true?true:false" name="dictName" validator="spechar,maxlength=25,required" maxlength-error-message="长度不能超过25个字符！" ng-model="folder.dictName" class="form-control" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+                </div>
+            </div>
+            <div class="system-manage-main-right-content invalidate-input-box">
+                <h5>说明：</h5>
+                <div class="system-manage-main-right-content-main {{folderForm.instruction.$invalid&&folderForm.instruction.$dirty?'has-error':''}}">
+                    <textarea validator="spechar,maxlength=500" maxlength-error-message="长度不能超过500个字符！" ng-readonly="isRoot==true?true:false" class="form-control" name="instruction" readonly="{{isRoot}}" ng-model="folder.instruction" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB">
+                    </textarea>
+                </div>
+                <nav>
+                    <div class="system-manage-save-btn">
+                        <p><a href="#" class="btn btn-primary" ng-show="isRoot!=true" style="font-size:12px;" validation-submit="folderForm" ng-click="saveClassficationData('folder')">保存</a></p>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </form>
+    <form name="fileForm" novalidate>
+        <input name="peoplename" type="text" style="display:none;">
+        <div class="system-manage-main-right politicalcommSense_fileForm" ng-show="switch.file">
+            <div class="system-manage-main-right-bar">
+                <button ng-click="deleteNode()" class="btn btn-default system-manage-main-left-btn-4"><i class="system-manage-delete-icon"></i>删除文件</button>
+            </div>
+            <div class="system-manage-main-right-input" style="font-size:14px;">
+                <h5>姓名</h5>
+                <div class="input-group invalidate-input-box">
+                    <input name="peoplename" type="text" maxlength-error-message="长度不能超过25个字符！" class="form-control" validator="spechar,maxlength=25,required" ng-model="file.peoplename" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+                </div>
+            </div>
+            <div class="system-manage-main-right-input" style="font-size:14px;">
+                <h5>排序（当前有<span ng-bind="status.currNum"></span>条信息校验排序，你可以填写<span>1</span>到<span ng-bind="status.maxNum"></span>之间的整数，若不需检查排序则不需要填写此字段）</h5>
+                <div class="input-group invalidate-input-box">
+                    <!-- <input name="orderNum" type="text" class="form-control" maxindex-error-message="数值不能大于{{status.maxNum}}!" validator="number,maxindex={{status.maxNum}}" ng-model="file.orderNum" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB"> -->
+                    <!-- <input name="orderNum" type="text" class="form-control" maxindex-error-message="数值不能大于10!" validator="number,maxindex=10" ng-model="file.orderNum" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB"> -->
+                    <input name="orderNum" type="text" class="form-control" validator="spechar,number" ng-model="file.orderNum" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB">
+                </div>
+            </div>
+            <div class="system-manage-main-right-content">
+                <h5>职务（多个职务请用“，”分隔）</h5>
+                <div class="system-manage-main-right-content-main invalidate-input-box">
+                    <textarea maxlength-error-message="长度不能超过500个字符！" validator="spechar,maxlength=500,required" class="form-control" name="title" ng-model="file.title" ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC">
+                    </textarea>
+                </div>
+                <nav>
+                    <div class="system-manage-save-btn">
+                        <p><a href="#" validation-submit="fileForm" class="btn btn-primary btn_confirm" ng-click="saveClassficationData('file')" style="font-size:12px;">保存</a></p>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </form>
+</div>

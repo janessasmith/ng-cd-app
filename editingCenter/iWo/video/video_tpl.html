@@ -1,0 +1,46 @@
+<div>
+    <videogular vg-theme="config.theme.url">
+    	<!--视频开始(vg-native-controls="true":代表默认的播放组件)-->
+        <vg-media vg-src="config.sources" vg-tracks="config.tracks" >
+        </vg-media>
+        <!--视频结束-->
+        <!--通过vg-controls自定义播放组件开始-->
+        <vg-controls vg-autohide="config.plugins.controls.autoHide" vg-autohide-time="config.plugins.controls.autoHideTime">
+        	<!--播放/暂停按钮开始-->
+			<vg-play-pause-button></vg-play-pause-button>
+			<!--播放/暂停按钮结束-->
+			<!--播放时间组件开始(有三种时间可选：currentTime、timeLeft、totalTime,分别代表当前播放时间、剩余播放时间和播放总时长，可以通过ng的过滤器来处理数据)-->
+        	<vg-time-display>{{currentTime | date:"mm:ss":"+0000"}}</vg-time-display>
+        	<!--播放时间组件结束-->
+        	<!--播放进度条开始-->
+        	<vg-scrub-bar>
+				<vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+        	</vg-scrub-bar>
+        	<!--播放进度条结束-->
+        	<vg-time-display>{{timeLeft | date:"mm:ss":"+0000"}}</vg-time-display>
+        	<vg-time-display>{{totalTime | date:"mm:ss":"+0000"}}</vg-time-display>
+        	<!--播放音量组件开始-->
+        	<vg-volume>
+				<vg-mute-button></vg-mute-button>
+				<vg-volume-bar></vg-volume-bar>
+        	</vg-volume>
+        	<!--播放音量组件结束-->
+        	<!--播放速度组件开始-->
+        	<vg-playback-button></vg-playback-button>
+        	<!--播放速度组件结束-->
+        	<!--全屏按钮开始-->
+        	<vg-fullscreen-button></vg-fullscreen-button>
+        	<!--全屏按钮结束-->
+        </vg-controls>
+        <!--通过vg-controls自定义播放组件结束-->
+		<!--视频缓冲组件开始-->
+        <vg-buffering></vg-buffering>
+        <!--视频缓冲组件结束-->
+		<!--覆盖层的播放按钮组件开始-->
+        <vg-overlay-play></vg-overlay-play>
+        <!--覆盖层的播放按钮组件结束-->
+        <!--播放暂停或者结束时显示图片组件开始-->
+        <vg-poster vg-url='config.plugins.poster'></vg-poster>
+        <!--播放暂停或者结束时显示图片组件结束-->
+    </videogular>
+</div>

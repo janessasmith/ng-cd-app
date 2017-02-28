@@ -1,0 +1,69 @@
+<form name="editWeiboCreatForm" novalidate>
+    <div class="edit-weibo-creat">
+        <div class="edit-weibo-title">
+            <span ng-if="!data.obj.SCMMicroContentId&&!data.obj.moduleName">创建微博</span>
+            <span ng-if="data.obj.SCMMicroContentId">编辑微博</span>
+            <span ng-if="data.obj.moduleName">转发微博</span>
+            <img src="./editingCenter/app/toBeCompiled/images/cls.jpg" alt="取消" ng-click="cancel()">
+        </div>
+        <div class="edit-weibo-content">
+            <div class="edit-weibo-content-white">
+                <div class="pull-right">还可以输入<span class="edit-weibo-creat-color1" ng-bind="status.oneImageWordNum"></span>字</div>
+                <div class="invalidate-input-box {{editWeiboCreatForm.CONTENT.$invalid?'has-error':''}}">
+                    <textarea class="edit-weibo-tobocompiled-textarea form-control" name="CONTENT" ng-model="status.content" id="contentid" validator="required,maxlength=140" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA" ></textarea>
+                </div>
+                <div class="edit-weibo-creat-features">
+                    <span ng-click="status.weiboExpression=!status.weiboExpression">
+                    <img src="./editingCenter/weibo/images/bq.png">表情
+                </span>
+                    <span ng-click="status.weiboUploaderImg=!status.weiboUploaderImg" ng-if="!data.obj.moduleName">
+                    <img src="./editingCenter/weibo/images/pic.png">图片
+                </span>
+                    <!-- <span><img src="./editingCenter/weibo/images/vd.png">视频</span> -->
+                <span ng-click="topic()" ng-if="!data.obj.moduleName">
+                    <img src="./editingCenter/weibo/images/hh.png">话题
+                </span>
+                <span ng-click="status.weiboTimeSign=!status.weiboTimeSign" ng-if="!data.obj.SCMMicroContentId&&status.btnRights['microblog.daibian.dingshiqianfa']||!data.obj.SCMMicroContentId">
+                    <img src="./editingCenter/weibo/images/ds.png">定时发
+                </span>
+                    <!-- 表情包 -->
+                    <div class="features_expression" ng-if="status.weiboExpression">
+                        <ul>
+                            <li ng-repeat="expression in data.expressions" ng-click="insertImg(expression)"><img ng-src="{{expression.src}}" title="{{expression.title}}" data="{{expression.data}}"></li>
+                        </ul>
+                    </div>
+                    <!-- 图片上传 -->
+                    <div class="list-style-img introduce-img" style="margin-right:20px;" ng-if="status.weiboUploaderImg">
+                        <div class="fa_upload form-control" ng-repeat="pic in status.Picture track by $index">
+                            <trs-upload-weibo file-name="status.Picture[$index].imgName" file-desc="status.Picture[$index].imgName" return-file="status.Picture[$index].imgSrc" callback="deleteImgContainer(pic,status.Picture)"></trs-upload-weibo>
+                        </div>
+                        <button class="div_btn btn btn-default " ng-click="addUploaderImg(status.Picture, '图片') "></button>
+                        <span class="weiboFormat">支持格式： .gif,.jpg,.png</span>
+                    </div>
+                    <!-- 定时发 -->
+                    <div class="timing-calendar timing-row" ng-if="status.weiboTimeSign">
+                        <div class="timeGroup">
+                            <input type="text" size="10" class="form-control" ng-model="status.sharedDate" placeholder="Date" data-autoclose="1" data-min-date="today" bs-datepicker readonly="readonly">
+                            <img src="./editingCenter/app/toBeCompiled/images/t3.png" class="imgOne">
+                        </div>
+                        <div class="timeGroup ml20">
+                            <input type="text" size="8" class="form-control" ng-model="status.sharedDate" data-time-format="HH:mm" data-autoclose="1" data-minute-step="1" placeholder="Time" bs-timepicker readonly="readonly">
+                            <img src="./editingCenter/app/toBeCompiled/images/t1.png" class="imgTwo">
+                        </div>
+                    </div>
+                </div>
+                <div class="pull-right edit-weibo-creat-btn">
+                    <button class="btn btn-primary" ng-click="save('save')" ng-if="!data.obj.moduleName||!data.obj.moduleName&&status.btnRights['microblog.daibian.xinjian']" validation-submit="editWeiboCreatForm">保存</button>
+                    <button class="btn btn-info" ng-click="save('submit')" ng-if="!data.obj.SCMMicroContentId&&!data.obj.moduleName&&status.btnRights['microblog.daibian.songshen']" validation-submit="editWeiboCreatForm">送审</button>
+                    <button class="btn btn-warning" ng-click="save('release')" ng-if="!data.obj.SCMMicroContentId&&!data.obj.moduleName&&status.btnRights['microblog.daibian.zhijieqianfa']" validation-submit="editWeiboCreatForm">发布</button>
+                    <button class="btn btn-warning" ng-click="save('zhuanfa')" ng-if="!data.obj.SCMMicroContentId&&data.obj.moduleName" validation-submit="editWeiboCreatForm">转发</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- <div>
+    <iframe width="100%" ng-src="{{wbSrc}}" class="ng-scope iframe_st_to_OperateCenter" height="{{iHeight}}" scrolling="auto" name="iframe_st_to_OperateCenter"></iframe>
+    <iframe width="100%" src="/wcm/app/scm/create_microblog.jsp?AccountId=2" class="ng-scope iframe_st_to_OperateCenter" ng-style="iHeight" scrolling="auto" name="iframe_st_to_OperateCenter"></iframe>
+</div>
+ -->

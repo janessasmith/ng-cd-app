@@ -1,0 +1,7 @@
+<div class="mapSuggestionForReport"><span class="col-md-1 nowrap">地点：</span>
+    <input id="suggestId_{{index}}" ng-focus="theFocus()" ng-style="setZindex(index*2-1)" ng-blur="hiddenSuggestion(index)" name="addressName" ng-model="addressName" ng-keydown="relocation(index)" type="text" class="form-control">
+    <img src="./planningCenter/command/task/appointTask/images/zp21.png">
+    <input style="display:none" name="addressValue" ng-model="addressValue">
+    <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto;display:none"></div>
+    <div ng-style="suggestionStyle()" class="mySuggestion mySuggestion_{{index}}"></div>
+</div>

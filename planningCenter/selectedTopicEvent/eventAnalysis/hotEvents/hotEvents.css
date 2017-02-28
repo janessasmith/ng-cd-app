@@ -1,0 +1,332 @@
+.hotEvents {
+  border: 1px solid #CFCFCF;
+  border-top: transparent;
+  overflow: hidden;
+  padding: 10px 0px 10px 10px;
+}
+.hotEvents .fl {
+  float: left;
+}
+.hotEvents .pt10 {
+  padding-top: 10px;
+}
+.hotEvents .clue_calendar_button {
+  margin: 0 0 10px;
+}
+.hotEvents .clue_calendar_button .createHotEvent_btn {
+  line-height: 27px;
+  background: #2f98d2;
+  color: #fff;
+  text-align: center;
+  border: none;
+  font-size: 12px;
+  border: 1px solid #2f98d2;
+  /* float: left; */
+  /* margin-right: 15px; */
+  padding: 0 15px;
+  margin-top: 1px;
+}
+.hotEvents .clue_calendar_button .monitor_input_group {
+  float: right;
+  width: 40%;
+}
+.hotEvents .clue_calendar_button .monitor_form_control {
+  float: none;
+  height: 30px;
+  background: url("editingCenter/app/images/sch.jpg") no-repeat 10px center;
+  padding-left: 30px;
+  font-size: 14px;
+  font-family: "Helvetica Neue', Helvetica, Arial, sans-serif";
+  width: 60%;
+  float: left;
+  border-radius: 5px!important;
+}
+.hotEvents .clue_calendar_button .input_group_btn {
+  position: relative;
+  font-size: 0;
+  white-space: nowrap;
+  top: 0px;
+  right: 0px;
+  left: 10px;
+  float: left;
+}
+.hotEvents .clue_calendar_button .input_group_btn .btn_monitor_search {
+  width: 60px;
+  height: 30px;
+  padding: 0px;
+  color: #65635f;
+  background: url("editingCenter/app/images/b-m.jpg") repeat-x;
+  border-radius: 5px;
+}
+.hotEvents .pagination > .active > a {
+  z-index: 1;
+  color: #fff;
+  cursor: default;
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+.hotEvents .hotEvents_table {
+  border-radius: 5px;
+  border: 0;
+  clear: both;
+}
+.hotEvents .hotEvents_table .apply_item {
+  border: 1px solid #ccc;
+  float: left;
+  width: 49%;
+  border-radius: 5px;
+  padding: 5px 5px 20px 15px;
+  margin: 0px 10px 10px 0;
+}
+.hotEvents .hotEvents_table .apply_item .item_img {
+  float: left;
+  padding: 0;
+}
+.hotEvents .hotEvents_table .apply_item .item_img img {
+  height: 148px;
+}
+.hotEvents .hotEvents_table .apply_item span {
+  /*line-height: 35px;*/
+}
+.hotEvents .hotEvents_table .apply_item .item_info {
+  float: left;
+  /*margin-left: 10px;*/
+  padding: 0 0 0 10px;
+}
+.hotEvents .timeCue_page .page_left {
+  margin-left: 200px;
+}
+/*.hotEvents .hotEvents_table .apply_item .item_info .item_info_btn .s_icon1 {
+    margin: 0 6px 0 0px;
+    padding-right: 6px;
+    border-right: 1px solid #e9e9e9;
+    line-height: 28px;
+}*/
+.hotEvents .hotEvents_table .apply_item .item_info .item_info_btn .s_icon1 {
+  margin: 0 4px 0 0px;
+  padding-right: 4px;
+  border-right: 1px solid #e9e9e9;
+  line-height: 28px;
+}
+/*.hotEvents .hotEvents_table .apply_item .item_info .item_info_btn .btn-commen_1 {
+    height: 30px;
+    line-height: 28px;
+    padding: 0 10px;
+    font-size: 12px;
+    background: url("./editingCenter/app/images/b-m.jpg") repeat-x;
+    color: #666;
+    vertical-align: middle;
+}*/
+.hotEvents .hotEvents_table .apply_item .item_info .item_info_btn .btn-commen_1 {
+  /* width: 80px; */
+  height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  background: url("editingCenter/app/images/b-m.jpg") repeat-x;
+  color: #666;
+  vertical-align: middle;
+}
+.hotEvents .hotEvents_table .apply_item .item_info .item_info_h {
+  /*min-height: 35px;*/
+  padding-bottom: 9px;
+}
+.hotEvents .hotEvents_table .apply_item .item_info .item_info_h a,
+.hotEvents .hotEvents_table .apply_item .item_info .item_info_h a:hover {
+  color: #2f98d3;
+  text-decoration: underline;
+  padding-left: 10px;
+}
+.hotEvents .hotEvents_table .apply_item .item_info .item_info_h .color_red {
+  color: #ff3c5c;
+}
+.hotEvents .hotEvents_table .apply_item .item_info .item_info_h1 {
+  min-height: 80px;
+}
+.hotEvents .hotEvents_table .apply_item h4 {
+  font-weight: bold;
+  line-height: 25px;
+  cursor: pointer;
+}
+.hotEvents .hotEvents_table .apply_item h4 a {
+  color: #333;
+  text-decoration: none;
+}
+.hotEvents .hotEvents_table .apply_item .voice_num {
+  color: #1aba9f;
+  font-weight: bold;
+  padding-left: 10px;
+}
+.hotEvents .voice_light {
+  width: 170px;
+  height: 6px;
+  background: #ececec;
+  margin-top: 8px;
+  float: left;
+  overflow: hidden;
+}
+.hotEvents .voice_light_1 {
+  height: 6px;
+  background: #1aba9f;
+}
+.hotEvents .line_h26 {
+  line-height: 23px!important;
+}
+.hotEvents .min_h {
+  min-height: 83px;
+}
+@media screen and (max-width: 1281px) {
+  .hotEvents .hotEvents_table .apply_item .item_info .item_info_h {
+    padding-bottom: 3px;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_info .item_info_btn .btn-commen_1 {
+    height: 30px;
+    line-height: 28px;
+    padding: 0 8px;
+    font-size: 12px;
+    background: url("editingCenter/app/images/b-m.jpg") repeat-x;
+    color: #666;
+    vertical-align: middle;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_info .item_info_btn .s_icon1 {
+    margin: 0 4px 0 0px;
+    padding-right: 4px;
+    border-right: 1px solid #e9e9e9;
+    line-height: 28px;
+  }
+  .hotEvents .min_h {
+    min-height: 40px!important;
+  }
+  .hotEvents .line_h26 {
+    line-height: 19px!important;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_info {
+    padding-top: 0px;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_img img {
+    height: 116px!important;
+  }
+}
+@media screen and (min-width: 1441px) {
+  .hotEvents .hotEvents_table .apply_item .item_info {
+    float: left;
+    padding: 10px 0 0 10px;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_info .item_info_h {
+    padding-bottom: 8px;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_info .item_info_btn .btn-commen_1 {
+    height: 30px;
+    line-height: 28px;
+    padding: 0 11px;
+    font-size: 12px;
+    background: url("editingCenter/app/images/b-m.jpg") repeat-x;
+    color: #666;
+    vertical-align: middle;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_info .item_info_btn .s_icon1 {
+    margin: 0 6px 0 0px;
+    padding-right: 6px;
+    border-right: 1px solid #e9e9e9;
+    line-height: 28px;
+  }
+  .hotEvents .voice_light {
+    width: 200px;
+    height: 6px;
+    background: #ececec;
+    margin-top: 8px;
+    float: left;
+  }
+}
+@media screen and (min-width: 1367px) and (max-width: 1440px) {
+  .hotEvents .hotEvents_table .apply_item .item_info {
+    padding-top: 3px;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_info .item_info_h {
+    padding-bottom: 3px;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_img img {
+    height: 132px;
+  }
+}
+@media screen and (max-width: 1366px) {
+  .hotEvents .hotEvents_table .apply_item .item_info {
+    padding-top: 0px;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_info .item_info_h {
+    padding-bottom: 3px;
+  }
+  .hotEvents .min_h {
+    min-height: 49px;
+  }
+  .hotEvents .hotEvents_table .apply_item .item_img img {
+    height: 125px;
+  }
+}
+/*返回顶部*/
+div.planEventPageTopIcon {
+  position: absolute;
+  top: -120px;
+}
+div.planEventToTopIcon {
+  background: url('planningCenter/selectedTopicEvent/eventAnalysis/images/z59.png') no-repeat;
+  width: 43px;
+  height: 45px;
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  cursor: pointer;
+  z-index: 999;
+}
+div.planEventToTopIcon > p {
+  background: url('planningCenter/selectedTopicEvent/eventAnalysis/images/z60.png') no-repeat;
+  width: 71px;
+  height: 35px;
+  line-height: 40px;
+  text-align: center;
+  color: #aaa;
+  position: absolute;
+  bottom: -50px;
+  right: -13px;
+  font-size: 12px;
+  overflow: hidden;
+}
+div.planEventToTopIcon > span {
+  display: block;
+  width: 71px;
+  height: 35px;
+  line-height: 40px;
+  text-align: center;
+  color: #aaa;
+  position: absolute;
+  bottom: -30px;
+  right: -13px;
+  font-size: 12px;
+}
+@keyframes planEventToTopIconEnter {
+  from {
+    opacity: .3;
+    bottom: -40px;
+  }
+  to {
+    opacity: 1;
+    bottom: -50px;
+  }
+}
+@keyframes planEventToTopIconLeave {
+  from {
+    opacity: 1;
+    bottom: -50px;
+  }
+  to {
+    opacity: .3;
+    bottom: -40px;
+  }
+}
+/*ng-show*/
+div.planEventToTopIcon > p.ng-hide-remove {
+  animation: planEventToTopIconEnter 0.1s both ease-in;
+}
+div.planEventToTopIcon > p.ng-hide-add {
+  animation: planEventToTopIconLeave 0.1s both ease-in;
+}

@@ -1,0 +1,137 @@
+@import '../../../colorPathConfig.less';
+@import '../../../@{colorPath}';
+
+.view-broadcast-mod {
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #eff0f2;
+}
+
+.view-broadcast-mod .view-broadcast-hd {
+    height: 50px;
+    background: #eff0f2;
+    padding-top: 13px;
+}
+
+.view-broadcast-mod .view-broadcast-hd .title {
+    font-family: 微软雅黑;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.view-broadcast-mod .view-broadcast-by {
+    padding: 10px 10px;
+}
+
+.view-broadcast-mod .view-broadcast-by .broadcast-title-content {
+    height: 110px;
+    padding: 20px 26px;
+}
+
+.view-broadcast-mod .view-broadcast-by .broadcast-title-content .sub-content {
+    display: inline-flex;
+    margin-bottom: 20px;
+}
+
+.view-broadcast-mod .view-broadcast-by .broadcast-title-content .sub-content div {
+    width: 300px;
+}
+
+.view-broadcast-mod .view-broadcast-by .broadcast-content-content .bold,
+.view-broadcast-mod .view-broadcast-by .broadcast-title-content .sub-content div span {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.view-broadcast-mod .view-broadcast-by .broadcast-content-content {
+    margin-bottom: 10px;
+    padding: 30px 50px 20px;
+    background-color: #eff0f2;
+}
+
+.view-broadcast-mod .view-broadcast-by .broadcast-content-content>div {
+    margin-bottom: 10px;
+}
+
+.view-broadcast-mod .view-broadcast-by .broadcast-content-yuyin {
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    background: url("./planningCenter/images/yn-1.png") no-repeat;
+    background-color: #1ABA9F;
+    background-position: 40px 10px;
+}
+.view-broadcast-mod .view-broadcast-by div.broadcast-content-yuyin:before{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    margin-top: 12px;
+    margin-left: -20px;
+    border: 6px solid transparent;
+    border-right-color: #1ABA9F;
+}
+.view-broadcast-mod .view-broadcast-by .broadcast-content-yuyin p {
+    color: #fff;
+    font-size: 16px;
+}
+
+
+/**
+ * 流程版本详情
+ */
+
+.view-broadcast-by .broadcast-tab {
+    background: #fff;
+    padding-top: 30px;
+}
+
+.view-broadcast-by .broadcast-tab>div {
+    width: 100%;
+}
+
+.view-broadcast-by .broadcast-tab .nav-tabs {
+    background: #F1F2F6;
+    border-bottom: 1px solid #ccc;
+}
+
+.view-broadcast-by .broadcast-tab .nav-tabs > li {
+    float: left;
+    border: 1px solid #ddd;
+    margin-bottom: -1px;
+    margin-right: 0;
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+}
+
+.view-broadcast-by .broadcast-tab .nav-tabs > li.active > a,
+.view-broadcast-by .broadcast-tab .nav-tabs > li.active > a:hover,
+.view-broadcast-by .broadcast-tab .nav-tabs > li.active > a:focus {
+    background: #fff;
+    border: none;
+    margin: 0;
+    position: relative;
+    top: 1px;
+    font-weight: bold;
+    color: #333;
+    padding: 9px 25px 12px 25px;
+    border-color: #ddd;
+}
+
+.view-broadcast-by .broadcast-tab .nav-tabs > li > a {
+    color: #333;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.view-broadcast-by .broadcast-tab .tab-content {
+    border: 1px solid #ddd;
+    border-top: 0;
+    background: #fff;
+}
+
+.view-broadcast-by .broadcast-tab .broadcast-operateLog {
+    font-size: 16px;
+    padding-top: 25px;
+}

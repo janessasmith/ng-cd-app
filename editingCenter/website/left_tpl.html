@@ -1,0 +1,32 @@
+<div class="container-fluid editing-list">
+    <!-- 站点一级标题-->
+    <div class="editing-pos" ng-click="">
+        <div class="editing-list-zjxw site_btn">
+            <img class="editing_list_zjxw_img" src="./editingCenter/app/images/w33.png">
+            <span ng-bind="status.selectedSite.SITENAME" title="{{status.selectedSite.SITENAME}}"></span>
+        </div>
+        <!-- 当站点内容超过一条时，显示上下箭头图标 -->
+        <!-- <div ng-if="">
+            <img class="edit_mark" src="./editingCenter/app/images/l5-1.png" ng-show="">
+            <img class="edit_mark" src="./editingCenter/app/images/l5-2.png" ng-show="">
+        </div>
+        站点一级标题列表
+        <div class="editing-Sites_fa" ng-show="">
+            <div class="editing-Sites" ng-repeat="" ng-click="">
+                <span ng-bind="" title=""></span>
+                <img src="./editingCenter/app/images/l8.png" ng-show="">
+            </div>
+        </div> -->
+    </div>
+    <tabset class="editing-downlist">
+        <!-- 待编 -->
+        <tab heading="待编" class="icon-compiled pointer">
+        </tab>
+        <!-- 待审 -->
+        <tab heading="待审" class="icon-pending pointer">
+        </tab>
+        <!-- 已签发 -->
+        <tab heading="已签发" class="icon-signed pointer">
+        </tab>
+    </tabset>
+</div>

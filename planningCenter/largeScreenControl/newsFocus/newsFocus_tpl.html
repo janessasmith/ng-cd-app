@@ -1,0 +1,18 @@
+<div class="planLargSreenNewsFocus">
+    <div class="newsFocus_header">
+        <button ng-disabled="true" class="disabledBtn">
+            <span>返回主页</span>
+        </button>
+    </div>
+    <div class="newsFocus_content">
+        <div class="content_main" ng-repeat="(field,fieldValue) in data">
+            <div class="content_main_header">
+                <trs-single-select selected-option="fieldValue.selected" callback="queryHotsopt(field,$index)" options="status.fieldOption"></trs-single-select>
+            </div>
+            <ul class="content_main_list">
+                <li ng-repeat="hotspot in fieldValue.list" ng-bind="hotspot.TITLE" title="{{hotspot.TITLE}}" ng-click="clickToDetail(field,hotspot)"></li>
+            </ul>
+        </div>
+    </div>
+    <div cg-busy="loadingPromise"></div>
+</div>

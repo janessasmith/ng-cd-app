@@ -1,0 +1,35 @@
+<form name="ipConfigForm">
+    <div class="edit_table border_radius_5 contralkitchen-codeconfig">
+        <table class="table table-striped data-table">
+            <thead>
+                <tr>
+                    <th class="codeconfig-list-title-ip">(IP地址)</th>
+                    <th></th>
+                    <th class="codeconfig-list-title-del">删除</th>
+                </tr>
+            </thead>
+            <tbody trs-thumb-container>
+                <div cg-busy="loadingPromise"></div>
+                <tr ng-repeat="item in data.items">
+                    <td class="codeconfig-ip">
+                        <span ng-bind="item.IP"></span>
+                    </td>
+                    <td></td>
+                    <td class="codeconfig-del"><img ng-click="del(item)" ng-show="data.ips.length<1" src="./planningCenter/largeScreenControl/images/del-1.png" alt="删除"></td>
+                </tr>
+                <tr ng-repeat="item in data.ips track by $index" ng-show="status.showInput">
+                    <td class="codeconfig-ip invalidate-input-box">
+                        <input class="form-control" name="input_{{$index}}" validator="required,ipconfig" ng-mouseenter="item.show=true" ng-mouseleave="item.show=false" is-show-tips="item.show" type="text" ng-model="item.ip" placeholder="IP格式：192.168.1.1">
+                    </td>
+                    <td></td>
+                    <td class="codeconfig-del" ng-click="delNewIP($index)"> <img src="./planningCenter/largeScreenControl/images/del-1.png" alt="删除"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+<div class="contralkitchen-codeconfig-btn">
+    <button class="codeconfig-btn-add" ng-click="addIp()">新增</button>
+    <button class="codeconfig-btn-cancel" ng-if="status.cancelAdd" ng-click="cancel()">取消新增</button>
+    <button class="codeconfig-btn-save" ng-click="save()" validation-submit="ipConfigForm">保存</button>
+</div>

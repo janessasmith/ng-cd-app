@@ -1,0 +1,56 @@
+.planCentralKitchen > div.mainView {
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 15px;
+  /*min-height: 600px;*/
+  margin: 0;
+}
+.planCentralKitchen .nav-tabs {
+  border-left: 1px solid #ccc;
+}
+.planCentralKitchen .tab-content {
+  /*border: 1px solid #ccc;*/
+  border-top: none;
+}
+.planCentralKitchen .nav-tabs > li {
+  background: #EEF1F6;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-color: #ccc;
+  min-width: 120px;
+  text-align: center;
+}
+.planCentralKitchen .nav-tabs > li.active {
+  border-top: 1px solid transparent;
+  background-color: #FF4E40;
+}
+.planCentralKitchen .nav-tabs > li > a {
+  margin-right: 0;
+  border-radius: 0;
+  font-weight: bold;
+  color: #333;
+  border-top: 1px solid #ccc;
+}
+.planCentralKitchen .nav-tabs > li.active > a {
+  border-bottom: 1px solid #fff;
+  position: relative;
+  bottom: -1px;
+  padding-top: 5px;
+  color: #FF4E40;
+  border-top: 3px solid transparent;
+}
+.planCentralKitchen .nav-tabs > li > a,
+.planCentralKitchen .nav-tabs > li > a:hover,
+.planCentralKitchen .nav-tabs > li > a:active,
+.planCentralKitchen .nav-tabs > li.active > a,
+.planCentralKitchen .nav-tabs > li.active > a:hover,
+.planCentralKitchen .nav-tabs > li.active > a:focus {
+  background: #fff;
+}
+.planCentralKitchen .nav-tabs > li > a:hover {
+  border-color: transparent;
+  border-top-color: #ccc;
+}
+.planCentralKitchen .nav-tabs > li.active > a:hover {
+  border-top: 3px solid transparent;
+}

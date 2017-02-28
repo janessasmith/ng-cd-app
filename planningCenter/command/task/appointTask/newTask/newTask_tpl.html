@@ -1,0 +1,157 @@
+<form class="planCenCommandAppointNewTask" name="newTaskForm" novalidate>
+    <div trs-scroll-fix class="row edit_right_head">
+        <div class="col-md-8 col-lg-9">
+            <!-- <button class="btn btn-default btn-commen opacity100 four-word-btn hasSelected" ng-mouseenter="status.batchOperateBtn['hoverStatus']='newTask'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+                <span class="s_icon">
+                <img ng-src="./planningCenter/command/task/appointTask/images/zp15.png">
+            </span> 新建任务
+            </button> -->
+            <!-- <button class="btn btn-default btn-commen opacity100 four-word-btn" ng-click="goNewEvent()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='newEvent'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+                <span class="s_icon">
+                <img ng-src="./planningCenter/command/task/appointTask/images/{{status.batchOperateBtn['hoverStatus']=='newEvent'?'zp16.png':'zp16-1.png'}}"/>
+            </span> 新建线索
+            </button> -->
+            <button class="btn btn-default btn-commen opacity100" ng-click="back()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='withdraw
+'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+                <span class="s_icon">
+                <img ng-src="./planningCenter/command/task/appointTask/images/{{status.batchOperateBtn['hoverStatus']=='withdraw'?'zp17.png':'zp17-1.png'}}"/>
+            </span> 返回
+            </button>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <ol class="breadcrumb pull-right edit_breadcrumb">
+                <li>
+                    <span>策划中心</span>
+                    <span>协同指挥</span>
+                    <span>任务指令</span>
+                    <span>任务指派</span>
+                    <span>新建线索</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title">
+            <span class="text-red">*</span>
+            <span class="newTask-title-word">标题：</span>
+        </div>
+        <div class="newTask-content invalidate-input-box">
+            <input type="text" ng-model="params.Title" name="title" class="form-control" maxlength-error-message="长度不能超过50个字符！" validator="maxlength=50,required,spechar" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+        </div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title">
+            <span class="text-red">*</span>
+            <span class="newTask-title-word">接收人：</span>
+        </div>
+        <div class="newTask-content">
+            <span class="user" ng-repeat="user in data.choosedUser">
+                {{user.USERNAME}}
+                <span class="deleteUser" ng-click="data.choosedUser.splice(data.choosedUser.indexOf(user),1)">x</span>
+            </span>
+            <button ng-click="chooseUser()" class="btn btn-default btn-commen opacity100" ng-mouseenter="status.batchOperateBtn['hoverStatus']='add'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+                <span class="s_icon">
+                <img ng-src="./planningCenter/command/task/appointTask/images/{{status.batchOperateBtn['hoverStatus']=='add'?'zp34.png':'zp34-1.png'}}" />
+            </span> 添加
+            </button>
+        </div>
+    </div>
+    <div class="newTask-row">
+        <!-- <div class="newTask-title">
+            <span class="newTask-title-word">
+                <trs-checkbox ischecked="params.IsUrgent=='1'" callback="IsUrgent()"></trs-checkbox>
+            </span>
+        </div>
+        <div class="newTask-content" style="padding-top: 5px;">
+            紧急任务
+        </div> -->
+        <div class="newTask-title">
+            <span class="text-red">*</span>
+            <span class="newTask-title-word">
+                标识：
+            </span>
+        </div>
+        <trs-single-select label="普通" selected-option="params.IsUrgent" callback="chooseDropList('IsUrgent')" options="status.isUrgentTypes"></trs-single-select>
+        <span class="color_555">普通（普通、重要、紧急、敏感）</span>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title">
+            <span class="text-red">*</span>
+            <span class="newTask-title-word">时间：</span>
+        </div>
+        <div class="newTask-content">
+            <div class="timeGroup invalidate-input-box">
+                <input type="text" size="10"  class="form-control" ng-model="params.TaskStartTime" name="TaskStartTime" placeholder="开始时间" data-autoclose="1" bs-datepicker="" readonly="readonly" data-date-format="yyyy-MM-dd" data-max-date="{{params.TaskEndTime}}" validator="required,spechar" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB">
+                <img src="./editingCenter/app/toBeCompiled/images/t3.png" class="imgOne">
+            </div>
+            <span class="timeGroup-connect">至</span>
+            <div class="timeGroup invalidate-input-box">
+                <input type="text" size="10" class="form-control" ng-model="params.TaskEndTime"  name="TaskEndTime" placeholder="结束时间" data-autoclose="1" bs-datepicker="" readonly="readonly" data-date-format="yyyy-MM-dd" data-min-date="{{params.TaskStartTime}}" validator="required,spechar" ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC">
+                <img src="./editingCenter/app/toBeCompiled/images/t3.png" class="imgOne">
+            </div>
+            <div class="newTask-chooseAddress">
+                <search>
+                </search>
+                <!-- <ul class="newTask-suggestion" ng-show="status.suggestionShow">
+                    <li ng-repeat="item in [1,1,1,1,1,1,1,1,1,1,1,1,1,1] track by $index">
+                        <i>
+                            <img src="./planningCenter/command/task/appointTask/images/zp30.png">
+                        </i>
+                        <div>
+                            <p>浙江体育大厦</p>
+                            <span>杭州市-下城区-体育场路</span>
+                        </div>
+                        <b>
+                            <img src="./planningCenter/command/task/appointTask/images/zp31.png">
+                        </b>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title">
+            <span class="newTask-title-word">任务内容：</span>
+        </div>
+        <div class="newTask-content">
+            <!-- <div class="newTask-toggleTask">
+                <img ng-src="./planningCenter/command/task/appointTask/images/{{status.isVoice?'zp22.png':'zp22-1.png'}}" ng-click="status.isVoice=false">
+                <img ng-src="./planningCenter/command/task/appointTask/images/{{status.isVoice?'zp23.png':'zp23-1.png'}}" ng-click="status.isVoice=true">
+            </div> -->
+            <div class="newTask-taskContent">
+                <div class="invalidate-input-box" ng-show="!status.isVoice">
+                    <textarea maxlength-error-message="长度不能超过500个字符！" ng-model="params.Content" name="Content" validator="maxlength=500,required,spechar" class="form-control" ng-mouseenter="isShowTipsE=true" ng-mouseleave="isShowTipsE=false" is-show-tips="isShowTipsE"></textarea>
+                </div>
+                <!-- <div class="newTask-voice" ng-show="status.isVoice">
+                    <div class="newTask-voice-title">
+                        <div ng-click="status.isTaping=!status.isTaping">
+                            <img src="./planningCenter/command/task/appointTask/images/zp26.png">
+                            <span ng-show="!status.isTaping">开始录音</span>
+                            <span ng-show="status.isTaping">正在录音......</span>
+                        </div>
+                        <button>取消</button>
+                        <button>发送</button>
+                    </div>
+                    <ul class="newTask-voice-content">
+                        <li>
+                            <span>
+                                250"
+                            </span>
+                            <img src="./planningCenter/command/task/appointTask/images/zp24.png">
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-map" id="map">地图</div>
+    </div>
+    <div class="newTask-row">
+        <div class="newTask-title"></div>
+        <div class="newTask-content">
+            <button ng-click="confirm()" class="taskComplete-btn">确定</button>
+            <button ng-click="cancel()" class="taskCancel-btn">取消</button>
+        </div>
+    </div>
+</form>

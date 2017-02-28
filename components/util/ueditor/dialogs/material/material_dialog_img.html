@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html ng-app='materialApp'>
+
+<head>
+    <meta charset="utf-8" />
+    <title>素材库</title>
+    <link rel="stylesheet" href="../bootstrap.css" />
+    <link rel="stylesheet" href="material.css">
+</head>
+
+<body ng-controller="ueditorMaterialImg">
+    <div>
+        <trs-single-select selected-option="data.selectedFirClassify" callback="firstDropdown(data.selectedFirClassify)" options="data.firstClassify"></trs-single-select>
+        <trs-single-select selected-option="data.selectedSecClassify" callback="secDropdown(data.selectedSecClassify)" options="data.secClassify"></trs-single-select>
+        <trs-single-select selected-option="data.selectedthirdClassify" callback="thridDropDown(data.selectedthirdClassify)" options="data.thirdClassify"></trs-single-select>
+    </div>
+    <div class="row plr10">
+        <div class="img-flow list-page-pk clearfix imglist">
+            <div class="img-box" ng-repeat="pic in data.pics" ng-class="{'checked-pic':data.selectedArray.indexOf(pic)>=0}" ng-click="selectMaterial(pic)">
+                <a href="javascript:void(0)" class="img-bk">
+                    <img ng-src="{{pic.FILEPATH}}" alt="">
+                    <span ng-bind="pic.TITLE"></span>
+                </a>
+            </div>
+        </div>
+        <div class="materialInfo">
+            <fieldset>
+                <legend>图片尺寸</legend>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label for="imgWidth">宽度</label></td>
+                            <td><input class="txt" type="text" id="imgWidth" ng-model="status.imgWidth"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="imgHeight">高度</label></td>
+                            <td><input class="txt" type="text" id="imgHeight" ng-model="status.imgHeight"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+    </div>
+    <div class="content">
+        <!-- <h1>Dialog测试页面112</h1> -->
+        <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+    </div>
+    <!--页面中一定要引入internal.js为了能直接使用当前打开dialog的实例变量-->
+    <!--internal.js默认是放到dialogs目录下的-->
+    <script type="text/javascript" src="../internal.js"></script>
+    <script type="text/javascript" src="../angular.js"></script>
+    <script type="text/javascript" src="../ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript" src="material.js"></script>
+    <script>
+    </script>
+</body>
+
+</html>
+

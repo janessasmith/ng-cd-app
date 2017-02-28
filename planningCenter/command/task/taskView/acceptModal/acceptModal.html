@@ -1,0 +1,40 @@
+<div class="myManuSubmit">
+    <div class="submit">
+        <div class="header">
+            <p>接受</p>
+            <img ng-click="close()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+        </div>
+        <div class="content">
+            <ul class="nav gray_bg">
+                <li ng-repeat="media in mediasArray" ng-bind="media.mediaName" ng-click="setCurrMedia(media.mediaType)" ng-class="{'active':currMedia==media.mediaType}" ng-if="status.accessAuthority[media.mediaValue]==true"></li>
+            </ul>
+            <div class="con mc-padding-xs">
+                已选任务
+                <table class="table-normal">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>标题</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in data.items">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.TITLE}}</td>
+                            <td>
+                                <span class="glyphicon glyphicon-remove" ng-class="{'font_red':data.items.length>1,'font_gray':data.items.length==1}" aria-hidden="true" ng-click="removeItem($index)"></span>
+                                删除
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="footer">
+                <button class="btn btn-primary btn_cancel" ng-click="close()">取消</button>
+                <button class="btn btn-primary btn_confirm" ng-click="sendInfo()" ng-show="!hasSelected()">确定</button>
+            </div>
+        </div>
+    </div>
+    <div cg-busy="loadingPromise">
+    </div>

@@ -1,0 +1,47 @@
+<div class="myManuSubmit">
+    <form name="uploadForm" novalidate>
+        <div class="submit">
+            <div class="header">
+                <p>素材上传</p>
+                <img ng-click="close()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+            </div>
+            <div class="content body">
+                <div class="col-xs-12 options">
+                    <span ng-click="status.selectedMedia = (status.selectedMedia!='text'&&data.appendix.length!=0)?status.selectedMedia:'text'" class="upload-icon ico-text {{status.selectedMedia=='text'?'selecteText':''}} {{status.selectedMedia!='text'&&data.appendix.length!=0?'cantSelect':''}}"></span>
+                    <span ng-click="status.selectedMedia = (status.selectedMedia!='voice'&&data.appendix.length!=0)?status.selectedMedia:'voice'" class="upload-icon ico-voice {{status.selectedMedia=='voice'?'selecteVoice':''}} {{status.selectedMedia!='voice'&&data.appendix.length!=0?'cantSelect':''}}"></span>
+                    <span ng-click="status.selectedMedia = (status.selectedMedia!='picture'&&data.appendix.length!=0)?status.selectedMedia:'picture'" class="upload-icon ico-picture {{status.selectedMedia=='picture'?'selectePicture':''}} {{status.selectedMedia!='picture'&&data.appendix.length!=0?'cantSelect':''}}"></span>
+                    <!-- <span ng-click="status.selectedMedia = (status.selectedMedia!='others'&&data.appendix.length!=0)?status.selectedMedia:'others'" class="upload-icon ico-others {{status.selectedMedia=='others'?'selecteOthers':''}} {{status.selectedMedia!='others'&&data.appendix.length!=0?'cantSelect':''}}"></span> -->
+                    <span ng-click="status.selectedMedia = (status.selectedMedia!='video'&&data.appendix.length!=0)?status.selectedMedia:'video'" class="upload-icon ico-video {{status.selectedMedia=='video'?'selecteVideo':''}} {{status.selectedMedia!='video'&&data.appendix.length!=0?'cantSelect':''}}"></span>
+                </div>
+                <ul ng-if="status.selectedMedia!='text'" class="gray_bg appendix">
+                    <li ng-repeat="item in data.appendix" ng-click="setCurrMedia(media.mediaType)">
+                        <img src="./planningCenter/command/images/sc2-2.png" ng-if="status.selectedMedia=='voice'">
+                        <img src="./planningCenter/command/images/sc3-2.png" ng-if="status.selectedMedia=='picture'">
+                        <img src="./planningCenter/command/images/sc5-2.png" ng-if="status.selectedMedia=='video'">
+                        <span class="filename" ng-bind="item.name"></span>
+                        <span class="deletAppendix" ng-click="deleteAppendix($index)">删除</span>
+                        <div class="uploadProgress" ng-if="status.uploadMasNow">
+                            <p>
+                                <b ng-style="{'width':status.uploadProgress[item.id]}"></b>
+                            </p>
+                            <span ng-bind="status.uploadProgress[item.id]"></span>
+                        </div>
+                    </li>
+                    <!-- <li ngf-select="chooseFile()" multiple ngf-multiple="true" ng-model="status.tempAppendix" ngf-validate="{pattern: fileType()}" class="addAppendix"><img src="./manageConfig/images/js3.jpg"></li> -->
+                    <li class="addAppendixBtn" trs-upload src="/wcm/openapi/uploadImage" ng-show="status.selectedMedia=='picture'" call-back="uploadCallback"></li>
+                    <li class="addAppendixBtn" trs-Mas-upload ng-hide="status.selectedMedia=='picture'" call-back="uploadCallback" extensions="status.uploadType[status.selectedMedia]['extensions']" mime-types="status.uploadType[status.selectedMedia]['mimetypes']" multiple="true" ng-if="status.selectedMedia=='voice'"></li>
+                    <li class="addAppendixBtn" trs-Mas-upload ng-hide="status.selectedMedia=='picture'" call-back="uploadCallback" extensions="status.uploadType[status.selectedMedia]['extensions']" mime-types="status.uploadType[status.selectedMedia]['mimetypes']" multiple="true" ng-if="status.selectedMedia=='video'"></li>
+                    <input type="text" name="appendixes" validator="required" style="display:none" ng-model="status.formAppendix">
+                </ul>
+                <div class="uploadcontent con mc-padding-xs  invalidate-input-box" ng-if="status.selectedMedia=='text'">
+                    <textarea maxlength-error-message="长度不能超过500个字符！" placeholder="请在这里输入文本内容" name="text" ng-model="data.appendix" class="form-control reason-cnt" validator="maxlength=500,spechar,required" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA"></textarea>
+                </div>
+                <div class="footer">
+                    <button class="btn btn-primary btn_cancel" ng-click="close()">取消</button>
+                    <button class="btn btn-primary btn_confirm" ng-click="sendInfo()">确定</button>
+                </div>
+            </div>
+        </div>
+        <div cg-busy="loadingPromise"></div>
+    </form>
+</div>

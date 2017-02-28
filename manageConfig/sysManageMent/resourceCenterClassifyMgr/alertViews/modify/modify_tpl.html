@@ -1,0 +1,55 @@
+<form name="addNewSiteForm" novalidate>
+    <div class="man_produ_modify">
+        <div class="man_produ_modify_head">
+            <p ng-bind="title"></p>
+            <img src="./editingCenter/app/toBeCompiled/images/cls.jpg" class="edit_revoke_thead_images1" ng-click="cancel()" />
+        </div>
+        <div class="edit_outSending_main">
+            <div class="add_new_site_row">
+                <p>
+                    {{type}}名称：
+                </p>
+                <div class="invalidate-input-box">
+                    <input type="text" class="form-control" name="value" validator="spechar" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips"/>
+                </div>
+            </div>
+            <div class="add_new_site_row">
+                <p>
+                    {{type}}描述：
+                </p>
+                <div class="invalidate-input-box">
+                    <textarea class="form-control" validator="spechar" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips"
+></textarea>
+                </div>
+            </div>
+            <div class="add_new_site_row">
+                <p>
+                    预留字段1：
+                </p>
+                <div class="invalidate-input-box">
+                    <input type="text" class="form-control" name="value1" validator="spechar" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA"/>
+                </div>
+            </div>
+            <div class="add_new_site_row">
+                <p>
+                    预留字段2：
+                </p>
+                <div class="invalidate-input-box">
+                    <input type="text" class="form-control"  name="value2" validator="spechar" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB"/>
+                </div>
+            </div>
+            <div class="add_new_site_row">
+                <p>
+                    排序：
+                </p>
+                <div>
+                    <trs-single-select selected-option="" callback="" options=""></trs-single-select>
+                </div>
+            </div>
+            <div class="man_produ_modify_footer">
+                <button class="news-role-btn right btn_cancel" ng-click="cancel()">取消</button>
+                <button class="news-role-btn man_produ_modify_footer_cancel right btn_confirm" ng-click="confirm()">确定</button>
+            </div>
+        </div>
+    </div>
+</form>

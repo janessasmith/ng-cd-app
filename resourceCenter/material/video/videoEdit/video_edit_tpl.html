@@ -1,0 +1,144 @@
+<form name="videoEditform" novalidate>
+    <div class="picture-edit-head">
+        <img src="./resourceCenter/images/mtrh-play.gif">
+        <p class="pc-local">资源中心 > 音视频 > {{status.params.materialId?'素材编辑':'素材新建'}}</p>
+        <div class="Iw-box-fix box-fix-bt">
+            <div class="txt_r">
+                <button class="btn btn-primary" ng-click="confirm()" style="padding-right: 14px;">
+                    <span class="s_icon"><img ng-src="./editingCenter/iWo/images/csave.png"></span>保存
+                </button>
+                <button class="btn btn-primary" ng-click="close()" style="padding-right: 14px;">
+                    <span class="s_icon"><img ng-src="./editingCenter/iWo/images/cclose.png"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="picture-edit-con">
+        <div class="atals row_news  mc-padding-bottom">
+            <div id="section-1">
+                <div>
+                    <div id="atlasDocInfo"></div>
+                    <div class="row mc-padding-top-xs mr0 mb20">
+                        <div class="col-md-12 mt20">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="form-group clearfix">
+                                        <div class="col-sm-1 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>素材名称：</div>
+                                        <div class="col-sm-9 mc-padding-horizontal-0">
+                                            <div class="invalidate-input-box z1000">
+                                                <input class="form-control" type="text" name="name" ng-model="data.video.TITLE" placeholder="请输入图片名称" maxlength-error-message="长度不能超过50个字符！" validator="spechar,maxlength=50,required" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB">
+                                            </div>
+                                        </div>
+                                        <span class="col-sm-1 tip">共<trs-word-num num-obj="{{data.video.TITLE}}" class="font_red auto_wt"></trs-word-num>字</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group clearfix">
+                                        <div class="col-sm-1 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>关键字：</div>
+                                        <div class="col-sm-9 mc-padding-horizontal-0">
+                                            <div class="invalidate-input-box z1000">
+                                                <input class="form-control" type="text" name="keyword" ng-model="data.video.KEYWORD" placeholder="多个关键字以逗号分割" validator="spechar,required" ng-mouseenter="isShowTipsK=true" ng-mouseleave="isShowTipsK=false" is-show-tips="isShowTipsK">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group clearfix">
+                                        <div class="col-sm-1 mc-padding-horizontal-0 sc-tit">相关人物：</div>
+                                        <div class="col-sm-8 mc-padding-horizontal-0">
+                                            <div class="invalidate-input-box z1000">
+                                                <input class="form-control" type="text" name="person" ng-model="data.video.RELATEPERSON" placeholder="多个人物关键字以逗号分割" validator="spechar" ng-mouseenter="isShowTipsP=true" ng-mouseleave="isShowTipsP=false" is-show-tips="isShowTipsP">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group clearfix">
+                                        <div class="col-sm-1 mc-padding-horizontal-0 sc-tit">相关地点：</div>
+                                        <div class="col-sm-8 mc-padding-horizontal-0">
+                                            <div class="invalidate-input-box z1000">
+                                                <input class="form-control" type="text" name="place" ng-model="data.video.RELATEPLACE" placeholder="多个地点关键字以逗号分割" validator="spechar" ng-mouseenter="isShowTipsR=true" ng-mouseleave="isShowTipsR=false" is-show-tips="isShowTipsR">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group clearfix">
+                                        <div class="col-sm-1 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>作者署名：</div>
+                                        <div class="col-sm-3 mc-padding-horizontal-0">
+                                            <div class="invalidate-input-box z1000">
+                                                <input class="form-control" type="text" name="author" ng-model="data.video.AUTHORS" placeholder="请输入作者署名" validator="spechar,required" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-sm-1 mc-padding-horizontal-0 sc-tit"><em class="font_red">*</em>拍摄时间：</div>
+                                        <div class="col-sm-3 mc-padding-horizontal-0">
+                                            <div class="invalidate-input-box z1000">
+                                                <input type="text" class="form-control" name="time" ng-model="data.video.PSTIME" data-date-format="yyyy-MM-dd" data-autoclose="1" validator="spechar,required" ng-mouseenter="isShowTipsT=true" ng-mouseleave="isShowTipsT=false" is-show-tips="isShowTipsT" bs-datepicker>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group clearfix">
+                                        <div class="col-sm-1 mc-padding-horizontal-0 sc-tit">
+                                            <em class="font_red">*</em>所属分类：
+                                        </div>
+                                        <div class="col-sm-10 mc-padding-horizontal-0">
+                                            <img src="./editingCenter/website/images/images/w29.png" alt="" ng-click="selectClassify()" class="channel-choose-icon" style="margin-left: 20px;" />
+                                            <p ng-bind="classify.TITLE" ng-repeat="classify in data.selectClassify" class="channel-choose-content pointer" ng-click="chooseChannel()"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 websiteaudiovideo">
+                                    <div class="form-group clearfix">
+                                        <div class="col-sm-1 mc-padding-horizontal-0 sc-tit">
+                                            <em class="font_red">*</em>音视频：
+                                        </div>
+                                        <div class="col-sm-11 invalidate-input-box">
+                                            <ul class="audiovideo">
+                                                <li ng-init="getAudioVideoPlayer(item)" ng-repeat="item in status.audioVideoidsArray">
+                                                    <video ng-if="item.value.streamsMap.l" controls="controls" ng-src="{{item.value.streamsMap.l.httpURL}}"></video>
+                                                    <div ng-if="item.value.err!=undefined" class="default">
+                                                        <span><img src="./editingCenter/website/images/video.gif" alt="请稍等，正在转码..."></span>
+                                                    </div>
+                                                    <div class="toolbar">
+                                                        <label ng-click="deleteAudioVideo(item)">删除</label>
+                                                        <label ng-click="downloadAudioVideo(item)" ng-if="item.value.streamsMap.l.httpURL">下载</label>
+                                                    </div>
+                                                </li>
+                                                <li class="edit-UploadMasProgress" ng-if="status.uploadMasNow">
+                                                    <div>
+                                                        <p ng-style="{'width':status.uploadMasProgress}"></p>
+                                                    </div>
+                                                    <span ng-bind="status.uploadMasProgress"></span>
+                                                </li>
+                                            </ul>
+                                            <div ng-if="status.audioVideoidsArray.length<1">
+                                                <div class="edit-UploadMasBtn" trs-Mas-upload call-back="uploadMasCallBack" extensions="status.masUploadExtensions" mime-types="status.masUploadMimeTypes" multiple="false">
+                                                </div>
+                                                <p class="cue"><span>支持格式：</span>
+                                                    <span>.mp3,.mp4,.flv,.rmvb,.avi</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="section-2">
+                <div class="m_box bg-gray">
+                    <div class="m_box_item mt20" style="padding-left:26px;">
+                        <div class="col-sm-1 txt_r w90 sc-tit"><em class="font_red">*</em>音视频说明：</div>
+                        <div class="col-sm-10 invalidate-input-box ">
+                            <textarea name="content" ng-model="data.video.CONTENT" class="form-control" maxlength-error-message="长度不能超过500个字符！" validator="spechar,maxlength=500,required" ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD"></textarea>
+                        </div>
+                        <span class="col-sm-1 tip" style="margin-top:145px;">共<trs-word-num num-obj="{{data.video.CONTENT}}" class="font_red auto_wt"></trs-word-num>字</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

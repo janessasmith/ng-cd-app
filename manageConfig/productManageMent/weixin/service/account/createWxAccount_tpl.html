@@ -1,0 +1,89 @@
+<div class="createGroupSubmit" style="margin: 65px auto;">
+    <div class="submit">
+        <div class="head">
+            <span ng-bind="status.modalTitle"></span>
+            <img ng-click="cancel()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+        </div>
+        <div class="body" style="min-height: 220px;">
+            <form class="createGroupSubmit-form" name="createGroupSubmitForm" novalidate>
+                <div class="main">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-12 mb10">
+                                <div class="col-md-2 sc-tit"><em class="font_red">*</em>公众号名称：</div>
+                                <div class="col-md-5 no-pd">
+                                    <div class="invalidate-input-box z1000">
+                                        <input class="form-control" type="text" name="name" ng-model="account.name" placeholder="输入公众号名称" maxlength-error-message="长度不能超过50个字符！" validator="spechar,maxlength=50,required" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb10">
+                                <div class="col-md-2 sc-tit"><em class="font_red">*</em>公众号类型：</div>
+                                <div class="col-md-5 no-pd">
+                                    <trs-single-select selected-option="publicNumberTypeSelected" callback="" options="publicNumberTypeJson"></trs-single-select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb10">
+                                <div class="col-md-2 sc-tit"><em class="font_red">*</em>账号原始ID：</div>
+                                <div class="col-md-5 no-pd">
+                                    <div class="invalidate-input-box z1000">
+                                        <input class="form-control" type="text" name="ID" ng-model="account.wxid" placeholder="输入账号原始ID" maxlength-error-message="长度不能超过50个字符！" validator="spechar,maxlength=50,required" ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC">
+                                    </div>
+                                </div>
+                                <span class="col-md-5 remark-sp">公众号原始ID，创建之后不允许修改</span>
+                            </div>
+                            <div class="col-md-12 mb10">
+                                <div class="col-md-2 sc-tit"><em class="font_red">*</em>APPID：</div>
+                                <div class="col-md-5 no-pd">
+                                    <div class="invalidate-input-box z1000">
+                                        <input class="form-control" type="text" name="APPID" ng-model="account.appId" maxlength-error-message="长度不能超过50个字符！" validator="spechar,maxlength=50,required" ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD">
+                                    </div>
+                                </div>
+                                <span class="col-md-5 remark-sp">服务号和认证后的订阅号必须有，普通订阅号可以没有</span>
+                            </div>
+                            <div class="col-md-12 mb10">
+                                <div class="col-md-2 sc-tit"><em class="font_red">*</em>APPSECRET：</div>
+                                <div class="col-md-5 no-pd">
+                                    <div class="invalidate-input-box z1000">
+                                        <input class="form-control" type="text" name="APPSECRET" ng-model="account.appSecret" maxlength-error-message="长度不能超过50个字符！" validator="spechar,maxlength=50,required" ng-mouseenter="isShowTipsE=true" ng-mouseleave="isShowTipsE=false" is-show-tips="isShowTipsE">
+                                    </div>
+                                </div>
+                                <span class="col-md-5 remark-sp">服务号和认证后的订阅号必须有，普通订阅号可以没有</span>
+                            </div>
+                            <div class="col-md-12 mb10">
+                                <div class="col-md-2 sc-tit">公众号描述：</div>
+                                <div class="col-md-7 no-pd">
+                                    <div class="invalidate-input-box z1000">
+                                        <textarea name="description" ng-model="account.description" class="form-control" maxlength-error-message="长度不能超过500个字符！" validator="spechar,maxlength=500" ng-mouseenter="isShowTipsF=true" ng-mouseleave="isShowTipsF=false" is-show-tips="isShowTipsF"></textarea>
+                                    </div>
+                                </div>
+                                <span class="col-sm-3 tip remark-sp">已输入<trs-word-num num-obj="{{account.description}}" class="font_red auto_wt"></trs-word-num>字</span>
+                            </div>
+                            <div class="col-md-12 mb10">
+                                <div class="col-md-2 sc-tit"><em class="font_red">*</em>公众号头像：</div>
+                                <a href trs-upload auto="true" filetype="images" add-btn="true" call-back="callBack" src="/wcm/openapi/uploadImage" class="col-md-5 upload-pc" inner-name="{{status.wxHeadPath?'重新上传':'上传头像'}}" ng-click="status.progress=0"></a>
+                            </div>
+                            <div class="col-md-12 mb10" ng-show="status.wxHeadPath">
+                                <div class="col-md-3 col-md-offset-2 no-pd wx-head-pc"><img ng-src="{{status.wxHeadPath}}">
+                                    <!-- <i class="delete-btn" ng-click="deleteWxHead()"></i> -->
+                                    <!-- <div class="percentage">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':status.progress}">{{status.progress}}
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="foot">
+                <div>
+                    <button class="confirm" ng-click="confirm()">保存</button>
+                    <button class="cancel" ng-click="cancel()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

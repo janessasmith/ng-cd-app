@@ -1,0 +1,30 @@
+.batAuthority .assignedAuthority {
+    background-color: #4496d2;
+    padding: 3px;
+    color: white;
+    border-radius: 5px;
+}
+
+.batAuthority .commonLight {
+    font-size: 15px;
+    font-weight: bolder;
+    color: black;
+}
+
+.batAuthority .regular-checkbox + label {
+    padding: 6px!important;
+}
+
+.batAuthority .regular-checkbox:checked + label:after {
+    top: 0px!important;
+    left: 0px!important;
+}
+
+.batAuthority .inherit {
+    margin: 10px;
+    font-size: 13px;
+}
+
+.batAuthority .tree-unselectable {
+    color: grey!important;
+}

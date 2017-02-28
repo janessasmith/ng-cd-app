@@ -1,0 +1,57 @@
+
+<div trs-scroll-fix class="row edit_right_head">
+    <div class="col-md-8 col-lg-9">
+        <button class="btn btn-default btn-commen edit_right_head_btn_commen" ng-click="createColumn()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='new'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+            <span class="s_icon"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='new'?'b1-1.png':'b1.png'}}"></span> 新建
+        </button>
+        <button class="btn btn-default btn-commen edit_right_head_btn_commen" ng-disabled="data.selectedArray.length<1" ng-click="multDelete()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='delete'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+            <span class="s_icon"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='delete'?'fg2-1.png':'fg2.png'}}"></span> 删除
+        </button>
+        <button class="btn btn-default btn-commen edit_right_head_btn_commen" ng-disabled="data.selectedArray.length<1" ng-click="carriedOut()" ng-mouseenter="status.batchOperateBtn['hoverStatus']='send'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+            <span class="s_icon"><img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='send'?'fg1-1.png':'fg1.png'}}"></span>立即执行
+        </button>
+    </div>
+</div>
+<div class="row col-md-12 templateMge-content-table">
+    <div class="edit_table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="td-check td-checkk">
+                        <trs-checkbox ischecked="data.selectedArray.length==data.items.length && data.selectedArray.length!=0" callback="selectAll()"></trs-checkbox>全选
+                    </th>
+                    <th>目标栏目</th>
+                    <th>分发执行时间</th>
+                    <th>文档创建时间</th>
+                    <th>分发模式</th>
+                    <th>编辑</th>
+                    <th>删除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.items">
+                    <td class="td-check">
+                        <trs-checkbox ischecked="data.selectedArray.indexOf(item)<0?false:true" callback="selectDoc(item)"></trs-checkbox>
+                        <span ng-bind="(page.CURRPAGE-1)*page.PAGESIZE+$index+1"></span>
+                    </td>
+                    <td ng-bind="item.TOCHANNELNAME"></td>
+                    <td>
+                        <span ng-bind="item.SDATE|date:'yyyy-MM-dd'"></span>
+                        <span> / </span>
+                        <span ng-bind="item.EDATE|date:'yyyy-MM-dd'"></span>
+                    </td>
+                    <td ng-bind="item.DOCSDATE|date:'yyyy-MM-dd'"></td>
+                    <td ng-bind="item.ATTRIBUTE"></td>
+                    <td ng-click="editColumn(item)"><img src="./editingCenter/weixin/images/r1.png" title="编辑"></td>
+                    <td ng-click="multDelete(item)"><img src="./manageConfig/productManageMent/images/gl27.png" title="删除"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div cg-busy="loadingPromise"></div>
+        <div class="page">
+            <trs-pagenation-left page-count="page" callback="selectPageNum()" is-select-pagecount="true"></trs-pagenation-left>
+            <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+            <trs-pagenation-right callback="jumpToPage()" currpage="status.copyCurrPage" page="page"></trs-pagenation-right>
+        </div>
+    </div>
+</div>

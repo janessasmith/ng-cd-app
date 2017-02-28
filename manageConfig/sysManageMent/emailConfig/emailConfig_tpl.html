@@ -1,0 +1,68 @@
+<form name="emailConfigForm" class="man-sys-emailConfig" novalidate>
+    <div class="emailConfig-row">
+        <p class="emailConfig-title">发送方式：</p>
+        <div class="emailConfig-main">
+            <p ng-repeat="item in status.singleSelect.sendWay">
+                <br>
+                <trs-single-radio ischecked="item.value==list.MEDIATYPES" label="{{item.desc}}" group="'sendWay'" callback="toggleRadio(item)"></trs-single-radio>
+            </p>
+        </div>
+    </div>
+    <div class="emailConfig-row">
+        <p class="emailConfig-title">SMTP服务器：</p>
+        <div class="emailConfig-main invalidate-input-box">
+            <input type="text" class="form-control" name="value1" validator="spechar" ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+        </div>
+    </div>
+    <div class="emailConfig-row">
+        <p class="emailConfig-title invalidate-input-box">SMTP端口：</p>
+        <div class="emailConfig-main">
+            <input type="text" class="form-control" name="value2" validator="spechar" ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB">
+        </div>
+    </div>
+    <div class="emailConfig-row">
+        <p class="emailConfig-title">SMTP身份验证：</p>
+        <div class="emailConfig-main">
+            <span ng-repeat="item in status.singleSelect.authentication" class="ml10">
+            	<trs-single-radio ischecked="item.value==list.MEDIATYPES" label="{{item.desc}}" group="'sendWay'" callback="toggleRadio(item)"></trs-single-radio>
+            </span>
+        </div>
+    </div>
+    <div class="emailConfig-row">
+        <p class="emailConfig-title">SMTP用户名：</p>
+        <div class="emailConfig-main invalidate-input-box">
+            <input type="text" class="form-control" name="value3" validator="spechar" ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC">
+        </div>
+    </div>
+    <div class="emailConfig-row">
+        <p class="emailConfig-title">SMTP密码：</p>
+        <div class="emailConfig-main invalidate-input-box">
+            <input type="text" class="form-control" name="value4" validator="spechar" ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD">
+        </div>
+    </div>
+    <div class="emailConfig-row">
+        <p class="emailConfig-title">发件人：</p>
+        <div class="emailConfig-main invalidate-input-box">
+            <input type="text" class="form-control" name="value5" validator="spechar" ng-mouseenter="isShowTipsE=true" ng-mouseleave="isShowTipsE=false" is-show-tips="isShowTipsE">
+        </div>
+    </div>
+    <div class="emailConfig-row">
+        <p class="emailConfig-title">邮件头分隔符：</p>
+        <div class="emailConfig-main">
+            <p ng-repeat="item in status.singleSelect.separator">
+                <br>
+                <trs-single-radio ischecked="item.value==list.MEDIATYPES" label="{{item.desc}}" group="'sendWay'" callback="toggleRadio(item)"></trs-single-radio>
+            </p>
+        </div>
+    </div>
+    <div class="emailConfig-row">
+        <p class="emailConfig-title">邮件签名：</p>
+        <div class="emailConfig-main invalidate-input-box">
+            <textarea class="form-control" name="value6" validator="spechar" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips"
+></textarea>
+        </div>
+    </div>
+    <div class="emailConfig-footer">
+    	<button>保存</button>
+    </div>
+</form>

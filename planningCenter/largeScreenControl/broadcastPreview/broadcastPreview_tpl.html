@@ -1,0 +1,46 @@
+<div class="view-broadcast-mod">
+    <div class="view-broadcast-hd">
+        <p class="title">查看页</p>
+    </div>
+    <div class="view-broadcast-by">
+        <div class="broadcast-title-content">
+            <div class="sub-content">
+                <div><span>创建时间: </span>2016-07-25 00:23:10</div>
+                <div><span>任务时间: </span>2016-07-25 00:23:10</div>
+                <div><span>任务地点:</span>杭州市上城区杭州酒家</div>
+            </div>
+            <div class="sub-content">
+                <div><span>是否紧急:</span>否</div>
+                <div><span>署名: </span>张三</div>
+                <div><span>接受人:</span>张三、李四、王五</div>
+            </div>
+        </div>
+        <div class="broadcast-content-content">
+            <div class="bold">0725钱刘指派任务给张三、李四、王五</div>
+            <div class="broadcast-content-yuyin"><p>52"</p></div>
+            <div><span class="bold">TTS</span>G20上传素材11111111</div>
+        </div>
+        <div class="broadcast-tab">
+            <tabset>
+                <tab heading="操作日志">
+                    <div class="broadcast-operateLog">
+                        <trs-timeline title="'操作日志'">
+                            <p class="broadcast-operateLog-title" ng-bind="data.item.TITLE"></p>
+                            <timegroup tick="item.day" ng-repeat="item in data.item.PLANTASKLOGS">
+                                <timeitem>
+                                    <a class="minw45" ng-bind="status.taskOperMap[n.value.OPERSTATUS]"></a>
+                                    <a class="minw80" ng-bind="n.value.OPERUSER"></a>
+                                </timeitem>
+                            </timegroup>
+                        </trs-timeline>
+                    </div>
+                </tab>
+                <tab heading="素材">
+                    <div class="broadcast-material">
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+        <div cg-busy="loadingPromise"></div>
+    </div>
+</div>

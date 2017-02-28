@@ -1,0 +1,187 @@
+.weiboCreat .modal-dialog {
+    width: 580px;
+    min-height: 391px;
+    top: 50px;
+}
+
+.edit-weibo-creat {
+    background-color: #F0F2F5;
+}
+
+.edit-weibo-creat .edit-weibo-title {
+    background-color: #fff;
+}
+
+.edit-weibo-creat .edit-weibo-title span {
+    height: 41px;
+    line-height: 41px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.edit-weibo-creat .edit-weibo-title img {
+    float: right;
+    padding-right: 15px;
+    padding-top: 12px;
+    cursor: pointer;
+}
+
+.edit-weibo-creat .edit-weibo-content {
+    overflow: hidden;
+    background-color: #F0F2F5;
+}
+
+.edit-weibo-creat .edit-weibo-content-white {
+    background: #fff;
+    margin: 10px;
+    padding: 10px 20px 50px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.edit-weibo-creat .edit-weibo-content .edit-weibo-tobocompiled-textarea {
+    width: 515px;
+    height: 200px;
+    resize: none;
+}
+
+.edit-weibo-creat .edit-weibo-content>div {
+    margin-bottom: 10px;
+}
+
+.edit-weibo-creat .edit-weibo-content .edit-weibo-creat-color1 {
+    color: #DF2230;
+}
+
+.edit-weibo-creat .edit-weibo-content .edit-weibo-creat-features {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.edit-weibo-creat .edit-weibo-content .edit-weibo-creat-features>span {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.edit-weibo-creat .edit-weibo-content .edit-weibo-creat-features>span>img {
+    margin-right: 5px;
+}
+
+.edit-weibo-creat .edit-weibo-content .edit-weibo-creat-btn>button {
+    margin-left: 10px;
+}
+
+.edit-weibo-creat .edit-weibo-content .edit-weibo-creat-btn>button {
+    width: 80px;
+    height: 30px;
+    line-height: 10px;
+}
+
+
+/*上传图片9个样式*/
+
+.edit-weibo-creat .edit-weibo-content .list-style-img .form-control {
+    padding: 0px;
+    width: 90px;
+    height: 70px;
+}
+
+.edit-weibo-creat .edit-weibo-content .list-style-img div.fa_upload {
+    width: 90px;
+    position: relative;
+    float: left;
+    margin-left: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.edit-weibo-creat .edit-weibo-content .list-style-img div.fa_upload p {
+    float: left;
+    overflow: hidden;
+    width: 88px;
+    height: 68px;
+    position: relative;
+    margin-right: 11px;
+    margin-bottom: 0px;
+}
+
+.edit-weibo-creat .edit-weibo-content .list-style-img p span.list-stule-delete,
+.edit-weibo-creat .edit-weibo-content .list-style-img p span.list-stule-upload {
+    top: 40%;
+}
+
+.edit-weibo-creat .edit-weibo-content .list-style-img p img {
+    width: 88px;
+    height: 68px;
+}
+
+.edit-weibo-creat .edit-weibo-content .list-style-img p span.list-stule-modify {
+    display: none;
+}
+
+.edit-weibo-creat .edit-weibo-content .list-style-img button.div_btn {
+    margin-top: 56px;
+}
+
+.edit-weibo-creat .edit-weibo-content .timing-calendar {
+    padding-top: 10px;
+    padding-left: 190px;
+    height: 45px;
+}
+
+.edit-weibo-creat .edit-weibo-content .timing-calendar .timeGroup img.imgOne {
+    width: 15px;
+    height: 15px;
+    border: 0;
+    position: relative;
+    top: -28px;
+    left: 106px;
+}
+
+.edit-weibo-creat .edit-weibo-content .timing-calendar .timeGroup img.imgTwo {
+    width: 15px;
+    height: 15px;
+    border: 0;
+    position: relative;
+    top: -28px;
+    left: 108px;
+}
+
+
+/*微博表情*/
+
+.edit-weibo-creat-features .features_expression {
+    width: 234px;
+    background-color: #fff;
+    overflow: hidden;
+    position: absolute;
+    top: 149px;
+}
+
+.edit-weibo-creat-features .features_expression ul {
+    width: 234px;
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+}
+
+.edit-weibo-creat-features .features_expression ul li {
+    float: left;
+    padding: 5px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.edit-weibo-creat .edit-weibo-content-white .invalidate-input-box span.ng-scope {
+    top: -13px;
+    left: 0px;
+}
+
+.edit-weibo-creat .edit-weibo-content-white .list-style-img .weiboFormat {
+    display: block;
+    float: left;
+    margin-top: 58px;
+    margin-left: 10px;
+}

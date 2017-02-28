@@ -1,0 +1,27 @@
+<div class="planLargSreenNewsFocusClick">
+    <div class="newsFocusClick_header">
+        <button ng-click="returnFocusPage()" class="btn btn-default btn-commen opacity100">
+            <span>返回主页</span>
+        </button>
+    </div>
+    <div class="newsFocusClick_content col-md-12">
+        <div class="content_header" ng-bind="status.currfieldName"></div>
+        <div class="content_left">
+            <ul>
+                <li ng-class="{'active':hotspot.ID==status.selectedid}" ng-repeat="hotspot in data.hotspot" ng-bind="hotspot.TITLE" ng-click="chooseHotspot(hotspot)"></li>
+            </ul>
+        </div>
+        <div class="content_middle">
+            <ol>
+                <li ng-class="{'active':draft.ID==status.currDraftId}" ng-repeat="draft in data.draftList" ng-bind="draft.TITLE" ng-click="chooseDraft(draft)"></li>
+            </ol>
+        </div>
+        <div class="content_right">
+            <h3 ng-bind="data.detail.DOCTITLE"></h3>
+            <span>{{data.detail.PUBTIME}} {{data.detail.SRCNAME}}</span>
+            <!-- <p ng-bind="data.detail.CONTENT"></p> -->
+            <p ng-bind-html="data.detail.CONTENT|trsTrustHtml"></p>
+        </div>
+    </div>
+    <div cg-busy="loadingPromise"></div>
+</div>

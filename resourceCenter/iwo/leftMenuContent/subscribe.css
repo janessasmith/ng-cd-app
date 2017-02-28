@@ -1,0 +1,23 @@
+.res_iwo_subscribe {
+  position: relative;
+  margin-top: -2px;
+  min-height: 700px;
+}
+.res_iwo_subscribe .col-md-2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: #EEEDEB;
+}
+.res_iwo_subscribe .resource_list_tpl1 {
+  border-bottom: 1px solid #EEEDEB;
+}
+.res_iwo_subscribe .btn.gray_btn {
+  border-color: #aaa;
+  background-color: #eceef0;
+  color: #333;
+}
+.res_iwo_subscribe .btn.btn-default.btn_active {
+  color: #fff;
+  background: #4496d2;
+}

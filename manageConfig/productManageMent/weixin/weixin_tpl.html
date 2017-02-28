@@ -1,0 +1,55 @@
+<div trs-scroll-fix class="row edit_right_head">
+    <div class="col-md-9">
+        <button ng-if="status.rights.isAdministrator" class="btn btn-default btn-commen opacity100" ng-disabled="data.selectedArray.length==0" ng-click="weixinSynchronous()">
+            微信号同步
+        </button>
+    </div>
+    <div class="col-md-3">
+        <!-- <ol class="breadcrumb pull-right edit_breadcrumb">
+            <li>
+                <span>公众号1</span>
+                <span>代编平台</span>
+            </li>
+        </ol> -->
+    </div>
+</div>
+<div class="row edit_right_mid">
+    <div class="input-group edit_input_group mr15">
+        <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="weixinSearchKeywords" ng-keypress="weixinSynchronousSearch($event)">
+        <span class="input-group-btn">
+                <button class="btn btn-default btn_edit_search" type="button" ng-click="weixinSynchronousSearch()">搜索</button>
+        </span>
+    </div>
+</div>
+<div class="management-wx-ls">
+    <div cg-busy="loadingPromise"></div>
+    <!-- ng-repeat -->
+    <div class="result_box" ng-repeat="account in accounts">
+        <div class="result_left">
+            <div class="result_picture">
+                <img class="result_photo" ng-src="{{account.wxHeadImg?account.wxHeadImg:'./manageConfig/productManageMent/images/weibo-user.png'}}" alt="" width="113" height="113" />
+                <img class="result_icon" src="./manageConfig/productManageMent/images/wx-icon.png" alt="" width="40" height="40" />
+            </div>
+            <p class="result_name">{{account.name}}</p>
+        </div>
+        <div class="result_right">
+            <div class="result_right_sp">
+                <p>当日消息数：<span>{{account.todayPubMessage}}</span></p>
+                <p>发布信息数：<span>{{account.pubMessageTotal}}</span></p>
+                <p>账 号 类 型：<span>{{data.wxPublicNumType[account.wxType]}}</span></p>
+            </div>
+            <div class="result_setting">
+                <a href class="result_edit" ng-click="newWxAccount('编辑账号',account)"></a>
+                <a href class="result_del" ng-click="removeAccount(account.channelId)"></a> 
+            </div>
+        </div>
+    </div>
+    <div class="add_result_box">
+        <a href ng-click="newWxAccount('绑定账号')"></a>
+    </div>
+</div>
+<div class="page cls-paging wx-ls-page">
+    <trs-pagenation-left page-count="data.page" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+    <pagination total-items="data.page.totalNum" ng-change="pageChanged()" ng-model="data.page.pageIndex" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="data.page.pageSize" rotate="false" num-pages="data.page.pageCount" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+    <trs-pagenation-right callback="jumpToPage()" currpage="data.copyCurrPage" page="data.page"></trs-pagenation-right>
+</div>

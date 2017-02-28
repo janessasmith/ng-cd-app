@@ -1,0 +1,52 @@
+<div class="row edit_right_head managesys-manage-type-mgr">
+    <button ng-click="new()" class="btn btn-default btn-commen opacity100" ng-mouseenter="status.batchOperateBtn['hoverStatus']='create'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+        <span class="s_icon">
+                <img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='create'?'b1-1.png':'b1.png'}}"/>
+            </span> 新建
+    </button>
+    <button ng-click="shareDraft()" ng-disabled="data.selectedArray.length==0" class="btn btn-default btn-commen opacity100" ng-mouseenter="status.batchOperateBtn['hoverStatus']='delete'" ng-mouseleave="status.batchOperateBtn['hoverStatus']=''">
+        <span class="s_icon">
+                <img ng-src="./editingCenter/app/images/{{status.batchOperateBtn['hoverStatus']=='delete'?'fg2-1.png':'fg2.png'}}" />
+            </span> 删除
+    </button>
+</div>
+<div class="edit_table managesys-manage-type-mgr-list">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="td-check w60 txt_l">
+                    <trs-checkbox ischecked="data.items.length != 0 && data.selectedArray.length==data.items.length" callback="selectAll()"></trs-checkbox>
+                </th>
+                <th class="w60">序号</th>
+                <th>类型名称</th>
+                <th class="w60">状态</th>
+                <th class="w18pen">添加人</th>
+                <th class="w160">添加时间</th>
+                <th class="w100">操作</th>
+            </tr>
+        </thead>
+        <tbody trs-thumb-container>
+            <tr ng-repeat="item in data.items">
+                <td class="td-check">
+                    <trs-checkbox ischecked="data.selectedArray.indexOf(item)<0?false:true" callback="selectDoc(item)"></trs-checkbox>
+                </td>
+                <td><span ng-bind="(page.CURRPAGE-1)*page.PAGESIZE+$index+1"></span></td>
+                <td class="text-left cursorPointer" ng-bind="item.CATEGORYNAME" ng-click="goCategoryMgr(item)"></td>
+                <td ng-bind="item.STATUSNAME"></td>
+                <td ng-bind="item.TRUENAME"></td>
+                <td ng-bind="item.CRTIME"></td>
+                <td>
+                    <span class="pointer ml10 mr10" ng-click="xiugai(item)">编辑</span>
+                    <span class="pointer" ng-click="shareDraft(item)">删除</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page">
+        <trs-pagenation-left page-count="page" callback="selectPageNum()" new-pagesize="page.PAGESIZE" is-select-pagecount="true"></trs-pagenation-left>
+        <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+        </span>
+        <trs-pagenation-right callback="jumpToPage()" currpage="status.copyCurrPage" page="page"></trs-pagenation-right>
+    </div>
+    <div cg-busy="loadingPromise"></div>
+</div>

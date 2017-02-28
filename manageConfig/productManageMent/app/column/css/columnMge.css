@@ -1,0 +1,146 @@
+.product-management-app-column .pmm-column-title-item {
+    padding: 0 10px;
+    min-width: 120px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    float: left;
+    margin: 20px 10px 0 10px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f9f9f9));
+    color: #000;
+    cursor: pointer;
+}
+
+.product-management-app-column .manage-pmm-before-search {
+    margin: -4px 3px 0 0;
+}
+
+.product-management-app-column .pmm-column-title-item-acitve {
+    background: #2f98d2;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+}
+
+.product-management-app-column .manage-pmm-column-container {
+    min-height: 150px;
+    width: 98%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.product-management-app-column .pmm-column-item-out {
+    margin: 0px 10px;
+    height: 90px;
+}
+
+.product-management-app-column .pmm-column-item-out,
+.product-management-app-column .pmm-column-item-default {
+    min-width: 115px;
+}
+
+.product-management-app-column .pmm-column-item-icon-group {
+    width: 0;
+    height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.product-management-app-column .pmm-column-item-icon-group > a,
+.product-management-app-column .pmm-column-item-icon-group > a:hover {
+    text-decoration: none;
+}
+
+.product-management-app-column .pmm-column-btn-show {
+    width: 100%;
+}
+
+.product-management-app-column .pmm-column-item-icon-group img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 2px;
+}
+
+.product-management-app-column .pmm-column-item-default,
+.product-management-app-column .pmm-column-item-active,
+.product-management-app-column .pmm-column-add-item {
+    min-width: 150px;
+    padding: 0 10px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.product-management-app-column .pmm-column-item-default,
+.product-management-app-column .pmm-column-add-item {
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f9f9f9));
+}
+
+.product-management-app-column .pmm-column-item-active {
+    color: #fff;
+    font-weight: bold;
+    background: #2f98d2;
+    border: none;
+}
+
+.product-management-app-column .pmm-column-add-item img {
+    margin-top: -3px;
+}
+
+@keyframes PMMWebsiteSlideLeftOut {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes PMMWebsiteSlideLeftIn {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
+.product-management-app-column .pmm-column-item-icon-group .pmm-column-btn-show-add {
+    animation: PMMWebsiteSlideLeftOut 0.3s both ease-in;
+}
+
+.product-management-app-column .pmm-column-item-icon-group .pmm-column-btn-show-remove {
+    animation: PMMWebsiteSlideLeftIn 0.2s both ease-in;
+}
+
+.product-management-app-column .pmm_app_column_top {
+    /*  height: 80px;*/
+    border-top: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.product-management-app-column .pmm-column-localstate > .edit_input_group {
+    width: 0;
+    float: left;
+    margin-left: 80px;
+}
+
+.product-management-app-column .pmm-column-localstate .edit_breadcrumb {
+    margin-left: -60px!important;
+}
+
+.product_manage_ment_app_right_main .edit_right_head .edit_breadcrumb li span {
+    cursor: pointer;
+    /* float:right;*/
+}
+
+.product_manage_ment_app_right_main .edit_right_head .edit_breadcrumb p {
+    float: left;
+    margin: 0px;
+}

@@ -1,0 +1,67 @@
+<div id="pageTop" class="planEventPageTopIcon"></div>
+<div class="fix_height450 personalEvents">
+    <div class="clue_calendar_button">
+        <button ui-sref="plan.eventanalysis.createHotEvent({eventtype:status.eventType,createtype:status.createType,eventid:0})" class="createHotEvent_btn">创建事件</button>
+        <div class="input-group monitor_input_group">
+            <input type="text" placeholder="请输入关键字搜索" class="form-control monitor_form_control" ng-model="data.keywords" ng-keypress="queryListBySearchWord($event)">
+            <span class="input_group_btn">
+                <button class="btn btn-default btn_monitor_search" type="button" ng-click="queryListBySearchWord()">检索</button>
+            </span>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="edit_table personalEvents_table">
+        <div class="apply_item row" ng-repeat="item in data.items">
+            <h4 ng-bind="item.TITLE | trsLimitTo:25" title="{{item.TITLE}}"></h4>
+            <div class="item_img col-md-4"><img ng-init="dealImg(item)" ng-src="{{item.IMAGEURL}}" width="100%" /></div>
+            <div class="item_info col-md-8">
+                <div class="item_info_h">
+                    <span>开始时间：</span>
+                    <span ng-bind="timeStamp(item)"></span>
+                </div>
+                <div class="item_info_h">
+                    <span class="fl">事件声量：</span>
+                    <span class="fl">
+                        <div class="voice_light">
+                            <div ng-style="voiceLight(item)" class="voice_light_1"></div>
+                        </div>
+                    </span>
+                    <span class="fl voice_num" ng-bind="item.EVENTTENDENCY"></span>
+                    <div class="clear"></div>
+                </div>
+                <div class="item_info_h min_h">
+                    <span class="fl line_h26">分析状态：</span>
+                    <span><div class="line_h26 fl {{item.EVENTSTATE==3?'color_red':''}}" ng-bind="status.eventState[item.EVENTSTATE]"></div><a ng-if="item.EVENTSTATE==2" ui-sref="eventdetail.eventanalyisbasicinfo({eventtype:1,eventid:item.ID})" target="_blank">查看分析结果</a></span>
+                </div>
+                <div class="item_info_btn">
+                    <button class="btn btn-default btn-commen_1">
+                        <a ui-sref="eventdetail.eventanalyisbasicinfo({eventtype:0,eventid:item.ID})" target="_blank">
+                            <span class="s_icon1"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/images/e1.png"></span>查看</a>
+                    </button>
+                    <button class="btn btn-default btn-commen_1" ui-sref="plan.eventanalysis.createHotEvent({eventtype:status.eventType,createtype:status.createType,eventid:item.ID})">
+                        <span class="s_icon1"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/images/e5.png"></span>编辑
+                    </button>
+                    <button class="btn btn-default btn-commen_1" ng-click="deleteEvent(item)">
+                        <span class="s_icon1"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/images/e6.png"></span>删除
+                    </button>
+                    <button ng-disabled="item.EVENTSTATE=='1' || item.TENDENCY_FLAG==false" ng-click='applicationAnalysis(item)' class="btn btn-default btn-commen_1 position_r {{item.EVENTSTATE!='1' && item.TENDENCY_FLAG===true?'font_w':''}}" ng-mouseenter="showTips(item)" ng-mouseleave="item.ISSHOWTIPS=false">
+                        <span class="s_icon1"><img src="./planningCenter/selectedTopicEvent/eventAnalysis/images/e7.png"></span>申请分析
+                        <div class="custom-wrap" ng-show="!!item.ISSHOWTIPS">
+                            <pre>由于时间分析需要较大数据量，故要求总声量达到200可申请深度分析。申请分析后需等待部主任审核，通过审核后即可查看事件详细分析结果。</pre>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="page timeCue_page">
+        <trs-pagenation-left page-count="page" callback="selectPageNum()" is-select-pagecount="false"></trs-pagenation-left>
+        <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="false" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+        <!-- <trs-pagenation-right callback="jumpToPage()" page="page" currpage="status.jumpToPageNum"></trs-pagenation-right> -->
+    </div>
+</div>
+<div cg-busy="loadingPromise"></div>
+<div class="planEventToTopIcon" du-smooth-scroll du-scrollspy offset="20" duration="500" href="#pageTop" ng-mouseenter="status.showBackTopTip=true" ng-mouseleave="status.showBackTopTip=false">
+    <p ng-show="status.showBackTopTip">返回顶部</p>
+</div>

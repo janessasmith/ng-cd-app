@@ -1,0 +1,53 @@
+<div class="signedZP-container">
+    <div class="signedZP-header">
+        <p>排重信息</p>
+        <img src="./editingCenter/app/toBeCompiled/images/cls.jpg" ng-click="cancel()" />
+    </div>
+    <div class="signedZP-body">
+        <div ng-if="successItems.length>0">
+            <p style="text-align:center;margin-top:0px;line-height:30px">签发成功</p>
+            <ul class="successList">
+                <li ng-repeat="item in successItems" class="multi-reports-succ-lists">
+                    <span ng-bind="item.DETAIL"></span>
+                </li>
+            </ul>
+        </div>
+        <p style="line-height:20px;margin-top:10px;margin-bottom:0px" ng-if="items.length>0">签发失败</p>
+        <div ng-repeat="item in items" class="info" ng-if="items.length>0">
+            <div class="head">
+                <trs-checkbox ischecked="data.selectedArray.indexOf(item)<0?false:true" callback="selectDoc(item)" ng-if="items.length>1"></trs-checkbox>
+                <span>稿件标题：</span>
+                <p ng-bind="item.RESULT.DOC.TITLE"></p>
+            </div>
+            <table class="table table-striped data-table black-box">
+                <tr>
+                    <th class="w216">重稿标题</th>
+                    <th class="w80">ID</th>
+                    <th class="w100">版面</th>
+                    <th class="w100">操作人</th>
+                    <th class="w100">排重率</th>
+                </tr>
+                <tr ng-repeat="result in item.RESULT.XILAN" style="background:#fff">
+                    <td ng-bind="result.TITLE | truncate:12:'...'" title="{{result.TITLE}}" class="pointer" ng-click="newspaperPreview(result)"></td>
+                    <td ng-bind="result.METADATAID"></td>
+                    <td ng-bind="result.CHNLDESC | truncate:5:'...'" title="{{result.CHNLDESC}}"></td>
+                    <td ng-bind="result.TRUENAME | truncate:5:'...'" title="{{result.TRUENAME}}"></td>
+                    <td ng-bind="result.SIMV"></td>
+                </tr>
+            </table>
+        </div>
+        <div ng-if="anthorItem.length>0">
+            <p style="text-align:center;margin-top:0px;line-height:30px">签发失败</p>
+            <ul class="successList">
+                <li ng-repeat="item in anthorItem" class="multi-reports-succ-lists">
+                    <span ng-bind="item.DETAIL"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="signed-footer">
+        <button ng-click="confirm()" class="btn_confirm btn btn-default" ng-disabled="data.selectedArray.length<1&&items.length>1">强制</button>
+        <button ng-click="cancel()" class="btn_cancel">取消</button>
+    </div>
+    <div cg-busy="loadingPromise"></div>
+</div>

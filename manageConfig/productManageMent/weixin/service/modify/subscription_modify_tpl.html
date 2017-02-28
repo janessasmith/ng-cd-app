@@ -1,0 +1,29 @@
+<form name="subscriptionForm" novalidate>
+    <div class="subscription_modify">
+        <div class="subscription_modify_tl">
+            <p>公众号管理—修改公众号</p>
+            <img src="./editingCenter/app/toBeCompiled/images/cls.jpg" ng-click="cancel()">
+        </div>
+        <div class="subscription_modify_row">
+            <div class="clear"></div>
+            <div class="subscription_detail">
+                <div class="subscription_detail_left">禁止重复取稿:</div>
+                <div class="forbid_draft invalidate-input-box">
+                    <input type="text" class="form-control" ng-class="{'days_error':daysError}" ng-model="list.forbidDays" name="forbidDays" validator="required" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips">
+                </div>
+                <div class="forbid_draft_day">天</div>
+            </div>
+            <div class="clear"></div>
+            <div class="subscription_detail">
+                <div class="subscription_detail_left">是否检查稿件属性:</div>
+                <div class="forbid_draft">
+                    <trs-checkbox label="检查稿件属性" ischecked="list.CheckFgdAttribute=='1'" callback="checkProperty()"></trs-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="subscription_modify_footer">
+            <button class="subscription_modify_btn btn_confirm" ng-click="isConfirm()" validation-submit="subscriptionForm">确定</button>
+            <button class="subscription_modify_btn btn_cancel" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</form>

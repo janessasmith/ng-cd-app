@@ -1,0 +1,66 @@
+<div class="picture-edit-head">
+    <img src="./resourceCenter/images/mtrh-official.gif">
+    <p class="pc-local">采编中心 > app > 官员库 > 详细</p>
+    <div class="Iw-box-fix box-fix-bt">
+        <div class="txt_r">
+            <button class="btn btn-primary" ng-click="edit()" ng-show="status.officerstatus!='signed'" ng-if="status.btnRights['app.daibian.bianji']||status.btnRights['app.daishen.bianji']">
+                <span class="s_icon"><img src="./editingCenter/newspaper/images/bj46-1.png" /></span> 编辑
+            </button>
+            <button class="btn btn-primary" ng-click="close()">
+                <span class="s_icon"><img ng-src="./editingCenter/iWo/images/cclose.png" /></span> 关闭
+            </button>
+        </div>
+    </div>
+</div>
+<div class="picture-edit-con clearfix">
+    <div class="officail-deal-bk">
+        <div class="officail-des-bk clearfix">
+            <div class="officail-des-sp">
+                <h1><img src="./editingCenter/app/images/l1-1.png"> {{officer.NAME}}</h1>
+                <div class="officail-des">
+                    <p>{{officer.NAME}}，现任{{officer.incumbent}}。
+                        <!-- {{officer.GENDER}}，{{officer.BIRTHDAY}}出生，{{officer.NATIVEPLACE}}人，{{officer.PARTYDATE}}加入中国共产党，{{officer.WORKTIME}}参加工作，{{officer.EDUCATIONALHISTORY}}学历，毕业于{{officer.SCHOOL}}。 -->
+                    </p>
+                    <!-- <p ng-if="officer.incumbent">现任{{officer.incumbent}}。</p> -->
+                </div>
+                <div class="official-basic-info clearfix">
+                    <dl class="basic-info-lf">
+                        <dt class="name">姓名：</dt>
+                        <dd class="value" title="{{officer.NAME}}">{{officer.NAME}}</dd>
+                        <!-- <dt class="name">学历：</dt>
+                        <dd class="value" title="{{officer.EDUCATIONALHISTORY}}">{{officer.EDUCATIONALHISTORY}}</dd>
+                        <dt class="name">籍贯：</dt>
+                        <dd class="value" title="{{officer.NATIVEPLACE}}">{{officer.NATIVEPLACE}}</dd>
+                        <dt class="name">民族：</dt>
+                        <dd class="value" title="{{officer.NATION}}">{{officer.NATION}}</dd>
+                        <dt class="name">毕业院校：</dt>
+                        <dd class="value" title="{{officer.SCHOOL}}">{{officer.SCHOOL}}</dd> -->
+                    </dl>
+                    <dl class="basic-info-rt">
+                        <dt class="name">职位：</dt>
+                        <dd class="value" title="{{officer.POST}}">{{officer.POST}}</dd>
+                        <!-- <dt class="name">性别：</dt>
+                        <dd class="value" title="{{officer.GENDER}}">{{officer.GENDER}}</dd>
+                        <dt class="name">出生日期：</dt>
+                        <dd class="value" title="{{officer.BIRTHDAY}}">{{officer.BIRTHDAY}}</dd>
+                        <dt class="name">入党时间：</dt>
+                        <dd class="value" title="{{officer.PARTYDATE}}">{{officer.PARTYDATE}}</dd>
+                        <dt class="name">参加工作时间：</dt>
+                        <dd class="value" title="{{officer.WORKTIME}}">{{officer.WORKTIME}}</dd> -->
+                    </dl>
+                </div>
+                <div class="edit-news-title">个人简介</div>
+                <div class="officail-deal-text hei180">
+                    <p>{{officer.PERSONALPROFILE}}</p>
+                </div>
+            </div>
+            <div class="officail-des-pc">
+                <img ng-src="{{officer.FILEPATH?officer.FILEPATH:'./resourceCenter/images/official.png'}}" ng-class="{'unLoadImage':!officer.FILEPATH}">
+            </div>
+        </div>
+        <!-- <div class="edit-news-title">个人履历</div>
+        <div class="officail-deal-text">
+            <p ng-repeat="record in officer.RECORDS">{{record.FROMDATE}} —— {{record.UNTILDATE}}，{{record.CONTENT}}；</p>
+        </div> -->
+    </div>
+</div>

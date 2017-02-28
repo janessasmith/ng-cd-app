@@ -1,0 +1,65 @@
+<div class="trsScrollPicture">
+    <!--列表小图 start-->
+    <div class="smallPics_div" ng-show="status.isshowlarge==false">
+        <ul>
+            <li ng-repeat="bombimage in status.sliderSmallPicArray track by $index" ng-if="status.isSmallPicListShow">
+                <div class="list_divs">
+                    <img class="list_imgs" ng-style="bombimage.style" ng-click="showBigPics($index)" ng-src="{{bombimage.src}}" alt="附图">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--列表小图 end-->
+    <!--展示大图 start-->
+    <div class="scrollPicture_lists w_auto" ng-show="sliderPic.length>0 && status.isshowlarge==true">
+        <div class="carousel-row">
+            <div class="up_close">
+                <a ng-click="hideBigPics();"><img src="./components/util/trsScrollPictures/images/up_close.png" />收起</a>
+            </div>
+            <carousel interval="myInterval" no-wrap="noWrapSlides" template-url="./components/util/trsScrollPictures/template/carousel_tpl.html" status="status" pics="sliderSmallPic">
+                <slide class="carousel-list" ng-repeat="slide in sliderPic">
+                    <div class="carousel-img" ng-if="addCreate" trs-add-to-create>
+                        <img ng-src="{{slide}}" class="pointer" ng-click="hideBigPics()" height="100%">
+                    </div>
+                    <div class="carousel-img" ng-if="!addCreate">
+                        <img ng-src="{{slide}}" class="pointer" ng-click="hideBigPics()" height="100%">
+                    </div>
+                </slide>
+            </carousel>
+            <!-- <carousel data-interval="false" no-wrap="noWrapSlides" pics="sliderPic">
+                <div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel slide" ng-swipe-right="prev()" ng-swipe-left="next()" class="car scrollPicture_lists">
+                    <div class="carousel-con">
+                        <div class="carousel-inner">
+                            <slide class="carousel-list" ng-repeat="slide in sliderPic">
+                                <div class="carousel-img">
+                                    <img ng-src="{{slide}}" class="pointer" ng-click="hideBigPics()" height="100%">
+                                </div>
+                            </slide>
+                        </div>
+                        <a class="left carousel-control" ng-show="slides.length > 1" ng-click="prev()"></a>
+                        <a class="right carousel-control" ng-click="next()" ng-show="slides.length > 1"></a>
+                    </div>
+                    <ol class="carousel-breviary" ng-show="slides.length > 1">
+                        <li ng-repeat="slide in slides | orderBy:indexOfSlide track by $index" ng-click="select(slide)" ng-class="{ active: isActive(slide) }">
+                            <img ng-src="{{pics[$index]}}">
+                        </li>
+                    </ol>
+                </div>
+            </carousel> -->
+        </div>
+        <!-- <div class="carousel-row" ng-if="!addCreate">
+            <div class="up_close">
+                <a ng-click="hideBigPics();"><img src="./components/util/trsScrollPictures/images/up_close.png" />收起</a>
+            </div>
+            <carousel interval="myInterval" no-wrap="noWrapSlides" template-url="./components/util/trsScrollPictures/template/carousel_tpl.html" status="status" pics="sliderSmallPic">
+                <slide class="carousel-list" ng-repeat="slide in sliderPic">
+                    <div class="carousel-img">
+                        <img ng-src="{{slide}}" class="pointer" ng-click="hideBigPics()" height="100%">
+                    </div>
+                </slide>
+            </carousel>
+        </div> -->
+        <!-- <scrollDir></scrollDir> -->
+    </div>
+    <!--展示大图 end-->
+</div>

@@ -1,0 +1,122 @@
+.productManageMent-weixin-subscription-modify .modal-dialog {
+    width: 400px;
+    top: 150px;
+}
+
+.productManageMent-weixin-subscription-modify .modal-content {
+	border: 3px solid #ccc;
+	background: #E8E9ED;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_modify {
+	background: #F0F2F5;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_modify_tl {
+	height: 32px;
+	line-height: 32px;
+	overflow: hidden;
+	background: white;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_modify_tl p {
+	font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    margin-left: 18px;
+    float: left;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_modify_tl img {
+	cursor: pointer;
+    float: right;
+    margin-right: 11px;
+    margin-top: 7px;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_modify_row {
+	padding-top: 30px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	background: white;
+	overflow-y: auto;
+	margin: 10px auto 10px;
+	background: white;
+	border: 1px solid #D2D1D2;
+	width: 380px;
+}
+
+.productManageMent-weixin-subscription-modify .clear {
+	clear: both;
+	font-size: 0;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_detail {
+	margin-bottom: 15px;
+	height: 30px;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_detail .subscription_detail_left {
+	margin-right: 10px;
+	float: left;
+	width: 100px;
+	text-align: right;
+	line-height: 30px;
+	font-size: 12px;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_detail .forbid_draft {
+	float: left;
+	line-height: 32px;
+	font-size: 15px;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_detail .forbid_draft_day {
+	float: left;
+	line-height: 30px;
+	font-size: 12px;
+	width: 20px;
+	text-align: right;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_modify_footer {
+	background: #ffffff;
+	color: #666666;
+	padding-left: 110px;
+    height: 44px;
+    line-height: 44px;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_modify_footer .subscription_modify_btn {
+	width: 70px;
+	height: 30px;
+	line-height: 30px;
+	background: #4496d2;
+	color: #fff;
+	text-align: center;
+	border: none;
+	margin-left: 10px;
+	border-radius: 4px;
+	font-size: 12px;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_modify_footer .btn_confirm {
+	background-color: #4496d2!important;
+}
+
+.productManageMent-weixin-subscription-modify .subscription_modify_footer .btn_cancel {
+	border-color: #C1C1C1!important;
+	background-color: #C1C1C1!important;
+}
+
+.productManageMent-weixin-subscription-modify .days_error {
+	border: 2px solid #a94442;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.productManageMent-weixin-subscription-modify .days_error:focus {
+	border-color: #843534;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}

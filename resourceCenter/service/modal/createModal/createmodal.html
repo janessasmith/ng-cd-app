@@ -1,0 +1,19 @@
+<div class="myManuSubmit md_size">
+    <form name="createGroup" novalidate>
+    <div class="submit">
+        <div class="header">
+            <p>新建分组</p>
+            <img ng-click="close()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+        </div>
+        <div class="content">
+            <div class="mc-padding-top-xs bg_f0f2f5 plr10 invalidate-input-box">
+                <input type="text" style="line-height: normal;" name="groupname" validator="spechar" ng-mouseenter="isShowTips=true" ng-mouseleave="isShowTips=false" is-show-tips="isShowTips" class="form-control" ng-model="groupName" placeholder="请在此填写分组名称" />
+            </div>
+            <div class="footer">
+                <button class="btn btn-primary btn_cancel" validation-submit="createGroup" ng-click="close()">取消</button>
+                <button class="btn btn-primary btn_confirm" ng-click="save()">创建</button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

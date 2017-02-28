@@ -1,0 +1,37 @@
+<div class="row  mc_navbar">
+    <div class="col-md-12">
+        <button class="btn btn-default btn-commen"  ng-click="cancel()">
+            <span class="s_icon"><i class="fa fa-chevron-left"></i></span> 返回
+        </button>
+    </div>
+</div>
+<div class="border-default mc-padding-sm">
+    <div cg-busy="loadingPromise"></div>
+    <table class="table table-striped">
+        <thead>
+            <tr class="info">
+                <th>标题</th>
+                <th>ID</th>
+                <th>开始时间</th>
+                <th>创建时间</th>
+                <th>事件关键词</th>
+                <th>排出关键词</th>
+                <th>事件标签</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="event in vm.events">
+                <td>
+            <preview-title class="infotitle pull-left" summary-text="event.TITLE" title-text="event.TITLE"  no-summary-text="摘要内容未获取" hide-title='1'  summary-name='标题'></preview-title></td>
+                <td>{{event.ID}}</td>
+                <td>{{event.STARTTIME | date:'yyyy-MM-dd'}}</td>
+                <td>{{event.CREATETIME | date:'yyyy-MM-dd'}}</td>
+                <td>{{event.KEYWORDSINCLUDE}}</td>
+                <td>{{event.KEYWORDSEXCLUSIVE ||'无'}}</td>
+                <td>{{event.LABEL}}</td>
+                <td><span class="clickable" ng-click="connetEventbyId(event.ID)"><i class="fa fa-link text-info"></i> 关联</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

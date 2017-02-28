@@ -1,0 +1,26 @@
+<!-- nav_tpl -->
+<div class="row">
+	<tabset class="head_nav resourceCenter_head_sub_nav">
+	    <tab ng-if="$index<=10&&status.resourceCenterAccesses[item.MODALDESC]" heading="{{item.MODALNAME}}" ng-repeat="item in items" class="nav_icon {{item.MODALDESC}}_ico cursor" ng-click="goTo(item)" active="item.isActive">
+	    	<tabset class="head_sub_nav">
+	    		<tab ng-repeat="n in item.childrenModule" heading="{{n.MODALNAME||n.TITLE}}" ng-click="changeType(n,item.router,item.MODALDESC=='iwo')" active="n.focused"></tab>
+	    		<tab heading="新增订阅" ui-sref="retrieval.subscribe({type:true})" ng-if="item.MODALDESC=='iwo'"></tab>
+	        </tabset>
+	    </tab>
+	    <li class="nav_btn cursor" ng-mouseenter="moreMouseenter()" ng-mouseleave="moreMouseleave()" style="display: none;">
+	    	<img src="./resourceCenter/images/z12.png" alt="">
+	    	更多
+	    	<img src="./resourceCenter/images/z22.png" alt="">
+	    	<div class="rt-more-btn-list" ng-show="isShowMoreList" ng-mouseenter="moreMouseenter()" ng-mouseleave="moreMouseleave()">
+	    		<b href="">机器人稿</b>
+	    		<b href="">回收站</b>
+	    	</div>
+	    </li>
+	    <li class="nav_btn search_btn" ui-sref="retrieval.allsearch">
+            <button class="btn btn-default allsearch-btn" type="button">
+            	<img class="allsearch-pic" src="./resourceCenter/images/z13.png">
+            	<span class="allsearch-text">全库搜索</span>
+            </button>
+	    </li>
+	</tabset>
+</div>

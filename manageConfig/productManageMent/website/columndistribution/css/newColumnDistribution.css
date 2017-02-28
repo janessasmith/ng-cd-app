@@ -1,0 +1,103 @@
+.column-distribution .modal-dialog{
+    width: 800px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.newColumnDistribution {
+    width: 800px;
+    margin: 0 auto;
+    background: #f0f2f5;
+    border: 1px solid #f0f2f5;
+}
+
+.newColumnDistribution .new-hd {
+    height: 40px;
+    background: #fff;
+    line-height: 40px;
+    padding: 0px 10px;
+    font-size: 16px;
+}
+
+.newColumnDistribution .new-hd img {
+    float: right;
+    margin-top: 11px;
+}
+
+.newColumnDistribution .new-by {
+    height: 450px;
+    padding: 15px;
+    margin: 15px 15px -5px;
+    background: #fff;
+}
+
+.newColumnDistribution .new-by .new-by-left {
+    width: 250px;
+    float: left;
+}
+
+.newColumnDistribution .new-by .new-by-left div {
+    margin-bottom: 15px;
+    line-height: 34px;
+}
+
+.newColumnDistribution .new-by .new-by-right div {
+    line-height: 34px;
+}
+
+.newColumnDistribution .new-by .new-by-right .display-inline {
+    display: inline-block;
+}
+
+.newColumnDistribution .new-by .new-by-right .display-inline .pull_right {
+    float: right;
+}
+
+.newColumnDistribution .new-by .new-by-right div:nth-child(n+3) div {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.newColumnDistribution .new-by .new-by-right div .float-left {
+    float: left;
+}
+
+.newColumnDistribution .new-by .new-by-right .target {
+    position: relative;
+    left: 12px;
+    bottom: 6px;
+}
+
+.newColumnDistribution .new-by .new-by-right .chnl_name {
+    width: 460px;
+    position: relative;
+    right: 12px;
+    float: right;
+}
+
+.newColumnDistribution .new-ed {
+    height: 50px;
+    line-height: 45px;
+    text-align: end;
+    margin: 10px 15px 0 0;
+}
+
+.newColumnDistribution .new-ed button:nth-child(1) {
+    background: #4496d2;
+    color: #fff;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.newColumnDistribution .new-ed button:nth-child(2) {
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.templateMge-content-table .td-checkk{
+    width: 85px
+}

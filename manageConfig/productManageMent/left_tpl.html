@@ -1,0 +1,92 @@
+<div class="product-manage-left-content">
+    <div class="container-fluid editing-list">
+        <div class="container-fluid editing-list">
+            <tabset justified="true" class="editing-nav">
+                <tab ng-if="status.configureAccess.paper<3" heading="报纸" class="product-manage-nav-paper" active="status.data.newspaper.isSelectedTab" ng-click="setTabSelected('newspaper')">
+                    <accordion class="iwo_accordion" close-others="false">
+                        <accordion-group ng-click="setPmmNewspaperSelectedChnl(item)" is-disabled="true" ng-class="iWo-left-accordion-active">
+                            <accordion-heading>
+                                <div class="pmm-left-accordion">
+                                    <div class="pmm-left-accordion-active">
+                                        <a title="报纸管理" class="ml0 pmm-left-item" ui-sref="manageconfig.productmanage.newspaper({stauts:0})">报纸管理</a>
+                                    </div>
+                                </div>
+                            </accordion-heading>
+                        </accordion-group>
+                    </accordion>
+                </tab>
+                <tab ng-if="status.configureAccess.website<3" heading="网站" class="editing-nav-website" active="status.data.website.isSelectedTab" ng-click="setTabSelected('website')">
+                    <div class="editing-downlist">
+                        <div class="tab-content" trs-scrollbar>
+                            <treecontrol selected-node="selectedNode" class="tree-classic" expanded-nodes="treeExpanded" on-node-toggle="showToggle(node,'website')" tree-model="treedata" on-selection="showSelected(node)" options="treeOpts">
+                                <b ng-mouseenter="treeEyes(node,true,$even)" ng-mouseleave="treeEyes(node,false,$even)" ng-show="node.flag" class="tree-branch-head" ng-class="[mouseEye()]" ng-click="websiteChannelPreview(node)"></b> <span title="{{node.CHNLDESC}}">{{node.CHNLDESC | trsLimitTo:12}}</span>
+                            </treecontrol>
+                        </div>
+                        <div ng-if="status.isAdministrator" class="pmm-left-accordion-add">
+                            <a class="addSite" ng-click="addFnWebsite()">+</a>
+                        </div>
+                    </div>
+                    <!-- <accordion class="iwo_accordion" close-others="false">
+                        <accordion-group ng-click="status.data.website.selectedItem = item" is-disabled="true" ng-repeat="item in status.data.website.items">
+                            <accordion-heading>
+                                <div class="pmm-left-accordion">
+                                    <div ng-class="{'pmm-left-accordion-active':status.data.website.selectedItem.SITEID==item.SITEID}">
+                                        <a title="{{item.SITEDESC}}" class="ml0 pmm-left-item" ui-sref="manageconfig.productmanage.website.site({site:item.SITEID})" ng-bind="item.SITEDESC | trsLimitTo:10"></a>
+                                    </div>
+                                </div>
+                            </accordion-heading>
+                        </accordion-group>
+                        <accordion-group is-disabled="true">
+                            <accordion-heading>
+                                <div class="pmm-left-accordion-add">
+                                    <a ng-click="addFnWebsite()">+</a>
+                                </div>
+                            </accordion-heading>
+                        </accordion-group>
+                    </accordion> -->
+                </tab>
+                <tab ng-if="status.configureAccess.app<3" heading="APP" class="editing-nav-app" active="status.data.app.isSelectedTab" ng-click="setTabSelected('app')">
+                    <div class="editing-downlist">
+                        <div class="tab-content" trs-scrollbar>
+                            <treecontrol selected-node="appSelectedNode" class="tree-classic" expanded-nodes="appTreeExpanded" on-node-toggle="showToggle(node,'app')" tree-model="appTreedata" on-selection="showAppSelected(node)" options="treeOpts">
+                                <b ng-mouseenter="treeEyes(node,true,$even)" ng-mouseleave="treeEyes(node,false,$even)" ng-show="node.flag" class="tree-branch-head" ng-class="[mouseEye()]" ng-click="websiteChannelPreview(node)"></b> <span title="{{node.CHNLDESC}}">{{node.CHNLDESC | trsLimitTo:12}}</span>
+                            </treecontrol>
+                        </div>
+                        <div ng-if="status.isAdministrator" class="pmm-left-accordion-add">
+                            <a class="addSite" ng-click="addFnApp()">+</a>
+                        </div>
+                    </div>
+                </tab>
+                <!--<div class="editing-more" ng-click="isTabWebsiteShow = !isTabWebsiteShow"></div>-->
+                <!-- <button type="button" ng-click="status.isMoreTabListShow = !status.isMoreTabListShow" ng-class="{'editing-more-rotate':status.isMoreTabListShow}" class="editing-more" data-placement="right-bottom" data-auto-close="1" data-template-url="./editingCenter/service/moreTabList/moreTabList.html" data-animation="am-slide-left" bs-popover></button> -->
+                <tab ng-if="status.configureAccess.weixin<3" heading="微信" class="editing-nav-weixin" active="status.data.weixin.isSelectedTab" ng-click="setTabSelected('weixin')">
+                    <accordion class="iwo_accordion" close-others="false">
+                        <accordion-group is-disabled="true" ng-class="{'iWo-left-accordion-active':status.data.weixin.selectedItem == 'weixinmgr'}" ng-repeat="item in status.data.weixin.items">
+                            <accordion-heading>
+                                <div class="pmm-left-accordion">
+                                    <div ng-class="{'pmm-left-accordion-active':status.data.weixin.selectedItem == item}">
+                                        <a title="{{item.SITEDESC}}" class="ml0 pmm-left-item" ui-sref="manageconfig.productmanage.weixin({stauts:0})" ui-sref-opts="{reload :'manageconfig.productmanage.weixin'}" ng-bind="item.SITEDESC | trsLimitTo:10"></a>
+                                    </div>
+                                </div>
+                            </accordion-heading>
+                        </accordion-group>
+                    </accordion>
+                </tab>
+                <tab ng-if="status.configureAccess.weibo<3" heading="微博" class="editing-nav-weibo" active="status.data.weibo.isSelectedTab" ng-click="setTabSelected('weibo')">
+                    <accordion class="iwo_accordion" close-others="false">
+                        <accordion-group is-disabled="true" ng-class="{'iWo-left-accordion-active':status.data.weibo.selectedItem == 'weibomgr'}" ng-repeat="item in status.data.weibo.items">
+                            <accordion-heading>
+                                <div class="pmm-left-accordion">
+                                    <div ng-class="{'pmm-left-accordion-active':status.data.weibo.selectedItem == item}">
+                                        <a title="{{item.SITEDESC}}" class="ml0 pmm-left-item" ui-sref="manageconfig.productmanage.weibo({stauts:0})" ui-sref-opts="{reload :'manageconfig.productmanage.weibo'}" ng-bind="item.SITEDESC | trsLimitTo:10"></a>
+                                    </div>
+                                </div>
+                            </accordion-heading>
+                        </accordion-group>
+                    </accordion>
+                </tab>
+                <button ng-if="status.mediaNum>3" type="button" class="editing-more" data-placement="right-bottom" data-auto-close="1" data-template-url="./manageConfig/service/moreTabList/moreTabList.html" data-animation="am-slide-left" bs-popover></button>
+            </tabset>
+        </div>
+    </div>
+</div>

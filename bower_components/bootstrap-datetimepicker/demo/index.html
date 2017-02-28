@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/dateTimePicker.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+    <title>时间选择器</title>
+    <script type="text/javascript" src="http://cdn.bootcss.com/angular.js/1.5.0-beta.1/angular.js"></script>
+    <script src="jquery.js"></script>
+    <script src="bootstrap-datetimepicker.js"></script>
+    <script src="bootstrap-datetimepicker.zh-CN.js"></script>
+</head>
+
+<body ng-app="timePickerDemo">
+    <div class="dsfb" ng-controller="timePicker">
+       <!--  <input class='publish' type="checkbox" ng-checked='datepickerToggle' ng-click="datapkerClk()">
+        <span>定时发布:</span> -->
+        <trs-date-time-picker json-obj="pubtime" language="zh-CN" position="bottom-left" weekstart="6" todaybtn="linked" available="datepickerToggle"></trs-date-time-picker>
+        <div class='calendar'>
+            <img src="images/calendar .jpg" alt="">
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+angular.module("timePickerDemo", []).controller('timePicker',["$scope",function($scope)
+{
+	// $scope.datapkerClk=function()
+	// {
+	// 	$scope.datepickerToggle=!$scope.datepickerToggle;
+	// }
+}])
+    .directive('trsDateTimePicker', ['$timeout', function($timeout) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: {
+                jsonObj: "=",
+                available: "="
+            },
+            templateUrl: 'dateTimePicker.html', //定时发布碎片
+            link: function(scope, element, attr) {
+                scope.available=true;
+                var dateInput = element[0].children[0];
+                scope.datepickerToggle = true;
+                var datepicker = jQuery(dateInput).datetimepicker({
+                    language: attr.language,
+                    weekStart: attr.weekstart,
+                    todayBtn: 1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    forceParse: 0,
+                    showMeridian: 1,
+                    pickerPosition: attr.position
+                });
+                $timeout(function() {
+                    if (scope.jsonObj == undefined) {
+                        scope.jsonObj = 2;
+                        scope.publishtime = scope.jsonObj;
+                    } else {
+                        scope.publishtime = scope.jsonObj;
+                    }
+                }, 200);
+                var tiemchange = scope.$watch("publishtime", function(newValue, oldValue) {
+                    scope.jsonObj = newValue;
+                });
+            }
+        };
+    }]);
+</script>
+
+</html>

@@ -1,0 +1,27 @@
+.manageCon-logMgr-distributeLog {
+    position: relative;
+}
+
+.manageCon-logMgr-distributeLog td {
+    word-break: break-all;
+}
+
+.manageCon-logMgr-distributeLog th.lcol-time {
+    width: 155px;
+}
+
+.manageCon-logMgr-distributeLog th.lcol-products {
+    width: 120px;
+}
+
+.manageCon-logMgr-distributeLog th.td-check {
+    width: 71px;
+}
+
+.manageCon-logMgr-distributeLog th.lcol-user {
+    width: 200px;
+}
+
+.manageCon-logMgr-distributeLog th.lcol-ip {
+    width: 130px;
+}

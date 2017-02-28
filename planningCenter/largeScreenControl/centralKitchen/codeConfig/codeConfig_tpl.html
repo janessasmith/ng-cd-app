@@ -1,0 +1,53 @@
+<form class="planLSCentralKitchenCode" name="codeConfigForm">
+    <div cg-busy="loadingPromise"></div>
+    <div class="edit_table border_radius_5">
+        <table class="table table-striped data-table black-box">
+            <thead>
+                <tr>
+                    <th class="xcol-md-value">code码值</th>
+                    <th>code码值对应的明文</th>
+                    <th class="xcol-md-modify">编辑</th>
+                    <th class="xcol-md-delete">删除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.items">
+                    <td class="editContainer-td" ng-bind="item.CODE"></td>
+                    <td class="editContainer-td">
+                        <span ng-bind="item.STATEMENT" ng-if="status.currEdit!=item"></span>
+                        <div class="invalidate-input-box" ng-if="status.currEdit==item" >
+                            <input ng-model="status.currEditCopy.STATEMENT" class="form-control" name="editStatement" validator="required" ng-mouseenter="item.show=true" ng-mouseleave="item.show=false" is-show-tips="item.show" />
+                        </div>
+                    </td>
+                    <td>
+                        <span class="cursorPointer" ng-show="status.currEdit==item" ng-click="cancelEdit()">取消编辑</span>
+                        <img ng-src="./planningCenter/largeScreenControl/images/{{status.startNew?'bj.png':'bj-1.png'}}" ng-hide="status.currEdit==item" ng-click="startEdit(item)">
+                    </td>
+                    <td>
+                        <img src="./planningCenter/largeScreenControl/images/del-1.png" ng-click="deleteItem(item)">
+                    </td>
+                </tr>
+                <tr ng-if="status.startNew">
+                    <td class="editContainer-td">
+                        <span style="visibility: hidden;">place</span>
+                        <div class="invalidate-input-box">
+                            <input ng-model="status.newCODE" class="form-control" placeholder="请填入纯数字" name="newCode" validator="required,number" ng-mouseenter="newCODE=true" ng-mouseleave="newCODE=false" is-show-tips="newCODE" />
+                        </div>
+                    </td>
+                    <td class="editContainer-td">
+                        <div class="invalidate-input-box">
+                            <input ng-model="status.newSTATEMENT" class="form-control" name="newStatement" validator="required" ng-mouseenter="newSTATEMENT=true" ng-mouseleave="newSTATEMENT=false" is-show-tips="newSTATEMENT" />
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='btnGroup'>
+        <button class="new-btn" ng-show="!status.currEdit&&!status.startNew" ng-click="status.startNew=true">新增</button>
+        <button class="cancelNew-btn" ng-show="!status.currEdit&&status.startNew" ng-click="cancelNew()">取消新增</button>
+        <button class="save-btn" ng-click="save()" ng-show="status.startNew||!!status.currEdit" validation-submit="codeConfigForm">保存</button>
+    </div>
+</form>

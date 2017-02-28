@@ -1,0 +1,49 @@
+<div class="pmm-weibo">
+    <div trs-scroll-fix class="row edit_right_head">
+        <div class="col-md-8 col-lg-9"></div>
+        <div class="col-md-4 col-lg-3 pmm_weibo_site">
+            <form name="searchForm" novalidate>
+                <div class="input-group edit_input_group invalidate-input-box">
+                    <input name="searchWord" type="text" ng-model="searchWord" ng-keypress="produWeiboSearch($event)" class="form-control manage-pmm-weibo-form-search mr10" placeholder="请输入关键字">
+                    <b class="input-group-btn">
+                    <button validation-submit="searchForm" class="btn btn-default btn_edit_search mt5" ng-click="produWeiboSearch()" type="button">搜索</button>
+                    </b>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="manage-pmm-weibo-container">
+        <div class="pmm-weibo-item-out left" ng-repeat="item in data.items">
+            <div class="pmm-weibo-item-default" ng-init="getWeiboRights(item)">
+                <div class="pmm-weibo-item-default-icon">
+                    <img ng-src="./manageConfig/productManageMent/images/{{item.PLATFORM=='Sina'?'weibo-xl.png':'weibo-tx.png'}}">
+                </div>
+                <div class="pmm-weibo-item-information">
+                    <img src="{{item.HEADPIC}}">
+                    <div>
+                        <div>粉丝:<span class="text-weight-bold font-size-14">{{item.FOLLOWERSCOUNT}}</span></div>
+                        <div>微博:<span class="text-weight-bold font-size-14">{{item.MICROCONTENTCOUNT}}</span></div>
+                    </div>
+                </div>
+                <div class="pmm-weibo-item-account">
+                    <span class="ml-70 text-weight-bold">{{item.ACCOUNTNAME}}</span>
+                    <img class="pointer pull-right mr15" ng-if="item.right.delete" ng-click="deleteWeiboAccount(item)" src="./manageConfig/productManageMent/images/weibo-del.png">
+                    <span class="font-size-14 pointer pull-right mr15" ng-click="bangdingAccount()" ng-if="item.right.delay" ng-show="item.PLATFORM=='Sina'&&item.FOLLOWERSCOUNT==''">账号延期</span>
+                </div>
+            </div>
+        </div>
+        <div cg-busy="loadingPromise"></div>
+        <div class="pmm-weibo-add-item left" ng-click="AccountExtension()" ng-if="status.isAdministrator" ng-show="data.items.length<12">
+            <img src="./manageConfig/productManageMent/images/weibo-add.png" />
+        </div>
+    </div>
+    <div class="page pmm-weibo-mb40">
+        <p>
+            共
+            <span ng-bind="page.ITEMCOUNT"></span>
+            <span>条数据</span>
+        </p>
+        <pagination total-items="page.ITEMCOUNT" ng-change="pageChanged()" ng-model="page.CURRPAGE" max-size="6" class="pagination-sm page_left" boundary-links="true" items-per-page="page.PAGESIZE" rotate="false" num-pages="page.PAGECOUNT" first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页"></pagination>
+        <trs-pagenation-right callback="jumpToPage()" currpage="status.copyCurrPage" page="page"></trs-pagenation-right>
+    </div>
+</div>

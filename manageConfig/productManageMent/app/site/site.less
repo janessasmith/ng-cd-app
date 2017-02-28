@@ -1,0 +1,123 @@
+@import '../../../../colorPathConfig.less';
+@import '../../../../@{colorPath}';
+.pmm-app .edit_input_group {
+    position: relative;
+}
+
+.pmm-app .edit_input_group .ng-scope {
+    position: absolute;
+}
+
+.pmm-app .pmm-app-item-out,
+.pmm-app .pmm-app-add-item {
+    width: 240px;
+    height: 123px;
+    border-radius: 4px;
+    margin: 20px 15px 40px 15px;
+    position: relative;
+    font-size: 16px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f9f9f9));
+}
+
+.pmm-app .pmm-app-add-item {
+    cursor: pointer;
+}
+
+.pmm-app .pmm-app-add-item,
+.pmm-app .pmm-app-item-default {
+    border: 1px solid #ddd;
+}
+
+.pmm-app .pmm-app-item-default {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    position: relative;
+}
+
+.pmm-app .pmm-app-item-active {
+    background: @theme_color;
+    font-weight: bold;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pmm-app .pmm-app-add-item,
+.pmm-app .pmm-app-item-default {
+    line-height: 123px;
+}
+
+.pmm-app .pmm-app-item-btn-group {
+    position: absolute;
+    left: 0;
+    top: 135px;
+}
+
+.pmm-app .pmm-app-item-btn-group > a {
+    margin-right: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.pmm-app .manage-pmm-app-form-search {
+    height: 28px;
+    width: 76%!important;
+    line-height: 28px;
+    background: url("./editingCenter/app/images/sch.jpg") no-repeat 10px center;
+    background-color: #fff;
+    padding-left: 30px;
+    margin-top: 5px;
+}
+
+.pmm-app .manage-pmm-app-site-container {
+    min-height: 460px;
+}
+
+.pmm-app .manage-pmm-app-recycle {
+    width: 57px;
+    float: right;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    height: 90px;
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+}
+
+.pmm-app .manage-pmm-app-recycle a,
+.pmm-app .manage-pmm-app-recycle a:hover {
+    text-decoration: none;
+    color: #666;
+}
+
+.pmm-app .manage-pmm-app-recycle img {
+    margin-bottom: 10px;
+}
+
+.pmm-app .pmm-app-item-out > a {
+    color: #333;
+    height: 100%;
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+}
+
+.pmm-app .pmm-app-item-out > a:hover {
+    text-decoration: none;
+}
+
+.pmm-app .pmm-app-router {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pmm-app .pmm_app_site .edit_input_group .input-group-btn button.btn_edit_search {
+    height: 28px;
+    line-height: 28px;
+}

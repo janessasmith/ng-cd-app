@@ -1,0 +1,48 @@
+<form name="newAdvancedSearch" novalidate>
+<div class="advanced-search-window">
+    <div class="hd">
+    	<span>高级检索</span>
+    	<img src="./editingCenter/app/toBeCompiled/images/cls.jpg" ng-click="cancel()">
+    </div>
+    <div class="by">
+    	<div class="by-left">
+    		<div>用户</div>
+    		<div>所属产品</div>
+    		<div>操作类型</div>
+    		<div>时间</div>
+    		<div>IP</div>
+    		<div>描述</div>
+    	</div>
+    	<div class="by-right">
+    		<div class="invalidate-input-box">
+                <input type="text" class="form-control" name="operator" placeholder="请输入用户名称" ng-model="status.search.operator" validator="maxlength=50,spechar" maxlength-error-message="长度不能超过50个字符！"  ng-mouseenter="isShowTipsA=true" ng-mouseleave="isShowTipsA=false" is-show-tips="isShowTipsA">
+            </div>
+    		<div class="invalidate-input-box">
+            <input type="text" class="form-control" name="medianame" placeholder="请输入所属产品" ng-model="status.search.medianame" validator="maxlength=50,spechar" maxlength-error-message="长度不能超过50个字符！"  ng-mouseenter="isShowTipsB=true" ng-mouseleave="isShowTipsB=false" is-show-tips="isShowTipsB">
+            </div>
+    		<div class="invalidate-input-box">
+            <input type="text" class="form-control" name="displayname" placeholder="请输入操作类型" ng-model="status.search.displayname" validator="maxlength=50,spechar" maxlength-error-message="长度不能超过50个字符！"  ng-mouseenter="isShowTipsC=true" ng-mouseleave="isShowTipsC=false" is-show-tips="isShowTipsC">
+            </div>
+    		<div>
+    			<div >
+                    <input type="text" class="form-control" ng-model="fromDate" data-max-date="today" placeholder="选择开始日期" bs-datepicker>
+                </div>
+                <span class="float-left">到</span>
+                <div>
+                    <input type="text" class="form-control" ng-model="untilDate" data-min-date="{{minformDate}}" placeholder="选择结束日期" data-max-date="today" bs-datepicker>
+                </div>
+    		</div>
+    		<div class="invalidate-input-box">
+            <input type="text" class="form-control" name="ip" placeholder="请输入IP" ng-model="status.search.ip" validator="maxlength=50,spechar,haschinese" maxlength-error-message="长度不能超过50个字符！"  ng-mouseenter="isShowTipsD=true" ng-mouseleave="isShowTipsD=false" is-show-tips="isShowTipsD">
+            </div>
+    		<div class="invalidate-input-box">
+            <input type="text" class="form-control" name="operatedesc" placeholder="请输入描述" ng-model="status.search.operatedesc" validator="maxlength=50,spechar" maxlength-error-message="长度不能超过50个字符！"  ng-mouseenter="isShowTipsE=true" ng-mouseleave="isShowTipsE=false" is-show-tips="isShowTipsE">
+            </div>
+    	</div>
+    </div>
+    <div class="ed">
+    	<button type="button" class="btn" ng-click="send()">确定</button>
+    	<button type="button" class="btn" ng-click="cancel()">取消</button>
+    </div>
+</div>
+</form>
