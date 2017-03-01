@@ -3,7 +3,7 @@
  * created by zheng.lu in 2017.2.27
  */
 angular.module('websiteLeftModule', [])
-    .controller('websiteLeftCtrl', ['$scope', '$q', '$location', '$state', '$filter', 'trsHttpService', 'editingCenterService', 'globleParamsSet', function ($scope, $q, $location, $state, $filter, trsHttpService, editingCenterService, globleParamsSet) {
+    .controller('websiteLeftCtrl', ['$scope', '$q', '$location', '$state', '$filter', 'trsHttpService', 'editingCenterService', 'globleParamsSet', function($scope, $q, $location, $state, $filter, trsHttpService, editingCenterService, globleParamsSet) {
         initStatus();
         initData();
 
@@ -12,11 +12,18 @@ angular.module('websiteLeftModule', [])
          * @return {[type]} [description]
          */
         function initStatus() {
-            $scope.status= {
-                sites: [],   // 一级导航数据存放到该数组
+            $scope.status = {
+                sites: [], // 一级导航数据存放到该数组
                 selectedSite: {},
 
-                websiteMediaType: 1,   // 网站：1，APP：2，微信：3，微博：4
+                websiteMediaType: 1, // 网站：1，APP：2，微信：3，微博：4
+
+                waitcompiled: {
+                    channels: ""
+                },
+                expandedNode: {
+                    waitcompiled: []
+                }
             };
         }
 
@@ -25,7 +32,10 @@ angular.module('websiteLeftModule', [])
          * @return {[type]} [description]
          */
         function initData() {
-            initSites();
+            initSites()
+                .then(function() {
+                    $state.go('editctr.website.waitcompiled', { siteid: $scope.status.selectedSite.SITEID });
+                });
         }
 
         /**
@@ -52,9 +62,12 @@ angular.module('websiteLeftModule', [])
          * @param  {[type]} site [description] 被选中的一级导航站点
          * @return {[type]}      [description]
          */
-        $scope.selectSites = function(site) {
-            if($scope.status.selectedSite === site) return;
+        $scope.selectSites = function(site, index) {
+            if ($scope.status.selectedSite === site) return;
             // 将点中的站点赋给$scope.status.selectedSite展示出来
             $scope.status.selectedSite = site;
+            $state.go($state.$current, {
+                siteid: site.SITEID
+            });
         };
     }]);

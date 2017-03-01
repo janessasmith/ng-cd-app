@@ -16,11 +16,18 @@
                 <span ng-bind="site.SITENAME" title="{{site.SITENAME}}"></span>
                 <img src="./editingCenter/app/images/l8.png" ng-show="status.selectedSite==site">
             </div>
-        </div> 
+        </div>
     </div>
     <tabset class="editing-downlist">
         <!-- 待编 -->
         <tab heading="待编" class="icon-compiled pointer">
+            <!-- <treecontrol class="tree-classic" tree-model="status['waitcompiled'].channels" selected-node="selectedNode" expanded-nodes="status.expandedNode['waitcompiled']" on-node-toggle="queryNodeChildren(node)" >
+                <span class="mySelect" ng-bind='node.CHNLDESC' ng-click="" title=""></span>
+            </treecontrol> -->
+            
+            <!-- <treecontrol class="tree-light" selected-node="selectedNode" expanded-nodes="expandedTest" on-node-toggle="showToggle(node)" tree-model="dataForTheTree" options="status.treeOptions" on-selection="showSelected(node)"> <i class="icon-tree"></i>
+                <span ng-bind="node.CHNLDESC" ng-click="chooseChannel(node)"></span>
+            </treecontrol> -->
         </tab>
         <!-- 待审 -->
         <tab heading="待审" class="icon-pending pointer">
