@@ -24,7 +24,7 @@
             <!-- <treecontrol selected-node="getSelectedNode()" expanded-nodes="status.expandedNode['waitcompiled']" class="tree-classic" on-node-toggle="queryNodeChildren(node)" tree-model="status['waitcompiled'].channels" options="status.channelTreeOptions">
                 <span class="mySelect" ng-bind="node.CHANNELID"></span>
             </treecontrol> -->
-            <treecontrol class="tree-classic" tree-model="status['waitcompiled'].channels" on-selection="showSelected(node)" on-node-toggle="channelCheck(node)" options="status.treeOptions">
+            <treecontrol class="tree-classic" tree-model="status['waitcompiled'].channels" on-node-toggle="queryNodeChildren(node)" options="status.treeOptions">
                 <span class="mySelect" ng-bind="node.CHNLDESC"></span>
             </treecontrol>
         </tab>

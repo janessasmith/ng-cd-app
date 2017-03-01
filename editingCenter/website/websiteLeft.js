@@ -20,7 +20,6 @@ angular.module('websiteLeftModule', [])
                 waitcompiled: {
                     channels: "",
                 },
-                // channelTreeOptions: editingCenterService.channelTreeOptions(),
                 treeOptions: {
                     nodeChildren: "CHILDREN",
                     dirSelectable: false,
@@ -85,9 +84,13 @@ angular.module('websiteLeftModule', [])
             $state.go($state.$current, {
                 siteid: site.SITEID
             });
-            // initChannelList(site.SITEID);
         };
 
+        /**
+         * [initChannelList description] 请求子级导航
+         * @param  {[type]} siteid [description] 根据siteid获取子级
+         * @return {[type]}        [description]
+         */
         function initChannelList(siteid) {
             var deferred = $q.defer();
             var params = {
@@ -103,4 +106,26 @@ angular.module('websiteLeftModule', [])
             });
             return deferred.promise;
         }
+
+        /**
+         * [queryNodeChildren description] 查询子节点 异步加载树
+         * @param  {[type]} node [description] 子节点
+         * @return {[type]}      [description]
+         */
+        $scope.queryNodeChildren = function(node) {
+            if (node.HASCHILDREN == 'true' && !node.CHILDREN) {
+                var deferred = $q.defer();
+                var params = {
+                    serviceid: 'gov_site',
+                    methodname: 'queryChildrenChannelsOnEditorCenter',
+                    ParentChannelId: node.CHANNELID
+                };
+                trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
+                    node.CHILDREN = data.DATA;
+
+                    deferred.resolve(data.DATA);
+                });
+                return deferred.promise;
+            }
+        };
     }]);
