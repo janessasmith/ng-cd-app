@@ -106,15 +106,24 @@ angular.module('websiteLeftModule', [])
          * @param  {[type]} siteid [description] 根据siteid获取子级
          * @return {[type]}        [description]
          */
-        function initChannelList(siteid) {
-            var deferred = $q.defer();
+        function initChannelList(site) {
+            editingCenterService.queryChildChannel(site.SITEID, 0).then(function(data) {
+                $scope.status[$scope.status.selectedPlatform].channels = data.DATA;
+
+                $state.go('editctr.website.' + $scope.status.selectedPlatform, { channelid: data.DATA[0].CHANNELID });
+                // var routerChannelId = $location.search().channelid;
+                // $scope.status.waitcompiled.selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
+            });
+
+            /*var deferred = $q.defer();
             var params = {
                 serviceid: 'gov_site',
                 methodname: 'queryChildrenChannelsOnEditorCenter',
                 ParentChannelId: 0,
-                SITEID: siteid.SITEID
+                SITEID: site.SITEID
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
+                console.log(data.DATA);
                 $scope.status[$scope.status.selectedPlatform].channels = data.DATA;
 
                 $state.go('editctr.website.' + $scope.status.selectedPlatform, { channelid: data.DATA[0].CHANNELID });
@@ -123,7 +132,7 @@ angular.module('websiteLeftModule', [])
 
                 deferred.resolve();
             });
-            return deferred.promise;
+            return deferred.promise;*/
         }
 
         /**
@@ -134,6 +143,13 @@ angular.module('websiteLeftModule', [])
         $scope.queryNodeChildren = function(node) {
             if (node.HASCHILDREN == 'true' && !node.CHILDREN) {
                 var deferred = $q.defer();
+
+                /*editingCenterService.queryChildChannel(node).then(function(data) {
+                    node.CHILDREN = data.DATA;
+
+                    deferred.resolve(node);
+                });*/
+
                 var params = {
                     serviceid: 'gov_site',
                     methodname: 'queryChildrenChannelsOnEditorCenter',

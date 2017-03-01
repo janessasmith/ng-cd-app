@@ -474,20 +474,6 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                         }
                     };
                 },
-                //查询平台下的栏目子节点
-                queryChildChannel: function(node, type) {
-                    var params = {
-                        serviceid: "mlf_mediasite",
-                        methodname: "queryClassifyByChnl",
-                        channelid: node.CHANNELID,
-                        platform: type,
-                    };
-                    var defer = $q.defer();
-                    trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-                        defer.resolve(data.CHILDREN);
-                    });
-                    return defer.promise;
-                },
                 /**
                  * [getChannelDetail description]获得栏目的具体信息
                  * @param  {[num]} channelid [description]栏目ID
@@ -556,6 +542,7 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                         serviceid: "gov_site",
                         methodname: "querySitesOnEditorCenter",
                         MediaType: mediaType, // 网站：1，APP：2，微信：3，微博：4
+                        SiteId: ""
                     };
                     var deferred = $q.defer();
                     trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
@@ -563,22 +550,21 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                     });
                     return deferred.promise;
                 },
-                // 按照平台查询站点下的栏目
-                queryChannelsBySiteid: function(siteid, channelId) {
+                // 查询平台下的栏目子节点
+                queryChildChannel: function(siteid, channelid) {
                     var params = {
-                        serviceid: "gov_site",
-                        methodname: "queryChildrenChannelsOnEditorCenter",
-                        ParentChannelId: channelId,
-                        SITEID: siteid
+                        serviceid: 'gov_site',
+                        methodname: 'queryChildrenChannelsOnEditorCenter',
+                        SITEID: siteid,
+                        ParentChannelId: channelid
                     };
-
                     var deferred = $q.defer();
-                    trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
+                    trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
                         deferred.resolve(data);
                     });
                     return deferred.promise;
                 },
-                /*queryClassifyBySite: function(siteid, platform) {
+                queryClassifyBySite: function(siteid, platform) {
                     var params = {
                         serviceid: "mlf_mediasite",
                         methodname: "queryClassifyBySite",
@@ -590,7 +576,22 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                         defer.resolve(data);
                     });
                     return defer.promise;
-                },*/
+                },
+                // 按照平台查询站点下的栏目 这个写重复了，不敢删
+                queryChannelsBySiteid: function(siteid, platform) {
+                    var params = {
+                        serviceid: "mlf_mediasite",
+                        methodname: "queryClassifyBySite",
+                        SiteId: siteid,
+                        platform: platform,
+                    };
+
+                    var defer = $q.defer();
+                    trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
+                        defer.resolve(data);
+                    });
+                    return defer.promise;
+                },
                 /**
                  * [batChooseChnl description]批量选择站点
                  * @param  {[string]} modalTitle [description]弹框标题
