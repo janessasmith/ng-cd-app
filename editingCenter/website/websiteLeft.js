@@ -142,14 +142,18 @@ angular.module('websiteLeftModule', [])
          */
         $scope.queryNodeChildren = function(node) {
             if (node.HASCHILDREN == 'true' && !node.CHILDREN) {
-                var deferred = $q.defer();
-
-                /*editingCenterService.queryChildChannel(node).then(function(data) {
+                // var deferred = $q.defer();
+                // editingCenterService.queryChildChannel(node.SITEID, node.CHANNELID).then(function(data) {
+                //     node.CHILDREN = data.DATA;
+                // });
+                // return deferred.promise;
+                editingCenterService.queryChildChannel(node.SITEID, node.CHANNELID).then(function(data) {
                     node.CHILDREN = data.DATA;
+                });
+            }
 
-                    deferred.resolve(node);
-                });*/
-
+            /*if (node.HASCHILDREN == 'true' && !node.CHILDREN) {
+                var deferred = $q.defer();
                 var params = {
                     serviceid: 'gov_site',
                     methodname: 'queryChildrenChannelsOnEditorCenter',
@@ -162,7 +166,7 @@ angular.module('websiteLeftModule', [])
                     deferred.resolve(node);
                 });
                 return deferred.promise;
-            }
+            }*/
         };
 
         /**
