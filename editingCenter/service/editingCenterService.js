@@ -464,7 +464,7 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                 //栏目树初始化参数
                 channelTreeOptions: function() {
                     return {
-                        nodeChildren: "CHILDREN",
+                        nodeChildren: "CHNLDESC",
                         allowDeselect: false,
                         dirSelectable: false,
                         injectClasses: {},

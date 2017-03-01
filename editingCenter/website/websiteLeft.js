@@ -17,6 +17,28 @@ angular.module('websiteLeftModule', [])
                 selectedSite: {},
 
                 websiteMediaType: 1, // 网站：1，APP：2，微信：3，微博：4
+                waitcompiled: {
+                    channels: "",
+                },
+                // channelTreeOptions: editingCenterService.channelTreeOptions(),
+                treeOptions: {
+                    nodeChildren: "CHILDREN",
+                    dirSelectable: false,
+                    allowDeselect: false,
+                    injectClasses: {
+                        ul: "moveDraftTree-ul",
+                        li: "moveDraftTree-li",
+                        liSelected: "a7",
+                        iExpanded: "a3",
+                        iCollapsed: "a4",
+                        iLeaf: "a5",
+                        label: "moveDraftTree-label",
+                        labelSelected: "rolegrouplabselected"
+                    },
+                    isLeaf: function(node) {
+                        return node.HASCHILDREN === "false";
+                    }
+                }
             };
         }
 
@@ -75,6 +97,8 @@ angular.module('websiteLeftModule', [])
                 SITEID: siteid.SITEID
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
+                $scope.status.waitcompiled.channels = data.DATA;
+
                 deferred.resolve(data.DATA);
             });
             return deferred.promise;
