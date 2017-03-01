@@ -19,6 +19,7 @@ angular.module('websiteLeftModule', [])
                 websiteMediaType: 1, // 网站：1，APP：2，微信：3，微博：4
                 waitcompiled: {
                     channels: "",
+                    selectedChnl: ""
                 },
                 treeOptions: {
                     nodeChildren: "CHILDREN",
@@ -77,7 +78,7 @@ angular.module('websiteLeftModule', [])
          * @param  {[type]} site [description] 被选中的一级导航站点
          * @return {[type]}      [description]
          */
-        $scope.selectSites = function(site, index) {
+        $scope.selectSites = function(site) {
             if ($scope.status.selectedSite === site) return;
             // 将点中的站点赋给$scope.status.selectedSite展示出来
             $scope.status.selectedSite = site;
@@ -101,8 +102,12 @@ angular.module('websiteLeftModule', [])
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
                 $scope.status.waitcompiled.channels = data.DATA;
+                console.log(data.DATA[0].CHANNELID);
+                $state.go('editctr.website.waitcompiled', { channelid: data.DATA[0].CHANNELID });
+                // var routerChannelId = $location.search().channelid;
+                // $scope.status.waitcompiled.selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
 
-                deferred.resolve(data.DATA);
+                deferred.resolve();
             });
             return deferred.promise;
         }
@@ -122,8 +127,9 @@ angular.module('websiteLeftModule', [])
                 };
                 trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
                     node.CHILDREN = data.DATA;
+                    $state.go('editctr.website.waitcompiled', { channelid: node.CHANNELID });
 
-                    deferred.resolve(data.DATA);
+                    deferred.resolve(node);
                 });
                 return deferred.promise;
             }
