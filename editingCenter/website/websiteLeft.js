@@ -64,6 +64,7 @@ angular.module('websiteLeftModule', [])
             initSites()
                 .then(function() {
                     initChannelList($scope.status.selectedSite);
+                    // 这里还有问题,channelid还不知道怎么传入
                     $state.go('editctr.website.' + $scope.status.selectedPlatform, { siteid: $scope.status.selectedSite.SITEID });
                 });
         }
@@ -114,25 +115,6 @@ angular.module('websiteLeftModule', [])
                 // var routerChannelId = $location.search().channelid;
                 // $scope.status.waitcompiled.selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
             });
-
-            /*var deferred = $q.defer();
-            var params = {
-                serviceid: 'gov_site',
-                methodname: 'queryChildrenChannelsOnEditorCenter',
-                ParentChannelId: 0,
-                SITEID: site.SITEID
-            };
-            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
-                console.log(data.DATA);
-                $scope.status[$scope.status.selectedPlatform].channels = data.DATA;
-
-                $state.go('editctr.website.' + $scope.status.selectedPlatform, { channelid: data.DATA[0].CHANNELID });
-                // var routerChannelId = $location.search().channelid;
-                // $scope.status.waitcompiled.selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
-
-                deferred.resolve();
-            });
-            return deferred.promise;*/
         }
 
         /**
@@ -142,31 +124,10 @@ angular.module('websiteLeftModule', [])
          */
         $scope.queryNodeChildren = function(node) {
             if (node.HASCHILDREN == 'true' && !node.CHILDREN) {
-                // var deferred = $q.defer();
-                // editingCenterService.queryChildChannel(node.SITEID, node.CHANNELID).then(function(data) {
-                //     node.CHILDREN = data.DATA;
-                // });
-                // return deferred.promise;
                 editingCenterService.queryChildChannel(node.SITEID, node.CHANNELID).then(function(data) {
                     node.CHILDREN = data.DATA;
                 });
             }
-
-            /*if (node.HASCHILDREN == 'true' && !node.CHILDREN) {
-                var deferred = $q.defer();
-                var params = {
-                    serviceid: 'gov_site',
-                    methodname: 'queryChildrenChannelsOnEditorCenter',
-                    ParentChannelId: node.CHANNELID
-                };
-                trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
-                    node.CHILDREN = data.DATA;
-                    // $state.go('editctr.website.' + $scope.status.selectedPlatform, { channelid: node.CHANNELID });
-
-                    deferred.resolve(node);
-                });
-                return deferred.promise;
-            }*/
         };
 
         /**
