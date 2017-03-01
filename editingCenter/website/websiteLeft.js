@@ -17,13 +17,6 @@ angular.module('websiteLeftModule', [])
                 selectedSite: {},
 
                 websiteMediaType: 1, // 网站：1，APP：2，微信：3，微博：4
-
-                waitcompiled: {
-                    channels: ""
-                },
-                expandedNode: {
-                    waitcompiled: []
-                }
             };
         }
 
@@ -34,6 +27,7 @@ angular.module('websiteLeftModule', [])
         function initData() {
             initSites()
                 .then(function() {
+                    initChannelList($scope.status.selectedSite);
                     $state.go('editctr.website.waitcompiled', { siteid: $scope.status.selectedSite.SITEID });
                 });
         }
@@ -69,5 +63,20 @@ angular.module('websiteLeftModule', [])
             $state.go($state.$current, {
                 siteid: site.SITEID
             });
+            // initChannelList(site.SITEID);
         };
+
+        function initChannelList(siteid) {
+            var deferred = $q.defer();
+            var params = {
+                serviceid: 'gov_site',
+                methodname: 'queryChildrenChannelsOnEditorCenter',
+                ParentChannelId: 0,
+                SITEID: siteid.SITEID
+            };
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
+                deferred.resolve(data.DATA);
+            });
+            return deferred.promise;
+        }
     }]);

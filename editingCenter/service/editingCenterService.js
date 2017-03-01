@@ -475,16 +475,15 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                     };
                 },
                 //查询平台下的栏目子节点
-                queryChildChannel: function(node, type) {
+                queryChildChannel: function(node) {
                     var params = {
-                        serviceid: "mlf_mediasite",
-                        methodname: "queryClassifyByChnl",
-                        channelid: node.CHANNELID,
-                        platform: type,
+                        serviceid: "gov_site",
+                        methodname: "queryChildrenChannelsOnEditorCenter",
+                        ParentChannelId: node.CHANNELID
                     };
                     var defer = $q.defer();
                     trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-                        defer.resolve(data.CHILDREN);
+                        defer.resolve(data.DATA);
                     });
                     return defer.promise;
                 },
