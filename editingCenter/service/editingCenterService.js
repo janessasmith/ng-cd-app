@@ -464,7 +464,7 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                 //栏目树初始化参数
                 channelTreeOptions: function() {
                     return {
-                        nodeChildren: "CHNLDESC",
+                        nodeChildren: "CHILDREN",
                         allowDeselect: false,
                         dirSelectable: false,
                         injectClasses: {},
@@ -475,15 +475,16 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                     };
                 },
                 //查询平台下的栏目子节点
-                queryChildChannel: function(node) {
+                queryChildChannel: function(node, type) {
                     var params = {
-                        serviceid: "gov_site",
-                        methodname: "queryChildrenChannelsOnEditorCenter",
-                        ParentChannelId: node.CHANNELID
+                        serviceid: "mlf_mediasite",
+                        methodname: "queryClassifyByChnl",
+                        channelid: node.CHANNELID,
+                        platform: type,
                     };
                     var defer = $q.defer();
                     trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-                        defer.resolve(data.DATA);
+                        defer.resolve(data.CHILDREN);
                     });
                     return defer.promise;
                 },

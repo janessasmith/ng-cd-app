@@ -20,19 +20,16 @@
     </div>
     <tabset class="editing-downlist">
         <!-- 待编 -->
-        <tab heading="待编" class="icon-compiled pointer">
-            <!-- <treecontrol selected-node="getSelectedNode()" expanded-nodes="status.expandedNode['waitcompiled']" class="tree-classic" on-node-toggle="queryNodeChildren(node)" tree-model="status['waitcompiled'].channels" options="status.channelTreeOptions">
-                <span class="mySelect" ng-bind="node.CHANNELID"></span>
-            </treecontrol> -->
+        <tab heading="待编" class="icon-compiled pointer" active="status.waitcompiled.isSelected" ng-click="changeWebPlatform('waitcompiled')">
             <treecontrol class="tree-classic" tree-model="status['waitcompiled'].channels" on-node-toggle="queryNodeChildren(node)" options="status.treeOptions">
-                <span class="mySelect" ng-bind="node.CHNLDESC"></span>
+                <span class="mySelect" ng-bind="node.CHNLDESC" ng-click="setWebSelectedChnl(node,'waitcompiled')"></span>
             </treecontrol>
         </tab>
         <!-- 待审 -->
-        <tab heading="待审" class="icon-pending pointer">
+        <tab heading="待审" class="icon-pending pointer" active="status.pending.isSelected" ng-click="changeWebPlatform('pending')">
         </tab>
         <!-- 已签发 -->
-        <tab heading="已签发" class="icon-signed pointer">
+        <tab heading="已签发" class="icon-signed pointer" active="status.signed.isSelected" ng-click="changeWebPlatform('signed')">
         </tab>
     </tabset>
 </div>

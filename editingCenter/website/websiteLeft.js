@@ -3,7 +3,7 @@
  * created by zheng.lu in 2017.2.27
  */
 angular.module('websiteLeftModule', [])
-    .controller('websiteLeftCtrl', ['$scope', '$q', '$location', '$state', '$filter', 'trsHttpService', 'editingCenterService', 'globleParamsSet', function($scope, $q, $location, $state, $filter, trsHttpService, editingCenterService, globleParamsSet) {
+    .controller('websiteLeftCtrl', ['$scope', '$q', '$location', '$state', '$filter', 'trsHttpService', 'editingCenterService', 'editingMediatype', 'globleParamsSet', function($scope, $q, $location, $state, $filter, trsHttpService, editingCenterService, editingMediatype, globleParamsSet) {
         initStatus();
         initData();
 
@@ -12,14 +12,28 @@ angular.module('websiteLeftModule', [])
          * @return {[type]} [description]
          */
         function initStatus() {
+            $scope.router = $location.path().split('/');
             $scope.status = {
                 sites: [], // 一级导航数据存放到该数组
                 selectedSite: {},
 
-                websiteMediaType: 1, // 网站：1，APP：2，微信：3，微博：4
+                platformParam: ["waitcompiled", "pending", "signed"],
+                selectedPlatform: $scope.router[3] || "waitcompiled", //默认展开平台
+
                 waitcompiled: {
                     channels: "",
-                    selectedChnl: ""
+                    selectedChnl: "",
+                    isSelected: true,
+                },
+                pending: {
+                    channels: "",
+                    selectedChnl: "",
+                    isSelected: $scope.router[3] === 'pending',
+                },
+                signed: {
+                    channels: "",
+                    selectedChnl: "",
+                    isSelected: $scope.router[3] === 'signed',
                 },
                 treeOptions: {
                     nodeChildren: "CHILDREN",
@@ -50,7 +64,7 @@ angular.module('websiteLeftModule', [])
             initSites()
                 .then(function() {
                     initChannelList($scope.status.selectedSite);
-                    $state.go('editctr.website.waitcompiled', { siteid: $scope.status.selectedSite.SITEID });
+                    $state.go('editctr.website.' + $scope.status.selectedPlatform, { siteid: $scope.status.selectedSite.SITEID });
                 });
         }
 
@@ -60,7 +74,7 @@ angular.module('websiteLeftModule', [])
          */
         function initSites() {
             var deferred = $q.defer();
-            editingCenterService.querySitesByMediaType($scope.status.websiteMediaType).then(function(data) {
+            editingCenterService.querySitesByMediaType(editingMediatype.website).then(function(data) {
                 // 当网站不存在时退出 WCM bug
                 if (!data.DATA || data.DATA.length < 1) return;
                 $scope.status.sites = data.DATA;
@@ -101,9 +115,9 @@ angular.module('websiteLeftModule', [])
                 SITEID: siteid.SITEID
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
-                $scope.status.waitcompiled.channels = data.DATA;
-                console.log(data.DATA[0].CHANNELID);
-                $state.go('editctr.website.waitcompiled', { channelid: data.DATA[0].CHANNELID });
+                $scope.status[$scope.status.selectedPlatform].channels = data.DATA;
+
+                $state.go('editctr.website.' + $scope.status.selectedPlatform, { channelid: data.DATA[0].CHANNELID });
                 // var routerChannelId = $location.search().channelid;
                 // $scope.status.waitcompiled.selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
 
@@ -127,11 +141,38 @@ angular.module('websiteLeftModule', [])
                 };
                 trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
                     node.CHILDREN = data.DATA;
-                    $state.go('editctr.website.waitcompiled', { channelid: node.CHANNELID });
+                    // $state.go('editctr.website.' + $scope.status.selectedPlatform, { channelid: node.CHANNELID });
 
                     deferred.resolve(node);
                 });
                 return deferred.promise;
+            }
+        };
+
+        /**
+         * [changeWebPlatform description] tab平台切换
+         * @param  {[type]} platform [description]
+         * @return {[type]}          [description]
+         */
+        $scope.changeWebPlatform = function(platform) {
+            if($scope.status.selectedPlatform === platform) return;
+            $scope.status.selectedPlatform = platform;
+            $scope.status[$scope.status.selectedPlatform].isSelected = true;
+        };
+
+        /**
+         * [setWebSelectedChnl description]设置网站当前选中的栏目
+         * @param {[type]} item     [description]  被点击对象
+         * @param {[type]} platform [description] 平台：待编，待审，已签发
+         */
+        $scope.setWebSelectedChnl = function(item, platform) {
+            $scope.status[platform].selectedChnl = item;
+            if (angular.isObject(item))
+                $state.go("editctr.website." + platform, {
+                    channelid: item.CHANNELID,
+                }, { reload: "editctr.website." + platform });
+            else {
+                $state.go("editctr.website." + platform + "." + item, "", { reload: "editctr.website." + platform + "." + item });
             }
         };
     }]);
