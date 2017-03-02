@@ -13,7 +13,7 @@
   left: 7px;
 }
 .editing-more {
-  background: url("editingCenter/app/images/l4.png") 2px center #67747D no-repeat;
+  background: url("editingCenter/app/images/l4.png") 2px center #f5f5f5 no-repeat;
   width: 6%;
   right: 0px;
   height: 40px;
@@ -26,7 +26,7 @@
   z-index: 999;
 }
 .product-manage-left-content .editing-more {
-  background: url("editingCenter/app/images/l4.png") 2px center #67747D no-repeat;
+  background: url("editingCenter/app/images/l4.png") 2px center #f5f5f5 no-repeat;
   border-left: none;
 }
 .editing-more-rotate {
@@ -59,7 +59,7 @@
   content: "";
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
-  border-right: 10px solid #67747D;
+  border-right: 10px solid #f5f5f5;
 }
 .edit_more_tab_list ul.list-group {
   border: none;
@@ -68,7 +68,7 @@
 }
 .edit_more_tab_list ul.list-group li.list-group-item {
   width: 90px;
-  background: #67747D;
+  background: #f5f5f5;
   color: #ddeaf3;
   text-align: center;
   height: 40px;

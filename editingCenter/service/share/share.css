@@ -120,7 +120,7 @@
   color: white;
 }
 .toBeCompiled-share-content .selected {
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white !important;
 }
 .toBeCompiled-share-content .subject span {
@@ -228,7 +228,7 @@
 }
 .toBeCompiled-share-content .con .conL .header {
   height: 30px;
-  background: #FF4E40;
+  background: #41baff;
 }
 .toBeCompiled-share-content .con .conL .header p {
   margin: 0px 12px;
@@ -326,7 +326,7 @@
 .toBeCompiled-share-content .con .conR .body .left .left-div .head {
   height: 30px;
   font-size: 12px;
-  background: #FF4E40;
+  background: #41baff;
   border-bottom: 1px solid #EFF1F4;
   line-height: 30px;
   padding-left: 10px;

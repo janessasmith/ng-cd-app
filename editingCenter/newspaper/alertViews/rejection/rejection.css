@@ -376,12 +376,12 @@ div.visible {
   padding-left: 10px;
 }
 .newspaper_rejection_row .treePersonnel p.active {
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white;
 }
 .newspaper_rejection .treeCon .treeDeptTitle {
   height: 30px;
-  background: #FF4E40;
+  background: #41baff;
   text-align: center;
   font-size: 14px;
   color: #fff;
@@ -389,14 +389,14 @@ div.visible {
 }
 .newspaper_rejection .treeCon .treePersonnelTitle {
   height: 30px;
-  background: #FF4E40;
+  background: #41baff;
   text-align: center;
   font-size: 12px;
   color: #fff;
   line-height: 30px;
 }
 .newspaper_rejection_detail_is_person_handle ul li.active {
-  background: #FF4E40;
+  background: #41baff;
   color: #fff;
 }
 .newspaper_rejection .has_no_draft {

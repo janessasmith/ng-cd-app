@@ -17,8 +17,8 @@ angular.module('websiteLeftModule', [])
                 sites: [], // 一级导航数据存放到该数组
                 selectedSite: {},
 
-                platformParam: ["waitcompiled", "pending", "signed"],
-                selectedPlatform: $scope.router[3] || "waitcompiled", //默认展开平台
+                platformParam: ["waitcompiled", "pending", "waitpending", "signed"],
+                selectedPlatform: $scope.router[4] || "waitcompiled", //默认展开平台
 
                 waitcompiled: {
                     channels: "",
@@ -28,12 +28,17 @@ angular.module('websiteLeftModule', [])
                 pending: {
                     channels: "",
                     selectedChnl: "",
-                    isSelected: $scope.router[3] === 'pending',
+                    isSelected: $scope.router[4] === 'pending',
+                },
+                waitpending: {
+                    channels: "",
+                    selectedChnl: "",
+                    isSelected: $scope.router[4] === 'waitpending',
                 },
                 signed: {
                     channels: "",
                     selectedChnl: "",
-                    isSelected: $scope.router[3] === 'signed',
+                    isSelected: $scope.router[4] === 'signed',
                 },
                 channelTreeOptions: editingCenterService.channelTreeOptions()
             };

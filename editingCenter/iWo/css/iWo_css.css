@@ -187,7 +187,7 @@ input[type="checkbox"].manuscript-checkbox {
 .editing-list .fix_back_hover .panel-heading:hover a,
 .editing-list .editing-nav-newspaper_hover .panel-heading:hover a,
 .editing-list .editing-nav-newspaper_hover .iWo-left-accordion-active .panel-heading .panel-title a {
-  color: #FF4E40 !important;
+  color: #41baff !important;
 }
 /*@media screen and (max-width: 1024px) {
     .iwo_accordion .panel-body ul li a{
@@ -306,7 +306,7 @@ input[type="checkbox"].manuscript-checkbox {
   background-color: #fff !important;
 }
 .iWo-left-accordion-active a {
-  color: #FF4E40;
+  color: #41baff;
 }
 .subject-tab {
   z-index: 1000;
@@ -614,19 +614,19 @@ td.edit-icon-td {
   background-color: #fff;
 }
 .editing-list .iwo_accordion .iWo-left-li-active a {
-  color: #FF4E40;
+  color: #41baff;
 }
-.nav-tabs.nav-justified > li:hover {
-  background-color: #8d959a !important;
-}
-.editing-list ul li:hover {
-  background-color: #d0d1d2;
-}
-.editing-list ul li:hover a {
-  color: #fff;
-}
+/* .nav-tabs.nav-justified > li:hover {
+    background-color: @iWo_left_tab_hover!important;
+} */
+/* .editing-list ul li:hover {
+    background-color: @iWo_accordion_body_hover;
+    a {
+        color: @iWo_left_tab_active;
+    }
+} */
 .editing-list .iwo_accordion_new .panel-open .font_color {
-  color: #FF4E40 !important;
+  color: #41baff !important;
 }
 .mc-padding-xs .txt_c .draftImg,
 .standby-draft-panel-body .draftImg {
@@ -639,7 +639,7 @@ td.edit-icon-td {
   width: 100px;
   height: 34px;
   line-height: 34px;
-  background: #FF4E40;
+  background: #41baff;
   color: #fff;
   text-align: center;
   border: none;

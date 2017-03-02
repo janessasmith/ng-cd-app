@@ -49,7 +49,7 @@ body {
   text-decoration: none!important;
 }
 .resource_list .left-li-active .panel-title a {
-  color: #FF4E40;
+  color: #41baff;
 }
 .resource_list .panel-title {
   padding-left: 14%;
@@ -69,30 +69,30 @@ body {
   color: #374760;
 }
 .resource_list .panel-body-editcenter span.set:hover {
-  border-color: #FF4E40;
-  color: #FF4E40;
+  border-color: #41baff;
+  color: #41baff;
 }
 .resource_list .panel-body-editcenter span.set.active {
-  border-color: #FF4E40;
-  color: #FF4E40;
+  border-color: #41baff;
+  color: #41baff;
 }
 .resource_list .panel-body-editcenter.selected {
   background-image: url(editingCenter/app/images/ad2-1.png);
   background-color: #fff !important;
-  color: #FF4E40;
+  color: #41baff;
 }
 .resource_list .panel-body-editcenter:hover {
   background-image: url(editingCenter/app/images/ad2-1.png);
   background-color: #fff;
-  color: #FF4E40;
+  color: #41baff;
 }
 .resource_list .panel-body-editcenter.checked {
   background-image: url(editingCenter/app/images/ad2-1.png) !important;
   background-color: #fff !important;
-  color: #FF4E40;
+  color: #41baff;
 }
 .resource_list .panel-body-editcenter.checked a {
-  color: #FF4E40;
+  color: #41baff;
 }
 .resource_list .panel-body-editcenter:hover {
   cursor: pointer;
@@ -102,7 +102,7 @@ body {
 }
 .resource_list .panel-body-editcenter:hover a,
 .resource_list .panel-body-editcenter.selected a {
-  color: #FF4E40;
+  color: #41baff;
   text-decoration: none;
 }
 .resource_list .panel-body-editcenter.special {
@@ -189,7 +189,7 @@ body {
   border-left: 1px solid #A7ADAF;
   border-right: 1px solid #A7ADAF;
   /* border-top: 1px solid @iWo_left_tab_border; */
-  background-color: #67747D;
+  background-color: #f5f5f5;
   color: white;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -388,7 +388,7 @@ body {
   list-style: none;
   border-bottom: none;
   border-top: 1px solid #A7ADAF;
-  background-color: #67747D;
+  background-color: #f5f5f5;
 }
 .head_sub_nav ul li {
   margin-top: 5px;
@@ -404,7 +404,7 @@ body {
 .head_sub_nav > .nav-tabs li.active a:focus {
   border-radius: 5px;
   background-color: #fff;
-  color: #FF4E40;
+  color: #41baff;
 }
 .head_sub_nav ul li a {
   padding: 5px 10px;
@@ -710,7 +710,7 @@ body {
 .resource_list .editing_center_channel .panel-default.left-li-active > .panel-heading {
   /* background: url("./editingCenter/app/images/l12.png") #466385 right center no-repeat !important; */
   background-color: #fff !important;
-  color: #FF4E40;
+  color: #41baff;
 }
 .resource_list .editing_center_channel .panel-default > .panel-heading:hover {
   background-color: #F6F5F4;
@@ -1553,12 +1553,12 @@ td.xcol-doctype {
 }
 .resouCenleft-digitalHead > div:hover {
   background: #fff;
-  color: #FF4E40;
+  color: #41baff;
 }
 .resouCenleft-digitalHead > div.active {
   background: #fff;
   border-bottom: transparent;
-  color: #FF4E40;
+  color: #41baff;
 }
 .resouCenleft-digitalHead > div:first-child {
   border-right: 1px solid #E1DFDA;
@@ -1589,5 +1589,5 @@ button.resouShare-five-word-btn:hover {
  * 被选中的according文字颜色
  */
 .resource_list .panel-open .panel-heading .panel-title a {
-  color: #FF4E40;
+  color: #41baff;
 }

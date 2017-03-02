@@ -291,7 +291,7 @@
 }
 .manage-role-selected {
   cursor: pointer;
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white;
   height: 22px;
   line-height: 22px;
@@ -543,7 +543,7 @@
   margin-right: 10px;
 }
 .manage-authorityAssignment-modal-head-module span {
-  color: #FF4E40;
+  color: #41baff;
 }
 .manage-authorityAssignment-modal-tab {
   background-color: #F0F2F4;
@@ -573,7 +573,7 @@
   color: black;
 }
 .manage-authorityAssignment-modal-ul-select {
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white;
 }
 .manage-authorityAssignment-modal-productList-title {
@@ -622,7 +622,7 @@
   margin-top: -10px;
 }
 .manage-authorityAssignment-modal-channel-finished {
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white;
   border-radius: 4px;
 }
@@ -647,7 +647,7 @@
 .manage-main-rightDiv-leftDiv-title {
   height: 36px;
   line-height: 36px;
-  background-color: #FF4E40;
+  background-color: #41baff;
   position: relative;
 }
 .manage-main-rightDiv-leftDiv-treeDiv .nobold {
@@ -656,7 +656,7 @@
 .manage-main-rightDiv-leftDiv-title-right {
   height: 36px;
   line-height: 36px;
-  background-color: #FF4E40;
+  background-color: #41baff;
   text-align: center;
 }
 .manage-main-rightDiv-leftDiv-titleSpan {
@@ -1237,7 +1237,7 @@ selecttemplate {
   float: left;
   width: 80%;
   height: 22px;
-  color: #FF4E40;
+  color: #41baff;
   overflow: hidden;
 }
 .manage-main-leftDiv .manage-role-select img {

@@ -232,7 +232,7 @@
   padding-left: 10px;
 }
 .shangban-body .lists div ul li span.cur {
-  background: #FF4E40;
+  background: #41baff;
   color: #fff;
 }
 .shangban-body .opinion {
@@ -269,7 +269,7 @@
   width: 80px;
   height: 28px;
   line-height: 28px;
-  background: #FF4E40;
+  background: #41baff;
   color: #fff;
   text-align: center;
   font-size: 12px;

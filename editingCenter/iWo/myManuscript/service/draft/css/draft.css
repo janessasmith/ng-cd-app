@@ -69,7 +69,7 @@
 }
 .myManuscript .draft .body .main .head {
   height: 28px;
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white;
   line-height: 28px;
   font-size: 13px;
@@ -113,7 +113,7 @@
 .myManuscript .draft .body .main .right ul .selected {
   font-weight: bold;
   color: white;
-  background-color: #FF4E40;
+  background-color: #41baff;
 }
 .myManuscript .draft .body .bottom {
   height: 39px;

@@ -60,7 +60,7 @@
   text-align: center;
   margin-left: 10px;
   cursor: pointer;
-  background: #FF4E40;
+  background: #41baff;
   color: #fff;
   margin-top: 18px;
   border-radius: 4px 4px 0px 0px;
@@ -202,7 +202,7 @@
 }
 .createUserSubmit .submit .body .main .part_3 .groupDept_head {
   height: 28px;
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white;
   line-height: 28px;
   font-size: 13px;
@@ -292,7 +292,7 @@
 .createUserSubmit .submit .body .main .part_3 .groupDept_dialog_ul ul li.selected {
   /*font-weight: bold;*/
   color: white;
-  background-color: #FF4E40;
+  background-color: #41baff;
 }
 .createUserSubmit .submit .body .main .part_3 .middle {
   width: 54px;

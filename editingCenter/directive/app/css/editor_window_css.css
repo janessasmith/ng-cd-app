@@ -51,7 +51,7 @@
   cursor: pointer;
 }
 .editor_window .main .editflow ul .selected {
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white;
 }
 .editor_window .main .buttom {
@@ -94,7 +94,7 @@
   height: 32px;
   line-height: 32px;
   font-size: 14px;
-  background-color: #FF4E40;
+  background-color: #41baff;
   font-weight: bold;
   color: white;
   text-align: center;
@@ -139,7 +139,7 @@
   padding-top: 5px;
 }
 .editor_window .main .body .middle ul .selected {
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white;
 }
 .editor_window .main .body .middle ul li {
@@ -177,7 +177,7 @@
   padding-top: 5px;
 }
 .editor_window .main .body .right ul .selected {
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: white;
 }
 .editor_window .main .body .right ul li {

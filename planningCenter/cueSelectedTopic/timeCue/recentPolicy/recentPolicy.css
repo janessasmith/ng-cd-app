@@ -11,14 +11,14 @@
 .recentPolicy .clue_calendar_button .clue_calendar_btn_success {
   width: 90px;
   line-height: 26px;
-  background: #FF4E40;
+  background: #41baff;
   color: #fff;
   text-align: center;
   border: none;
   margin-left: 5px;
   border-radius: 4px;
   font-size: 12px;
-  border: 1px solid #FF4E40;
+  border: 1px solid #41baff;
 }
 .recentPolicy .clue_calendar_button .clue_calendar_btn {
   width: 90px;
@@ -100,8 +100,8 @@
   z-index: 1;
   color: #fff;
   cursor: default;
-  background-color: #FF4E40;
-  border-color: #FF4E40;
+  background-color: #41baff;
+  border-color: #41baff;
 }
 .recentPolicy .head_search_info {
   height: 30px;

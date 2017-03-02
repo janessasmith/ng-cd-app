@@ -81,8 +81,7 @@
     font-size: 14px;
     background: none
 }
-.contentExpansion-downlist > ul > li > a:hover,
-.nav-tabs.nav-justified > .active > a:hover {
+.contentExpansion-downlist > ul > li > a:hover {
     background: none;
     outline: none;
     border: none;

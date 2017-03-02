@@ -637,25 +637,23 @@ a.edit-message span {
 /*左侧主导航ul底部加线*/
 
 .editing-left-fixed .editing-list .editing-nav .nav.nav-tabs.nav-justified {
-    border-bottom: 1px solid @iWo_left_tab_border;
+    // border-bottom: 1px solid @iWo_left_tab_border;
 }
 
 .editing-list {
     position: relative;
-    font-family: '微软雅黑';
-    // padding-right: 0;
-    // padding-left: 0;
     ul {
         height: 40px;
         background-color: @iWo_left_tab;
         li {
-            width: 33.333%;
+            // width: 33.333%;
             a {
                 font-size: 14px;
-                margin-right: 0;
-                padding: 10px 17px;
+                font-family: '微软雅黑';
+                // margin-right: 0;
+                // padding: 10px 17px;
                 text-align: center;
-                color: @manage_accordion_body_color;
+                // color: @manage_accordion_body_color;
             }
         }
     }
@@ -664,119 +662,24 @@ a.edit-message span {
 .editing-nav {
     ul {
         li {
+            height: 30px;
+            line-height: 30px;
             a {
                 display: block;
-                padding: 10px 2px 10px 20px;
-                &:nth-child(0) {
-                    padding: 10px 3px 10px 10px;
-                }
-            }
-            // Mixins 定义通用属性值 不设定任何参数
-            .editing-nav-icon-font() {
-                font-family: '微软雅黑';
-                font-size: 16px;
-                color: #ddeaf3;
-            }
-            &.editing-nav-iwo {
-                background: url('./editingCenter/app/images/l1.png') @iWo_left_tab 22% center no-repeat;
-                background-size: 18px;
-                a {
-                    .editing-nav-icon-font;
-                }
-            }
-
-            &.editing-nav-app {
-                background: url('./editingCenter/images/nv4.png') @iWo_left_tab 18% center no-repeat;
-                background-size: 18px;
-                a {
-                    .editing-nav-icon-font;
-                }
-            }
-
-            &.editing-nav-website {
-                background: url('./editingCenter/app/images/l3.png') @iWo_left_tab 15% 61% no-repeat;
-                background-size: 18px;
-                a {
-                    .editing-nav-icon-font;
-                }
-            }
-
-            &.editing-nav-newspaper {
-                background: url('./editingCenter/app/images/b-z.png') @iWo_left_tab 14% 55% no-repeat;
-                background-size: 18px;
-                a {
-                    .editing-nav-icon-font;
-                }
-            }
-
-            &.editing-nav-weixin {
-                background: url('./editingCenter/app/images/w-x.png') @iWo_left_tab 14% 55% no-repeat;
-                background-size: 18px;
-                a {
-                    .editing-nav-icon-font;
-                }
-            }
-
-            &.editing-nav-weibo {
-                background: url('./editingCenter/weibo/images/wb2.png') @iWo_left_tab 14% 55% no-repeat;
-                background-size: 16px;
-                a {
-                    .editing-nav-icon-font;
-                }
+                padding: 0!important;
+                height: 30px;
+                line-height: 30px;
             }
 
             &.active {
-                height: 41px;
+                // height: 41px;
+                // background-color: #015293;
+                // border-top-left-radius: 3px;
+                // border-top-right-radius: 3px;
                 a {
+                    padding: 0!important;
                     color: @theme_color!important;
-                }
-                &.editing-nav-iwo {
-                    background: url('./editingCenter/app/images/l1-1.png') @iWo_left_tab_active 22% center no-repeat;
-                    background-size: 18px;
-                    &:hover {
-                        background: url('./editingCenter/app/images/l1-1.png') @iWo_left_tab_active 22% center no-repeat!important;
-                        background-size: 18px!important;
-                    }
-                }
-                &.editing-nav-newspaper {
-                    background: url('./editingCenter/app/images/b-z1.png') @iWo_left_tab_active 13% 53% no-repeat;
-                    background-size: 18px;
-                    &:hover {
-                        background: url('./editingCenter/app/images/b-z1.png') @iWo_left_tab_active 13% 53% no-repeat!important;
-                        background-size: 18px!important;
-                    }
-                }
-                &.editing-nav-website {
-                    background: url('./editingCenter/app/images/l3-1.png') @iWo_left_tab_active 14% 53% no-repeat;
-                    background-size: 18px;
-                    &:hover {
-                        background: url('./editingCenter/app/images/l3-1.png') @iWo_left_tab_active 14% 53% no-repeat!important;
-                        background-size: 18px!important;
-                    }
-                }
-                &.editing-nav-app {
-                    background: url('./editingCenter/images/nv4-4.png') @iWo_left_tab_active 14% 53% no-repeat;
-                    background-size: 18px;
-                    &:hover {
-                        background: url('./editingCenter/images/nv4-4.png') @iWo_left_tab_active 14% 53% no-repeat!important;
-                        background-size: 18px!important;
-                    }
-                }
-                &.editing-nav-weixin {
-                    background: url('./editingCenter/app/images/w-x1.png') @iWo_left_tab_active 14% 53% no-repeat;
-                    background-size: 18px;
-                    &:hover {
-                        background: url('./editingCenter/app/images/w-x1.png') @iWo_left_tab_active 14% 53% no-repeat!important;
-                        background-size: 18px!important;
-                    }
-                }
-                &.editing-nav-weibo {
-                    background: url('./editingCenter/weibo/images/wb1.png') @iWo_left_tab_active 14% 53% no-repeat;
-                    background-size: 16px;
-                    &:hover {
-                        background: url('./editingCenter/weibo/images/wb1.png') @iWo_left_tab_active 14% 53% no-repeat!important;
-                        background-size: 16px!important;
-                    }
+                    border: none!important;
                 }
             }
         }
@@ -786,59 +689,30 @@ a.edit-message span {
 .editing-nav ul li > a:hover,
 .editing-downlist .nav-tabs li:hover {
     background: none;
+    border: none;
 }
 
 
 /* ui-bootstarp tabset 样式修改 布局详细看ui-bootstrap-tpls.js */
 .nav-tabs {
     &.nav-justified {
-        // Mixins 定义通用属性值 不设定任何参数
-        .nav-justified-a() {
-            color: #36b6ff;
-            border: none;
-        }
         > li {
             float: left;
-            width: 32%;
-            height: 39px;
+            width: 25%;   // tab显示4个
+            margin-top: 10px;
             > a {
-                .nav-justified-a;
+                color: #455263;
                 border: none;
                 border-radius: 0;
             }
         }
-        .active {
-            > a {
-                .nav-justified-a;
-                &:hover {
-                    .nav-justified-a;
-                }
-                &:focus {
-                    .nav-justified-a;
-                }
-            }
-        }
     }
-    > li {
-        // Mixins 定义通用属性值 不设定任何参数
-        .nav-tabs-a() {
-            line-height: 22px;
-            color: white;
-            border: none;
-            background: none;
-        }
-        &.active {
-            > a {
-                .nav-tabs-a;
-                &:hover {
-                    .nav-tabs-a;
-                }
-                &:focus {
-                    .nav-tabs-a;
-                }
-            }
-        }
-    }
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: #015293;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
 .nav-tabs.nav-justified > li {
@@ -866,17 +740,18 @@ a.edit-message span {
 .editing-list-zjxw,
 .editing-news-list-zjxw {
     font-family: 'Microsoft Yahei';
-    font-size: 16px;
-    line-height: 36px;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
     cursor: pointer;
-    text-align: center;
-    color: @theme_color;
-    border-bottom: 1px solid @manage_accordion_border;
-    background-color: @iWo_left_tab_active;
+    // text-align: center;
+    color: #41baff;
+    background-color: #015293;
     .editing_list_zjxw_img {
-        width: 15px;
-        height: 18px;
-        margin-right: 15px;
+        display: inline-block;
+        width: 16px;
+        height: 15px;
+        margin: 0 10px 0 18px;
         vertical-align: -3px;
     }
 }
@@ -884,8 +759,8 @@ a.edit-message span {
 .edit_mark {
     position: absolute;
     z-index: 10000;
-    top: 16px;
-    right: 10px;
+    top: 14px;
+    right: 14px;
     cursor: pointer;
 }
 
@@ -903,66 +778,65 @@ a.edit-message span {
     position: relative;
     height: 40px;
     cursor: pointer;
-    text-align: center;
+    // text-align: center;
     color: #fff;
-    background: @iWo_accordion_body_hover;
+    background-color: #2178c5;
+    span {
+        display: inline-block;
+        padding-left: 50px;
+    }
     img {
         position: absolute;
         top: 12px;
-        right: 10px;
+        right: 13px;
     }
 }
 
 /* treecontrol样式调整 */
 .editing-downlist {
     .nav-tabs {
-        height: 45px;
-        border: none;
-        background: @iWo_left_tab;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #064c84;
+        border-left: none;
+        border-right: none;
+        background-color: #2178c5;
         li {
             position: relative;
-            width: 33.333%;
-            height: 45px;
+            width: 25%;
+            height: 38px;
             a {
-                font-size: 16px;
-                padding: 10px 0 10px 20px;
+                height: 38px;
+                line-height: 38px;
+                margin-right: 0;
+                font-size: 14px;
                 color: @iWo_left_tab_active;
                 background: none;
-                &:hover {
-                    line-height: 23px;
-                    border: none;
-                }
+                border: none;
+                border-right: 1px solid #064c84!important;
+                border-radius: 0;
+                // &:hover {
+                //     line-height: 23px;
+                //     border: none;
+                // }
             }
             &.active {
-                height: 45px;
-                box-shadow: 0 0 5px @iWo_left_tab_border;
+                // box-shadow: 0 0 5px @iWo_left_tab_border;
+                    background-color: #015293;
                 a {
                     color: @theme_color!important;
+                    background-color: transparent;
                     &:hover {
                         color: @theme_color!important;
+                        background-color: transparent;
+                        border: none;
+                        border-right: 1px solid #064c84!important;
+                        border-radius: 0;
                     }
-                }
-                &:nth-child(1) {
-                    background: url('./editingCenter/app/images/l6-1.png') @iWo_left_tab_active 13% 49% no-repeat;
-                }
-                &:nth-child(2) {
-                    background: url('./editingCenter/app/images/l7-1.png') @iWo_left_tab_active 10px 49% no-repeat;
-                }
-                &:nth-child(3) {
-                    background: url('./editingCenter/app/images/l8-1.png') @iWo_left_tab_active 5px 49% no-repeat;
                 }
             }
             &:hover {
                 background: none;
-            }
-            &.icon-compiled {
-                background: url('./editingCenter/app/images/l6.png') 13% center no-repeat;
-            }
-            &.icon-pending {
-                background: url('./editingCenter/app/images/l7.png') 21% center no-repeat;
-            }
-            &.icon-signed {
-                background: url('./editingCenter/app/images/l8.png') 10% center no-repeat;
             }
         }
     }
@@ -1660,7 +1534,7 @@ table thead tr th input[type='checkbox'] {
     }
     .contentExpansion-downlist > ul > li > a:hover,
     .nav-tabs.nav-justified > .active > a:hover {
-        line-height: 17px;
+        // line-height: 17px;
     }
     .iwo_accordion .panel-default > .panel-heading .panel-title {
         font-size: 14px;

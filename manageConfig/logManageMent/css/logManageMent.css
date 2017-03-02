@@ -43,7 +43,7 @@
 }
 .manage-left .tree-label {
   font-family: "微软雅黑";
-  color: #FF4E40;
+  color: #41baff;
 }
 .log_accordion .panel-body ul li a {
   display: inline-block;
@@ -58,7 +58,7 @@
 }
 .manageCon-logMgr-left .iwo_accordion .panel-body ul li.selectedCurr a,
 .manageCon-logMgr-left .selectedCurr h4.panel-title a {
-  color: #FF4E40 !important;
+  color: #41baff !important;
 }
 /*用户*/
 .lcol-user {

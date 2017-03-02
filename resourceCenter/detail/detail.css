@@ -22,13 +22,13 @@
   padding-left: 4px;
   margin-right: 4px;
   width: 100px;
-  background-color: #FF4E40;
+  background-color: #41baff;
   font-family: "Microsoft Yahei";
   border: 1px solid #f93d2e;
 }
 .res-ctr-detail .operate-btns .btn-primary span.s_icon {
   margin-right: 4px;
-  border-right: 1px solid #FF4E40;
+  border-right: 1px solid #41baff;
   float: left;
   padding-right: 4px;
 }

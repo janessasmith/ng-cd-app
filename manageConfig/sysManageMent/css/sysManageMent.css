@@ -312,7 +312,7 @@
   cursor: pointer;
 }
 .manage-sys-main-leftDiv .list-group .selectedfocus {
-  background-color: #FF4E40;
+  background-color: #41baff;
   color: #FFF;
   border-radius: 0;
 }
@@ -351,13 +351,13 @@
   border-bottom: 1px solid #E1DFDA;
 }
 .manage-system-left .system-title a:hover {
-  color: #FF4E40;
+  color: #41baff;
   background-color: #fff;
 }
 .activefocus {
   /*color: #ddeaf5;
     background: #0B2242 url('./editingCenter/app/images/l12.png') 101% center no-repeat;*/
-  color: #FF4E40 !important;
+  color: #41baff !important;
   background-color: #fff;
 }
 /*classification 2015/11/19*/

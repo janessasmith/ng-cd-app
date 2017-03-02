@@ -96,7 +96,7 @@
   text-align: center;
   margin-left: 10px;
   cursor: pointer;
-  background: #FF4E40;
+  background: #41baff;
   color: #fff;
 }
 .myManuSubmit .submit .content ul.nav li.active {
@@ -159,7 +159,7 @@
   text-indent: 10px;
 }
 .myManuSubmit .submit .content .con .conLeft div ul li.active {
-  background: #FF4E40;
+  background: #41baff;
   color: #fff;
 }
 .myManuSubmit .submit .content .con .conRight {
@@ -226,7 +226,7 @@ div.channelTree ul.newsPaperlist li {
   width: 100%;
 }
 div.channelTree ul.newsPaperlist li.active {
-  background: #FF4E40;
+  background: #41baff;
   color: #fff;
 }
 .myManuSubmit .submit .trackCon {

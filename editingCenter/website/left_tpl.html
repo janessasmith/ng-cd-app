@@ -1,14 +1,14 @@
 <div class="editing-list">
     <!-- 站点一级标题-->
     <div class="editing-pos" ng-click="status.isDropdown=!status.isDropdown">
-        <div class="editing-list-zjxw site_btn">
-            <img class="editing_list_zjxw_img" src="./editingCenter/app/images/w33.png">
+        <div class="editing-list-zjxw">
+            <img class="editing_list_zjxw_img" src="./editingCenter/app/images/editing-leftnav_icon01.png">
             <span ng-bind="status.selectedSite.SITENAME" title="{{status.selectedSite.SITENAME}}"></span>
         </div>
         <!-- 当站点内容超过一条时，下拉收起图标切换 和上面ng-click呼应 -->
         <div ng-if="status.sites.length>1">
-            <img class="edit_mark" src="./editingCenter/app/images/l5-1.png" ng-show="!status.isDropdown">
-            <img class="edit_mark" src="./editingCenter/app/images/l5-2.png" ng-show="status.isDropdown">
+            <img class="edit_mark" src="./editingCenter/app/images/editing-leftnav_icon02.png" ng-show="!status.isDropdown">
+            <img class="edit_mark" src="./editingCenter/app/images/editing-leftnav_icon03.png" ng-show="status.isDropdown">
         </div>
         <!-- 一级站点标题列表 -->
         <div class="editing-Sites_fa" ng-show="status.isDropdown">
@@ -28,8 +28,11 @@
         <!-- 待审 -->
         <tab heading="待审" class="icon-pending pointer" active="status.pending.isSelected" ng-click="changeWebPlatform('pending')">
         </tab>
-        <!-- 已签发 -->
-        <tab heading="已签发" class="icon-signed pointer" active="status.signed.isSelected" ng-click="changeWebPlatform('signed')">
+        <!-- 待签 -->
+        <tab heading="待签" class="icon-waitpending pointer" active="status.waitpending.isSelected" ng-click="changeWebPlatform('waitpending')">
+        </tab>
+        <!-- 已发 -->
+        <tab heading="已发" class="icon-signed pointer" active="status.signed.isSelected" ng-click="changeWebPlatform('signed')">
         </tab>
     </tabset>
 </div>

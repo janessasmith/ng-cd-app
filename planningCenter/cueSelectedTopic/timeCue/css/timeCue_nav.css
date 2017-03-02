@@ -21,8 +21,8 @@
 .timeCue_nav ul li.timeCue_nav_state:hover {
   height: 46px;
   line-height: 43px;
-  color: #FF4E40;
-  border-top: 2px solid #FF4E40;
+  color: #41baff;
+  border-top: 2px solid #41baff;
 }
 .timeCue_nav ul li.timeCue_nav_state {
   background-color: #fff;
@@ -30,8 +30,8 @@
 .timeCue_nav ul li.timeCue_nav_state_active {
   height: 46px;
   line-height: 43px;
-  color: #FF4E40;
-  border-top: 2px solid #FF4E40;
+  color: #41baff;
+  border-top: 2px solid #41baff;
 }
 .timeCue_nav ul a {
   color: #555555;

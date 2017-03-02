@@ -18,7 +18,7 @@
   display: none;
 }
 .plan_accordion .font_color {
-  color: #FF4E40 !important;
+  color: #41baff !important;
 }
 .plan-main-left {
   padding-left: 0px;
@@ -118,8 +118,8 @@
 .calendar_content_right .nav-tabs > li.active > a,
 .calendar_content_right .nav-tabs > li.active > a:hover,
 .calendar_content_right .nav-tabs > li.active > a:focus {
-  color: #FF4E40;
-  border-top: 2px solid #FF4E40;
+  color: #41baff;
+  border-top: 2px solid #41baff;
   border-bottom: 1px solid #fff;
   /*     height: 40px;*/
   line-height: 20px;
@@ -359,7 +359,7 @@ button {
   }
 }
 .btn-commen .fa {
-  color: #FF4E40;
+  color: #41baff;
 }
 .btn-commen:hover .fa,
 .btn-commen.active .fa {
