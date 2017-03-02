@@ -35,24 +35,7 @@ angular.module('websiteLeftModule', [])
                     selectedChnl: "",
                     isSelected: $scope.router[3] === 'signed',
                 },
-                treeOptions: {
-                    nodeChildren: "CHILDREN",
-                    dirSelectable: false,
-                    allowDeselect: false,
-                    injectClasses: {
-                        ul: "moveDraftTree-ul",
-                        li: "moveDraftTree-li",
-                        liSelected: "a7",
-                        iExpanded: "a3",
-                        iCollapsed: "a4",
-                        iLeaf: "a5",
-                        label: "moveDraftTree-label",
-                        labelSelected: "rolegrouplabselected"
-                    },
-                    isLeaf: function(node) {
-                        return node.HASCHILDREN === "false";
-                    }
-                }
+                channelTreeOptions: editingCenterService.channelTreeOptions()
             };
         }
 

@@ -461,19 +461,6 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                     return deffered.promise;
 
                 },
-                //栏目树初始化参数
-                channelTreeOptions: function() {
-                    return {
-                        nodeChildren: "CHILDREN",
-                        allowDeselect: false,
-                        dirSelectable: false,
-                        injectClasses: {},
-                        templateUrl: '../app/components/htmlTemplates/treeTemplate.html',
-                        isLeaf: function(node) {
-                            return node.HASCHILDREN == 'false';
-                        }
-                    };
-                },
                 /**
                  * [getChannelDetail description]获得栏目的具体信息
                  * @param  {[num]} channelid [description]栏目ID
@@ -535,6 +522,19 @@ angular.module("editingCenterServiceModule", ["shareModule", "draftlistModule", 
                     modalInstance.result.then(function(result) {
                         success(result);
                     });
+                },
+                // 栏目树初始化参数
+                channelTreeOptions: function() {
+                    return {
+                        nodeChildren: "CHILDREN",
+                        allowDeselect: false,
+                        dirSelectable: false,
+                        injectClasses: {},
+                        templateUrl: '../app/components/htmlTemplates/treeTemplate.html',
+                        isLeaf: function(node) {
+                            return node.HASCHILDREN == 'false';
+                        }
+                    };
                 },
                 // 按照渠道查询站点
                 querySitesByMediaType: function(mediaType) {

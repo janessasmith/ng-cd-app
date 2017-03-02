@@ -1,3 +1,4 @@
+/*========== 定义一个规则，并且不设置默认参数值 ============*/
 table thead tr th.emailDraft-th-check,
 table thead tr td.emailDraft-td-check {
   width: 60px;

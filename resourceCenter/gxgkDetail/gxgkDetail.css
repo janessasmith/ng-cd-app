@@ -1,3 +1,4 @@
+/*========== 定义一个规则，并且不设置默认参数值 ============*/
 .res-ctr-gxgk-top ul li span:nth-child(1) {
   width: 27%;
 }

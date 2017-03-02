@@ -1,4 +1,4 @@
-<div class="container-fluid editing-list">
+<div class="editing-list">
     <!-- 站点一级标题-->
     <div class="editing-pos" ng-click="status.isDropdown=!status.isDropdown">
         <div class="editing-list-zjxw site_btn">
@@ -21,7 +21,7 @@
     <tabset class="editing-downlist">
         <!-- 待编 -->
         <tab heading="待编" class="icon-compiled pointer" active="status.waitcompiled.isSelected" ng-click="changeWebPlatform('waitcompiled')">
-            <treecontrol class="tree-classic" tree-model="status['waitcompiled'].channels" on-node-toggle="queryNodeChildren(node)" options="status.treeOptions">
+            <treecontrol class="tree-classic" tree-model="status['waitcompiled'].channels" on-node-toggle="queryNodeChildren(node)" options="status.channelTreeOptions">
                 <span class="mySelect" ng-bind="node.CHNLDESC" ng-click="setWebSelectedChnl(node,'waitcompiled')"></span>
             </treecontrol>
         </tab>

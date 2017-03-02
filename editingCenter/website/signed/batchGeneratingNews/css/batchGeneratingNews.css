@@ -1,3 +1,4 @@
+/*========== 定义一个规则，并且不设置默认参数值 ============*/
 .batchGeneratingNews {
   height: 400px;
   border-bottom: 1px solid #E6E5E4;

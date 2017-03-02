@@ -24,3 +24,11 @@
 @theme_color_light: #f18279;
 @theme_color_weight: #f93d2e;
 @res_left_to_right_border: #f18279;
+
+
+/*========== 定义一个规则，并且不设置默认参数值 ============*/
+.borderRadius(@radius) {
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+}

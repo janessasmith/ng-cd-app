@@ -3,11 +3,11 @@
     height: 300px
 }
 
-.editing-list-zjxw .editing_list_zjxw_img {
-    margin-right: 15px;
-    width: 15px;
-    vertical-align: -3px;
-}
+// .editing-list-zjxw .editing_list_zjxw_img {
+//     margin-right: 15px;
+//     width: 15px;
+//     vertical-align: -3px;
+// }
 
 .row .breadcrumb > li + li:before {
     padding: 0px;

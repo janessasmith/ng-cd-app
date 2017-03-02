@@ -1,3 +1,4 @@
+/*========== 定义一个规则，并且不设置默认参数值 ============*/
 .newspaper_rejection .modal-dialog {
   width: 620px;
 }
