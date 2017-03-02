@@ -678,9 +678,8 @@ a.edit-message span {
 }
 .editing-downlist .nav-tabs li.active a:hover {
   color: #41baff !important;
-  background-color: transparent;
+  background-color: #015293;
   border: none;
-  border-right: 1px solid #064c84!important;
   border-radius: 0;
 }
 .editing-downlist .nav-tabs li:hover {
