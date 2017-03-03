@@ -1,41 +1,178 @@
 @import '../../../colorPathConfig.less';
 @import '../../../@{colorPath}';
 
-.editing-downlist .tab-content treecontrol ul {
-    height: 120%;
-    background: @manage_accordion_heading;
-    overflow-y: auto;
-}
+/* 左侧treecontrol公共样式调整 2017.3.3 */
+.editing-downlist {
+    .tab-content {
+        treecontrol {
+            ul {
+                height: 120%;
+                background-color: #015293;
+                overflow-y: auto;
+                li {
+                    display: inline-block;
+                    min-width: 100%;
+                    height: auto;
+                    line-height: 40px;
+                    padding: 0 0 0 0;
+                    // border-bottom: 1px solid #064679;
+                    /* -webkit-box-shadow: 0 1px 1px #2a6ea4;
+                    -moz-box-shadow: 0 1px 1px #2a6ea4;
+                    box-shadow: 0 1px 1px #2a6ea4; */
 
-.editing-downlist .tab-content treecontrol ul li {
-    /*width: 120%;*/
+                    // border-bottom: 1px solid #2a6ea4;
+                    /* -webkit-box-shadow: 0 1px 1px #064679;
+                    -moz-box-shadow: 0 1px 1px #064679;
+                    box-shadow: 0 1px 1px #064679; */
+                    /* &:hover {
+                        background-color: #2178c5!important;
+                    } */
+                    .tree-label {
+                        // line-height: 44px;
+                        /*margin-left: 25px;*/
+                        display: inline-block;
+                        width: 100%;   // 保证整行都很点中
+                        border-bottom: 1px solid #2a6ea4;
+                        -webkit-box-shadow: 0 1px 1px #064679;
+                        -moz-box-shadow: 0 1px 1px #064679;
+                        box-shadow: 0 1px 1px #064679;
+                        span {
+                            color: #fff;
+                            // font-size: 14px;
+                            font-family: "微软雅黑";
+                            &.mySelect {
+                                padding-right: 100px;
+                                padding-top: 11px;
+                                padding-bottom: 11px;
+                            }
+                        }
+                        &:hover {
+                            background-color: #2178c5;
+                        }
+                    }
+                }
+            }
+            &.tree-classic {
+                ul {
+                    li {
+                        &.tree-collapsed {
+                            i {
+                                &.tree-branch-head {
+                                    // margin-right: 7px;
+                                    background: url("./components/util/trsTree/images/s1.png") no-repeat;
+                                }
+                            }
+                        }
+                        &.tree-expanded {
+                            i {
+                                &.tree-branch-head {
+                                    margin-right: 7px;
+                                    background: url("./components/util/trsTree/images/s1.png") no-repeat;
+                                }
+                            }
+                        }
+                        i {
+                            position: absolute;
+                            top: 14px;
+                            left: 18px;
+                            width: 14px;
+                            height: 11px;
+                        }
+                        span {
+                            padding-left: 39px;
+                        }
+                        // 下一级
+                        treeitem {
+                            overflow: hidden;
+                            ul {
+                                overflow-x: hidden;
+                                li {
+                                    i {
+                                        top: 15px;
+                                        left: 44px;
+                                        width: 9px;
+                                        height: 12px;
+                                        // background: url("./components/util/trsTree/images/file.png") no-repeat;
+                                    }
+                                    span {
+                                        padding-left: 64px;
+                                    }
+                                }
+                            }
+                        }
+                        .tree-selected {
+                            font-weight: normal;
+                            background-color: #064679;
+                            // border-bottom: none;
+                            -webkit-box-shadow: none;
+                            -moz-box-shadow: none;
+                            box-shadow: none;
+                            span {
+                                color: #41baff;
+                            }
+                        }
+                        &.tree-leaf {
+                            treeitem {
+
+                            }
+                            i {
+                                &.tree-leaf-head {
+                                    /* top: 18px;
+                                    left: 18px;
+                                    width: 9px;
+                                    height: 12px; */
+                                    padding: 0;
+                                    background: url("./components/util/trsTree/images/file.png") no-repeat;
+                                    // background: url("./components/util/trsTree/images/s1.png") no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* 左侧treecontrol公共样式调整 2017.3.3 end */
+
+
+
+
+// .editing-downlist .tab-content treecontrol ul {
+//     height: 120%;
+//     background: @manage_accordion_heading;
+//     overflow-y: auto;
+// }
+
+/* .editing-downlist .tab-content treecontrol ul li {
+    width: 120%;
     min-width: 100%;
     display: inline-block;
-}
+} */
 
-.editing-list .editing-downlist ul li:hover {
+/* .editing-list .editing-downlist ul li:hover {
     background-color: transparent;
-}
+} */
 
-.editing-downlist .tab-content treecontrol.tree-classic li treeitem ul {
+/* .editing-downlist .tab-content treecontrol.tree-classic li treeitem ul {
     overflow-x: hidden;
-}
+} */
 
-.editing-downlist .tab-content treecontrol.tree-classic li i {
-    margin-left: 74px;
-    position: absolute;
-    top: 12px;
-    width: 20px;
-    height: 16px
-}
+// .editing-downlist .tab-content treecontrol.tree-classic li i {
+//     margin-left: 74px;
+//     position: absolute;
+//     top: 12px;
+//     width: 20px;
+//     height: 16px
+// }
 
-.editing-downlist .tab-content treecontrol.tree-classic li span {
+/* .editing-downlist .tab-content treecontrol.tree-classic li span {
     padding-left: 100px;
-}
+} */
 
-.editing-downlist .tab-content treecontrol.tree-classic li treeitem li i {
+/* .editing-downlist .tab-content treecontrol.tree-classic li treeitem li i {
     margin-left: 86px;
-}
+} */
 
 .editing-downlist .tab-content treecontrol.tree-classic li b {
     margin-left: 5px;
@@ -93,7 +230,7 @@
     left: 20px;
 }
 
-.editing-downlist .tab-content treecontrol.tree-classic ul li:last-child,
+/* .editing-downlist .tab-content treecontrol.tree-classic ul li:last-child,
 .editing-downlist .tab-content treecontrol.tree-classic ul ul li:last-child,
 .editing-downlist .tab-content treecontrol.tree-classic ul ul ul li:last-child,
 .editing-downlist .tab-content treecontrol.tree-classic ul ul ul ul li:last-child,
@@ -103,9 +240,9 @@
 .editing-downlist .tab-content treecontrol.tree-classic ul ul ul ul ul ul ul ul li:last-child,
 .editing-downlist .tab-content treecontrol.tree-classic ul ul ul ul ul ul ul ul ul li:last-child {
     border-bottom: 0;
-}
+} */
 
-.editing-downlist .tab-content treecontrol.tree-classic ul ul li:first-child,
+/* .editing-downlist .tab-content treecontrol.tree-classic ul ul li:first-child,
 .editing-downlist .tab-content treecontrol.tree-classic ul ul ul li:first-child,
 .editing-downlist .tab-content treecontrol.tree-classic ul ul ul ul li:first-child,
 .editing-downlist .tab-content treecontrol.tree-classic ul ul ul ul ul li:first-child,
@@ -114,11 +251,11 @@
 .editing-downlist .tab-content treecontrol.tree-classic ul ul ul ul ul ul ul ul li:first-child,
 .editing-downlist .tab-content treecontrol.tree-classic ul ul ul ul ul ul ul ul ul li:first-child {
     border-top: 1px solid @manage_accordion_border;
-}
+} */
 
-.editing-downlist .tab-content treecontrol.tree-classic li.tree-leaf i.tree-leaf-head {
+/* .editing-downlist .tab-content treecontrol.tree-classic li.tree-leaf i.tree-leaf-head {
     background: url("./lib/angular-tree-control/file.png") no-repeat 6px 2px;
-}
+} */
 
 .treeContent treecontrol li li span.mySelect .website-left-panel-opened {
     left: 37px;
@@ -152,9 +289,9 @@
     margin-left: 98px;
 }
 
-.editing-downlist .tab-content treecontrol.tree-classic li treeitem li span {
+/* .editing-downlist .tab-content treecontrol.tree-classic li treeitem li span {
     padding-left: 112px;
-}
+} */
 
 .editing-downlist .tab-content treecontrol.tree-classic li treeitem li treeitem li i {
     margin-left: 98px;
@@ -188,52 +325,52 @@
     padding-left: 175px;
 }
 
-.editing-downlist .tab-content treecontrol li {
-    padding: 0 0 0 0;
-    border-bottom: 1px solid @manage_accordion_border;
-}
+// .editing-downlist .tab-content treecontrol li {
+//     padding: 0 0 0 0;
+//     border-bottom: 1px solid @manage_accordion_border;
+// }
 
-.editing-downlist .tab-content treecontrol li .tree-label {
-    line-height: 44px;
-    /*margin-left: 25px;*/
-    width: 100%;
-    display: inline-block;
-}
+// .editing-downlist .tab-content treecontrol li .tree-label {
+//     line-height: 44px;
+//     /*margin-left: 25px;*/
+//     width: 100%;
+//     display: inline-block;
+// }
 
-.editing-downlist .tab-content treecontrol li .tree-label:hover {
-    background-color: @manage_accordion_body;
-}
+// .editing-downlist .tab-content treecontrol li .tree-label:hover {
+//     background-color: @manage_accordion_body;
+// }
 
-.editing-downlist .tab-content treecontrol ul {}
+// .editing-downlist .tab-content treecontrol ul {}
 
-.editing-downlist .tab-content treecontrol li .tree-label span {
+/* .editing-downlist .tab-content treecontrol li .tree-label span {
     color: @manage_accordion_heading_color;
     font-size: 14px;
     font-family: "微软雅黑";
-}
+} */
 
-.editing-downlist .tab-content treecontrol ul {}
+// .editing-downlist .tab-content treecontrol ul {}
 
-.editing-downlist .tab-content treecontrol.tree-classic li.tree-expanded i.tree-branch-head {
+/* .editing-downlist .tab-content treecontrol.tree-classic li.tree-expanded i.tree-branch-head {
     background: url("./components/util/trsTree/images/s2.png") no-repeat;
     padding: 1px 14px;
-}
+} */
 
-.editing-downlist .tab-content treecontrol.tree-classic li.tree-collapsed i.tree-branch-head {
-    padding: 1px 14px;
-    background: url("./components/util/trsTree/images/s1.png") no-repeat;
-}
+// .editing-downlist .tab-content treecontrol.tree-classic li.tree-collapsed i.tree-branch-head {
+//     padding: 1px 14px;
+//     background: url("./components/util/trsTree/images/s1.png") no-repeat;
+// }
 
 .editing-downlist .tab-content treecontrol.tree-classic li.tree-expanded i.tree-selected {
     background: url("./components/util/trsTree/images/s2-1.png") no-repeat;
     padding: 1px 14px;
 }
 
-.editing-downlist .tab-content treecontrol li .tree-label span.mySelect {
-    padding-right: 100px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
+// .editing-downlist .tab-content treecontrol li .tree-label span.mySelect {
+//     padding-right: 100px;
+//     padding-top: 10px;
+//     padding-bottom: 10px;
+// }
 
 .editing-downlist .tab-content treecontrol.tree-classic li.tree-collapsed b.tree-selected,
 .editing-downlist .tab-content treecontrol.tree-classic li.tree-leaf b.tree-selected,
@@ -241,10 +378,10 @@
     display: block !important;
 }
 
-.editing-downlist .tab-content treecontrol.tree-classic li.tree-collapsed i.tree-selected {
+/* .editing-downlist .tab-content treecontrol.tree-classic li.tree-collapsed i.tree-selected {
     padding: 1px 14px;
     background: url("./components/util/trsTree/images/s1-1.png") no-repeat;
-}
+} */
 
 .editing-downlist .tab-content treecontrol.tree-classic li.tree-selected {
     background: #2676BD !important;
