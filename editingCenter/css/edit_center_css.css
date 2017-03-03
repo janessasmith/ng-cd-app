@@ -105,7 +105,8 @@ button.bth-fix .open > .dropdown-toggle.btn-default {
 .edit_right_head {
   height: 54px;
   padding-top: 13px;
-  background: #eff0f2;
+  background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
 }
 .edit_right_head .s_icon {
   margin: 0 6px 0 -10px;

@@ -59,9 +59,6 @@
 .editing-downlist .tab-content treecontrol.tree-classic ul li span {
   padding-left: 39px;
 }
-.editing-downlist .tab-content treecontrol.tree-classic ul li treeitem {
-  overflow: hidden;
-}
 .editing-downlist .tab-content treecontrol.tree-classic ul li treeitem ul {
   overflow-x: hidden;
 }
