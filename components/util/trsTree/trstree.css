@@ -6,7 +6,6 @@
   overflow-y: auto;
 }
 .editing-downlist .tab-content treecontrol ul li {
-  display: inline-block;
   min-width: 100%;
   height: auto;
   line-height: 40px;
@@ -35,9 +34,10 @@
   font-family: "微软雅黑";
 }
 .editing-downlist .tab-content treecontrol ul li .tree-label span.mySelect {
-  padding-right: 100px;
-  padding-top: 11px;
-  padding-bottom: 11px;
+  /*padding-right: 120px;   // 这个属性可以让整行都能选中
+                                padding-top: 11px;
+                                padding-bottom: 11px;*/
+  display: block;
 }
 .editing-downlist .tab-content treecontrol ul li .tree-label:hover {
   background-color: #2178c5;

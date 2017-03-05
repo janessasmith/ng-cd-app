@@ -19,7 +19,7 @@ angular.module('websiteLeftModule', [])
 
                 platformParam: ["waitcompiled", "pending", "waitpending", "signed"],
                 selectedPlatform: $scope.router[4] || "waitcompiled", //默认展开平台
-
+                
                 waitcompiled: {
                     channels: "",
                     selectedChnl: "",
@@ -52,8 +52,7 @@ angular.module('websiteLeftModule', [])
             initSites()
                 .then(function() {
                     initChannelList($scope.status.selectedSite);
-                    // 这里还有问题,channelid还不知道怎么传入
-                    $state.go('editctr.website.' + $scope.status.selectedPlatform, { siteid: $scope.status.selectedSite.SITEID });
+                    // $state.go('editctr.website.' + $scope.status.selectedPlatform, { siteid: $scope.status.selectedSite.SITEID });
                 });
         }
 
@@ -99,9 +98,10 @@ angular.module('websiteLeftModule', [])
             editingCenterService.queryChildChannel(site.SITEID, 0).then(function(data) {
                 $scope.status[$scope.status.selectedPlatform].channels = data.DATA;
 
-                $state.go('editctr.website.' + $scope.status.selectedPlatform, { channelid: data.DATA[0].CHANNELID });
-                // var routerChannelId = $location.search().channelid;
-                // $scope.status.waitcompiled.selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
+                var routerChannelId = $location.search().channelid;
+                $scope.status.waitcompiled.selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
+
+                $state.go('editctr.website.' + $scope.status.selectedPlatform, { siteid: $scope.status.selectedSite.SITEID, channelid: data.DATA[0].CHANNELID });
             });
         }
 
@@ -135,13 +135,26 @@ angular.module('websiteLeftModule', [])
          * @param {[type]} platform [description] 平台：待编，待审，已签发
          */
         $scope.setWebSelectedChnl = function(item, platform) {
-            $scope.status[platform].selectedChnl = item;
+            $scope.status[platform].selectedChnl = item;  // 将当前选中的对象赋给selectedChnl
             if (angular.isObject(item))
                 $state.go("editctr.website." + platform, {
                     channelid: item.CHANNELID,
                 }, { reload: "editctr.website." + platform });
             else {
                 $state.go("editctr.website." + platform + "." + item, "", { reload: "editctr.website." + platform + "." + item });
+            }
+        };
+
+        /**
+         * [getSelectedNode description] 判断栏目树中的栏目是否被选中
+         * @return {[type]} [description]
+         */
+        $scope.getSelectedNode = function() {
+            // console.log($scope.status[$scope.status.selectedPlatform].selectedChnl);
+            if (angular.isObject($scope.status[$scope.status.selectedPlatform].selectedChnl)) {
+                return $scope.status[$scope.status.selectedPlatform].selectedChnl;
+            } else {
+                return undefined;
             }
         };
     }]);

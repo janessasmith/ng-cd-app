@@ -10,7 +10,7 @@
                 background-color: #015293;
                 overflow-y: auto;
                 li {
-                    display: inline-block;
+                    // display: inline-block;   // 这个属性会造成li直接有间隙
                     min-width: 100%;
                     height: auto;
                     line-height: 40px;
@@ -41,9 +41,10 @@
                             // font-size: 14px;
                             font-family: "微软雅黑";
                             &.mySelect {
-                                padding-right: 100px;
+                                /*padding-right: 120px;   // 这个属性可以让整行都能选中
                                 padding-top: 11px;
-                                padding-bottom: 11px;
+                                padding-bottom: 11px;*/
+                                display: block;
                             }
                         }
                         &:hover {
