@@ -19,7 +19,6 @@ angular.module('websiteLeftModule', [])
 
                 platformParam: ["waitcompiled", "pending", "waitpending", "signed"],
                 selectedPlatform: $scope.router[4] || "waitcompiled", //默认展开平台
-                
                 waitcompiled: {
                     channels: "",
                     selectedChnl: "",
