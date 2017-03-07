@@ -2,7 +2,7 @@
 angular.module('editingCenterModule', [
     'editingCenterRouterModule',
     'editingCenterLeftModule',
-    'editingCenterNaviModule',
+    // 'editingCenterNaviModule',
     'editingCenterAppModule',
     'editingCenterWeiXinModule',
     'trsNavLocationModule',
@@ -27,10 +27,10 @@ angular.module('editingCenterModule', [
 ]).
 controller('EditingCenterController', ['$scope', '$state', '$location',
     function($scope, $state, $location) {
-    	
+        
     }
 ]).value('editingMediatype', {
-    // APP：1，网站：2，报纸：3，微信：4，微博：5
+    // 网站：1，APP：2，微信：3，微博：4
     website:1,
     app:2,
     weixin:3,

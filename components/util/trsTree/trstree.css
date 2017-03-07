@@ -46,27 +46,35 @@
   background: url("components/util/trsTree/images/s1.png") no-repeat;
 }
 .editing-downlist .tab-content treecontrol.tree-classic ul li.tree-expanded i.tree-branch-head {
-  margin-right: 7px;
   background: url("components/util/trsTree/images/s1.png") no-repeat;
 }
 .editing-downlist .tab-content treecontrol.tree-classic ul li i {
+  /* position: absolute;
+                            top: 14px;
+                            left: 18px;
+                            width: 14px;
+                            height: 11px; */
   position: absolute;
   top: 14px;
   left: 18px;
-  width: 14px;
-  height: 11px;
+  width: 18px;
+  height: 14px;
 }
 .editing-downlist .tab-content treecontrol.tree-classic ul li span {
-  padding-left: 39px;
+  padding-left: 42px;
 }
 .editing-downlist .tab-content treecontrol.tree-classic ul li treeitem ul {
   overflow-x: hidden;
 }
 .editing-downlist .tab-content treecontrol.tree-classic ul li treeitem ul li i {
-  top: 15px;
+  /* top: 15px;
+                                        left: 44px;
+                                        width: 9px;
+                                        height: 12px; */
+  top: 12px;
   left: 44px;
-  width: 9px;
-  height: 12px;
+  width: 13px;
+  height: 16px;
 }
 .editing-downlist .tab-content treecontrol.tree-classic ul li treeitem ul li span {
   padding-left: 64px;
@@ -86,8 +94,33 @@
                                     left: 18px;
                                     width: 9px;
                                     height: 12px; */
+  top: 12px;
+  width: 13px;
+  height: 16px;
   padding: 0;
   background: url("components/util/trsTree/images/file.png") no-repeat;
+}
+.editing-downlist .tab-content treecontrol.tree-classic ul li b {
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+}
+.editing-downlist .tab-content treecontrol.tree-classic ul li b.tree-choosed {
+  top: 16px;
+  right: 40px;
+  width: 14px;
+  height: 12px;
+  background: url("editingCenter/website/images/editing-leftnav_icon06.png") no-repeat;
+}
+.editing-downlist .tab-content treecontrol.tree-classic ul li b.add-favorite {
+  top: 11px;
+  right: 12px;
+  width: 22px;
+  height: 22px;
+  background: url("editingCenter/website/images/editing-leftnav_icon04.png") no-repeat;
+}
+.editing-downlist .tab-content treecontrol.tree-classic ul li b.add-favorite:hover {
+  background: url("editingCenter/website/images/editing-leftnav_icon05.png") no-repeat;
 }
 /* 左侧treecontrol公共样式调整 2017.3.3 end */
 /* .editing-downlist .tab-content treecontrol ul li {
@@ -107,16 +140,16 @@
 /* .editing-downlist .tab-content treecontrol.tree-classic li treeitem li i {
     margin-left: 86px;
 } */
-.editing-downlist .tab-content treecontrol.tree-classic li b {
-  margin-left: 5px;
-  width: 12px;
-  height: 8px;
-  position: absolute;
-  top: 0;
-  padding: 22px 8px;
-  cursor: pointer;
-  z-index: 10;
-}
+/* .editing-downlist .tab-content treecontrol.tree-classic li b {
+    margin-left: 5px;
+    width: 12px;
+    height: 8px;
+    position: absolute;
+    top: 0;
+    padding: 22px 8px;
+    cursor: pointer;
+    z-index: 10;
+} */
 .editing-downlist .tab-content treecontrol.tree-classic li b.tree-branch-head-preview {
   background: url("editingCenter/website/images/i54.png") no-repeat left center;
   left: 0;
@@ -141,13 +174,14 @@
   background: url("editingCenter/website/images/i57-1.png") no-repeat left center;
   background-size: 12px;
 }
-.editing-downlist .tab-content treecontrol.tree-classic li b.tree-branch-head-subject {
-  background: url("editingCenter/website/images/i56.png") no-repeat left center;
-  left: 16px;
+/* .editing-downlist .tab-content treecontrol.tree-classic li b.tree-branch-head-subject {
+    background: url("./editingCenter/website/images/i56.png") no-repeat left center;
+    left: 16px;
 }
+
 .editing-downlist .tab-content treecontrol.tree-classic li b.tree-branch-head-subject:hover {
-  background: url("editingCenter/website/images/i56-1.png") no-repeat left center;
-}
+    background: url("./editingCenter/website/images/i56-1.png") no-repeat left center;
+} */
 .editing-downlist .tab-content treecontrol.tree-classic li b.tree-branch-head-more {
   background: url("/editingCenter/app/images/b8-1.png") no-repeat left center;
   background-size: 12px 12px;
@@ -175,7 +209,7 @@
     border-top: 1px solid @manage_accordion_border;
 } */
 /* .editing-downlist .tab-content treecontrol.tree-classic li.tree-leaf i.tree-leaf-head {
-    background: url("./lib/angular-tree-control/file.png") no-repeat 6px 2px;
+    background: url("./lib/angular-tree-control/file-small.png") no-repeat 6px 2px;
 } */
 .treeContent treecontrol li li span.mySelect .website-left-panel-opened {
   left: 37px;
@@ -285,4 +319,142 @@
   z-index: 12;
   top: 44px;
   background-color: #2676BD;
+}
+.web-comculm .panel-heading .panel-title {
+  padding-left: 0;
+}
+.web-comculm {
+  position: relative;
+  border-bottom: 1px solid #2a6ea4!important;
+  -webkit-box-shadow: 0 1px 1px #064679;
+  -moz-box-shadow: 0 1px 1px #064679;
+  box-shadow: 0 1px 1px #064679;
+}
+.web-comculm span.cm-title {
+  display: block;
+  width: 100%;
+  padding-left: 42px;
+  background: #015293 url(editingCenter/images/web-new3.png) no-repeat 18px center;
+}
+.web-comculm .web-head {
+  position: relative;
+  cursor: pointer;
+}
+.web-comculm .web_mark {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+}
+.web-comculm ul {
+  height: auto!important;
+  padding-top: 0;
+  border-top: 1px solid #2a6ea4;
+}
+.web-comculm ul li {
+  font-family: '微软雅黑';
+  font-size: 14px;
+  line-height: 40px!important;
+  position: relative;
+  width: 100%;
+  height: 40px!important;
+  padding-left: 44px;
+  color: #fff;
+  background: #015293;
+  border-bottom: 1px solid #2a6ea4;
+  -webkit-box-shadow: 0 1px 1px #064679;
+  -moz-box-shadow: 0 1px 1px #064679;
+  box-shadow: 0 1px 1px #064679;
+}
+.web-comculm ul li:last-child {
+  border-bottom: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.web-comculm ul li:hover {
+  border-radius: 0;
+}
+.web-comculm ul li a {
+  display: inline-block !important;
+  font-family: '微软雅黑';
+  font-size: 14px;
+  line-height: 40px!important;
+  height: 40px!important;
+  padding: 0;
+  margin-left: 2px;
+  text-align: left!important;
+  color: #fff;
+}
+.web-comculm > ul li:hover {
+  border-radius: 0;
+  background: #2178c5;
+}
+.web-comculm ul li:hover a,
+.web-comculm ul li:active a {
+  text-decoration: none;
+  color: #fff;
+}
+.removefchanel {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  width: 15px;
+  height: 40px;
+  cursor: pointer;
+}
+.trscomadd {
+  display: inline-block;
+  width: 88%;
+}
+p.uncomadd {
+  font-family: '宋体';
+  font-size: 12px;
+  font-weight: normal;
+  display: inline-block;
+  float: right;
+  width: 22px;
+  height: 40px;
+  margin: 0;
+  margin-right: 12px;
+  text-align: center;
+  color: #fff;
+  background: url(editingCenter/images/web-com-addicon.png) no-repeat center;
+}
+p.hascomadd {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 28px;
+  height: 40px;
+  margin: 0;
+  background: url(editingCenter/images/web-comc-icon_03.png) no-repeat center top;
+}
+p.hascomaddhover {
+  font-family: '宋体';
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 22px;
+  display: inline-block;
+  float: right;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  margin-top: 9px;
+  margin-right: 12px;
+  text-align: center;
+  color: #2178c5;
+  border-radius: 50%;
+  background: #fff;
+}
+p.haschoosed {
+  position: absolute;
+  z-index: 10;
+  top: 16px;
+  right: 40px;
+  display: inline-block;
+  width: 14px;
+  height: 12px;
+  background: url('editingCenter/website/images/editing-leftnav_icon06.png') no-repeat;
 }

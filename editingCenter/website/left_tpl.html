@@ -21,8 +21,36 @@
     <tabset class="editing-downlist">
         <!-- 待编 -->
         <tab heading="待编" class="icon-compiled pointer" active="status.waitcompiled.isSelected" ng-click="changeWebPlatform('waitcompiled')">
+            <!-- 常用栏目 -->
+            <accordion close-others="true">
+                <accordion-group class="web-comculm">
+                    <accordion-heading>
+                        <span class="cm-title">常用栏目</span>
+                        <img  class="web_mark" src="./editingCenter/app/images/editing-leftnav_icon02.png">
+                    </accordion-heading>
+                    <ul ng-if="status.favoriteChannels.length>0">
+                        <li ng-repeat="fchannel in status.favoriteChannels track by $index" ng-init="innerIndex=$index">
+                            <img src="./editingCenter/images/web-coml-tree_03.png">
+                            <a ng-bind="fchannel.CHNLDESC"></a>
+                            <div class="removefchanel" ng-click="removeFavoriteChannel(fchannel.CHANNELID,innerIndex)">
+                                <img src="./editingCenter/images/web-com-remove.png">
+                            </div>
+                        </li>
+                    </ul>
+                </accordion-group>
+            </accordion>
             <treecontrol class="tree-classic" tree-model="status['waitcompiled'].channels" selected-node="getSelectedNode()" on-node-toggle="queryNodeChildren(node)" options="status.channelTreeOptions">
-                <span class="mySelect" ng-bind="node.CHNLDESC" ng-click="setWebSelectedChnl(node,'waitcompiled')"></span>
+                <span class="mySelect" ng-click="setWebSelectedChnl(node,'waitcompiled')" ng-mouseenter="node.hover=true" ng-mouseleave="node.hover=false">
+                    {{node.CHNLDESC}}
+                    <!-- 选中效果 -->
+                    <p class="haschoosed" ng-show="status.waitcompiled.selectedChnl==node"></p>
+                    <!-- hover出现可以点击常用效果 -->
+                    <p class="uncomadd" ng-show="node.hover&&!node.clicked" ng-click="addFavoriteChannel(node)">常</p>
+                    <!-- 点击之后的效果 -->
+                    <p class="hascomadd" ng-show="node.clicked && !node.hover"></p>
+                    <!-- 点击之后的hover效果 -->
+                    <p class="hascomaddhover" ng-show="node.hover && node.clicked" ng-click="removeFavoriteChannel(node.CHANNELID,0)">常</p>
+                </span>
             </treecontrol>
         </tab>
         <!-- 待审 -->

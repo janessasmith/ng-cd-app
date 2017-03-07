@@ -17,6 +17,8 @@ angular.module('websiteLeftModule', [])
                 sites: [], // 一级导航数据存放到该数组
                 selectedSite: {},
 
+                utilBtns: {}, //按钮工具类
+
                 platformParam: ["waitcompiled", "pending", "waitpending", "signed"],
                 selectedPlatform: $scope.router[4] || "waitcompiled", //默认展开平台
                 waitcompiled: {
@@ -39,7 +41,9 @@ angular.module('websiteLeftModule', [])
                     selectedChnl: "",
                     isSelected: $scope.router[4] === 'signed',
                 },
-                channelTreeOptions: editingCenterService.channelTreeOptions()
+                channelTreeOptions: editingCenterService.channelTreeOptions(),
+
+                favoriteChannels: [] // 常用栏目
             };
         }
 
@@ -69,6 +73,8 @@ angular.module('websiteLeftModule', [])
                 var filteredSite = $filter('filterBy')($scope.status.sites, ['SITEID'], $location.search().siteid);
                 // 将一级导航第一栏赋值给$scope.status.selectedSite
                 $scope.status.selectedSite = filteredSite.length > 0 ? filteredSite[0] : data.DATA[0];
+
+                queryFavoriteChannels();
                 deferred.resolve();
             });
             return deferred.promise;
@@ -100,7 +106,10 @@ angular.module('websiteLeftModule', [])
                 var routerChannelId = $location.search().channelid;
                 $scope.status.waitcompiled.selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
 
-                $state.go('editctr.website.' + $scope.status.selectedPlatform, { siteid: $scope.status.selectedSite.SITEID, channelid: data.DATA[0].CHANNELID });
+                $state.go('editctr.website.' + $scope.status.selectedPlatform, {
+                    siteid: $scope.status.selectedSite.SITEID,
+                    channelid: data.DATA[0].CHANNELID
+                });
             });
         }
 
@@ -123,7 +132,7 @@ angular.module('websiteLeftModule', [])
          * @return {[type]}          [description]
          */
         $scope.changeWebPlatform = function(platform) {
-            if($scope.status.selectedPlatform === platform) return;
+            if ($scope.status.selectedPlatform === platform) return;
             $scope.status.selectedPlatform = platform;
             $scope.status[$scope.status.selectedPlatform].isSelected = true;
         };
@@ -134,13 +143,17 @@ angular.module('websiteLeftModule', [])
          * @param {[type]} platform [description] 平台：待编，待审，已签发
          */
         $scope.setWebSelectedChnl = function(item, platform) {
-            $scope.status[platform].selectedChnl = item;  // 将当前选中的对象赋给selectedChnl
+            $scope.status[platform].selectedChnl = item; // 将当前选中的对象赋给selectedChnl
             if (angular.isObject(item))
                 $state.go("editctr.website." + platform, {
                     channelid: item.CHANNELID,
-                }, { reload: "editctr.website." + platform });
+                }, {
+                    reload: "editctr.website." + platform
+                });
             else {
-                $state.go("editctr.website." + platform + "." + item, "", { reload: "editctr.website." + platform + "." + item });
+                $state.go("editctr.website." + platform + "." + item, "", {
+                    reload: "editctr.website." + platform + "." + item
+                });
             }
         };
 
@@ -149,11 +162,108 @@ angular.module('websiteLeftModule', [])
          * @return {[type]} [description]
          */
         $scope.getSelectedNode = function() {
-            // console.log($scope.status[$scope.status.selectedPlatform].selectedChnl);
+
             if (angular.isObject($scope.status[$scope.status.selectedPlatform].selectedChnl)) {
                 return $scope.status[$scope.status.selectedPlatform].selectedChnl;
             } else {
                 return undefined;
             }
         };
+
+        /**
+         * [queryFavoriteChannels description] 获取当前用户在指定站点下的常用栏目列表
+         * @return {[type]} [description]
+         */
+        function queryFavoriteChannels() {
+            var params = {
+                "serviceid": "gov_site",
+                "methodname": "queryFavoriteChannelsOnEditorCenter",
+                "SiteId": $scope.status.selectedSite.SITEID // 将当前点击的栏目siteid传给后台保存
+            };
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
+                $scope.status.favoriteChannels = data; // 将获取到的数据存入数组
+                findFachnlStatus(data);
+            });
+        }
+
+        /**
+         * [findFachnlStatus description] 栏目中默认常用栏目状态显示
+         * @param  {[type]} data [description] 常用栏目数据
+         * @return {[type]}      [description]
+         */
+        function findFachnlStatus(data) {
+            angular.forEach($scope.status.favoriteChannels, function(value, key) {
+                angular.forEach(data, function(valuef, keyf) {
+                    if (value.CHANNELID == valuef.CHANNELID) {
+                        value.clicked = true;
+                    } else if (value.channel) {
+                        angular.forEach(value.channel, function(valuec, keyc) {
+                            if (valuec.CHANNELID == valuef.CHANNELID) {
+                                valuec.clicked = true;
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        /**
+         * [addFavoriteChannel description] 将栏目设置为常用栏目
+         * @param {[type]} node [description]
+         */
+        $scope.addFavoriteChannel = function(node) {
+            node.clicked = true;
+            var params = {
+                "serviceid": "gov_site",
+                "methodname": "addFavoriteChannel",
+                "ChannelId": node.CHANNELID
+            };
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
+                $scope.status.favoriteChannels.push(data);
+            });
+        };
+
+        /**
+         * [removeFavoriteChannel description]取消常用栏目
+         * @param  {[type]} channelid [description]该栏目id
+         * @param  {[type]} index [description]该栏目index
+         * @return {[type]}           [description]
+         */
+        $scope.removeFavoriteChannel = function(channelid, index) {
+            var params = {
+                "serviceid": "gov_site",
+                "methodname": "removeFavoriteChannel",
+                "ChannelId": channelid
+            };
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
+                if (index === 0) {
+                    angular.forEach($scope.status.favoriteChannels, function(value, key) {
+                        if (value.CHANNELID == channelid) {
+                            index = key;
+                        }
+                    });
+                }
+                $scope.status.favoriteChannels.splice(index, 1);
+                removefadata(channelid, $scope.status[$scope.status.selectedPlatform].channels);
+            });
+        };
+
+        /**
+         * [removefadata description]删除常用栏目时，对栏目状态显示的操作
+         * @param  {[type]} channelid [description]
+         * @return {[type]}           [description]
+         */
+        function removefadata(channelid, allchannels) {
+            angular.forEach(allchannels, function(value, key) {
+                if (value.CHANNELID == channelid) {
+                    value.clicked = false;
+                } else if (value.channel) {
+                    angular.forEach(value.channel, function(valuec, keyc) {
+                        if (valuec.CHANNELID == channelid) {
+                            valuec.clicked = false;
+                        }
+                    });
+                }
+            });
+        }
     }]);

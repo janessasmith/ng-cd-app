@@ -8,10 +8,10 @@ angular.module('editingCenterRouterModule', [])
                         templateUrl: './editingCenter/index_tpl.html',
                         controller: 'EditingCenterController'
                     },
-                    'head@editctr': {
-                        templateUrl: './header_tpl.html',
-                        controller: 'HeaderController'
-                    },
+                    // 'head@editctr': {
+                    //     templateUrl: './header_tpl.html',
+                    //     controller: 'HeaderController'
+                    // },
                     'left@editctr': {
                         templateUrl: './editingCenter/left_tpl.html',
                         controller: 'editingCenterNavController'

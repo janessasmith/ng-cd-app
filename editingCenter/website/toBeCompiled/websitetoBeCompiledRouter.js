@@ -4,10 +4,10 @@ angular.module('websitetoBeCompiledRouterModule', [])
         $stateProvider.state('editctr.website.waitcompiled', {
             url: '/waitcompiled?channelid',
             views: {
-                "main@editctr": {
-                    templateUrl: "./editingCenter/website/toBeCompiled/main_tpl.html",
-                    controller: "websitetoBeCompiledCtrl"
-                }
+                // "main@editctr": {
+                //     templateUrl: "./editingCenter/website/toBeCompiled/main_tpl.html",
+                //     controller: "websitetoBeCompiledCtrl"
+                // }
             }
         }).state('editctr.website.waitcompiled.cloud', {
             url: '/cloud',
