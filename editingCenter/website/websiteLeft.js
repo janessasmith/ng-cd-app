@@ -16,8 +16,7 @@ angular.module('websiteLeftModule', [])
             $scope.status = {
                 sites: [], // 一级导航数据存放到该数组
                 selectedSite: {},
-
-                utilBtns: {}, //按钮工具类
+                favoriteChannels: [], // 常用栏目
 
                 platformParam: ["waitcompiled", "pending", "waitpending", "signed"],
                 selectedPlatform: $scope.router[4] || "waitcompiled", //默认展开平台
@@ -41,9 +40,7 @@ angular.module('websiteLeftModule', [])
                     selectedChnl: "",
                     isSelected: $scope.router[4] === 'signed',
                 },
-                channelTreeOptions: editingCenterService.channelTreeOptions(),
-
-                favoriteChannels: [] // 常用栏目
+                channelTreeOptions: editingCenterService.channelTreeOptions()
             };
         }
 

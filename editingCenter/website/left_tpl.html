@@ -26,7 +26,7 @@
                 <accordion-group class="web-comculm">
                     <accordion-heading>
                         <span class="cm-title">常用栏目</span>
-                        <img  class="web_mark" src="./editingCenter/app/images/editing-leftnav_icon02.png">
+                        <img class="web_mark" src="./editingCenter/app/images/editing-leftnav_icon02.png">
                     </accordion-heading>
                     <ul ng-if="status.favoriteChannels.length>0">
                         <li ng-repeat="fchannel in status.favoriteChannels track by $index" ng-init="innerIndex=$index">
@@ -39,6 +39,7 @@
                     </ul>
                 </accordion-group>
             </accordion>
+            <!-- 树组件 -->
             <treecontrol class="tree-classic" tree-model="status['waitcompiled'].channels" selected-node="getSelectedNode()" on-node-toggle="queryNodeChildren(node)" options="status.channelTreeOptions">
                 <span class="mySelect" ng-click="setWebSelectedChnl(node,'waitcompiled')" ng-mouseenter="node.hover=true" ng-mouseleave="node.hover=false">
                     {{node.CHNLDESC}}
