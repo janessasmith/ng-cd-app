@@ -1,18 +1,18 @@
 <div class="editing-list">
     <!-- 站点一级标题-->
-    <div class="editing-pos" ng-click="status.isDropdown=!status.isDropdown">
-        <div class="editing-list-zjxw">
-            <img class="editing_list_zjxw_img" src="./editingCenter/app/images/editing-leftnav_icon01.png">
+    <div class="editing-site" ng-click="status.isDropdown=!status.isDropdown">
+        <div class="editing-site-list">
+            <img class="site-icon" src="./editingCenter/app/images/editing-leftnav_icon01.png">
             <span ng-bind="status.selectedSite.SITENAME" title="{{status.selectedSite.SITENAME}}"></span>
         </div>
         <!-- 当站点内容超过一条时，下拉收起图标切换 和上面ng-click呼应 -->
         <div ng-if="status.sites.length>1">
-            <img class="edit_mark" src="./editingCenter/app/images/editing-leftnav_icon02.png" ng-show="!status.isDropdown">
-            <img class="edit_mark" src="./editingCenter/app/images/editing-leftnav_icon03.png" ng-show="status.isDropdown">
+            <img class="site-mark" src="./editingCenter/app/images/editing-leftnav_icon02.png" ng-show="!status.isDropdown">
+            <img class="site-mark" src="./editingCenter/app/images/editing-leftnav_icon03.png" ng-show="status.isDropdown">
         </div>
         <!-- 一级站点标题列表 -->
-        <div class="editing-Sites_fa" ng-show="status.isDropdown">
-            <div class="editing-Sites" ng-repeat="site in status.sites" ng-click="selectSites(site)">
+        <div class="site-list-wrap" ng-show="status.isDropdown">
+            <div class="site-list" ng-repeat="site in status.sites" ng-click="selectSites(site)">
                 <span ng-bind="site.SITENAME" title="{{site.SITENAME}}"></span>
                 <img src="./editingCenter/app/images/l8.png" ng-show="status.selectedSite==site">
             </div>
@@ -20,19 +20,20 @@
     </div>
     <tabset class="editing-downlist">
         <!-- 待编 -->
-        <tab heading="待编" class="icon-compiled pointer" active="status.waitcompiled.isSelected" ng-click="changeWebPlatform('waitcompiled')">
+        <tab heading="待编" class="pointer" active="status.waitcompiled.isSelected" ng-click="changeWebPlatform('waitcompiled')">
             <!-- 常用栏目 -->
             <accordion close-others="true">
-                <accordion-group class="web-comculm">
+                <accordion-group class="edit-column">
                     <accordion-heading>
-                        <span class="cm-title">常用栏目</span>
-                        <img class="web_mark" src="./editingCenter/app/images/editing-leftnav_icon02.png">
+                        <span class="edit-column-title">常用栏目</span>
+                        <img class="edit-column-mark" src="./editingCenter/app/images/editing-leftnav_icon02.png">
                     </accordion-heading>
                     <ul ng-if="status.favoriteChannels.length>0">
                         <li ng-repeat="fchannel in status.favoriteChannels track by $index" ng-init="innerIndex=$index">
                             <img src="./editingCenter/images/web-coml-tree_03.png">
                             <a ng-bind="fchannel.CHNLDESC"></a>
-                            <div class="removefchanel" ng-click="removeFavoriteChannel(fchannel.CHANNELID,innerIndex)">
+                            <!-- 删除常用栏目图标 -->
+                            <div class="edit-remove-icon" ng-click="removeFavoriteChannel(fchannel.CHANNELID,innerIndex)">
                                 <img src="./editingCenter/images/web-com-remove.png">
                             </div>
                         </li>
@@ -41,27 +42,27 @@
             </accordion>
             <!-- 树组件 -->
             <treecontrol class="tree-classic" tree-model="status['waitcompiled'].channels" selected-node="getSelectedNode()" on-node-toggle="queryNodeChildren(node)" options="status.channelTreeOptions">
-                <span class="mySelect" ng-click="setWebSelectedChnl(node,'waitcompiled')" ng-mouseenter="node.hover=true" ng-mouseleave="node.hover=false">
+                <span class="tree-current" ng-click="setWebSelectedChnl(node,'waitcompiled')" ng-mouseenter="node.hover=true" ng-mouseleave="node.hover=false">
                     {{node.CHNLDESC}}
                     <!-- 选中效果 -->
-                    <p class="haschoosed" ng-show="status.waitcompiled.selectedChnl==node"></p>
-                    <!-- hover出现可以点击常用效果 -->
-                    <p class="uncomadd" ng-show="node.hover&&!node.clicked" ng-click="addFavoriteChannel(node)">常</p>
-                    <!-- 点击之后的效果 -->
-                    <p class="hascomadd" ng-show="node.clicked && !node.hover"></p>
-                    <!-- 点击之后的hover效果 -->
-                    <p class="hascomaddhover" ng-show="node.hover && node.clicked" ng-click="removeFavoriteChannel(node.CHANNELID,0)">常</p>
+                    <b class="haschoosed" ng-show="status.waitcompiled.selectedChnl==node"></b>
+                    <!-- 添加常用效果 -->
+                    <b class="addfavor" ng-show="node.hover&&!node.clicked" ng-click="addFavoriteChannel(node)">常</b>
+                    <!-- 删除常用效果 -->
+                    <b class="removefavor" ng-show="node.hover && node.clicked" ng-click="removeFavoriteChannel(node.CHANNELID,0)">常</b>
+                    <!-- 添加常用后出现的tag标签 -->
+                    <b class="favortag" ng-show="node.clicked && !node.hover"></b>
                 </span>
             </treecontrol>
         </tab>
         <!-- 待审 -->
-        <tab heading="待审" class="icon-pending pointer" active="status.pending.isSelected" ng-click="changeWebPlatform('pending')">
+        <tab heading="待审" class="pointer" active="status.pending.isSelected" ng-click="changeWebPlatform('pending')">
         </tab>
         <!-- 待签 -->
-        <tab heading="待签" class="icon-waitpending pointer" active="status.waitpending.isSelected" ng-click="changeWebPlatform('waitpending')">
+        <tab heading="待签" class="pointer" active="status.waitpending.isSelected" ng-click="changeWebPlatform('waitpending')">
         </tab>
         <!-- 已发 -->
-        <tab heading="已发" class="icon-signed pointer" active="status.signed.isSelected" ng-click="changeWebPlatform('signed')">
+        <tab heading="已发" class="pointer" active="status.signed.isSelected" ng-click="changeWebPlatform('signed')">
         </tab>
     </tabset>
 </div>

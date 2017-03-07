@@ -40,7 +40,7 @@
                             color: #fff;
                             // font-size: 14px;
                             font-family: "微软雅黑";
-                            &.mySelect {
+                            &.tree-current {
                                 /*padding-right: 120px;   // 这个属性可以让整行都能选中
                                 padding-top: 11px;
                                 padding-bottom: 11px;*/
@@ -146,7 +146,7 @@
                                 }
                             }
                         }
-                        b {
+                        /* b {
                             position: absolute;
                             z-index: 10;
                             cursor: pointer;
@@ -167,13 +167,58 @@
                                     background: url("./editingCenter/website/images/editing-leftnav_icon05.png") no-repeat;
                                 }
                             }
-                        }
+                        } */
+                    }
+                }
+                b {
+                    display: inline-block;
+                    font-size: 12px;
+                    font-weight: normal;
+                    &.haschoosed {
+                        position: absolute;
+                        z-index: 10;
+                        top: 16px;
+                        right: 40px;
+                        width: 14px;
+                        height: 12px;
+                        background: url('./editingCenter/website/images/editing-leftnav_icon06.png') no-repeat;
+                    }
+                    &.addfavor, &.removefavor {
+                        float: right;
+                        width: 22px;
+                        margin: 0;
+                        text-align: center;
+                    }
+                    &.addfavor {
+                        height: 40px;
+                        margin-right: 12px;
+                        color: #fff;
+                        background: url(./editingCenter/images/web-com-addicon.png) no-repeat center;
+                    }
+                    &.removefavor {
+                        height: 22px;
+                        line-height: 22px;
+                        margin-top: 9px;
+                        margin-right: 12px;
+                        color: #2178c5;
+                        border-radius: 50%;
+                        background-color: #fff;
+                    }
+                    &.favortag {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 28px;
+                        height: 40px;
+                        margin: 0;
+                        background: url(./editingCenter/images/web-comc-icon_03.png) no-repeat center top;
                     }
                 }
             }
         }
     }
 }
+
 /* 左侧treecontrol公共样式调整 2017.3.3 end */
 
 
@@ -298,11 +343,11 @@
     background: url("./lib/angular-tree-control/file-small.png") no-repeat 6px 2px;
 } */
 
-.treeContent treecontrol li li span.mySelect .website-left-panel-opened {
+.treeContent treecontrol li li span.tree-current .website-left-panel-opened {
     left: 37px;
 }
 
-.treeContent treecontrol li li span.mySelect .website-left-panel-opened b {
+.treeContent treecontrol li li span.tree-current .website-left-panel-opened b {
     margin-left: 10px;
 }
 
@@ -407,7 +452,7 @@
     padding: 1px 14px;
 }
 
-// .editing-downlist .tab-content treecontrol li .tree-label span.mySelect {
+// .editing-downlist .tab-content treecontrol li .tree-label span.tree-current {
 //     padding-right: 100px;
 //     padding-top: 10px;
 //     padding-bottom: 10px;
@@ -464,175 +509,4 @@
     z-index: 12;
     top: 44px;
     background-color: #2676BD;
-}
-
-
-
-
-//常用栏目
-.web-comculm .panel-heading .panel-title {
-    padding-left: 0;
-}
-
-.web-comculm {
-    position: relative;
-    border-bottom: 1px solid #2a6ea4!important;
-    -webkit-box-shadow: 0 1px 1px #064679;
-    -moz-box-shadow: 0 1px 1px #064679;
-    box-shadow: 0 1px 1px #064679;
-}
-
-.web-comculm span.cm-title {
-    display: block;
-    // line-height: 40px;
-    width: 100%;
-    // background: #416891;
-    // font-size: 14px;
-    // font-family: "微软雅黑";
-    // font-weight: bold;
-    // color: #fff;
-    padding-left: 42px;
-    // border-bottom: 1px solid #365388;
-    background: #015293 url(./editingCenter/images/web-new3.png) no-repeat 18px center;
-}
-
-.web-comculm .web-head {
-    position: relative;
-    cursor: pointer;
-}
-
-.web-comculm .web_mark {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    cursor: pointer;
-}
-
-.web-comculm ul {
-    height: auto!important;
-    padding-top: 0;
-    border-top: 1px solid #2a6ea4;
-}
-
-.web-comculm ul li {
-    font-family: '微软雅黑';
-    font-size: 14px;
-    line-height: 40px!important;
-    position: relative;
-    width: 100%;
-    height: 40px!important;
-    padding-left: 44px;
-    color: #fff;
-    background: #015293;
-    border-bottom: 1px solid #2a6ea4;
-    -webkit-box-shadow: 0 1px 1px #064679;
-    -moz-box-shadow: 0 1px 1px #064679;
-    box-shadow: 0 1px 1px #064679;
-}
-
-.web-comculm ul li:last-child {
-    border-bottom: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
-.web-comculm ul li:hover {
-    border-radius: 0;
-}
-
-.web-comculm ul li a {
-    display: inline-block!important;
-    font-family: '微软雅黑';
-    font-size: 14px;
-    line-height: 40px!important;
-    height: 40px!important;
-    padding: 0;
-    margin-left: 2px;
-    // padding-left: 42px!important;
-    text-align: left!important;
-    color: #fff;
-    // background: url(./editingCenter/images/web-coml-tree_03.png) no-repeat 22px center;
-}
-
-.web-comculm > ul li:hover {
-    border-radius: 0;
-    background: #2178c5;
-}
-
-.web-comculm ul li:hover a,
-.web-comculm ul li:active a {
-    text-decoration: none;
-    color: #fff;
-    // background: url(./editingCenter/images/web-coml-tree_03.png) no-repeat 22px center!important;
-}
-
-.removefchanel {
-    position: absolute;
-    top: 0;
-    right: 14px;
-    width: 15px;
-    height: 40px;
-    cursor: pointer;
-}
-
-.trscomadd {
-    display: inline-block;
-    width: 88%;
-}
-
-p.uncomadd {
-    font-family: '宋体';
-    font-size: 12px;
-    font-weight: normal;
-    display: inline-block;
-    float: right;
-    width: 22px;
-    height: 40px;
-    margin: 0;
-    margin-right: 12px;
-    text-align: center;
-    color: #fff;
-    background: url(./editingCenter/images/web-com-addicon.png) no-repeat center;
-}
-
-p.hascomadd {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: inline-block;
-    width: 28px;
-    height: 40px;
-    // float: right;
-    margin: 0;
-    background: url(./editingCenter/images/web-comc-icon_03.png) no-repeat center top;
-}
-
-p.hascomaddhover {
-    font-family: '宋体';
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 22px;
-    display: inline-block;
-    float: right;
-    width: 22px;
-    height: 22px;
-    margin: 0;
-    margin-top: 9px;
-    margin-right: 12px;
-    text-align: center;
-    color: #2178c5;
-    border-radius: 50%;
-    background: #fff;
-}
-
-p.haschoosed {
-    position: absolute;
-    z-index: 10;
-    top: 16px;
-    right: 40px;
-    display: inline-block;
-    width: 14px;
-    height: 12px;
-    background: url('./editingCenter/website/images/editing-leftnav_icon06.png') no-repeat;
 }

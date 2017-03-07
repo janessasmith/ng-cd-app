@@ -736,63 +736,57 @@ a.edit-message span {
 
 /* ui-bootstarp tabset 样式修改 end */
 
-.editing-pos {
+.editing-site {
     position: relative;
-}
-
-
-.editing-list-zjxw,
-.editing-news-list-zjxw {
-    font-family: 'Microsoft Yahei';
-    font-size: 14px;
-    height: 40px;
-    line-height: 40px;
-    cursor: pointer;
-    // text-align: center;
-    color: #41baff;
-    background-color: #015293;
-    .editing_list_zjxw_img {
-        display: inline-block;
-        width: 16px;
-        height: 15px;
-        margin: 0 10px 0 18px;
-        vertical-align: -3px;
+    .editing-site-list {
+        font-family: 'Microsoft Yahei';
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        // text-align: center;
+        color: #41baff;
+        background-color: #015293;
+        .site-icon {
+            display: inline-block;
+            width: 16px;
+            height: 15px;
+            margin: 0 10px 0 18px;
+            vertical-align: -3px;
+        }
     }
-}
-
-.edit_mark {
-    position: absolute;
-    z-index: 10000;
-    top: 14px;
-    right: 14px;
-    cursor: pointer;
-}
-
-.editing-Sites_fa {
-    position: absolute;
-    z-index: 999;
-    top: 36px;
-    left: 0;
-    width: 100%;
-}
-
-.editing-Sites {
-    font-size: 14px;
-    line-height: 40px;
-    position: relative;
-    height: 40px;
-    cursor: pointer;
-    // text-align: center;
-    color: #fff;
-    background-color: #2178c5;
-    span {
-        display: inline-block;
-        padding-left: 50px;
-    }
-    img {
+    .site-mark {
         position: absolute;
-        top: 12px;
-        right: 13px;
+        z-index: 10000;
+        top: 14px;
+        right: 14px;
+        cursor: pointer;
+    }
+    .site-list-wrap {
+        position: absolute;
+        z-index: 999;
+        top: 36px;
+        left: 0;
+        width: 100%;
+        .site-list {
+            font-size: 14px;
+            line-height: 40px;
+            position: relative;
+            height: 40px;
+            cursor: pointer;
+            // text-align: center;
+            color: #fff;
+            background-color: #2178c5;
+            span {
+                display: inline-block;
+                padding-left: 50px;
+            }
+            img {
+                position: absolute;
+                top: 12px;
+                right: 13px;
+            }
+        }
     }
 }
 
@@ -878,6 +872,149 @@ a.edit-message span {
 //     background: none;
 // }
 
+/* accordion中的panel */
+.tab-content .panel-group .panel + .panel {
+    margin-top: 0;
+}
+
+.panel-group {
+    margin-bottom: 0;
+    .panel {
+        font-family: '微软雅黑';
+        margin-bottom: 0;
+        border-radius: 0;
+    }
+}
+
+
+
+.panel-heading {
+    line-height: 40px;
+    height: 40px;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background: #374760;
+    /*background:url(./editingCenter/app/images/l9.png) 33px center no-repeat*/
+    ;
+}
+
+.panel {
+    border: none;
+    border-radius: 0;
+}
+
+.panel-default > .panel-heading {
+    color: white;
+    /*    background-color: #002743;*/
+    border-color: none;
+    border-bottom: 1px solid rgb(35, 58, 90);
+    border-radius: 0;
+}
+
+.panel-title {
+    font-size: 14px;
+    line-height: 40px;
+    padding-left: 56px;
+    h4 {
+        a {
+            color: #98a7b7;
+        }
+    }
+    a {
+        display: block;
+        text-decoration: none;
+    }
+}
+
+.panel-body {
+    padding: 0;
+}
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border-top: #233a5a;
+}
+
+/* accordion中的panel end */
+
+/* 常用栏目 样式 */
+.edit-column .panel-heading .panel-title {
+    padding-left: 0;
+}
+
+.edit-column {
+    position: relative;
+    border-bottom: 1px solid #2a6ea4!important;
+    -webkit-box-shadow: 0 1px 1px #064679;
+    -moz-box-shadow: 0 1px 1px #064679;
+    box-shadow: 0 1px 1px #064679;
+    span.edit-column-title {
+        display: block;
+        width: 100%;
+        padding-left: 42px;
+        background: #015293 url(./editingCenter/images/web-new3.png) no-repeat 18px center;
+    }
+    .edit-column-mark {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        cursor: pointer;
+    }
+    ul {
+        height: auto!important;
+        padding-top: 0;
+        border-top: 1px solid #2a6ea4;
+        li {
+            // font-family: '微软雅黑';
+            // font-size: 14px;
+            position: relative;
+            // width: 100%;
+            height: 40px!important;
+            line-height: 40px!important;
+            padding-left: 44px;
+            // color: #fff;
+            background-color: #015293;
+            border-bottom: 1px solid #2a6ea4;
+            -webkit-box-shadow: 0 1px 1px #064679;
+            -moz-box-shadow: 0 1px 1px #064679;
+            box-shadow: 0 1px 1px #064679;
+            &:last-child {
+                border-bottom: none;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+            }
+            &:hover {
+                // border-radius: 0;
+                a {
+                    text-decoration: none;
+                    // color: #fff;
+                }
+            }
+            &:active {
+                text-decoration: none;
+                // color: #fff;
+            }
+            a {
+                display: inline-block!important;
+                height: 40px!important;
+                line-height: 40px!important;
+                margin-left: 2px;
+                text-align: left!important;
+                color: #fff;
+            }
+        }
+    }
+    .edit-remove-icon {
+        position: absolute;
+        top: 0;
+        right: 14px;
+        width: 15px;
+        height: 40px;
+        cursor: pointer;
+    }
+}
+
+/* 常用栏目 样式 end */
 
 /* 左侧导航CSS样式 2017.3.2 end */
 
@@ -957,19 +1094,19 @@ a.edit-message span {
 
 
 
-.panel-group {
-    margin-bottom: 0;
-}
+// .panel-group {
+//     margin-bottom: 0;
+// }
 
-.panel-group .panel {
-    font-family: '微软雅黑';
-    margin-bottom: 0;
-    border-radius: 0;
-}
+// .panel-group .panel {
+//     font-family: '微软雅黑';
+//     margin-bottom: 0;
+//     border-radius: 0;
+// }
 
-.panel-body {
-    padding: 0;
-}
+// .panel-body {
+//     padding: 0;
+// }
 
 .panel-heading-nav {
     background: url(./editingCenter/app/images/l9.png) 33px center no-repeat;
@@ -979,19 +1116,19 @@ a.edit-message span {
     background: url(./editingCenter/app/images/l10.png) 0 center no-repeat;
 }
 
-.panel-default > .panel-heading + .panel-collapse > .panel-body {
-    border-top: #233a5a;
-}
+// .panel-default > .panel-heading + .panel-collapse > .panel-body {
+//     border-top: #233a5a;
+// }
 
-.panel-title {
-    font-size: 14px;
-    line-height: 40px;
-    padding-left: 56px;
-}
+// .panel-title {
+//     font-size: 14px;
+//     line-height: 40px;
+//     padding-left: 56px;
+// }
 
-.panel-title h4 a {
-    color: #98a7b7;
-}
+// .panel-title h4 a {
+//     color: #98a7b7;
+// }
 
 .panel-body-editcenter {
     font-size: 14px;
@@ -1090,42 +1227,38 @@ a.edit-message span {
     /*  background: url('./editingCenter/app/images/l12.png') 101% center #002743 no-repeat;*/
 }
 
-.panel-title a {
+/* .panel-title a {
     display: block;
     text-decoration: none;
-}
+} */
 
 a:focus {
     outline: none!important;
 }
 
-.panel-heading {
-    line-height: 40px;
-    height: 40px;
-    padding: 0;
-    cursor: pointer;
-    border: none;
-    background: #374760;
-    /*background:url(./editingCenter/app/images/l9.png) 33px center no-repeat*/
-    ;
-}
+// .panel-heading {
+//     line-height: 40px;
+//     height: 40px;
+//     padding: 0;
+//     cursor: pointer;
+//     border: none;
+//     background: #374760;
+//     /*background:url(./editingCenter/app/images/l9.png) 33px center no-repeat*/
+//     ;
+// }
 
-.panel {
-    border: none;
-    border-radius: 0;
-}
+// .panel {
+//     border: none;
+//     border-radius: 0;
+// }
 
-.panel-default > .panel-heading {
-    color: white;
-    /*    background-color: #002743;*/
-    border-color: none;
-    border-bottom: 1px solid rgb(35, 58, 90);
-    border-radius: 0;
-}
-
-.tab-content .panel-group .panel + .panel {
-    margin-top: 0;
-}
+// .panel-default > .panel-heading {
+//     color: white;
+//     /*    background-color: #002743;*/
+//     border-color: none;
+//     border-bottom: 1px solid rgb(35, 58, 90);
+//     border-radius: 0;
+// }
 
 .edit-select {
     font-size: 12px;
