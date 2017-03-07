@@ -64,7 +64,7 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
         }
 
         function initData() {
-            queryAllSites();
+            // queryAllSites();   // 暂时注销
         }
         $scope.setTabSelected = function(param) {
             $scope.status.tab[param].isTabSelect = true;

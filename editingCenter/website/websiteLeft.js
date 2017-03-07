@@ -57,7 +57,7 @@ angular.module('websiteLeftModule', [])
         }
 
         /**
-         * [initSites description] 初始化一级导航菜单
+         * [initSites description] 初始化一级导航站点列表
          * @return {[type]} [description]
          */
         function initSites() {
@@ -66,7 +66,7 @@ angular.module('websiteLeftModule', [])
                 // 当网站不存在时退出 WCM bug
                 if (!data.DATA || data.DATA.length < 1) return;
                 $scope.status.sites = data.DATA;
-                // 被选中的网站
+                // $scope.status.sites中挑选跟url中siteid相同的值的数组，返给filteredSite 被选中的网站 [filterBy的唯一性]
                 var filteredSite = $filter('filterBy')($scope.status.sites, ['SITEID'], $location.search().siteid);
                 // 将一级导航第一栏赋值给$scope.status.selectedSite
                 $scope.status.selectedSite = filteredSite.length > 0 ? filteredSite[0] : data.DATA[0];
@@ -78,7 +78,7 @@ angular.module('websiteLeftModule', [])
         }
 
         /**
-         * [selectSites description] 一级导航菜单切换
+         * [selectSites description] 点击一级导航站点切换
          * @param  {[type]} site [description] 被选中的一级导航站点
          * @return {[type]}      [description]
          */
@@ -92,7 +92,7 @@ angular.module('websiteLeftModule', [])
         };
 
         /**
-         * [initChannelList description] 请求子级导航
+         * [initChannelList description] 请求子栏目列表中的一级子栏目
          * @param  {[type]} siteid [description] 根据siteid获取子级
          * @return {[type]}        [description]
          */
@@ -100,8 +100,8 @@ angular.module('websiteLeftModule', [])
             editingCenterService.queryChildChannel(site.SITEID, 0).then(function(data) {
                 $scope.status[$scope.status.selectedPlatform].channels = data.DATA;
 
-                var routerChannelId = $location.search().channelid;
-                $scope.status.waitcompiled.selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
+                // var routerChannelId = $location.search().channelid;
+                // $scope.status[$scope.status.selectedPlatform].selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
 
                 $state.go('editctr.website.' + $scope.status.selectedPlatform, {
                     siteid: $scope.status.selectedSite.SITEID,
@@ -111,13 +111,14 @@ angular.module('websiteLeftModule', [])
         }
 
         /**
-         * [queryNodeChildren description] 查询子节点 异步加载树
-         * @param  {[type]} node [description] 子节点
+         * [queryNodeChildren description] 点击子栏目列表 查询其子节点 异步加载树
+         * @param  {[type]} node [description] 节点信息
          * @return {[type]}      [description]
          */
         $scope.queryNodeChildren = function(node) {
             if (node.HASCHILDREN == 'true' && !node.CHILDREN) {
                 editingCenterService.queryChildChannel(node.SITEID, node.CHANNELID).then(function(data) {
+                    // 将选中的子节点保存到node.CHILDREN中
                     node.CHILDREN = data.DATA;
                 });
             }
@@ -128,15 +129,15 @@ angular.module('websiteLeftModule', [])
          * @param  {[type]} platform [description]
          * @return {[type]}          [description]
          */
-        $scope.changeWebPlatform = function(platform) {
-            if ($scope.status.selectedPlatform === platform) return;
-            $scope.status.selectedPlatform = platform;
-            $scope.status[$scope.status.selectedPlatform].isSelected = true;
-        };
+        // $scope.changeWebPlatform = function(platform) {
+        //     if ($scope.status.selectedPlatform === platform) return;
+        //     $scope.status.selectedPlatform = platform;
+        //     $scope.status[$scope.status.selectedPlatform].isSelected = true;
+        // };
 
         /**
          * [setWebSelectedChnl description]设置网站当前选中的栏目
-         * @param {[type]} item     [description]  被点击对象
+         * @param {[type]} item     [description]  被点击对象node
          * @param {[type]} platform [description] 平台：待编，待审，已签发
          */
         $scope.setWebSelectedChnl = function(item, platform) {
@@ -156,7 +157,7 @@ angular.module('websiteLeftModule', [])
 
         /**
          * [getSelectedNode description] 判断栏目树中的栏目是否被选中
-         * @return {[type]} [description]
+         * @return {[type]} [description] 根据selectedChnl
          */
         $scope.getSelectedNode = function() {
 
@@ -169,16 +170,16 @@ angular.module('websiteLeftModule', [])
 
         /**
          * [queryFavoriteChannels description] 获取当前用户在指定站点下的常用栏目列表
-         * @return {[type]} [description]
+         * @return {[type]} [description] 根据siteid保存
          */
         function queryFavoriteChannels() {
             var params = {
                 "serviceid": "gov_site",
                 "methodname": "queryFavoriteChannelsOnEditorCenter",
-                "SiteId": $scope.status.selectedSite.SITEID // 将当前点击的栏目siteid传给后台保存
+                "SiteId": $scope.status.selectedSite.SITEID   // 将当前点击的栏目siteid传给后台保存
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-                $scope.status.favoriteChannels = data; // 将获取到的数据存入数组
+                $scope.status.favoriteChannels = data;   // 将获取到的数据存入数组
                 findFachnlStatus(data);
             });
         }
