@@ -71,7 +71,6 @@ angular.module('websiteLeftModule', [])
                 // 将一级导航第一栏赋值给$scope.status.selectedSite
                 $scope.status.selectedSite = filteredSite.length > 0 ? filteredSite[0] : data.DATA[0];
 
-                queryFavoriteChannels();
                 deferred.resolve();
             });
             return deferred.promise;
@@ -107,7 +106,23 @@ angular.module('websiteLeftModule', [])
                     siteid: $scope.status.selectedSite.SITEID,
                     channelid: data.DATA[0].CHANNELID
                 });
+
+                queryFavoriteChannels();
             });
+        }
+
+        /**
+         * [queryChildrenChannels description] 获取子栏目列表
+         * @param  {[type]} item [description] 子栏目节点
+         * @return {[type]}      [description]
+         */
+        function queryChildrenChannels(item) {
+            if (item.HASCHILDREN == 'true' && !item.CHILDREN) {
+                editingCenterService.queryChildChannel(item.SITEID, item.CHANNELID).then(function(data) {
+                    // 将选中的子节点保存到item.CHILDREN中
+                    item.CHILDREN = data.DATA;
+                });
+            }
         }
 
         /**
@@ -116,12 +131,7 @@ angular.module('websiteLeftModule', [])
          * @return {[type]}      [description]
          */
         $scope.queryNodeChildren = function(node) {
-            if (node.HASCHILDREN == 'true' && !node.CHILDREN) {
-                editingCenterService.queryChildChannel(node.SITEID, node.CHANNELID).then(function(data) {
-                    // 将选中的子节点保存到node.CHILDREN中
-                    node.CHILDREN = data.DATA;
-                });
-            }
+            queryChildrenChannels(node);
         };
 
         /**
@@ -180,17 +190,17 @@ angular.module('websiteLeftModule', [])
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
                 $scope.status.favoriteChannels = data;   // 将获取到的数据存入数组
-                findFachnlStatus(data);
+                findFavChanData(data);
             });
         }
 
         /**
-         * [findFachnlStatus description] 栏目中默认常用栏目状态显示
+         * [findFavChanData description] 栏目中默认常用栏目状态显示
          * @param  {[type]} data [description] 常用栏目数据
          * @return {[type]}      [description]
          */
-        function findFachnlStatus(data) {
-            angular.forEach($scope.status.favoriteChannels, function(value, key) {
+        function findFavChanData(data) {
+            angular.forEach($scope.status[$scope.status.selectedPlatform].channels, function(value, key) {
                 angular.forEach(data, function(valuef, keyf) {
                     if (value.CHANNELID == valuef.CHANNELID) {
                         value.clicked = true;
@@ -222,9 +232,9 @@ angular.module('websiteLeftModule', [])
         };
 
         /**
-         * [removeFavoriteChannel description]取消常用栏目
-         * @param  {[type]} channelid [description]该栏目id
-         * @param  {[type]} index [description]该栏目index
+         * [removeFavoriteChannel description] 取消常用栏目
+         * @param  {[type]} channelid [description] 该栏目id
+         * @param  {[type]} index [description] 该栏目index
          * @return {[type]}           [description]
          */
         $scope.removeFavoriteChannel = function(channelid, index) {
@@ -242,16 +252,16 @@ angular.module('websiteLeftModule', [])
                     });
                 }
                 $scope.status.favoriteChannels.splice(index, 1);
-                removefadata(channelid, $scope.status[$scope.status.selectedPlatform].channels);
+                removeFavChanData(channelid, $scope.status[$scope.status.selectedPlatform].channels);
             });
         };
 
         /**
-         * [removefadata description]删除常用栏目时，对栏目状态显示的操作
+         * [removeFavChanData description]删除常用栏目时，对栏目状态显示的操作
          * @param  {[type]} channelid [description]
          * @return {[type]}           [description]
          */
-        function removefadata(channelid, allchannels) {
+        function removeFavChanData(channelid, allchannels) {
             angular.forEach(allchannels, function(value, key) {
                 if (value.CHANNELID == channelid) {
                     value.clicked = false;
