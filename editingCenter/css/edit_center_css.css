@@ -1,6 +1,5 @@
 /*========== 定义一个规则，并且不设置默认参数值 ============*/
 /* 全局样式 */
-/* 左侧导航CSS样式 2017.3.2 */
 body,
 p,
 ul,
@@ -29,6 +28,9 @@ body {
   font-size: 14px;
   font-family: Tahoma, Arial, "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
 }
+/* 全局样式 end */
+/* 左侧导航CSS样式 2017.3.2 */
+/*去除col-md自带的左右pading值*/
 .editing-header-fixed,
 .editing-left-fixed {
   padding-right: 0;
@@ -328,7 +330,7 @@ body {
   display: inline-block;
   width: 15px;
   height: 15px;
-  margin: 0 10px 0 17px;
+  margin: 0 7px 0 17px;
   vertical-align: -3px;
 }
 .editing-subscribe .subscribe-mark {
