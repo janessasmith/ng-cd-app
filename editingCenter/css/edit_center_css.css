@@ -258,7 +258,7 @@ body {
   display: block;
   width: 100%;
   padding-left: 42px;
-  background: #015293 url(editingCenter/images/web-new3.png) no-repeat 18px center;
+  background: #015293 url("editingCenter/images/blue-skin/editing-leftnav_icon04.png") no-repeat 18px center;
 }
 .edit-column .edit-column-mark {
   position: absolute;
@@ -356,7 +356,7 @@ body {
 }
 .subscribe-list-wrap span.subscribe-column-title {
   padding-left: 46px;
-  background: #3379c1 url(editingCenter/app/images/editing-leftnav_icon01.png) no-repeat 17px center;
+  background: #3379c1 url("editingCenter/images/blue-skin/editing-leftnav_icon01.png") no-repeat 17px center;
 }
 .subscribe-list-wrap .subscribe-column-mark {
   position: absolute;

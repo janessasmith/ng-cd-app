@@ -2,13 +2,13 @@
     <!-- 站点一级标题-->
     <div class="editing-site" ng-click="status.isDropdown=!status.isDropdown">
         <div class="editing-site-list">
-            <img class="site-icon" src="./editingCenter/app/images/editing-leftnav_icon01.png">
+            <img class="site-icon" src="./editingCenter/images/blue-skin/editing-leftnav_icon01.png">
             <span ng-bind="status.selectedSite.SITENAME" title="{{status.selectedSite.SITENAME}}"></span>
         </div>
         <!-- 当站点内容超过一条时，下拉收起图标切换 和上面ng-click呼应 -->
         <div ng-if="status.sites.length>1">
-            <img class="site-mark" src="./editingCenter/app/images/editing-leftnav_icon02.png" ng-show="!status.isDropdown">
-            <img class="site-mark" src="./editingCenter/app/images/editing-leftnav_icon03.png" ng-show="status.isDropdown">
+            <img class="site-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon02.png" ng-show="!status.isDropdown">
+            <img class="site-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon03.png" ng-show="status.isDropdown">
         </div>
         <!-- 一级站点标题列表 -->
         <div class="site-list-wrap" ng-show="status.isDropdown">
@@ -26,15 +26,15 @@
                 <accordion-group class="edit-column">
                     <accordion-heading>
                         <span class="edit-column-title">常用栏目</span>
-                        <img class="edit-column-mark" src="./editingCenter/app/images/editing-leftnav_icon02.png">
+                        <img class="edit-column-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon02.png">
                     </accordion-heading>
                     <ul ng-if="status.favoriteChannels.length>0">
                         <li ng-repeat="fchannel in status.favoriteChannels track by $index" ng-init="innerIndex=$index">
-                            <img src="./editingCenter/images/web-coml-tree_03.png">
+                            <img src="./editingCenter/images/blue-skin/editing-leftnav_icon05.png">
                             <a ng-bind="fchannel.CHNLDESC"></a>
                             <!-- 删除常用栏目图标 -->
                             <div class="edit-remove-icon" ng-click="removeFavoriteChannel(fchannel.CHANNELID,innerIndex)">
-                                <img src="./editingCenter/images/web-com-remove.png">
+                                <img src="./editingCenter/images/editing-leftnav_icon06.png">
                             </div>
                         </li>
                     </ul>
