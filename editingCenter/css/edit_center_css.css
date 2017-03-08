@@ -312,47 +312,6 @@ body {
 }
 /* 常用栏目 样式 end */
 /* 站点栏目订阅 */
-/* .editing-subscribe {
-    position: relative;
-    .panel {
-        line-height: 40px;
-        background-color: #3379c1;
-    }
-    .panel-heading {
-        height: 40px;
-        line-height: 40px;
-        color: #fff;
-        background-color: #3379c1;
-    }
-    .panel-title {
-        font-size: 14px;
-        line-height: 40px;
-    }
-    span.subscribe-title {
-        // display: block;
-        // width: 100%;
-        padding-left: 46px;
-        font-size: 16px;
-        background: #3379c1 url(editingCenter/images/editing-leftnav_icon07.png) no-repeat 17px center;
-    }
-    .subscribe-mark {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        cursor: pointer;
-    }
-    .subscribe-btn {
-        position: absolute;
-        top: 15px;
-        right: 36px;
-        width: 15px;
-        height: 15px;
-        cursor: pointer;
-        img {
-            display: block;
-        }
-    }
-} */
 .editing-subscribe {
   position: relative;
   border-top: 1px solid #afc6dc;
@@ -379,11 +338,6 @@ body {
   cursor: pointer;
 }
 .subscribe-list-wrap {
-  /* position: absolute;
-    z-index: 30;
-    top: 36px;
-    left: 0;
-    width: 100%; */
   position: relative;
 }
 .subscribe-list-wrap .panel {
