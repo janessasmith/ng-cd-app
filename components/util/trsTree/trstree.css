@@ -1,5 +1,9 @@
 /*========== 定义一个规则，并且不设置默认参数值 ============*/
 /* 左侧treecontrol公共样式调整 2017.3.3 */
+.editing-downlist .tab-content treecontrol {
+  font-size: 14px;
+  font-family: Tahoma, Arial, "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+}
 .editing-downlist .tab-content treecontrol ul {
   height: 120%;
   background-color: #015293;
@@ -22,7 +26,7 @@
 }
 .editing-downlist .tab-content treecontrol ul li .tree-label {
   /*margin-left: 25px;*/
-  display: inline-block;
+  display: inherit;
   width: 100%;
   border-bottom: 1px solid #2a6ea4;
   -webkit-box-shadow: 0 1px 1px #064679;
@@ -31,7 +35,6 @@
 }
 .editing-downlist .tab-content treecontrol ul li .tree-label span {
   color: #fff;
-  font-family: "微软雅黑";
 }
 .editing-downlist .tab-content treecontrol ul li .tree-label span.tree-current {
   /*padding-right: 120px;   // 这个属性可以让整行都能选中
@@ -41,30 +44,6 @@
 }
 .editing-downlist .tab-content treecontrol ul li .tree-label:hover {
   background-color: #2178c5;
-}
-.editing-downlist .tab-content treecontrol.tree-classic ul li {
-  /* b {
-                            position: absolute;
-                            z-index: 10;
-                            cursor: pointer;
-                            &.tree-choosed {
-                                top: 16px;
-                                right: 40px;
-                                width: 14px;
-                                height: 12px;
-                                background: url("./editingCenter/website/images/editing-leftnav_icon06.png") no-repeat;
-                            }
-                            &.add-favorite {
-                                top: 11px;
-                                right: 12px;
-                                width: 22px;
-                                height: 22px;
-                                background: url("./editingCenter/website/images/editing-leftnav_icon04.png") no-repeat;
-                                &:hover {
-                                    background: url("./editingCenter/website/images/editing-leftnav_icon05.png") no-repeat;
-                                }
-                            }
-                        } */
 }
 .editing-downlist .tab-content treecontrol.tree-classic ul li.tree-collapsed i.tree-branch-head {
   background: url("components/util/trsTree/images/s1.png") no-repeat;
@@ -125,13 +104,14 @@
   background: url("components/util/trsTree/images/file.png") no-repeat;
 }
 .editing-downlist .tab-content treecontrol.tree-classic b {
+  position: absolute;
+  z-index: 10;
   display: inline-block;
+  margin: 0;
   font-size: 12px;
   font-weight: normal;
 }
 .editing-downlist .tab-content treecontrol.tree-classic b.haschoosed {
-  position: absolute;
-  z-index: 10;
   top: 16px;
   right: 40px;
   width: 14px;
@@ -140,14 +120,13 @@
 }
 .editing-downlist .tab-content treecontrol.tree-classic b.addfavor,
 .editing-downlist .tab-content treecontrol.tree-classic b.removefavor {
-  float: right;
+  top: 0;
+  right: 12px;
   width: 22px;
-  margin: 0;
   text-align: center;
 }
 .editing-downlist .tab-content treecontrol.tree-classic b.addfavor {
   height: 40px;
-  margin-right: 12px;
   color: #fff;
   background: url(editingCenter/images/web-com-addicon.png) no-repeat center;
 }
@@ -155,18 +134,15 @@
   height: 22px;
   line-height: 22px;
   margin-top: 9px;
-  margin-right: 12px;
   color: #2178c5;
-  border-radius: 50%;
   background-color: #fff;
+  border-radius: 50%;
 }
 .editing-downlist .tab-content treecontrol.tree-classic b.favortag {
-  position: absolute;
   top: 0;
   right: 0;
   width: 28px;
   height: 40px;
-  margin: 0;
   background: url(editingCenter/images/web-comc-icon_03.png) no-repeat center top;
 }
 /* 左侧treecontrol公共样式调整 2017.3.3 end */

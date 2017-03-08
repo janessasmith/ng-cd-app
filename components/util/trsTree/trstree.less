@@ -5,6 +5,8 @@
 .editing-downlist {
     .tab-content {
         treecontrol {
+            font-size: 14px;
+            font-family: Tahoma, Arial, "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
             ul {
                 height: 120%;
                 background-color: #015293;
@@ -30,7 +32,7 @@
                     .tree-label {
                         // line-height: 44px;
                         /*margin-left: 25px;*/
-                        display: inline-block;
+                        display: inherit;
                         width: 100%;   // 保证整行都很点中
                         border-bottom: 1px solid #2a6ea4;
                         -webkit-box-shadow: 0 1px 1px #064679;
@@ -39,7 +41,7 @@
                         span {
                             color: #fff;
                             // font-size: 14px;
-                            font-family: "微软雅黑";
+                            // font-family: "微软雅黑";
                             &.tree-current {
                                 /*padding-right: 120px;   // 这个属性可以让整行都能选中
                                 padding-top: 11px;
@@ -146,37 +148,16 @@
                                 }
                             }
                         }
-                        /* b {
-                            position: absolute;
-                            z-index: 10;
-                            cursor: pointer;
-                            &.tree-choosed {
-                                top: 16px;
-                                right: 40px;
-                                width: 14px;
-                                height: 12px;
-                                background: url("./editingCenter/website/images/editing-leftnav_icon06.png") no-repeat;
-                            }
-                            &.add-favorite {
-                                top: 11px;
-                                right: 12px;
-                                width: 22px;
-                                height: 22px;
-                                background: url("./editingCenter/website/images/editing-leftnav_icon04.png") no-repeat;
-                                &:hover {
-                                    background: url("./editingCenter/website/images/editing-leftnav_icon05.png") no-repeat;
-                                }
-                            }
-                        } */
                     }
                 }
                 b {
+                    position: absolute;
+                    z-index: 10;
                     display: inline-block;
+                    margin: 0;
                     font-size: 12px;
                     font-weight: normal;
                     &.haschoosed {
-                        position: absolute;
-                        z-index: 10;
                         top: 16px;
                         right: 40px;
                         width: 14px;
@@ -184,14 +165,13 @@
                         background: url('./editingCenter/website/images/editing-leftnav_icon06.png') no-repeat;
                     }
                     &.addfavor, &.removefavor {
-                        float: right;
+                        top: 0;
+                        right: 12px;
                         width: 22px;
-                        margin: 0;
                         text-align: center;
                     }
                     &.addfavor {
                         height: 40px;
-                        margin-right: 12px;
                         color: #fff;
                         background: url(./editingCenter/images/web-com-addicon.png) no-repeat center;
                     }
@@ -199,18 +179,15 @@
                         height: 22px;
                         line-height: 22px;
                         margin-top: 9px;
-                        margin-right: 12px;
                         color: #2178c5;
-                        border-radius: 50%;
                         background-color: #fff;
+                        border-radius: 50%;
                     }
                     &.favortag {
-                        position: absolute;
                         top: 0;
                         right: 0;
                         width: 28px;
                         height: 40px;
-                        margin: 0;
                         background: url(./editingCenter/images/web-comc-icon_03.png) no-repeat center top;
                     }
                 }
