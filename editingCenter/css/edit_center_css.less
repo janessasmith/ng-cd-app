@@ -143,6 +143,7 @@ body {
         // font-size: 14px;
         height: 40px;
         line-height: 40px;
+        font-weight: 800;
         cursor: pointer;
         // text-align: center;
         color: #41baff;
@@ -438,6 +439,7 @@ body {
     .editing-subscribe-list {
         height: 40px;
         line-height: 40px;
+        font-weight: 800;
         color: #fff;
         background-color: #3379c1;
         cursor: pointer;
@@ -455,12 +457,43 @@ body {
         right: 14px;
         cursor: pointer;
     }
-    .subscribe-list-wrap {
-            position: absolute;
-            z-index: 30;
-            top: 36px;
-            left: 0;
-            width: 100%;
+}
+.subscribe-list-wrap {
+    /* position: absolute;
+    z-index: 30;
+    top: 36px;
+    left: 0;
+    width: 100%; */
+    position: relative;
+    .panel {
+        line-height: 40px;
+        background-color: #3379c1;
+    }
+    .panel-heading {
+        height: 40px;
+        line-height: 40px;
+        color: #fff;
+        background-color: #3379c1;
+    }
+    .panel-title {
+        font-size: 14px;
+        line-height: 40px;
+    }
+    span.subscribe-column-title {
+        // display: block;
+        // width: 100%;
+        padding-left: 46px;
+        // font-size: 16px;
+        background: #3379c1 url(editingCenter/app/images/editing-leftnav_icon01.png) no-repeat 17px center;
+    }
+    .subscribe-column-mark {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        cursor: pointer;
+    }
+    ul {
+        background-color: #3379c1;
     }
 }
 /* 站点栏目订阅  end */

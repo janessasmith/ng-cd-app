@@ -14,4 +14,31 @@
         </tab>
         <!-- <button ng-show="showMore()" type="button" class="editing-more" data-placement="right-bottom" data-auto-close="1" data-template-url="./editingCenter/service/moreTabList/moreTabList.html" data-animation="am-slide-left"  bs-popover></button> -->
     </tabset>
+    <!-- 站点栏目订阅标题 -->
+    <div class="editing-subscribe" ng-click="status.isDropdown=!status.isDropdown">
+        <div class="editing-subscribe-list">
+            <img class="subscribe-icon" src="./editingCenter/images/editing-leftnav_icon07.png">
+            <span>站点栏目订阅</span>
+        </div>
+        <div>
+            <img class="subscribe-mark" src="./editingCenter/app/images/editing-leftnav_icon02.png" ng-show="!status.isDropdown">
+            <img class="subscribe-mark" src="./editingCenter/app/images/editing-leftnav_icon03.png" ng-show="status.isDropdown">
+        </div>
+    </div>
+    <!-- 站点栏目订阅列表-->
+    <div class="subscribe-list-wrap" ng-show="status.isDropdown">
+        <accordion close-others="true">
+            <accordion-group class="subscribe-column">
+                <accordion-heading>
+                    <span class="subscribe-column-title">站点栏目订阅</span>
+                    <img class="subscribe-column-mark" src="./editingCenter/app/images/editing-leftnav_icon02.png">
+                </accordion-heading>
+                <ul>
+                    <li>
+                        测试
+                    </li>
+                </ul>
+            </accordion-group>
+        </accordion>
+    </div>
 </div>
