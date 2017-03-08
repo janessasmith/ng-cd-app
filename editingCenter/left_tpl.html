@@ -15,12 +15,14 @@
         <!-- <button ng-show="showMore()" type="button" class="editing-more" data-placement="right-bottom" data-auto-close="1" data-template-url="./editingCenter/service/moreTabList/moreTabList.html" data-animation="am-slide-left"  bs-popover></button> -->
     </tabset>
     <!-- 站点栏目订阅标题 -->
-    <div class="editing-subscribe" ng-click="status.isDropdown=!status.isDropdown">
+    <div class="editing-subscribe">
         <div class="editing-subscribe-list">
             <img class="subscribe-icon" src="./editingCenter/images/blue-skin/editing-leftnav_icon10.png">
             <span>站点栏目订阅</span>
+            <!-- 订阅按钮 -->
+            <img class="subscribe-btn" ng-click="subscribeModal()" src="./editingCenter/images/blue-skin/editing-leftnav_icon11.png">
         </div>
-        <div>
+        <div ng-click="status.isDropdown=!status.isDropdown">
             <img class="subscribe-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon02.png" ng-show="!status.isDropdown">
             <img class="subscribe-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon03.png" ng-show="status.isDropdown">
         </div>
