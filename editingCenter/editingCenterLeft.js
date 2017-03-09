@@ -137,5 +137,14 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
             else flag = false;
             return flag;
         };
+        /**
+         * [subscribeModal description] 获取可订阅的站点列表-弹窗
+         * @return {[type]} [description]
+         */
+        $scope.querySitesOnSubscribeCenter = function() {
+            editingCenterService.subscribeModal('标题', function(result) {
+                console.log(result);
+            });
+        };
     }
 ]);
