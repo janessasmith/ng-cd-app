@@ -10,9 +10,15 @@ h3,
 h4,
 h5,
 h5,
-input {
+input,
+button {
   margin: 0;
   padding: 0;
+}
+button,
+input {
+  border: none;
+  outline: none;
 }
 a {
   font-size: 14px;
@@ -379,6 +385,130 @@ body {
   background-color: #3379c1;
 }
 /* 站点栏目订阅  end */
+/* 站点栏目订阅弹窗 */
+.subscribe-window .modal-content {
+  position: relative;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.subscribe-modal {
+  width: 650px;
+  border: 4px solid #ddd;
+}
+.subscribe-modal .header {
+  height: 42px;
+  line-height: 42px;
+}
+.subscribe-modal .header span {
+  float: left;
+  margin-left: 15px;
+  color: #333;
+  font-weight: 800;
+}
+.subscribe-modal .header img {
+  float: right;
+  width: 18px;
+  height: 18px;
+  margin: 12px 10px 0 0;
+  cursor: pointer;
+}
+.subscribe-modal .content {
+  position: relative;
+}
+.subscribe-modal .content .subscribe-channels {
+  height: 30px;
+  line-height: 30px;
+  background-color: #f0f2f5;
+}
+.subscribe-modal .content .subscribe-channels ul li {
+  float: left;
+  width: 90px;
+  height: 30px;
+  margin-left: 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #3379c1;
+  cursor: pointer;
+}
+.subscribe-modal .content .subscribe-channels ul li.active {
+  color: #000;
+  background-color: #fff;
+}
+.subscribe-modal .content .subscribe-list {
+  margin: 10px;
+  overflow: hidden;
+}
+.subscribe-modal .content .subscribe-list .list-left {
+  float: left;
+}
+.subscribe-modal .content .subscribe-list .list-left .subscribe-site .website-list {
+  float: left;
+  width: 300px;
+  height: 200px;
+  margin-right: 10px;
+  border: 1px solid #d5d4d4;
+  overflow-y: auto;
+}
+.subscribe-modal .content .subscribe-list .list-left .subscribe-site .website-list h5 {
+  height: 30px;
+  line-height: 30px;
+  font-weight: 800;
+  text-align: center;
+  background-color: #f1f2f6;
+}
+.subscribe-modal .content .subscribe-list .list-left .subscribe-site .website-list ul li {
+  height: 30px;
+  line-height: 30px;
+  text-indent: 10px;
+  cursor: pointer;
+}
+.subscribe-modal .content .subscribe-list .list-left .subscribe-site .website-list ul li.active {
+  color: #fff;
+  background-color: #3379c1;
+}
+.subscribe-modal .content .subscribe-list .list-right {
+  float: left;
+  width: 430px;
+  margin-left: 10px;
+}
+.subscribe-modal .path ul li {
+  position: relative;
+  float: left;
+  height: 30px;
+  margin: 12px 0 10px 0;
+  padding: 0 20px 0 10px;
+  border: 1px solid #ccc;
+}
+.subscribe-modal .path ul img {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  cursor: pointer;
+}
+.subscribe-modal .footer {
+  height: 60px;
+  background-color: #f0f2f5;
+}
+.subscribe-modal .footer button {
+  float: right;
+  width: 80px;
+  height: 28px;
+  line-height: 28px;
+  margin: 15px 10px 0 0;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+}
+.subscribe-modal .footer .btn-confirm {
+  background-color: #3379c1;
+}
+.subscribe-modal .footer .btn-cancel {
+  background-color: #c1c1c1;
+}
+/* 站点栏目订阅弹窗 end */
 /* 左侧导航CSS样式 2017.3.2 end */
 .compiled-subject .groupSlected {
   font-size: 12px;

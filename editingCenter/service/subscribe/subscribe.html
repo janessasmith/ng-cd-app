@@ -1,6 +1,51 @@
-<div class="weixinModal">
-    <div class="head">
-        <span ng-bind="data.modalTile"></span>
-        <img ng-click="cancel()" src="./editingCenter/app/toBeCompiled/images/cls.jpg">
+<div class="subscribe-modal">
+    <div class="header">
+        <span>站点栏目订阅</span>
+        <img ng-click="cancel()" src="./editingCenter/images/blue-skin/editing-leftnav_icon12.png">
+    </div>
+    <div class="content">
+        <div class="subscribe-channels">
+            <ul>
+                <li ng-class="{'active':data.subscribeMediasCur===media}" ng-repeat="media in data.subscribeMedias" ng-bind="media.mediaName" ng-click="setCurMedia(media, $index)"></li>
+            </ul>
+        </div>
+        <div class="subscribe-list">
+            <div class="list-left">
+                <div class="subscribe-site">
+                    <!-- 网站 -->
+                    <div ng-if="data.subscribeMediasCur.mediaType === 1">
+                        <!-- 网站一级站点列表 -->
+                        <div class="website-list">
+                            <h5>网站列表</h5>
+                            <ul>
+                                <li ng-repeat="site in data.website.lists" ng-class="{'active': data.website.selectedItem===site}" ng-click="getSubMedia(site)" ng-bind="site.SITEDESC" title="site.SITEDESC">
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 网站二级站点列表 -->
+                        <div class="website-list">
+                            <h5>叠次列表</h5>
+                            <ul>
+                                <li ng-repeat="siteid in data.website.listids" ng-class="{'active': data.website.subscribeSiteidCur===siteid}" ng-click="getSubsSiteid(siteid)" ng-bind="siteid.CHNLDESC" title="siteid.CHNLDESC">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-right"></div>
+        </div>
+    </div>
+    <!-- 提示框 -->
+    <div class="path">
+        <ul ng-repeat="path in path.pathArray">
+            <li ng-show="path.mediaName">{{path.mediaName}}</li>
+            <li ng-show="path.siteName">{{path.siteName}}</li>
+            <img src="./editingCenter/iWo/images/closep.jpg">
+        </ul>
+    </div>
+    <div class="footer">
+        <button class="btn-cancel">取消</button>
+        <button class="btn-confirm" ng-click="confirm()">确定</button>
     </div>
 </div>

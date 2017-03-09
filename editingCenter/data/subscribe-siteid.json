@@ -1,0 +1,26 @@
+[
+  {
+    "CHNLNAME": "学习园地",
+    "CHNLTYPE": "0",
+    "PARENTID": "0",
+    "CHANNELID": "11",
+    "CHNLDESC": "学习园地",
+    "SITEID": "1"
+  },
+  {
+    "CHNLNAME": "旅游",
+    "CHNLTYPE": "0",
+    "PARENTID": "0",
+    "CHANNELID": "12",
+    "CHNLDESC": "旅游",
+    "SITEID": "1"
+  },
+  {
+    "CHNLNAME": "公告通知",
+    "CHNLTYPE": "0",
+    "PARENTID": "0",
+    "CHANNELID": "13",
+    "CHNLDESC": "公告通知",
+    "SITEID": "1"
+  }
+]

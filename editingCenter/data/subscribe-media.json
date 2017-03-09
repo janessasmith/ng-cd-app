@@ -1,0 +1,26 @@
+[
+  {
+    "SITENAME": "TRS演示站点1",
+    "SITEDESC": "TRS演示站点1",
+    "MEDIATYPE": "1",
+    "SITEID": "1"
+  },
+  {
+    "SITENAME": "TRS演示站点2",
+    "SITEDESC": "TRS演示站点2",
+    "MEDIATYPE": "1",
+    "SITEID": "2"
+  },
+  {
+    "SITENAME": "TRS演示站点3",
+    "SITEDESC": "TRS演示站点3",
+    "MEDIATYPE": "1",
+    "SITEID": "3"
+  },
+  {
+    "SITENAME": "TRS演示站点4",
+    "SITEDESC": "TRS演示站点4",
+    "MEDIATYPE": "1",
+    "SITEID": "4"
+  }
+]
