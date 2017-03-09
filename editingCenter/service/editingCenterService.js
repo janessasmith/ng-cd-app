@@ -636,7 +636,7 @@ angular.module("editingCenterServiceModule", ["subscribeModalMudule", "shareModu
                         // 如果需要传递一个object对象，则需要使用angular.copy()
                         // 通过resolve 来向具体Controller注入数据service
                         resolve: {
-
+                            
                         }
                     });
                     modalInstance.result.then(function(result) {
