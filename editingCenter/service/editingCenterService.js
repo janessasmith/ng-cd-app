@@ -625,24 +625,18 @@ angular.module("editingCenterServiceModule", ["subscribeModalMudule", "shareModu
                     return deferred.promise;
                 },
                 // 订阅弹窗
-                subscribeModal: function(modalTile, success) {
+                subscribeModal: function(success) {
                     // 打开模态
                     var modalInstance = $modal.open({
                         backdrop: false,
-                        // 创建的视图，即modal对应的html页面
                         templateUrl: "./editingCenter/service/subscribe/subscribe.html",
-                        // 初始化模态范围，即该modal的controller
                         controller: "subscribeModalCtrl",
                         windowClass: 'subscribe-window',
                         // 定义一个成员并将它传递给modal指定的控制器，相当于router的一个resolve属性
                         // 如果需要传递一个object对象，则需要使用angular.copy()
                         // 通过resolve 来向具体Controller注入数据service
                         resolve: {
-                            draftParams: function() {
-                                return {
-                                    "modalTitle": modalTile
-                                };
-                            }
+
                         }
                     });
                     modalInstance.result.then(function(result) {

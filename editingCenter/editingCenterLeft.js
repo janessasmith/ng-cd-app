@@ -61,6 +61,10 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
                 },
             };
             $scope.status.tab[$scope.pathes[2]].isTabSelect = true;
+
+            $scope.data = {
+                sitesChannels: []
+            };
         }
 
         function initData() {
@@ -142,7 +146,8 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
          * @return {[type]} [description]
          */
         $scope.querySitesOnSubscribeCenter = function() {
-            editingCenterService.subscribeModal('标题', function(result) {
+            editingCenterService.subscribeModal(function(result) {
+                $scope.data.sitesChannels.push(result);
                 console.log(result);
             });
         };

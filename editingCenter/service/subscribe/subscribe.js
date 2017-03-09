@@ -3,7 +3,7 @@
     Create by zheng.lu 2017-03-08
 */
 angular.module("subscribeModalMudule",['subscribeServiceModule'])
-    .controller("subscribeModalCtrl", ["$scope", "$modalInstance", "subscribeService", "trsHttpService", "draftParams", function($scope, $modalInstance, subscribeService, trsHttpService, draftParams) {
+    .controller("subscribeModalCtrl", ["$scope", "$modalInstance", "subscribeService", "trsHttpService", "trsconfirm", function($scope, $modalInstance, subscribeService, trsHttpService, trsconfirm) {
         initStatus();
         initData();
 
@@ -13,10 +13,12 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
          */
         function initStatus() {
             $scope.data = {
-                modalTitle: draftParams.modalTitle,
                 subscribeMedias: subscribeService.initSubscribeMedia(),
-                subscribeMediasCur: {},
+                subscribeMediasCur: {
+                    mediaType: 1
+                },
                 subscribeSiteidCur: {},
+                sitesChannels: {},
                 website: {
                     selectedItem: ""   // website被选中的
                 },
@@ -36,6 +38,7 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
         }
 
         function initData() {
+            queryWebsite();
             // querySitesOnSubcribeCenter();
         }
 
@@ -171,6 +174,7 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
          */
         $scope.getSubMedia = function(site) {
             $scope.data.website.selectedItem = site;
+            console.log(site.SITEID);
         };
 
         /**
@@ -178,12 +182,27 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
          * @param  {[type]} siteid [description]
          * @return {[type]}        [description]
          */
-        $scope.getSubsSiteid = function(siteid) {
-            $scope.data.website.subscribeSiteidCur = siteid;
+        $scope.getSubsSiteid = function(channel) {
+            $scope.data.website.subscribeSiteidCur = channel;
+            console.log(channel.CHANNELID);
             // querySubscribeBySiteid();
         };
 
-        $scope.confirm = function() {
 
+        $scope.confirm = function() {
+            $scope.data.test = $scope.data.website.selectedItem;
+            var params = {
+                "Serviceid": "gov_site",
+                "methodname": "addSubscribeChannel",
+                "ChannelId": $scope.data.website.subscribeSiteidCur.CHANNELID
+            };
+            $scope.loadingPromise = trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
+                $scope.data.sitesChannels = data;
+                trsconfirm.alertType("订阅栏目成功", "", "success", false, function() {
+                    $modalInstance.close(data);
+                });
+            }, function() {
+                $modalInstance.close('not');
+            });
         };
 }]);

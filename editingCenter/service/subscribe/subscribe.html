@@ -45,7 +45,8 @@
         </ul>
     </div>
     <div class="footer">
-        <button class="btn-cancel">取消</button>
+        <button class="btn-cancel" ng-click="cancel()">取消</button>
         <button class="btn-confirm" ng-click="confirm()">确定</button>
     </div>
+    <div class="busy" cg-busy="loadingPromise"></div>
 </div>

@@ -32,12 +32,12 @@
         <accordion close-others="true">
             <accordion-group class="subscribe-column">
                 <accordion-heading>
-                    <span class="subscribe-column-title">站点栏目订阅</span>
+                    <span class="subscribe-column-title" ng-bind="data.test"></span>
                     <img class="subscribe-column-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon02.png">
                 </accordion-heading>
                 <ul>
-                    <li>
-                        测试
+                    <li ng-repeat="channel in data.sitesChannels" ng-bind="channel.CHNLDESC">
+                        
                     </li>
                 </ul>
             </accordion-group>
