@@ -18,15 +18,15 @@
                         <div class="website-list">
                             <h5>网站列表</h5>
                             <ul>
-                                <li ng-repeat="site in data.website.lists" ng-class="{'active': data.website.selectedItem===site}" ng-click="getSubMedia(site)" ng-bind="site.SITEDESC" title="site.SITEDESC">
-                                </li>
+                                <li ng-repeat="site in data.website.lists" ng-class="{'active': data.website.selectedItem===site}" ng-click="getSubMedia(site)" ng-bind="site.SITEDESC" title="{{site.SITEDESC}}">
+                               </li>
                             </ul>
                         </div>
                         <!-- 网站二级站点列表 -->
                         <div class="website-list">
                             <h5>叠次列表</h5>
                             <ul>
-                                <li ng-repeat="siteid in data.website.listids" ng-class="{'active': data.website.subscribeSiteidCur===siteid}" ng-click="getSubsSiteid(siteid)" ng-bind="siteid.CHNLDESC" title="siteid.CHNLDESC">
+                                <li ng-repeat="siteid in data.website.listids" ng-class="{'active': data.website.subscribeSiteidCur===siteid}" ng-click="getSubsSiteid(siteid)" ng-bind="siteid.CHNLDESC" title="{{siteid.CHNLDESC}}">
                                 </li>
                             </ul>
                         </div>
