@@ -6,7 +6,7 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
         initData();
 
         function initStatus() {
-            $scope.test = {};
+            /*$scope.test = {};
             $scope.test.cc = "cc";
             $scope.pathes = $location.path().split('/');
             $scope.status = {
@@ -60,7 +60,7 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
                     isMoreTabListShow: false,
                 },
             };
-            $scope.status.tab[$scope.pathes[2]].isTabSelect = true;
+            $scope.status.tab[$scope.pathes[2]].isTabSelect = true;*/
 
             $scope.data = {
                 sitesChannels: []
@@ -70,77 +70,79 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
         function initData() {
             // queryAllSites();   // 暂时注销
         }
-        $scope.setTabSelected = function(param) {
-            $scope.status.tab[param].isTabSelect = true;
-            var willgo = 'editctr.' + param;
-            if ($state.current.name.indexOf(willgo) >= 0) {
-                $state.go($state.current.name, $stateParams, { reload: $state.current.name });
-            } else {
-                $state.go(willgo);
-            }
-        };
-        /**
-         * [queryAllSites description]查询可见产品
-         */
-        function queryAllSites() {
-            var deffered = $q.defer();
-            var params = {
-                serviceid: "mlf_mediasite",
-                methodname: "queryAllSites"
-            };
-            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "post")
-                .then(function(data) {
-                    $scope.status.authority = {};
-                    angular.forEach(data, function(_data, index, array) {
-                        $scope.status.authority[$scope.status.mediaType[_data.MEDIATYPE]] = _data;
-                    });
-                    //给对象排序
-                    var i = 0;
-                    angular.forEach($scope.status.order, function(__data, __index, __array) {
-                        if (angular.isDefined($scope.status.authority[__data])) {
-                            $scope.status.authority[__data].index = i;
-                            i++;
-                        }
-                    });
-                    exchangePosition();
-                    deffered.resolve();
-                });
-            return deffered.promise;
-        }
-        /*$scope.hasRight = function(product) {
-            return $filter('filterBy')($scope.status.authority, ['MEDIATYPE'], $scope.status.mediaType[product]).length > 0 ? true : false;
-        };*/
-        //左侧导航箭头内的导航
-        $scope.setMoreTabRouter = function(position) {
-            //$scope.status.isThisTabShow = position;
-            for (var i in $scope.status.authority) {
-                if ($scope.status.authority[i].index === 1) {
-                    var tempIndex = $scope.status.authority[position].index;
-                    $scope.status.authority[position].index = 1;
-                    $scope.status.authority[i].index = tempIndex;
-                }
-            }
-            $scope.setTabSelected(position);
-        };
+        // $scope.setTabSelected = function(param) {
+        //     $scope.status.tab[param].isTabSelect = true;
+        //     var willgo = 'editctr.' + param;
+        //     if ($state.current.name.indexOf(willgo) >= 0) {
+        //         $state.go($state.current.name, $stateParams, { reload: $state.current.name });
+        //     } else {
+        //         $state.go(willgo);
+        //     }
+        // };
+        // /**
+        //  * [queryAllSites description]查询可见产品
+        //  */
+        // function queryAllSites() {
+        //     var deffered = $q.defer();
+        //     var params = {
+        //         serviceid: "mlf_mediasite",
+        //         methodname: "queryAllSites"
+        //     };
+        //     trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "post")
+        //         .then(function(data) {
+        //             $scope.status.authority = {};
+        //             angular.forEach(data, function(_data, index, array) {
+        //                 $scope.status.authority[$scope.status.mediaType[_data.MEDIATYPE]] = _data;
+        //             });
+        //             //给对象排序
+        //             var i = 0;
+        //             angular.forEach($scope.status.order, function(__data, __index, __array) {
+        //                 if (angular.isDefined($scope.status.authority[__data])) {
+        //                     $scope.status.authority[__data].index = i;
+        //                     i++;
+        //                 }
+        //             });
+        //             exchangePosition();
+        //             deffered.resolve();
+        //         });
+        //     return deffered.promise;
+        // }
+        // /*$scope.hasRight = function(product) {
+        //     return $filter('filterBy')($scope.status.authority, ['MEDIATYPE'], $scope.status.mediaType[product]).length > 0 ? true : false;
+        // };*/
+        // //左侧导航箭头内的导航
+        // $scope.setMoreTabRouter = function(position) {
+        //     //$scope.status.isThisTabShow = position;
+        //     for (var i in $scope.status.authority) {
+        //         if ($scope.status.authority[i].index === 1) {
+        //             var tempIndex = $scope.status.authority[position].index;
+        //             $scope.status.authority[position].index = 1;
+        //             $scope.status.authority[i].index = tempIndex;
+        //         }
+        //     }
+        //     $scope.setTabSelected(position);
+        // };
 
-        function exchangePosition() {
-            var isThisTabShow = $state.current.name.split(".")[1];
-            if (isThisTabShow !== "iWo" && $scope.status.authority[isThisTabShow].index >= 2) {
-                $scope.setMoreTabRouter(isThisTabShow);
-            }
-        }
+        // function exchangePosition() {
+        //     var isThisTabShow = $state.current.name.split(".")[1];
+        //     if (isThisTabShow !== "iWo" && $scope.status.authority[isThisTabShow].index >= 2) {
+        //         $scope.setMoreTabRouter(isThisTabShow);
+        //     }
+        // }
 
-        $scope.showMore = function() {
-            var index = 0;
-            if (angular.isUndefined($scope.status.authority)) return;
-            for (var i in $scope.status.authority) {
-                index++;
-            }
-            var flag = true;
-            if (index > 2) flag = true;
-            else flag = false;
-            return flag;
-        };
+        // $scope.showMore = function() {
+        //     var index = 0;
+        //     if (angular.isUndefined($scope.status.authority)) return;
+        //     for (var i in $scope.status.authority) {
+        //         index++;
+        //     }
+        //     var flag = true;
+        //     if (index > 2) flag = true;
+        //     else flag = false;
+        //     return flag;
+        // };
+
+
         /**
          * [subscribeModal description] 获取可订阅的站点列表-弹窗
          * @return {[type]} [description]
@@ -148,7 +150,28 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
         $scope.querySitesOnSubscribeCenter = function() {
             editingCenterService.subscribeModal(function(result) {
                 $scope.data.sitesChannels.push(result);
-                console.log(result);
+            });
+        };
+
+        /**
+         * [removeSubscribe description] 删除订阅栏目
+         * @return {[type]} [description]
+         */
+        $scope.removeSubscribe = function(result, index) {
+            var params = {
+                "serviceid": "gov_site",
+                "methodname": "removeSubscribeChannel",
+                "ChannelId": result.CHANNELID
+            };
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
+                if (index === 0) {
+                    angular.forEach($scope.data.sitesChannels, function(value, key) {
+                        if (value.CHANNELID == result.CHANNELID) {
+                            index = key;
+                        }
+                    });
+                }
+                $scope.data.sitesChannels.splice(index, 1);
             });
         };
     }

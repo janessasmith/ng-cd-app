@@ -18,7 +18,7 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
                     mediaType: 1
                 },
                 subscribeSiteidCur: {},
-                sitesChannels: {},
+                sitesChannels: [],
                 website: {
                     selectedItem: ""   // website被选中的
                 },
@@ -174,7 +174,6 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
          */
         $scope.getSubMedia = function(site) {
             $scope.data.website.selectedItem = site;
-            console.log(site.SITEID);
         };
 
         /**
@@ -184,7 +183,6 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
          */
         $scope.getSubsSiteid = function(channel) {
             $scope.data.website.subscribeSiteidCur = channel;
-            console.log(channel.CHANNELID);
             // querySubscribeBySiteid();
         };
 
@@ -199,7 +197,7 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
             $scope.loadingPromise = trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
                 $scope.data.sitesChannels = data;
                 trsconfirm.alertType("订阅栏目成功", "", "success", false, function() {
-                    $modalInstance.close(data);
+                    $modalInstance.close($scope.data.sitesChannels);
                 });
             }, function() {
                 $modalInstance.close('not');

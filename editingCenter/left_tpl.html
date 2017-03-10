@@ -36,8 +36,9 @@
                     <img class="subscribe-column-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon02.png">
                 </accordion-heading>
                 <ul>
-                    <li ng-repeat="channel in data.sitesChannels" ng-bind="channel.CHNLDESC">
-                        
+                    <li ng-repeat="channel in data.sitesChannels track by $index" ng-init="innerIndex=$index">
+                        <span ng-bind="channel.CHNLDESC"></span>
+                        <i class="subscribe-delete" ng-click="removeSubscribe(channel, innerIndex)"></i>
                     </li>
                 </ul>
             </accordion-group>

@@ -440,13 +440,35 @@ body {
         cursor: pointer;
     }
     ul {
+        height: auto;
         background-color: #3379c1;
+        li {
+            position: relative;
+            span {
+                display: block;
+                padding-left: 64px;
+                color: #fff;
+                background: url("./components/util/trsTree/images/file.png") no-repeat 44px center;
+            }
+            .subscribe-delete {
+                position: absolute;
+                top: 14px;
+                right: 14px;
+                width: 15px;
+                height: 14px;
+                background: url("editingCenter/images/blue-skin/editing-leftnav_icon06.png") no-repeat;
+                cursor: pointer;
+            }
+        }
     }
 }
 /* 站点栏目订阅  end */
 
 /* 站点栏目订阅弹窗 */
 .subscribe-window {
+    .modal-dialog {
+        width: 650px;
+    }
     .modal-content {
         position: relative;
         border: none;
@@ -500,6 +522,7 @@ body {
             }
         }
         .subscribe-list {
+            min-height: 300px;
             margin: 10px;
             overflow: hidden;
             .list-left {
@@ -509,7 +532,7 @@ body {
                     .website-list {
                         float: left;
                         width: 300px;
-                        height: 200px;
+                        height: 300px;
                         margin-right: 10px;
                         border: 1px solid #d5d4d4;
                         overflow-y: auto;
