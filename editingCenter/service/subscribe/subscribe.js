@@ -188,7 +188,6 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
 
 
         $scope.confirm = function() {
-            $scope.data.test = $scope.data.website.selectedItem;
             var params = {
                 "Serviceid": "gov_site",
                 "methodname": "addSubscribeChannel",
