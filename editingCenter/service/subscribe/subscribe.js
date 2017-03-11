@@ -114,6 +114,12 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
             });
         }*/
 
+        /**
+         * [getSitelist description] 一级站点切换
+         * @param  {[type]} site  [description] 网站一级站点信息
+         * @param  {[type]} index [description] 序列号
+         * @return {[type]}       [description]
+         */
         $scope.getSitelist = function(site, index) {
             $scope.data.website.selectedItem = site;
         };
@@ -205,6 +211,12 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
             });
         }
 
+        /**
+         * [getChannellist description] 二级栏目切换
+         * @param  {[type]} channel [description] 二级栏目信息
+         * @param  {[type]} index   [description] 序列号
+         * @return {[type]}         [description]
+         */
         $scope.getChannellist = function(channel, index) {
             $scope.cur.curChannel = channel;
         };
