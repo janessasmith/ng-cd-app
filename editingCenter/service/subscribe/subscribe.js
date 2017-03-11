@@ -12,197 +12,208 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
          * @return {[type]} [description]
          */
         function initStatus() {
+            $scope.cur = {
+                medias: subscribeService.initSubscribeMedia(),
+                curMedia: {},
+                curSite: {},
+                curChannel: {}
+            };
             $scope.data = {
-                subscribeMedias: subscribeService.initSubscribeMedia(),
-                subscribeMediasCur: {
-                    mediaType: 1
-                },
-                subscribeSiteidCur: {},
-                sitesChannels: {},
                 website: {
-                    selectedItem: ""   // website被选中的
+                    selectedItem: "" ,  // website被选中值
+                    siteLists: [],      // 网站列表
+                    channelLists: []     // 叠次列表
                 },
                 app: {
-                    selectedItem: ""   // app被选中的
+                    selectedItem: "" ,  // app被选中值
                 },
                 weixin: {
-                    selectedItem: ""   // weixin被选中的
+                    selectedItem: "" ,  // weixin被选中值
                 },
                 weibo: {
-                    selectedItem: ""   // weibo被选中的
+                    selectedItem: "" ,  // weibo被选中值
                 }
             };
+            $scope.status = {
+                // 分渠道保存
+                selectedArray: {
+                    website: {},
+                    app: {},
+                    weixin: {},
+                    weibo: {}
+                }
+            };
+
+            $scope.cur.curMedia = $scope.cur.medias[0];
+
+
             $scope.path = {
                 pathArray: []
             };
         }
 
+        /**
+         * [initData description] 初始化数据
+         * @return {[type]} [description]
+         */
         function initData() {
             queryWebsite();
-            // querySitesOnSubcribeCenter();
+            // var params = {
+            //     "serviceid": "gov_site",
+            //     "methodname": "querySitesOnSubscribeCenter",
+            //     "MediaType": $scope.cur.curMedia.mediaType
+            // };
+            // trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
+            //     if (data.length === 0) return;
+            //     var temp = $scope.cur.curMedia.type.replace(/(\w)/, function(v) {
+            //         return v.toUpperCase();
+            //     }); // 首字母大写
+            //     eval("query" + temp + "()");
+            // });
         }
 
+
         /**
-         * [cancel description: 弹窗 取消按钮]
-         * @return {[type]} [description]
+         * [setMediaTab description] 切换弹窗渠道
+         * @param {[type]} item  [description] 渠道
+         * @param {[type]} index [description] 序列号
          */
-        $scope.cancel = function() {
-            $modalInstance.dismiss('111');
+        $scope.setMediaTab = function(item) {
+            // $scope.cur.curMedia = item;
+            // var temp = item.type.replace(/(\w)/, function(v) {
+            //     return v.toUpperCase();
+            // }); // 首字母大写
+            // eval("query" + temp + "()");
+            querySitesOnSubscribeCenter(item);
         };
 
         /**
-         * [setCurMedia description] 点击渠道切换
-         * @param {[type]} media [description] 渠道
-         * @param {[type]} index [description]  序列号
+         * [querySitesOnSubscribeCenter description] 获取各个渠道的一级站点
+         * @param  {[type]} item  [description] 站点信息
+         * @return {[type]}       [description]
          */
-        $scope.setCurMedia = function(media, index) {
-            $scope.data.subscribeMediasCur = media;
-            if ($scope.data[$scope.data.subscribeMediasCur.type].lists) return; //请求过后退出
-            var temp = media.type.replace(/(\w)/, function(v) {
+        function querySitesOnSubscribeCenter(item) {
+            $scope.cur.curMedia = item;
+            var temp = item.type.replace(/(\w)/, function(v) {
                 return v.toUpperCase();
-            }); //首字母大写
+            }); // 首字母大写
             eval("query" + temp + "()");
-        };
 
-        /**
-         * [querySitesOnSubcribeCenter description] 根据MediaType订阅一级站点信息
-         * @return {[type]} [description]
-         */
-        function querySitesOnSubcribeCenter() {
-            var params = {
+            // queryChannelsOnSubscribeCenter(item, index);
+        }
+
+        /*function querySitesOnSubscribeCenter() {
+             var params = {
                 "serviceid": "gov_site",
                 "methodname": "querySitesOnSubscribeCenter",
-                "MediaType": $scope.data.subscribeMediasCur.mediaType
+                "MediaType": $scope.cur.curMedia.mediaType
             };
-            // trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
-            trsHttpService.httpServer('./editingCenter/data/subscribe-media.json', params, 'get').then(function(data) {
-                if (data.length === 0) return;
-                var temp = $scope.data.subscribeMediasCur.type.replace(/(\w)/, function(v) {
-                    return v.toUpperCase();
-                }); //首字母大写
-                eval("query" + temp + "()");
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
+            // trsHttpService.httpServer('./editingCenter/data/subscribe-media.json', params, "get").then(function(data) {
+
             });
-        }
+        }*/
+
+        $scope.getSitelist = function(site, index) {
+            $scope.data.website.selectedItem = site;
+        };
 
         /**
-         * [queryWebsite description] 订阅网站
+         * [queryWebsite description] 获取网站一级站点信息
          * @return {[type]} [description]
          */
         function queryWebsite() {
             var params = {
                 "serviceid": "gov_site",
                 "methodname": "querySitesOnSubscribeCenter",
-                "MediaType": 1,
+                "MediaType": 1
             };
-            // trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-            trsHttpService.httpServer('./editingCenter/data/subscribe-media.json', params, "get").then(function(data) {
-                $scope.data.website.lists = data;
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
+            // trsHttpService.httpServer('./editingCenter/data/subscribe-media.json', params, "get").then(function(data) {
+                $scope.data.website.siteLists = data;
                 $scope.data.website.selectedItem = data[0];
-                querySubscribeBySiteid();
+
+                // queryChannelsOnSubscribeCenter(data[0]);
+                queryChannelsOnSubscribeCenter();
             });
         }
 
         /**
-         * [queryWebsite description] 订阅APP
+         * [queryWebsite description] 获取app一级站点信息
          * @return {[type]} [description]
          */
         function queryApp() {
             var params = {
                 "serviceid": "gov_site",
                 "methodname": "querySitesOnSubscribeCenter",
-                "MediaType": 2,
+                "MediaType": 2
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-                $scope.data.app.lists = data;
+            // trsHttpService.httpServer('./editingCenter/data/subscribe-media.json', params, "get").then(function(data) {
+                $scope.data.app.siteLists = data;
                 $scope.data.app.selectedItem = data[0];
             });
         }
 
         /**
-         * [queryWebsite description] 订阅微信
+         * [queryWebsite description] 获取微信一级站点信息
          * @return {[type]} [description]
          */
         function queryWeixin() {
             var params = {
                 "serviceid": "gov_site",
                 "methodname": "querySitesOnSubscribeCenter",
-                "MediaType": 3,
+                "MediaType": 3
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-                $scope.data.weixin.lists = data;
+            // trsHttpService.httpServer('./editingCenter/data/subscribe-media.json', params, "get").then(function(data) {
+                $scope.data.weixin.siteLists = data;
                 $scope.data.weixin.selectedItem = data[0];
             });
         }
 
         /**
-         * [queryWebsite description] 订阅微博
+         * [queryWebsite description] 获取微博一级站点信息
          * @return {[type]} [description]
          */
         function queryWeibo() {
             var params = {
                 "serviceid": "gov_site",
                 "methodname": "querySitesOnSubscribeCenter",
-                "MediaType": 4,
+                "MediaType": 4
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-                $scope.data.weibo.lists = data;
+            // trsHttpService.httpServer('./editingCenter/data/subscribe-media.json', params, "get").then(function(data) {
+                $scope.data.weibo.siteLists = data;
                 $scope.data.weibo.selectedItem = data[0];
             });
         }
 
         /**
-         * [querySubscribeBySiteid description] 根据siteid获得网站叠次列表
-         * @param  {[type]} website [description] 网站站点信息
-         * @return {[type]}         [description]
+         * [queryChannelsOnSubscribeCenter description] 网站渠道获取二级列表
+         * @return {[type]}      [description]
          */
-        function querySubscribeBySiteid() {
+        function queryChannelsOnSubscribeCenter() {
             var params = {
                 "serviceid": "gov_site",
                 "methodname": "queryChannelsOnSubscribeCenter",
-                "SITEID": $scope.data.website.selectedItem.SITEID
+                "SiteId": $scope.data.website.selectedItem.SITEID
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-                $scope.data.website.listids = data;
-                $scope.data.website.subscribeSiteidCur = data[0];
+                $scope.data.website.channelLists = data;
+                $scope.cur.curChannel = data[0];
             });
         }
 
-        /**
-         * [getSubMedia description]
-         * @param  {[type]} site [description]
-         * @return {[type]}      [description]
-         */
-        $scope.getSubMedia = function(site) {
-            $scope.data.website.selectedItem = site;
-            console.log(site.SITEID);
+        $scope.getChannellist = function(channel, index) {
+            $scope.cur.curChannel = channel;
         };
 
         /**
-         * [getSubsSiteid description]
-         * @param  {[type]} siteid [description]
-         * @return {[type]}        [description]
+         * [cancel description] 弹窗 关闭取消按钮
+         * @return {[type]} [description]
          */
-        $scope.getSubsSiteid = function(channel) {
-            $scope.data.website.subscribeSiteidCur = channel;
-            console.log(channel.CHANNELID);
-            // querySubscribeBySiteid();
-        };
-
-
-        $scope.confirm = function() {
-            $scope.data.test = $scope.data.website.selectedItem;
-            var params = {
-                "Serviceid": "gov_site",
-                "methodname": "addSubscribeChannel",
-                "ChannelId": $scope.data.website.subscribeSiteidCur.CHANNELID
-            };
-            $scope.loadingPromise = trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, "get").then(function(data) {
-                $scope.data.sitesChannels = data;
-                trsconfirm.alertType("订阅栏目成功", "", "success", false, function() {
-                    $modalInstance.close(data);
-                });
-            }, function() {
-                $modalInstance.close('not');
-            });
+        $scope.close = function() {
+            $modalInstance.dismiss();
         };
 }]);

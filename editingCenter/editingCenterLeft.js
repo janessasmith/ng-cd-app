@@ -147,8 +147,7 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
          */
         $scope.querySitesOnSubscribeCenter = function() {
             editingCenterService.subscribeModal(function(result) {
-                $scope.data.sitesChannels.push(result);
-                console.log(result);
+                // $scope.data.sitesChannels.push(result);
             });
         };
     }

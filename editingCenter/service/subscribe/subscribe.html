@@ -1,33 +1,31 @@
 <div class="subscribe-modal">
     <div class="header">
         <span>站点栏目订阅</span>
-        <img ng-click="cancel()" src="./editingCenter/images/blue-skin/editing-leftnav_icon12.png">
+        <img ng-click="close()" src="./editingCenter/images/blue-skin/editing-leftnav_icon12.png">
     </div>
     <div class="content">
         <div class="subscribe-channels">
             <ul>
-                <li ng-class="{'active':data.subscribeMediasCur===media}" ng-repeat="media in data.subscribeMedias" ng-bind="media.mediaName" ng-click="setCurMedia(media, $index)"></li>
+                <li ng-repeat="media in cur.medias" ng-class="{'active':cur.curMedia===media}" ng-bind="media.mediaName" ng-click="setMediaTab(media)"></li>
             </ul>
         </div>
         <div class="subscribe-list">
             <div class="list-left">
                 <div class="subscribe-site">
                     <!-- 网站 -->
-                    <div ng-if="data.subscribeMediasCur.mediaType === 1">
+                    <div ng-if="cur.curMedia.mediaType===1">
                         <!-- 网站一级站点列表 -->
                         <div class="website-list">
                             <h5>网站列表</h5>
                             <ul>
-                                <li ng-repeat="site in data.website.lists" ng-class="{'active': data.website.selectedItem===site}" ng-click="getSubMedia(site)" ng-bind="site.SITEDESC" title="site.SITEDESC">
-                                </li>
+                                <li ng-repeat="site in data.website.siteLists" ng-class="{'active':data.website.selectedItem===site}" ng-click="getSitelist(site, $index)" ng-bind="site.SITEDESC" title="{{site.SITEDESC}}"></li>
                             </ul>
                         </div>
                         <!-- 网站二级站点列表 -->
                         <div class="website-list">
                             <h5>叠次列表</h5>
                             <ul>
-                                <li ng-repeat="siteid in data.website.listids" ng-class="{'active': data.website.subscribeSiteidCur===siteid}" ng-click="getSubsSiteid(siteid)" ng-bind="siteid.CHNLDESC" title="siteid.CHNLDESC">
-                                </li>
+                                <li ng-repeat="channel in data.website.channelLists" ng-class="{'active':cur.curChannel===channel}" ng-click="getChannellist(channel, $index)" ng-bind="channel.CHNLDESC" title="{{channel.CHNLDESC}}"></li>
                             </ul>
                         </div>
                     </div>
@@ -45,7 +43,7 @@
         </ul>
     </div>
     <div class="footer">
-        <button class="btn-cancel" ng-click="cancel()">取消</button>
+        <button class="btn-cancel" ng-click="close()">取消</button>
         <button class="btn-confirm" ng-click="confirm()">确定</button>
     </div>
     <div class="busy" cg-busy="loadingPromise"></div>
