@@ -228,4 +228,13 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
         $scope.close = function() {
             $modalInstance.dismiss();
         };
+
+
+        $scope.confirm = function() {
+            var params = {
+                selectedSites: $scope.data.website.selectedItem,
+                selectedChannels: $scope.cur.curChannel
+            };
+            $modalInstance.close(params);
+        };
 }]);

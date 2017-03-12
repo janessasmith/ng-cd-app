@@ -63,12 +63,14 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
             $scope.status.tab[$scope.pathes[2]].isTabSelect = true;
 
             $scope.data = {
+                subsitems: [],
                 sitesChannels: []
             };
         }
 
         function initData() {
             // queryAllSites();   // 暂时注销
+            addSubscribeSite(1);
         }
         $scope.setTabSelected = function(param) {
             $scope.status.tab[param].isTabSelect = true;
@@ -146,8 +148,80 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
          * @return {[type]} [description]
          */
         $scope.querySitesOnSubscribeCenter = function() {
-            editingCenterService.subscribeModal(function(result) {
-                // $scope.data.sitesChannels.push(result);
+            editingCenterService.subscribeModal(function(params) {
+                // addSubscribeSite(params.selectedSites);
+                addSubscribeChannel(params);
+            });
+        };
+
+        function addSubscribeSite(site) {
+           var param = {
+                serviceid: "gov_site",
+                methodname: "querySubscribeSitesOnEditorCenter",
+                // MediaType: site.MEDIATYPE
+                MediaType: site
+            };
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), param, 'get').then(function(data) {
+                $scope.data.subsitems = data;
+            });
+        }
+
+        /**
+         * 判断对象是否为空
+         * @param  {[type]}  e [description]
+         * @return {Boolean}   [description]
+         */
+        function isEmptyObject(e) {
+            var t;
+            for (t in e)
+                return !1;
+            return !0
+        }
+
+        function addSubscribeChannel(channel) {
+            var num = 0,
+                site= channel.selectedSites,
+                channel = channel.selectedChannels;
+            var param = {
+                "serviceid": "gov_site",
+                "methodname": "addSubscribeChannel",
+                "ChannelId": channel.CHANNELID
+            };
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), param, 'get').then(function(data) {
+                isEmptyObject($scope.data.subsitems) ? $scope.data.subsitems.push(site) : '';
+                angular.forEach($scope.data.subsitems, function(value, key) {
+                    if (value.SITEID == channel.SITEID) {
+                        angular.forEach(value.subChannels, function(valuec, keyc) {
+                            valuec.CHANNELID == channel.CHANNELID ? num++ : '';
+                        });
+                        num === 0 ? (angular.isUndefined(value.subChannels) ? value.subChannels = [data] : value.subChannels.push(data)) : '';
+                    }
+                });
+            });
+        }
+
+        $scope.querySubscribeChannels = function(site) {
+            var param = {
+                "serviceid": "gov_site",
+                "methodname": "querySubscribeChannelsOnEditorCenter",
+                "SiteId": site.SITEID
+            };
+            if (!site.subChannels) {
+                trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), param, 'get').then(function(data) {
+                    console.log(data);
+                    site.subChannels = data;
+                });
+            }
+        };
+
+        $scope.removeSubscribeChannel = function(channelid, site, index) {
+            var param = {
+                "serviceid": "gov_site",
+                "methodname": "removeSubscribeChannel",
+                "ChannelId": channelid
+            };
+            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), param, 'get').then(function(data) {
+                site.subChannels.splice(index, 1);
             });
         };
     }

@@ -639,8 +639,8 @@ angular.module("editingCenterServiceModule", ["subscribeModalMudule", "shareModu
                             
                         }
                     });
-                    modalInstance.result.then(function(result) {
-                        success(result);
+                    modalInstance.result.then(function(params) {
+                        success(params);
                     });
                 }
             };

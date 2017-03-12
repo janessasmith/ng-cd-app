@@ -30,15 +30,15 @@
     <!-- 站点栏目订阅列表-->
      <div class="subscribe-list-wrap" ng-show="status.isDropdown">
        <accordion close-others="true">
-           <accordion-group class="subscribe-column">
+           <accordion-group class="subscribe-column" ng-repeat="subsitem in data.subsitems">
                <accordion-heading>
-                   <span class="subscribe-column-title"></span>
+                   <span class="subscribe-column-title" ng-bind="subsitem.SITEDESC" title="{{subsitem.SITEDESC}}" ng-click="querySubscribeChannels(subsitem)"></span>
                    <img class="subscribe-column-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon02.png">
                </accordion-heading>
                <ul>
-                   <li ng-repeat="channel in data.sitesChannels track by $index" ng-init="innerIndex=$index">
+                   <li ng-repeat="channel in subsitem.subChannels track by $index" ng-init="innerIndex=$index">
                        <span ng-bind="channel.CHNLDESC"></span>
-                       <i class="subscribe-delete" ng-click="removeSubscribe(channel, innerIndex)"></i>
+                       <i class="subscribe-delete" ng-click="removeSubscribeChannel(channel.CHANNELID,subsitem,innerIndex)"></i>
                    </li>
                </ul>
            </accordion-group>
