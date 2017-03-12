@@ -99,9 +99,6 @@ angular.module('websiteLeftModule', [])
             editingCenterService.queryChildChannel(site.SITEID, 0).then(function(data) {
                 $scope.status[$scope.status.selectedPlatform].channels = data.DATA;
 
-                // var routerChannelId = $location.search().channelid;
-                // $scope.status[$scope.status.selectedPlatform].selectedChnl = (routerChannelId && $location.search().siteid === $scope.status.selectedSite.SITEID) ? $filter('filterBy')(data.DATA, ['CHANNELID'], routerChannelId)[0] : data.DATA[0];
-
                 $state.go('editctr.website.' + $scope.status.selectedPlatform, {
                     siteid: $scope.status.selectedSite.SITEID,
                     channelid: data.DATA[0].CHANNELID
@@ -135,17 +132,6 @@ angular.module('websiteLeftModule', [])
         };
 
         /**
-         * [changeWebPlatform description] tab平台切换
-         * @param  {[type]} platform [description]
-         * @return {[type]}          [description]
-         */
-        // $scope.changeWebPlatform = function(platform) {
-        //     if ($scope.status.selectedPlatform === platform) return;
-        //     $scope.status.selectedPlatform = platform;
-        //     $scope.status[$scope.status.selectedPlatform].isSelected = true;
-        // };
-
-        /**
          * [setWebSelectedChnl description]设置网站当前选中的栏目
          * @param {[type]} item     [description]  被点击对象node
          * @param {[type]} platform [description] 平台：待编，待审，已签发
@@ -170,7 +156,6 @@ angular.module('websiteLeftModule', [])
          * @return {[type]} [description] 根据selectedChnl
          */
         $scope.getSelectedNode = function() {
-
             if (angular.isObject($scope.status[$scope.status.selectedPlatform].selectedChnl)) {
                 return $scope.status[$scope.status.selectedPlatform].selectedChnl;
             } else {

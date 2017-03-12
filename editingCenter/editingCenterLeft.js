@@ -63,7 +63,7 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
             $scope.status.tab[$scope.pathes[2]].isTabSelect = true;
 
             $scope.data = {
-                subsitems: [],
+                subsItems: [],
                 sitesChannels: []
             };
         }
@@ -149,7 +149,7 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
          */
         $scope.querySitesOnSubscribeCenter = function() {
             editingCenterService.subscribeModal(function(params) {
-                // addSubscribeSite(params.selectedSites);
+                addSubscribeSite(params.selectedSites.MEDIATYPE);
                 addSubscribeChannel(params);
             });
         };
@@ -158,11 +158,11 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
            var param = {
                 serviceid: "gov_site",
                 methodname: "querySubscribeSitesOnEditorCenter",
-                // MediaType: site.MEDIATYPE
                 MediaType: site
+                // MediaType: site
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), param, 'get').then(function(data) {
-                $scope.data.subsitems = data;
+                $scope.data.subsItems = data;
             });
         }
 
@@ -175,7 +175,7 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
             var t;
             for (t in e)
                 return !1;
-            return !0
+            return !0;
         }
 
         function addSubscribeChannel(channel) {
@@ -188,13 +188,13 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
                 "ChannelId": channel.CHANNELID
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), param, 'get').then(function(data) {
-                isEmptyObject($scope.data.subsitems) ? $scope.data.subsitems.push(site) : '';
-                angular.forEach($scope.data.subsitems, function(value, key) {
+                isEmptyObject(($scope.data.subsItems) ? $scope.data.subsItems.push(site) : '');
+                angular.forEach($scope.data.subsItems, function(value, key) {
                     if (value.SITEID == channel.SITEID) {
-                        angular.forEach(value.subChannels, function(valuec, keyc) {
+                        angular.forEach(value.subsChannel, function(valuec, keyc) {
                             valuec.CHANNELID == channel.CHANNELID ? num++ : '';
                         });
-                        num === 0 ? (angular.isUndefined(value.subChannels) ? value.subChannels = [data] : value.subChannels.push(data)) : '';
+                        num === 0 ? (angular.isUndefined(value.subsChannel) ? value.subsChannel = [data] : value.subsChannel.push(data)) : '';
                     }
                 });
             });
@@ -206,10 +206,9 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
                 "methodname": "querySubscribeChannelsOnEditorCenter",
                 "SiteId": site.SITEID
             };
-            if (!site.subChannels) {
+            if (!site.subsChannel) {
                 trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), param, 'get').then(function(data) {
-                    console.log(data);
-                    site.subChannels = data;
+                    site.subsChannel = data;
                 });
             }
         };
@@ -221,7 +220,7 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
                 "ChannelId": channelid
             };
             trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), param, 'get').then(function(data) {
-                site.subChannels.splice(index, 1);
+                site.subsChannel.splice(index, 1);
             });
         };
     }
