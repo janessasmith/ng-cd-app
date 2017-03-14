@@ -698,33 +698,61 @@ body {
 .editing-table {
   border: 1px solid #ebebeb;
   border-radius: 5px;
-  /* .table {
-        > thead {
-            > tr {
-                > th {
-                    font-size: 16px;
-                    color: #666;
-                    border-bottom: 2px solid #cecfcf;
-                }
-            }
-        }
-    } */
 }
 .editing-table table thead {
   background-color: #f5f5f5;
 }
-.editing-table table > thead > tr > th {
+.editing-table table thead th {
   padding: 0;
   height: 40px;
   line-height: 40px;
-  font-size: 12px;
   color: #4a4a4a;
-  border-bottom: 2px solid #f5f5f5;
+  border-bottom: 1px solid #ebebeb;
 }
-.editing-table .td-check {
+.editing-table table tbody tr td {
+  padding: 0;
+  height: 40px;
+  line-height: 40px;
+  color: #4a4a4a;
+}
+.editing-table table tbody tr td a {
+  color: #4a4a4a;
+}
+.editing-table table tbody tr td.td-website-column,
+.editing-table table tbody tr td.td-website-type,
+.editing-table table tbody tr td.td-website-user,
+.editing-table table tbody tr td.td-website-date {
+  color: #999;
+}
+.editing-table table .td-check {
   width: 40px;
-  padding-left: 20px;
+  padding-left: 12px;
   text-align: left;
+}
+.editing-table table .td-number {
+  width: 70px;
+  padding-right: 25px;
+}
+.editing-table table .td-left {
+  text-align: left;
+}
+.editing-table table .td-wordbreak {
+  word-break: break-all;
+}
+.editing-table table .td-website-column {
+  width: 120px;
+}
+.editing-table table .td-website-type {
+  width: 60px;
+}
+.editing-table table .td-website-user {
+  width: 86px;
+}
+.editing-table table .td-website-date {
+  width: 154px;
+}
+.editing-table table .td-website-picture {
+  width: 64px;
 }
 .editing-table .mgr5 {
   margin-right: 7px;
@@ -742,16 +770,11 @@ body {
   display: inline-block;
   width: 60px;
 }
-.editing-table table thead tr th.td-number {
-  width: 42px;
-  padding: 8px 0 8px 8px;
-}
-/* table换行变色 */
 .table-striped > tbody > tr:nth-of-type(2n+1) {
   background: #fff;
 }
 .table-striped > tbody > tr:nth-of-type(2n) {
-  background: #f7f9fb;
+  background: #f5f5f5;
 }
 table thead tr th {
   text-align: center;
@@ -765,7 +788,6 @@ table tbody tr td a:hover,
 table tbody tr td a:active {
   text-decoration: none;
 }
-/* table换行变色 end */
 /* 网站待编右侧列表  end */
 /* media screen 2017.3.10 */
 /* @media (min-width: 992px) {
@@ -2526,15 +2548,18 @@ table tbody tr td.table-title-size-ta-l a {
   left: 0;
 }
 /*采编中心下 全部时间样式*/
-.editing_pd .app-selectedTimeType .app-selected .dropdown .bth-fix {
-  width: 120px;
+/* .editing_pd .app-selectedTimeType .app-selected .dropdown .bth-fix {
+    width: 120px;
 }
+
 .editing_pd .app-selectedTimeType .app-selected {
-  padding-right: 0;
+    padding-right: 0;
 }
+
 .editing_pd .app-selectedTimeType .app-selected .dropdown {
-  margin-right: 10px;
+    margin-right: 10px;
 }
+
 .editing_pd .app-selectedTimeType .app-selected .dropdown .dropdown-menu {
-  min-width: 120px;
-}
+    min-width: 120px;
+} */

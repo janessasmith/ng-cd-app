@@ -43,12 +43,12 @@
 </div>
 <!-- 下拉框 -->
 <div class="row edit_right_mid">
-    <div class="col-md-9">
-        <!-- 按稿件类型排序 -->
+    <!-- <div class="col-md-9">
+        按稿件类型排序
         <trs-single-select selected-option="performDocStatusSelected" options="performDocStatusName" callback="queryByDropdown('DocType', performDocStatusSelected.value)"></trs-single-select>
-        <!-- 按稿件时间排序 -->
+        按稿件时间排序
         <trs-time-select selected-option="performTimeStatusSelected" options="performTimeStatus" callback="queryByDropdown('PubTime', performTimeStatusSelected.value)"></trs-time-select>
-    </div>
+    </div> -->
     <!-- <div class="col-md-3 text-align-right">
         <p class="text-danger">初评/终评数额应为0~100正整数</p>
     </div> -->
@@ -63,13 +63,13 @@
                         0&&data.selectedArray.length==data.items.length" callback="checkAll()">
                     </trs-checkbox>
                 </th>
-                <th class="xcol-newspaper-id">序号</th>
-                <th>标题</th>
-                <th class="xcol-newspaper-column">所属栏目</th>
-                <th class="xcol-newspaper-type">类型</th>
-                <th class="xcol-newspaper-releaseBuild">操作人</th>
-                <th class="xcol-newspaper-date">操作时间</th>
-                <th class="xcol-newspaper-picture">图示</th>
+                <th class="td-number">序号</th>
+                <th class="td-left">标题</th>
+                <th class="td-website-column">所属栏目</th>
+                <th class="td-website-type">类型</th>
+                <th class="td-website-user">操作人</th>
+                <th class="td-website-date">操作时间</th>
+                <th class="td-website-picture">图示</th>
             </tr>
         </thead>
         <tbody trs-thumb-container>
@@ -81,17 +81,17 @@
                     <trs-checkbox ischecked="data.selectedArray.indexOf(item)<0?false:true" callback="checkSingle(item)"></trs-checkbox>
                 </td>
                 <!-- 序号 -->
-                <td>{{(page.CURRPAGE-1)*page.PAGESIZE+$index+1}}</td>
+                <td class="td-number">{{(page.CURRPAGE-1)*page.PAGESIZE+$index+1}}</td>
                 <!-- 标题 -->
-                <td class="text-align-left">{{item.DOCTITLE}}</td>
+                <td class="td-left td-wordbreak"><a href="">{{item.DOCTITLE}}</a></td>
                 <!-- 所属栏目 -->
-                <td>{{item.CHNLIDNAME}}</td>
+                <td class="td-website-column">{{item.CHNLIDNAME}}</td>
                 <!-- 类型 -->
-                <td>{{item.DOCTYPE}}</td>
+                <td class="td-website-type">{{item.DOCTYPE}}</td>
                 <!-- 操作人 -->
-                <td>{{item.CRUSER}}</td>
+                <td class="td-website-user">{{item.CRUSER}}</td>
                 <!-- 操作时间 -->
-                <td>{{item.CRTIME}}</td>
+                <td class="td-website-date">{{item.CRTIME}}</td>
                 <!-- 图示 -->
                 <td class="edit-icon-td">
                     <trs-thumb item="item" transform="editingCenterAllThumb"></trs-thumb>
@@ -104,8 +104,8 @@
         </tbody>
     </table>
     <!-- 分页 -->
-    <div class="page">
+    <!-- <div class="page">
         <pagination class="pagination-sm page_left" num-pages="page.PAGECOUNT" total-items="page.ITEMCOUNT" ng-model="page.CURRPAGE" items-per-page="page.PAGESIZE" ng-change="pageChanged()" boundary-links="true" rotate="false" max-size="maxSize" boundary-link-numbers="true" first-text="首页" last-text="末页" previous-text="上一页" next-text="下一页"></pagination>
         <trs-pagenation-right callback="jumpToPage()" currpage="status.jumpCurrPage" page="page"></trs-pagenation-right>
-    </div>
+    </div> -->
 </div>
