@@ -533,6 +533,240 @@ body {
 }
 /* 站点栏目订阅弹窗 end */
 /* 左侧导航CSS样式 2017.3.2 end */
+/* 网站待编右侧样式2017.3.14 */
+.editing-main-header {
+  height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
+}
+.editing-main-header .btn {
+  display: block;
+  float: left;
+  margin: 15px 10px 0 0;
+}
+.editing-main-header .btn-group {
+  display: block;
+  float: left;
+}
+.editing-main-header .btn-group .editing-dropdown-menu {
+  top: 42px;
+  width: 95px;
+  min-width: 95px;
+  margin: 0;
+  padding: 7px 5px;
+  border: 2px solid #2178c5;
+  border-radius: 0;
+}
+.editing-main-header .btn-group .editing-dropdown-menu li a {
+  height: 26px;
+  line-height: 26px;
+  padding: 0;
+  text-align: center;
+  color: #666;
+  cursor: pointer;
+}
+.editing-main-header .btn-group .editing-dropdown-menu li a:hover {
+  background-color: #eceff3;
+}
+.editing-main-header .btn-default {
+  width: 95px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0;
+  text-align: left;
+  font-size: 12px;
+  color: #fff;
+  background-color: #1f5c8e;
+  border: none;
+}
+.editing-main-header .btn-default:hover {
+  background-color: #2178c5;
+}
+.editing-main-header .btn-default:hover .btn-icon {
+  border-right: 1px solid #1c70ba;
+}
+.editing-main-header .btn-default:hover .btn-icon.btn-new {
+  background: url("editingCenter/images/blue-skin/editing-rightbtn_icon01-hover.png") no-repeat;
+}
+.editing-main-header .btn-default:hover .btn-icon.btn-publish {
+  background: url("editingCenter/images/blue-skin/editing-rightbtn_icon04-hover.png") no-repeat;
+}
+.editing-main-header .btn-default .btn-icon {
+  display: inline-block;
+  vertical-align: -3px;
+  width: 23px;
+  height: 15px;
+  margin-left: 10px;
+  border-right: 1px solid #064679;
+}
+.editing-main-header .btn-default .btn-icon.btn-new {
+  background: url("editingCenter/images/blue-skin/editing-rightbtn_icon01.png") no-repeat;
+}
+.editing-main-header .btn-default .btn-icon.btn-send {
+  background: url("editingCenter/images/blue-skin/editing-rightbtn_icon02.png") no-repeat;
+}
+.editing-main-header .btn-default .btn-icon.btn-sign {
+  background: url("editingCenter/images/blue-skin/editing-rightbtn_icon03.png") no-repeat;
+}
+.editing-main-header .btn-default .btn-icon.btn-publish {
+  background: url("editingCenter/images/blue-skin/editing-rightbtn_icon04.png") no-repeat;
+}
+.editing-main-header .btn-default .btn-drop-icon {
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  display: inline-block;
+  width: 8px;
+  height: 5px;
+  background: url("editingCenter/images/blue-skin/editing-rightbtn_icon-drop.png") no-repeat;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default,
+.btn-default:active:hover,
+.btn-default.active:hover,
+.open > .dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.open > .dropdown-toggle.btn-default:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.open > .dropdown-toggle.btn-default.focus {
+  color: #fff;
+  background-color: #2178c5;
+  border: none;
+  box-shadow: none;
+}
+.btn-default:active .btn-icon,
+.btn-default.active .btn-icon,
+.open > .dropdown-toggle.btn-default .btn-icon,
+.btn-default:active:hover .btn-icon,
+.btn-default.active:hover .btn-icon,
+.open > .dropdown-toggle.btn-default:hover .btn-icon,
+.btn-default:active:focus .btn-icon,
+.btn-default.active:focus .btn-icon,
+.open > .dropdown-toggle.btn-default:focus .btn-icon,
+.btn-default:active.focus .btn-icon,
+.btn-default.active.focus .btn-icon,
+.open > .dropdown-toggle.btn-default.focus .btn-icon {
+  border-right: 1px solid #1c70ba;
+}
+.btn-default:active .btn-icon.btn-new,
+.btn-default.active .btn-icon.btn-new,
+.open > .dropdown-toggle.btn-default .btn-icon.btn-new,
+.btn-default:active:hover .btn-icon.btn-new,
+.btn-default.active:hover .btn-icon.btn-new,
+.open > .dropdown-toggle.btn-default:hover .btn-icon.btn-new,
+.btn-default:active:focus .btn-icon.btn-new,
+.btn-default.active:focus .btn-icon.btn-new,
+.open > .dropdown-toggle.btn-default:focus .btn-icon.btn-new,
+.btn-default:active.focus .btn-icon.btn-new,
+.btn-default.active.focus .btn-icon.btn-new,
+.open > .dropdown-toggle.btn-default.focus .btn-icon.btn-new {
+  background: url("editingCenter/images/blue-skin/editing-rightbtn_icon01-hover.png") no-repeat;
+}
+.btn-default:active .btn-icon.btn-publish,
+.btn-default.active .btn-icon.btn-publish,
+.open > .dropdown-toggle.btn-default .btn-icon.btn-publish,
+.btn-default:active:hover .btn-icon.btn-publish,
+.btn-default.active:hover .btn-icon.btn-publish,
+.open > .dropdown-toggle.btn-default:hover .btn-icon.btn-publish,
+.btn-default:active:focus .btn-icon.btn-publish,
+.btn-default.active:focus .btn-icon.btn-publish,
+.open > .dropdown-toggle.btn-default:focus .btn-icon.btn-publish,
+.btn-default:active.focus .btn-icon.btn-publish,
+.btn-default.active.focus .btn-icon.btn-publish,
+.open > .dropdown-toggle.btn-default.focus .btn-icon.btn-publish {
+  background: url("editingCenter/images/blue-skin/editing-rightbtn_icon04-hover.png") no-repeat;
+}
+.btn-default:active .btn-drop-icon,
+.btn-default.active .btn-drop-icon,
+.open > .dropdown-toggle.btn-default .btn-drop-icon,
+.btn-default:active:hover .btn-drop-icon,
+.btn-default.active:hover .btn-drop-icon,
+.open > .dropdown-toggle.btn-default:hover .btn-drop-icon,
+.btn-default:active:focus .btn-drop-icon,
+.btn-default.active:focus .btn-drop-icon,
+.open > .dropdown-toggle.btn-default:focus .btn-drop-icon,
+.btn-default:active.focus .btn-drop-icon,
+.btn-default.active.focus .btn-drop-icon,
+.open > .dropdown-toggle.btn-default.focus .btn-drop-icon {
+  background: none;
+}
+/* 网站待编右侧样式2017.3.14 end */
+/* 网站待编右侧列表 */
+.editing-table {
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  /* .table {
+        > thead {
+            > tr {
+                > th {
+                    font-size: 16px;
+                    color: #666;
+                    border-bottom: 2px solid #cecfcf;
+                }
+            }
+        }
+    } */
+}
+.editing-table table thead {
+  background-color: #f5f5f5;
+}
+.editing-table table > thead > tr > th {
+  padding: 0;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  color: #4a4a4a;
+  border-bottom: 2px solid #f5f5f5;
+}
+.editing-table .td-check {
+  width: 40px;
+  padding-left: 20px;
+  text-align: left;
+}
+.editing-table .mgr5 {
+  margin-right: 7px;
+}
+.editing-table li {
+  list-style: none;
+}
+.editing-table img {
+  cursor: pointer;
+}
+.editing-table a {
+  cursor: pointer;
+}
+.editing-table .hidden-operate span.inblock {
+  display: inline-block;
+  width: 60px;
+}
+.editing-table table thead tr th.td-number {
+  width: 42px;
+  padding: 8px 0 8px 8px;
+}
+/* table换行变色 */
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+  background: #fff;
+}
+.table-striped > tbody > tr:nth-of-type(2n) {
+  background: #f7f9fb;
+}
+table thead tr th {
+  text-align: center;
+}
+table tbody tr td {
+  text-align: center;
+}
+table tbody tr td a:link,
+table tbody tr td a:visited,
+table tbody tr td a:hover,
+table tbody tr td a:active {
+  text-decoration: none;
+}
+/* table换行变色 end */
+/* 网站待编右侧列表  end */
 /* media screen 2017.3.10 */
 /* @media (min-width: 992px) {
     
@@ -640,18 +874,6 @@ button.bth-fix .open > .dropdown-toggle.btn-default {
 .dropdown {
   margin-right: 16px;
 }
-/*.edit_breadcrumb li span.identify{cursor: not-allowed};*/
-.edit_right_head {
-  height: 54px;
-  padding-top: 13px;
-  background-color: #fff;
-  border-bottom: 1px solid #ebebeb;
-}
-.edit_right_head .s_icon {
-  margin: 0 6px 0 -10px;
-  padding-right: 6px;
-  border-right: 1px solid #e9e9e9;
-}
 .edit_right_head .bth-fix:focus .edit_right_head .bth-fix:active,
 .edit_right_head .bth-fix .open > .dropdown-toggle.btn-default {
   background-color: #4496d2;
@@ -685,30 +907,31 @@ button.bth-fix .open > .dropdown-toggle.btn-default {
   content: '>';
   color: #777;
 }
-.btn-commen {
-  font-size: 12px;
-  line-height: 28px;
-  width: 90px;
-  height: 30px;
-  padding: 0 0;
-  vertical-align: middle;
-  color: #666;
-  outline: none!important;
-  background: url('editingCenter/app/images/b-m.jpg') repeat-x;
+/* .btn-commen {
+    font-size: 12px;
+    line-height: 28px;
+    width: 90px;
+    height: 30px;
+    padding: 0 0;
+    vertical-align: middle;
+    color: #666;
+    outline: none!important;
+    background: url('./editingCenter/app/images/b-m.jpg') repeat-x;
 }
+
 .btn-commen-hover,
 .btn-commen:hover,
 .btn-commen.active {
-  font-size: 12px;
-  line-height: 28px;
-  width: 90px;
-  height: 30px;
-  padding: 0 0;
-  color: #fff;
-  color: white!important;
-  border: 1px solid #FF4E40;
-  background: #FF4E40;
-}
+    font-size: 12px;
+    line-height: 28px;
+    width: 90px;
+    height: 30px;
+    padding: 0 0;
+    color: #fff;
+    color: white!important;
+    border: 1px solid @manage_accordion_body_hover;
+    background: @manage_accordion_body_hover;
+} */
 /*
 .btn-commen:focus {
     color: #666;
@@ -722,10 +945,10 @@ button.bth-fix .open > .dropdown-toggle.btn-default {
   color: #333!important;
   background: #fff!important;
 }
-.btn-commen-hover:hover {
-  color: #fff;
-  background: #41baff;
-}
+/* .btn-commen-hover:hover {
+    color: #fff;
+    background: @theme_color;
+} */
 .edit_right_mid {
   height: 56px;
   padding-top: 13px;
@@ -744,13 +967,14 @@ button.bth-fix .open > .dropdown-toggle.btn-default {
   padding-left: 10px;
   text-align: left;
 }
-.edit_table {
-  margin-bottom: 0;
-  border: 1px solid #a6b2c0;
+/* .edit_table {
+    margin-bottom: 0;
+    border: 1px solid #a6b2c0;
 }
+
 .edit_table .mgr5 {
-  margin-right: 7px;
-}
+    margin-right: 7px;
+} */
 .websiteSigned .dndPlaceholder {
   /*height: 30px;
     background: gray;
@@ -765,27 +989,33 @@ button.bth-fix .open > .dropdown-toggle.btn-default {
 /*.websiteSigned .dndPlaceholder td i {
     color: white;
 }*/
-.edit_table tr .edit_table .dndDraggingSource {
-  display: none;
+/* .edit_table tr .edit_table .dndDraggingSource {
+    display: none;
 }
+
 .edit_table li {
-  list-style: none;
+    list-style: none;
 }
+
 .edit_table img,
 .edit_table a {
-  cursor: pointer;
+    cursor: pointer;
 }
-/*.edit_table img {
+
+
+.edit_table img {
     margin-top: -3px;
-}*/
+}
+
 .edit_table thead {
-  background: #eceef0;
+    background: #eceef0;
 }
+
 .edit_table .table > thead > tr > th {
-  font-size: 16px;
-  color: #666;
-  border-bottom: 2px solid #cecfcf;
-}
+    font-size: 16px;
+    color: #666;
+    border-bottom: 2px solid #cecfcf;
+} */
 /* .mtn5{ margin-top: -5px;} */
 .input-group .edit_form_control {
   font-family: 'Helvetica Neue\', Helvetica, Arial, sans-serif';
@@ -808,36 +1038,38 @@ button.bth-fix .open > .dropdown-toggle.btn-default {
 .edit-header .img-responsive {
   margin-top: 28px;
 }
-.edit_right_head .s_icon_clear {
-  margin: 0 0;
-  padding-right: 2px;
-  border-right: 1px solid #e9e9e9;
+/* .edit_right_head .s_icon_clear {
+    margin: 0 0;
+    padding-right: 2px;
+    border-right: 1px solid #e9e9e9;
+} */
+/* .pulldown_icon {
+    position: absolute;
+    top: 10px;
+    right: 4px;
+    display: inline-block;
+    width: 14px;
+    height: 8px;
+    background: url('editingCenter/app/images/xl.png') no-repeat;
+} */
+/* .edit_dropdown_menu {
+    top: 25px;
+    width: 90px;
+    min-width: 0;
+    border: 1px solid #52b8dd;
 }
-.pulldown_icon {
-  position: absolute;
-  top: 10px;
-  right: 4px;
-  display: inline-block;
-  width: 14px;
-  height: 8px;
-  background: url('editingCenter/app/images/xl.png') no-repeat;
-}
-.edit_dropdown_menu {
-  top: 25px;
-  width: 90px;
-  min-width: 0;
-  border: 1px solid #52b8dd;
-}
+
 .edit_dropdown_menu li {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 .edit_dropdown_menu li a {
-  line-height: 26px;
-  height: 26px;
-  padding: 0;
-  text-align: center;
-  color: #676767;
-}
+    line-height: 26px;
+    height: 26px;
+    padding: 0;
+    text-align: center;
+    color: #676767;
+} */
 .dropdown_menu_w120 {
   width: 120px;
   min-width: 0;
@@ -1274,24 +1506,28 @@ button.btn_jump:hover {
   background: #41baff;
 }
 /* table鏉＄汗鏍峰紡閲嶇疆 */
-.table-striped > tbody > tr:nth-of-type(2n+1) {
-  background: #fff;
+/* .table-striped > tbody > tr:nth-of-type(2n+1) {
+    background: #fff;
 }
+
 .table-striped > tbody > tr:nth-of-type(2n) {
-  background: #f7f9fb;
+    background: #f7f9fb;
 }
+
 table thead tr th {
-  text-align: center;
+    text-align: center;
 }
+
 table tbody tr td {
-  text-align: center;
+    text-align: center;
 }
+
 table tbody tr td a:link,
 table tbody tr td a:visited,
 table tbody tr td a:hover,
 table tbody tr td a:active {
-  text-decoration: none;
-}
+    text-decoration: none;
+} */
 /* 宸叉帹澶存潯checkbox */
 .chk_2 {
   display: none;
@@ -1700,11 +1936,11 @@ span.pos-top-neg4 {
 .editing_center_channel .click_back .panel-heading {
   background-color: #1c83d2;
 }
-table tbody tr td.td-check {
-  width: 40px;
-  padding-left: 20px;
-  text-align: left;
-}
+/* table tbody tr td.td-check {
+    width: 40px;
+    padding-left: 20px;
+    text-align: left;
+} */
 /*图集*/
 .left {
   float: left;
@@ -2020,21 +2256,22 @@ p.newP {
   color: #d72420;
 }
 /*重置*/
-.btn-primary .s_icon {
-  margin-right: 25px;
-  padding-right: 15px;
-  border-right: 1px solid #41baff;
+/* .btn-primary .s_icon {
+    margin-right: 25px;
+    padding-right: 15px;
+    border-right: 1px solid @theme_color;
 }
+
 span.s_icon.width-pic {
-  margin-right: 10px;
-}
+    margin-right: 10px;
+} */
 button.btn.btn-primary.ng-scope.wt120 {
   width: 120px;
   text-align: center;
 }
-.edit_right_head .s_icon img {
-  vertical-align: -3px;
-}
+/* .edit_right_head .s_icon img {
+    vertical-align: -3px;
+} */
 .signed-hide-tit {
   font-style: normal;
 }
@@ -2049,10 +2286,10 @@ button.editing-bth:focus {
   border: none;
   outline: none;
 }
-.edit_table .hidden-operate span.inblock {
-  display: inline-block;
-  width: 60px;
-}
+/* .edit_table .hidden-operate span.inblock {
+    display: inline-block;
+    width: 60px;
+} */
 td.pointer {
   cursor: pointer;
 }
@@ -2242,10 +2479,6 @@ table tbody tr td.table-title-size-ta-l a {
 }
 */
 /* td-number 序号*/
-.edit_table table thead tr th.td-number {
-  width: 42px;
-  padding: 8px 0 8px 8px;
-}
 /*列表table圆角设置*/
 .border_radius_5 {
   border-radius: 5px;

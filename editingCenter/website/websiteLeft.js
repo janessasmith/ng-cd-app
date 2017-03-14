@@ -64,12 +64,12 @@ angular.module('websiteLeftModule', [])
             var deferred = $q.defer();
             editingCenterService.querySitesByMediaType(editingMediatype.website).then(function(data) {
                 // 当网站不存在时退出 WCM bug
-                if (!data.DATA || data.DATA.length < 1) return;
-                $scope.status.sites = data.DATA;
+                if (!data || data.length < 1) return;
+                $scope.status.sites = data;
                 // $scope.status.sites中挑选跟url中siteid相同的值的数组，返给filteredSite 被选中的网站 [filterBy的唯一性]
                 var filteredSite = $filter('filterBy')($scope.status.sites, ['SITEID'], $location.search().siteid);
                 // 将一级导航第一栏赋值给$scope.status.selectedSite
-                $scope.status.selectedSite = filteredSite.length > 0 ? filteredSite[0] : data.DATA[0];
+                $scope.status.selectedSite = filteredSite.length > 0 ? filteredSite[0] : data[0];
 
                 deferred.resolve();
             });
@@ -97,11 +97,11 @@ angular.module('websiteLeftModule', [])
          */
         function initChannelList(site) {
             editingCenterService.queryChildChannel(site.SITEID, 0).then(function(data) {
-                $scope.status[$scope.status.selectedPlatform].channels = data.DATA;
+                $scope.status[$scope.status.selectedPlatform].channels = data;
 
                 $state.go('editctr.website.' + $scope.status.selectedPlatform, {
                     siteid: $scope.status.selectedSite.SITEID,
-                    channelid: data.DATA[0].CHANNELID
+                    channelid: data[0].CHANNELID
                 });
 
                 queryFavoriteChannels();
@@ -117,7 +117,7 @@ angular.module('websiteLeftModule', [])
             if (item.HASCHILDREN == 'true' && !item.CHILDREN) {
                 editingCenterService.queryChildChannel(item.SITEID, item.CHANNELID).then(function(data) {
                     // 将选中的子节点保存到item.CHILDREN中
-                    item.CHILDREN = data.DATA;
+                    item.CHILDREN = data;
                 });
             }
         }

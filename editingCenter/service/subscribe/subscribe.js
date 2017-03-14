@@ -32,8 +32,7 @@ angular.module("subscribeModalMudule",['subscribeServiceModule'])
                 },
                 weibo: {
                     selectedItem: "" ,  // weibo被选中值
-                },
-                returnArray: []         // 返回去的数组
+                }
             };
             $scope.status = {
                 // 分渠道保存

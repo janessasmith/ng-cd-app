@@ -10,21 +10,22 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
                 controller: 'websiteLeftCtrl'
             }
         }
-    }).state('editctr.website.signed.fragmentManagement', {
-        url: '/fragmentmanagement?tempid&objectid&objecttype',
-        views: {
-            'main@editctr': {
-                templateUrl: './editingCenter/website/fragmentManagement/fragmentManagement_tpl.html',
-                controller: 'websiteFragmentManagementCtrl'
-            }
-        }
-    }).state("editctr.website.visualize", {
-        url: "/visualize?channelid",
-        views: {
-            "main@editctr": {
-                templateUrl: "./editingCenter/website/visualize/visualize_tpl.html",
-                controller: "websiteSignedVisualizeCtrl"
-            }
-        }
     });
+    // .state('editctr.website.signed.fragmentManagement', {
+    //     url: '/fragmentmanagement?tempid&objectid&objecttype',
+    //     views: {
+    //         'main@editctr': {
+    //             templateUrl: './editingCenter/website/fragmentManagement/fragmentManagement_tpl.html',
+    //             controller: 'websiteFragmentManagementCtrl'
+    //         }
+    //     }
+    // }).state("editctr.website.visualize", {
+    //     url: "/visualize?channelid",
+    //     views: {
+    //         "main@editctr": {
+    //             templateUrl: "./editingCenter/website/visualize/visualize_tpl.html",
+    //             controller: "websiteSignedVisualizeCtrl"
+    //         }
+    //     }
+    // });
 }]);

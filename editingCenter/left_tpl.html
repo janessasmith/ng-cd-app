@@ -28,20 +28,20 @@
         </div>
     </div>
     <!-- 站点栏目订阅列表-->
-     <div class="subscribe-list-wrap" ng-show="status.isDropdown">
-       <accordion close-others="true">
-           <accordion-group class="subscribe-column" ng-repeat="site in data.subsItems">
-               <accordion-heading>
-                   <span class="subscribe-column-title" ng-bind="site.SITEDESC" title="{{site.SITEDESC}}" ng-click="querySubscribeChannels(site)"></span>
-                   <img class="subscribe-column-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon02.png">
-               </accordion-heading>
-               <ul>
-                   <li ng-repeat="channel in site.subsChannel track by $index" ng-init="channelIndex=$index">
-                       <span ng-bind="channel.CHNLDESC" title="{{channel.CHNLDESC}}"></span>
-                       <i class="subscribe-delete" ng-click="removeSubscribeChannel(channel.CHANNELID,site,channelIndex)"></i>
-                   </li>
-               </ul>
-           </accordion-group>
-       </accordion>
-        </div>
+    <div class="subscribe-list-wrap" ng-show="status.isDropdown">
+        <accordion close-others="true">
+            <accordion-group class="subscribe-column" ng-repeat="site in data.subsItems">
+                <accordion-heading>
+                    <span class="subscribe-column-title" ng-bind="site.SITEDESC" title="{{site.SITEDESC}}" ng-click="querySubscribeChannels(site)"></span>
+                    <img class="subscribe-column-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon02.png">
+                </accordion-heading>
+                <ul>
+                    <li ng-repeat="channel in site.subsChannel track by $index" ng-init="channelIndex=$index">
+                        <span ng-bind="channel.CHNLDESC" title="{{channel.CHNLDESC}}"></span>
+                        <i class="subscribe-delete" ng-click="removeSubscribeChannel(channel.CHANNELID,site,channelIndex)"></i>
+                    </li>
+                </ul>
+            </accordion-group>
+        </accordion>
+    </div>
 </div>
