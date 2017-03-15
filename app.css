@@ -1278,9 +1278,9 @@ body.stop-scrolling {
     }
 }
 
-tbody .selected-row {
+/* tbody .selected-row {
     background: #fbefe6!important;
-}
+} */
 
 .table tbody tr {
     border-bottom: 1px solid #fff;

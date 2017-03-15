@@ -1,10 +1,7 @@
-/**
- *  websitetoBeCompiledModuleModule
- *
- * Description 网站渠道 待编
- * rebuild: wang.jiang 2016-3-4
- */
 "use strict";
+/**
+ * created by zheng.lu in 2017.3.14
+ */
 angular.module('websitetoBeCompiledModule', [
     'websitetoBeCompiledRouterModule',
     /*'editingCenterCompiledWebsiteTimingSignModule',
@@ -38,8 +35,7 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
              */
             $scope.page = {
                 "CURRPAGE": 1,
-                // "PAGESIZE": globleParamsSet.getPageSize(),
-                "PAGESIZE": 20,
+                "PAGESIZE": globleParamsSet.getPageSize(),
                 "ITEMCOUNT": 0,
                 "PAGECOUNT": 1
             };
@@ -114,7 +110,7 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
             $scope.status.params[key] = value;
             // $scope.status.params.CurrPage = $scope.status.copyCurrPage = $scope.page.CURRPAGE = "1";
             requestData();
-        }
+        };
 
         /**
          * [checkSingle description: 单选]
@@ -128,7 +124,7 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
                 // 从已有的数组显示选取的元素
                 $scope.data.selectedArray.splice($scope.data.selectedArray.indexOf(val), 1);
             }
-        }
+        };
 
         /**
          * [checkAll description: 全选]
@@ -136,7 +132,7 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
          */
         $scope.checkAll = function() {
             $scope.data.selectedArray = $scope.data.selectedArray.length == $scope.data.items.length ? [] : [].concat($scope.data.items);
-        }
+        };
 
         /**
          * [pageChanged description: 分页 下一页]
@@ -146,7 +142,7 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
             $scope.status.params.CurrPage = $scope.page.CURRPAGE;
             $scope.status.jumpCurrPage = $scope.page.CURRPAGE;
             requestData();
-        }
+        };
 
         /**
          * [jumpToPage description: 跳转指定页面]
@@ -156,6 +152,6 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
             $scope.status.params.CurrPage = $scope.status.jumpCurrPage;
             $scope.page.CURRPAGE = $scope.status.jumpCurrPage;
             requestData();
-        }
+        };
     }
 ]);

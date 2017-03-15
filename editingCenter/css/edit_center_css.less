@@ -728,6 +728,7 @@ body {
     border: 1px solid #ebebeb;
     border-radius: 5px;
     table {
+        margin-bottom: 10px;
         thead {
             background-color: #f5f5f5;
             th {
@@ -751,6 +752,11 @@ body {
                     &.td-website-column, &.td-website-type, &.td-website-user, &.td-website-date {
                         color: #999;
                     }
+                }
+                &.selected-row {
+                    /* -webkit-box-shadow:inset 0 0 7px #d8dade;
+                    -moz-box-shadow:inset 0 0 7px #d8dade;
+                    box-shadow:inset 0 0 7px #d8dade; */
                 }
             }
         }
@@ -784,6 +790,9 @@ body {
         .td-website-picture {
             width: 64px;
         }
+        .td-show-icon {
+            margin-left: 10px;
+        }
     }
     .mgr5 {
         margin-right: 7px;
@@ -791,9 +800,9 @@ body {
     li {
         list-style: none;
     }
-    img {
+    /* img {
         cursor: pointer;
-    }
+    } */
     a {
         cursor: pointer;
     }
@@ -829,50 +838,46 @@ table tbody tr td a:active {
     text-decoration: none;
 }
 
+/* 分页 page&pagination */
+.page_left {
+    float: left;
+    margin-left: 100px;
+}
 
-// .editing-table {
-//     margin-bottom: 0;
-//     border: 1px solid #a6b2c0;
-// }
+.page {
+    height: 85px;
+    /* overflow: hidden*/
+}
 
-// .editing-table .mgr5 {
-//     margin-right: 7px;
-// }
-// .editing-table tr .editing-table .dndDraggingSource {
-//     display: none;
-// }
+.page p {
+    float: left;
+    margin-top: 20px;
+    margin-left: 50px;
+    color: #7c7d81;
+}
 
-// .editing-table li {
-//     list-style: none;
-// }
+.page p.magrin-fixed20 {
+    margin-top: 24px;
+    margin-left: 20px;
+}
 
-// .editing-table img,
-// .editing-table a {
-//     cursor: pointer;
-// }
+.page1 {
+    overflow: hidden;
+    height: 70px;
+}
 
+.page1 p {
+    float: left;
+    margin-top: 25px;
+    margin-left: 50px;
+    color: #7c7d81;
+}
 
-// /*.editing-table img {
-//     margin-top: -3px;
-// }*/
+.page1 p.magrin-fixed20 {
+    margin-left: 20px;
+}
+/* 分页 page&pagination end */
 
-// .editing-table thead {
-//     background: #eceef0;
-// }
-
-// .editing-table .table > thead > tr > th {
-//     font-size: 16px;
-//     color: #666;
-//     border-bottom: 2px solid #cecfcf;
-// }
-// .editing-table .hidden-operate span.inblock {
-//     display: inline-block;
-//     width: 60px;
-// }
-// .editing-table table thead tr th.td-number {
-//     width: 42px;
-//     padding: 8px 0 8px 8px;
-// }
 /* 网站待编右侧列表  end */
 
 
@@ -1767,7 +1772,7 @@ a.edit-message span {
 
 
 
-/*pagination fixed css*/
+/* pagination fixed css
 
 .page_left {
     float: left;
@@ -1776,7 +1781,7 @@ a.edit-message span {
 
 .page {
     height: 85px;
-    /* overflow: hidden*/
+    overflow: hidden
 }
 
 .page p {
@@ -1805,7 +1810,7 @@ a.edit-message span {
 
 .page1 p.magrin-fixed20 {
     margin-left: 20px;
-}
+} */
 
 
 /*搴曢儴鏍峰紡*/

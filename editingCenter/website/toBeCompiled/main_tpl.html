@@ -83,15 +83,26 @@
                 <!-- 序号 -->
                 <td class="td-number">{{(page.CURRPAGE-1)*page.PAGESIZE+$index+1}}</td>
                 <!-- 标题 -->
-                <td class="td-left td-wordbreak"><a href="">{{item.DOCTITLE}}</a></td>
+                <td class="td-left td-wordbreak">
+                    <a href="" ng-bind="item.DOCTITLE" title="{{item.DOCTITLE}}"></a>
+                    <!-- 引用 链接 镜像 图标 -->
+                    <img ng-show="item.MODAL=='2'" class="td-show-icon" src="./editingCenter/images/blue-skin/editing-table_icon07.png">
+                    <img ng-show="item.MODAL=='3'" class="td-show-icon" src="./editingCenter/images/blue-skin/editing-table_icon08.png">
+                </td>
                 <!-- 所属栏目 -->
-                <td class="td-website-column">{{item.CHNLIDNAME}}</td>
+                <td class="td-website-column" ng-bind="item.CHNLIDNAME"></td>
                 <!-- 类型 -->
-                <td class="td-website-type">{{item.DOCTYPE}}</td>
+                <td class="td-website-type">
+                    <img ng-show="item.DOCTYPE=='20'" src="./editingCenter/images/blue-skin/editing-table_icon02.png" title="文字">
+                    <img ng-show="item.DOCTYPE=='30'" src="./editingCenter/images/blue-skin/editing-table_icon03.png" title="链接">
+                    <img ng-show="item.DOCTYPE=='40'" src="./editingCenter/images/blue-skin/editing-table_icon04.png" title="文件">
+                    <img ng-show="item.DOCTYPE=='50'" src="./editingCenter/images/blue-skin/editing-table_icon05.png" title="图片">
+                    <img ng-show="item.DOCTYPE=='60'" src="./editingCenter/images/blue-skin/editing-table_icon06.png" title="视频">
+                </td>
                 <!-- 操作人 -->
-                <td class="td-website-user">{{item.CRUSER}}</td>
+                <td class="td-website-user" ng-bind="item.CRUSER"></td>
                 <!-- 操作时间 -->
-                <td class="td-website-date">{{item.CRTIME}}</td>
+                <td class="td-website-date" ng-bind="item.CRTIME"></td>
                 <!-- 图示 -->
                 <td class="edit-icon-td">
                     <trs-thumb item="item" transform="editingCenterAllThumb"></trs-thumb>
@@ -103,9 +114,11 @@
             </tr>
         </tbody>
     </table>
-    <!-- 分页 -->
-    <!-- <div class="page">
-        <pagination class="pagination-sm page_left" num-pages="page.PAGECOUNT" total-items="page.ITEMCOUNT" ng-model="page.CURRPAGE" items-per-page="page.PAGESIZE" ng-change="pageChanged()" boundary-links="true" rotate="false" max-size="maxSize" boundary-link-numbers="true" first-text="首页" last-text="末页" previous-text="上一页" next-text="下一页"></pagination>
-        <trs-pagenation-right callback="jumpToPage()" currpage="status.jumpCurrPage" page="page"></trs-pagenation-right>
-    </div> -->
 </div>
+<!-- 分页 -->
+<!-- <div class="page">
+    <pagination class="pagination-sm page_left" num-pages="page.PAGECOUNT" total-items="page.ITEMCOUNT" ng-model="page.CURRPAGE" items-per-page="page.PAGESIZE" ng-change="pageChanged()" boundary-links="true" rotate="false" max-size="maxSize" boundary-link-numbers="true" first-text="首页" last-text="末页" previous-text="上一页" next-text="下一页"></pagination>
+    <trs-pagenation-right callback="jumpToPage()" currpage="status.jumpCurrPage" page="page"></trs-pagenation-right>
+</div> -->
+<!-- 加载条 -->
+<div cg-busy="loadingPromise"></div>

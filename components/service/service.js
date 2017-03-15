@@ -49,7 +49,7 @@ angular.module('components.service', [
     };
     return {
         getPageSize: function() {
-            var defaultPageSize = 50;
+            var defaultPageSize = 20;
             return defaultPageSize;
         },
         setResourceCenterPageSize: 20,

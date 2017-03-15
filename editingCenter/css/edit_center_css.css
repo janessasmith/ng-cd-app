@@ -698,6 +698,12 @@ body {
 .editing-table {
   border: 1px solid #ebebeb;
   border-radius: 5px;
+  /* img {
+        cursor: pointer;
+    } */
+}
+.editing-table table {
+  margin-bottom: 10px;
 }
 .editing-table table thead {
   background-color: #f5f5f5;
@@ -723,6 +729,11 @@ body {
 .editing-table table tbody tr td.td-website-user,
 .editing-table table tbody tr td.td-website-date {
   color: #999;
+}
+.editing-table table tbody tr.selected-row {
+  /* -webkit-box-shadow:inset 0 0 7px #d8dade;
+                    -moz-box-shadow:inset 0 0 7px #d8dade;
+                    box-shadow:inset 0 0 7px #d8dade; */
 }
 .editing-table table .td-check {
   width: 40px;
@@ -754,14 +765,14 @@ body {
 .editing-table table .td-website-picture {
   width: 64px;
 }
+.editing-table table .td-show-icon {
+  margin-left: 10px;
+}
 .editing-table .mgr5 {
   margin-right: 7px;
 }
 .editing-table li {
   list-style: none;
-}
-.editing-table img {
-  cursor: pointer;
 }
 .editing-table a {
   cursor: pointer;
@@ -788,6 +799,39 @@ table tbody tr td a:hover,
 table tbody tr td a:active {
   text-decoration: none;
 }
+/* 分页 page&pagination */
+.page_left {
+  float: left;
+  margin-left: 100px;
+}
+.page {
+  height: 85px;
+  /* overflow: hidden*/
+}
+.page p {
+  float: left;
+  margin-top: 20px;
+  margin-left: 50px;
+  color: #7c7d81;
+}
+.page p.magrin-fixed20 {
+  margin-top: 24px;
+  margin-left: 20px;
+}
+.page1 {
+  overflow: hidden;
+  height: 70px;
+}
+.page1 p {
+  float: left;
+  margin-top: 25px;
+  margin-left: 50px;
+  color: #7c7d81;
+}
+.page1 p.magrin-fixed20 {
+  margin-left: 20px;
+}
+/* 分页 page&pagination end */
 /* 网站待编右侧列表  end */
 /* media screen 2017.3.10 */
 /* @media (min-width: 992px) {
@@ -1464,38 +1508,45 @@ a.edit-message span {
   padding: 4px 0 4px 14px;
   color: #666;
 }
-/*pagination fixed css*/
+/* pagination fixed css
+
 .page_left {
-  float: left;
-  margin-left: 100px;
+    float: left;
+    margin-left: 100px;
 }
+
 .page {
-  height: 85px;
-  /* overflow: hidden*/
+    height: 85px;
+    overflow: hidden
 }
+
 .page p {
-  float: left;
-  margin-top: 20px;
-  margin-left: 50px;
-  color: #7c7d81;
+    float: left;
+    margin-top: 20px;
+    margin-left: 50px;
+    color: #7c7d81;
 }
+
 .page p.magrin-fixed20 {
-  margin-top: 24px;
-  margin-left: 20px;
+    margin-top: 24px;
+    margin-left: 20px;
 }
+
 .page1 {
-  overflow: hidden;
-  height: 70px;
+    overflow: hidden;
+    height: 70px;
 }
+
 .page1 p {
-  float: left;
-  margin-top: 25px;
-  margin-left: 50px;
-  color: #7c7d81;
+    float: left;
+    margin-top: 25px;
+    margin-left: 50px;
+    color: #7c7d81;
 }
+
 .page1 p.magrin-fixed20 {
-  margin-left: 20px;
-}
+    margin-left: 20px;
+} */
 /*搴曢儴鏍峰紡*/
 .editing_foot {
   font-family: '瀹嬩綋';
