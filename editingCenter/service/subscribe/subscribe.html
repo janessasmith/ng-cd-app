@@ -4,11 +4,11 @@
         <img ng-click="close()" src="./editingCenter/images/blue-skin/editing-leftnav_icon12.png">
     </div>
     <div class="content">
-        <div class="subscribe-channels">
+        <!-- <div class="subscribe-channels">
             <ul>
                 <li ng-repeat="media in cur.medias" ng-class="{'active':cur.curMedia===media}" ng-bind="media.mediaName" ng-click="setMediaTab(media)"></li>
             </ul>
-        </div>
+        </div> -->
         <div class="subscribe-list">
             <div class="list-left">
                 <div class="subscribe-site">
@@ -18,14 +18,14 @@
                         <div class="website-list">
                             <h5>网站列表</h5>
                             <ul>
-                                <li ng-repeat="site in data.website.siteLists" ng-class="{'active':data.website.selectedItem===site}" ng-click="getSitelist(site, $index)" ng-bind="site.SITEDESC" title="{{site.SITEDESC}}"></li>
+                                <li ng-repeat="site in data.website.siteLists" ng-class="{'active':data.website.selectedItem==$index}" ng-click="questSubChannel(site,$index)" ng-bind="site.SITEDESC" title="{{site.SITEDESC}}"></li>
                             </ul>
                         </div>
                         <!-- 网站二级站点列表 -->
                         <div class="website-list">
                             <h5>叠次列表</h5>
                             <ul>
-                                <li ng-repeat="channel in data.website.channelLists" ng-class="{'active':cur.curChannel===channel}" ng-click="getChannellist(channel, $index)" ng-bind="channel.CHNLDESC" title="{{channel.CHNLDESC}}"></li>
+                                <li ng-repeat="channel in data.website.channelLists" ng-class="{'active':cur.curChannel==$index}" ng-click="selectSubChannel(channel,$index)" ng-bind="channel.CHNLDESC" title="{{channel.CHNLDESC}}"></li>
                             </ul>
                         </div>
                     </div>
@@ -35,12 +35,12 @@
         </div>
     </div>
     <!-- 提示框 -->
-    <div class="path">
-        <ul ng-repeat="path in path.pathArray">
-            <li ng-show="path.mediaName">{{path.mediaName}}</li>
-            <li ng-show="path.siteName">{{path.siteName}}</li>
-            <img src="./editingCenter/iWo/images/closep.jpg">
-        </ul>
+    <div class="selectcontain">
+        <div class="selitem" ng-repeat="path in path.pathArray">
+            <p ng-show="path.SITEDESC">{{path.SITEDESC}}<i>></i></p>
+            <p ng-show="path.CHNLDESC">{{path.CHNLDESC}}</p>
+            <img src="./editingCenter/images/closep.jpg" ng-click="deletePath($index)">
+        </div>
     </div>
     <div class="footer">
         <button class="btn-cancel" ng-click="close()">取消</button>

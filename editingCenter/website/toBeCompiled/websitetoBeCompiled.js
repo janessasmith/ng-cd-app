@@ -35,7 +35,8 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
              */
             $scope.page = {
                 "CURRPAGE": 1,
-                "PAGESIZE": globleParamsSet.getPageSize(),
+                // "PAGESIZE": globleParamsSet.getPageSize(),
+                "PAGESIZE": 50,
                 "ITEMCOUNT": 0,
                 "PAGECOUNT": 1
             };
@@ -44,17 +45,19 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
                     'hoverStatus': "",
                     'clickStatus': ""
                 },
+                onlyCurChannel: 0,   // 只看当前栏目，0：查看包含子栏目的文档，1：仅查看自己的文档，默认显示0
+                isESSearch: false,
                 // 分页跳转当前页
                 jumpCurrPage: 1,
                 params: {
-                    "SiteId": $stateParams.siteid,
-                    "ChannelId": $stateParams.channelid,
                     "serviceid": "gov_document",
                     "methodname": "queryDocumentsInDaibian",
-                    "DocType": "",
-                    "DocRelTime": "",
+                    "SiteId": $stateParams.siteid,
+                    "ChannelId": $stateParams.channelid,
                     "PageSize": $scope.page.PAGESIZE,
-                    "CurrPage": $scope.page.CURRPAGE
+                    "PageIndex": $scope.page.CURRPAGE,
+                    "DocType": "",
+                    "DocRelTime": ""
                 }
             };
         }
@@ -65,8 +68,8 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
          * @return {[type]} [description]
          */
         function initData() {
-            requestData();
             initDropDown();
+            requestData();
         }
 
         /**
@@ -74,7 +77,7 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
          * @return {[type]} [description]
          */
         function requestData() {
-            var params = $scope.status.params;
+            var params = $scope.status.isESSearch ? getESSearchParams() : $scope.status.params;
             $scope.loadingPromise = trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), params, 'get').then(function(data) {
                 $scope.data.items = data.DATA;
 
@@ -85,20 +88,34 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
         }
 
         /**
+         * [isOnlyCurChannel description] 只看当前栏目
+         * @return {Boolean} [description]
+         */
+        $scope.isOnlyCurChannel = function() {
+            $scope.status.jumpCurrPage = $scope.status.params.PageIndex = $scope.page.CURRPAGE = "1";
+            $scope.status.onlyCurChannel = $scope.status.onlyCurChannel == 0 ? 1 : 0;
+            // $scope.status.onlyCurChannel = !$scope.status.onlyCurChannel;
+            // $scope.status.onlyCurChannel === true ? 1: 0;
+            $scope.status.params.OnlyMy = $scope.status.onlyCurChannel;
+            requestData();
+        };
+
+        /**
          * [initDropDown description: 初始化下拉框]
          * @return {[type]} [description]
          */
         function initDropDown() {
             // 初始化稿件类型
-            $scope.performDocStatusName = initSingleSelecet.docType();
-            $scope.performDocStatusSelected = angular.copy($scope.performDocStatusName[0]);
-
+            $scope.data.docTypeName = initSingleSelecet.websiteDocType();
+            $scope.data.selectedDocType = angular.copy($scope.data.docTypeName[0]);
             // 初始化稿件时间
-            $scope.performTimeStatus = initSingleSelecet.timeType();
-            $scope.performTimeStatusSelected = angular.copy($scope.performTimeStatus[0]);
-
+            $scope.data.timeTypeName = initSingleSelecet.websiteTimeType();
+            $scope.data.selectedTimeType = angular.copy($scope.data.timeTypeName[0]);
+            //初始化搜索框边的下拉框
+            $scope.data.websiteAll = initSingleSelecet.websiteESCondition();
+            $scope.data.websiteAllSelected = angular.copy($scope.data.websiteAll[0]);
             // 分页pageer显示的最大个数
-            $scope.maxSize = 6;
+            // $scope.maxSize = 6;
         }
 
         /**
@@ -108,7 +125,7 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
          */
         $scope.queryByDropdown = function(key, value) {
             $scope.status.params[key] = value;
-            // $scope.status.params.CurrPage = $scope.status.copyCurrPage = $scope.page.CURRPAGE = "1";
+            $scope.status.params.PageIndex = $scope.status.copyCurrPage = $scope.page.CURRPAGE = "1";
             requestData();
         };
 
@@ -139,7 +156,7 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
          * @return {[type]} [description]
          */
         $scope.pageChanged = function() {
-            $scope.status.params.CurrPage = $scope.page.CURRPAGE;
+            $scope.status.params.PageIndex = $scope.page.CURRPAGE;
             $scope.status.jumpCurrPage = $scope.page.CURRPAGE;
             requestData();
         };
@@ -149,9 +166,50 @@ controller('websitetoBeCompiledCtrl', ["$scope", "$filter", "$q", '$state', "$ti
          * @return {[type]} [description]
          */
         $scope.jumpToPage = function() {
-            $scope.status.params.CurrPage = $scope.status.jumpCurrPage;
+            $scope.status.params.PageIndex = $scope.status.jumpCurrPage;
             $scope.page.CURRPAGE = $scope.status.jumpCurrPage;
             requestData();
+        };
+
+        /**
+         * [getESSearchParams description]设置ES检索参数
+         * @return {[json]} [description] 参数对象
+         */
+        function getESSearchParams() {
+            var esParams = {
+                serviceid: "gov_document",
+                methodname: "queryDocumentsInDaibian",
+                SearchFields: {
+                    PAGESIZE: $scope.page.PAGESIZE + "",
+                    PAGEINDEX: $scope.page.CURRPAGE + "",
+                    searchFields: [{
+                        searchField: $scope.data.websiteAllSelected.value,
+                        keywords: $scope.keywords ? $scope.keywords : ""
+                    }, {
+                        searchField: "DocId",
+                        keywords: $stateParams.channelid
+                    }]
+                }
+            };
+            esParams.SearchFields = JSON.stringify(esParams.SearchFields);
+            return esParams;
+        }
+
+        /**
+         * [fullTextSearch description] 全文检索
+         * @param  {[type]} ev [description] 按下空格也能提交
+         */
+        $scope.fullTextSearch = function(ev) {
+            if ($scope.data.websiteAllSelected.value == "DocId") {
+                $scope.status.isESSearch = false;
+                $scope.status.params.DocId = $scope.keywords;
+            } else {
+                $scope.status.isESSearch = true;
+            }
+            if ((angular.isDefined(ev) && ev.keyCode == 13) || angular.isUndefined(ev)) {
+                $scope.page.CURRPAGE = 1;
+                requestData();
+            }
         };
     }
 ]);

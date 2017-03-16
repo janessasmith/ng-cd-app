@@ -56,8 +56,9 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
          */
         $scope.querySitesOnSubscribeCenter = function() {
             editingCenterService.subscribeModal(function(params) {
-                addSubscribeSite(params.selectedSites.MEDIATYPE);
-                addSubscribeChannel(params);
+                $timeout(function() {
+                    addSubscribeSite(1);
+                }, 100);
             });
         };
 
@@ -83,28 +84,6 @@ angular.module('editingCenterLeftModule', ["ui.bootstrap", "treeControl"]).contr
             for (t in e)
                 return !1;
             return !0;
-        }
-
-        function addSubscribeChannel(channel) {
-            var num = 0,
-                site= channel.selectedSites,
-                channel = channel.selectedChannels;
-            var param = {
-                "serviceid": "gov_site",
-                "methodname": "addSubscribeChannel",
-                "ChannelId": channel.CHANNELID
-            };
-            trsHttpService.httpServer(trsHttpService.getWCMRootUrl(), param, 'get').then(function(data) {
-                isEmptyObject(($scope.data.subsItems) ? $scope.data.subsItems.push(site) : '');
-                angular.forEach($scope.data.subsItems, function(value, key) {
-                    if (value.SITEID == channel.SITEID) {
-                        angular.forEach(value.subsChannel, function(valuec, keyc) {
-                            valuec.CHANNELID == channel.CHANNELID ? num++ : '';
-                        });
-                        num === 0 ? (angular.isUndefined(value.subsChannel) ? value.subsChannel = [data] : value.subsChannel.push(data)) : '';
-                    }
-                });
-            });
         }
 
         $scope.querySubscribeChannels = function(site) {

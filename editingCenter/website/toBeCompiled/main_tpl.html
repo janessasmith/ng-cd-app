@@ -43,15 +43,24 @@
 </div>
 <!-- 下拉框 -->
 <div class="row edit_right_mid">
-    <!-- <div class="col-md-9">
-        按稿件类型排序
-        <trs-single-select selected-option="performDocStatusSelected" options="performDocStatusName" callback="queryByDropdown('DocType', performDocStatusSelected.value)"></trs-single-select>
-        按稿件时间排序
-        <trs-time-select selected-option="performTimeStatusSelected" options="performTimeStatus" callback="queryByDropdown('PubTime', performTimeStatusSelected.value)"></trs-time-select>
-    </div> -->
-    <!-- <div class="col-md-3 text-align-right">
-        <p class="text-danger">初评/终评数额应为0~100正整数</p>
-    </div> -->
+    <div class="col-md-6">
+        <!-- 只看当前栏目 -->
+        <trs-radio ckstatus="status.onlyCurChannel==1" ckcallback="isOnlyCurChannel()"></trs-radio>
+        <span class="s_onlyme ml0">只看当前栏目</span>
+        <!-- 按稿件类型排序 -->
+        <trs-single-select selected-option="data.selectedDocType" options="data.docTypeName" callback="queryByDropdown('DocType', data.selectedDocType.value)"></trs-single-select>
+        <!-- 按稿件时间排序 -->
+        <trs-time-select selected-option="data.selectedTimeType" options="data.timeTypeName" callback="queryByDropdown('DocRelTime', data.selectedTimeType.value)"></trs-time-select>
+    </div>
+    <div class="col-md-6 text-align-right">
+        <div class="input-group edit_input_group mr15">
+            <input type="text" class="form-control edit_form_control" placeholder="请输入关键字搜索" ng-model="keywords" ng-keypress="fullTextSearch($event)">
+            <span class="input-group-btn">
+                <button class="btn btn-default btn_edit_search" type="button" ng-click="fullTextSearch()">搜索</button>
+            </span>
+        </div>
+        <trs-single-select selected-option="data.websiteAllSelected" callback="queryByWebsiteAll()" options="data.websiteAll" class="pull-right"></trs-single-select>
+    </div>
 </div>
 <!-- 列表 -->
 <div class="editing-table">
@@ -81,7 +90,7 @@
                     <trs-checkbox ischecked="data.selectedArray.indexOf(item)<0?false:true" callback="checkSingle(item)"></trs-checkbox>
                 </td>
                 <!-- 序号 -->
-                <td class="td-number">{{(page.CURRPAGE-1)*page.PAGESIZE+$index+1}}</td>
+                <td class="td-number" ng-bind="(page.CURRPAGE-1)*(page.PAGESIZE)+$index+1"></td>
                 <!-- 标题 -->
                 <td class="td-left td-wordbreak">
                     <a href="" ng-bind="item.DOCTITLE" title="{{item.DOCTITLE}}"></a>
@@ -90,7 +99,7 @@
                     <img ng-show="item.MODAL=='3'" class="td-show-icon" src="./editingCenter/images/blue-skin/editing-table_icon08.png">
                 </td>
                 <!-- 所属栏目 -->
-                <td class="td-website-column" ng-bind="item.CHNLIDNAME"></td>
+                <td class="td-website-column" ng-bind="item.DOCCHANNELNAME"></td>
                 <!-- 类型 -->
                 <td class="td-website-type">
                     <img ng-show="item.DOCTYPE=='20'" src="./editingCenter/images/blue-skin/editing-table_icon02.png" title="文字">
@@ -116,9 +125,9 @@
     </table>
 </div>
 <!-- 分页 -->
-<!-- <div class="page">
+<div class="page">
     <pagination class="pagination-sm page_left" num-pages="page.PAGECOUNT" total-items="page.ITEMCOUNT" ng-model="page.CURRPAGE" items-per-page="page.PAGESIZE" ng-change="pageChanged()" boundary-links="true" rotate="false" max-size="maxSize" boundary-link-numbers="true" first-text="首页" last-text="末页" previous-text="上一页" next-text="下一页"></pagination>
     <trs-pagenation-right callback="jumpToPage()" currpage="status.jumpCurrPage" page="page"></trs-pagenation-right>
-</div> -->
+</div>
 <!-- 加载条 -->
 <div cg-busy="loadingPromise"></div>

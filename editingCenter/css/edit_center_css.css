@@ -387,6 +387,8 @@ body {
 }
 .subscribe-list-wrap ul li {
   position: relative;
+  border-top: 1px solid #4b85c1;
+  border-bottom: 1px solid #2769ad;
 }
 .subscribe-list-wrap ul li span {
   display: block;
@@ -509,6 +511,36 @@ body {
   right: 5px;
   width: 8px;
   height: 8px;
+  cursor: pointer;
+}
+.subscribe-modal .selectcontain {
+  margin-top: 10px;
+  overflow: hidden;
+}
+.subscribe-modal .selectcontain .selitem {
+  float: left;
+  border: 1px solid #cccccc;
+  position: relative;
+  padding: 0 20px 0 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.subscribe-modal .selectcontain .selitem p {
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  margin: 0px;
+}
+.subscribe-modal .selectcontain .selitem p i {
+  font-style: normal;
+}
+.subscribe-modal .selectcontain .selitem img {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  border: 0;
   cursor: pointer;
 }
 .subscribe-modal .footer {

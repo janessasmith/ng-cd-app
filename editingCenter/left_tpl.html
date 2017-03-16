@@ -36,9 +36,9 @@
                     <img class="subscribe-column-mark" src="./editingCenter/images/blue-skin/editing-leftnav_icon02.png">
                 </accordion-heading>
                 <ul>
-                    <li ng-repeat="channel in site.subsChannel track by $index" ng-init="channelIndex=$index">
+                    <li ng-repeat="channel in site.subsChannel track by $index" ng-init="channelIndex=$index;channel.status.hover = ''" ng-mouseenter="channel.status.hover = hover" ng-mouseleave="channel.status.hover = '' ">
                         <span ng-bind="channel.CHNLDESC" title="{{channel.CHNLDESC}}"></span>
-                        <i class="subscribe-delete" ng-click="removeSubscribeChannel(channel.CHANNELID,site,channelIndex)"></i>
+                        <i class="subscribe-delete" ng-click="removeSubscribeChannel(channel.CHANNELID,site,channelIndex)" ng-show="channel.status.hover == hover"></i>
                     </li>
                 </ul>
             </accordion-group>

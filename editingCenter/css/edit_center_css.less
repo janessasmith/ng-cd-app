@@ -444,6 +444,8 @@ body {
         background-color: #3379c1;
         li {
             position: relative;
+            border-top: 1px solid #4b85c1;
+            border-bottom: 1px solid #2769ad;
             span {
                 display: block;
                 padding-left: 64px;
@@ -582,6 +584,36 @@ body {
                 right: 5px;
                 width: 8px;
                 height: 8px;
+                cursor: pointer;
+            }
+        }
+    }
+    .selectcontain{
+        margin-top: 10px;
+        overflow: hidden;
+        .selitem{
+            float: left;
+            border: 1px solid #cccccc;
+            position: relative;
+            padding: 0 20px 0 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            p{
+                float: left;
+                height: 30px;
+                line-height: 30px;
+                margin: 0px;
+                i{
+                    font-style: normal;
+                }
+            }
+            img{
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                width: 8px;
+                height: 8px;
+                border: 0;
                 cursor: pointer;
             }
         }
